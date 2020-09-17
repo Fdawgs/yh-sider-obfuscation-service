@@ -13,7 +13,6 @@
 		"changelog": "conventional-changelog -p @commitlint/config-conventional -s -i CHANGELOG.md && prettier CHANGELOG.md --write",
 		"dupe-check": "yarn jsinspect ./src",
 		"lint": "eslint . --cache --ext js,jsx,ts,tsx --ignore-path .gitignore",
-		"nodemon": "cross-env NODE_ENV=development nodemon src/server.js",
 		"prettier": "prettier . --write --ignore-path .gitignore",
 		"start": "node src/server.js",
 		"test": "cross-env NODE_ENV=test yarn lint && yarn test-only",
