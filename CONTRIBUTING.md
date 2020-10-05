@@ -4,7 +4,7 @@ Contributions are welcome and any help that can be offered is greatly appreciate
 Please take a moment to read the entire contributing guide.
 
 This repository uses the [Feature Branch Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow),
-meaning that development should take place in `feat/` branches, with the `master` branch being kept in a stable state.
+meaning that development should take place in `feat/` branches, with the `master` branch kept in a stable state.
 When you submit pull requests, please make sure to fork from and submit back to `master`.
 
 Other processes and specifications that are in use in this repository are:
@@ -18,7 +18,7 @@ Other processes and specifications that are in use in this repository are:
 As noted in the prerequisites section of the readme file, this project requires that you have Node.js and Yarn installed.
 
 With those in place, you can fork the repository, clone it, and then run `yarn install` to install all development dependencies.
-Make a copy of `.env.template` in the root directory and rename to `.env.development`, configuring the env variables as required.
+Make a copy of `.env.template` in the root directory and rename to `.env.development`, configuring the environment variables as required.
 
 ### Development Workflow
 
