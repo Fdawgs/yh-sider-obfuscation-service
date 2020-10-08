@@ -25,8 +25,8 @@ Make a copy of `.env.template` in the root directory and rename to `.env.develop
 After cloning and installing all the dependencies, there are several commands available for local development:
 
 -   `yarn lint` - Lints everything in src directory
--   `yarn jest` - Runs Jest over all tests in src directory
--   `yarn test` - Runs `yarn lint` and `yarn jest` together
+-   `yarn test-only` - Runs Jest over all tests in src directory
+-   `yarn test` - Runs `yarn lint` and `yarn test-only` together
 -   `yarn nodemon` - Starts a development server with live reload, available on `localhost:8204` unless you specify your own port
 
 ### Production Workflow
