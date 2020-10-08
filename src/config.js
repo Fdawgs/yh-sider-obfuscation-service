@@ -18,10 +18,6 @@ if (process.env.USE_HTTPS === 'true') {
 		fastifyConfig.https.cert = fs.readFileSync(process.env.SSL_KEY_PATH);
 	}
 
-	if (process.env.SSL_KEY_PATH) {
-		fastifyConfig.https.cert = fs.readFileSync(process.env.SSL_KEY_PATH);
-	}
-
 	if (process.env.PFX_FILE_PATH) {
 		fastifyConfig.https.pfx = fs.readFileSync(process.env.PFX_FILE_PATH);
 	}
