@@ -84,6 +84,6 @@
 		"hpp": "^0.2.3",
 		"middie": "^5.1.0",
 		"obfuscated-querystring": "git+https://github.com/BlackPearSw/obfuscated-querystring.git",
-		"sanitize-middleware": "^2.0.17"
+		"sanitize-middleware": "^2.0.19"
 	}
 }
