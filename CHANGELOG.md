@@ -1,0 +1,15 @@
+## <small>0.0.2 (2020-10-09)</small>
+
+-   build: create codeql-analysis.yml workflow file ([d55a014](https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service/commit/d55a014))
+-   build(deps-dev): bump dev dependencies ([a495dcd](https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service/commit/a495dcd))
+-   build(deps): bump fastify from 3.4.1 to 3.5.1 ([9be655e](https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service/commit/9be655e))
+-   build(deps): bump sanitize-middleware from 2.0.17 to 2.0.19 ([90a51d9](https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service/commit/90a51d9))
+-   build(docker): update system and dependencies ([0497f43](https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service/commit/0497f43))
+-   chore(github): add dependabot config ([22c8da3](https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service/commit/22c8da3))
+-   chore(github): add issue templates ([a0f06d8](https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service/commit/a0f06d8))
+-   chore(pm2): watch .env files for config changes; set instances to max ([795650d](https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service/commit/795650d))
+-   chore(scripts): remove nodemon script ([2385588](https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service/commit/2385588))
+-   fix(config): remove duplicate value ([c883666](https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service/commit/c883666))
+-   docs(contributing): correct release step order ([612e7f5](https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service/commit/612e7f5))
+-   docs(contributing): remove reference to replaced jest script ([4694e0b](https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service/commit/4694e0b))
+-   docs(contributing): spelling and grammar fixes ([eabd04a](https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service/commit/eabd04a))
