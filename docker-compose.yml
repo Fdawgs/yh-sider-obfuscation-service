@@ -7,4 +7,4 @@ services:
             context: .
         env_file: .env.production
         ports:
-            - ${PORT:-8204}:${PORT:-8204}
+            - 127.0.0.1:${PORT:-8204}:${PORT:-8204}
