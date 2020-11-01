@@ -80,7 +80,7 @@
 		"custom-env": "^2.0.1",
 		"fastify": "^3.5.1",
 		"fastify-helmet": "^5.0.3",
-		"fastify-plugin": "^2.3.4",
+		"fastify-plugin": "^3.0.0",
 		"hpp": "^0.2.3",
 		"middie": "^5.1.0",
 		"obfuscated-querystring": "git+https://github.com/BlackPearSw/obfuscated-querystring.git",
