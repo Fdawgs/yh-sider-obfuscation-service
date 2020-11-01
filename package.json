@@ -82,7 +82,7 @@
 		"fastify-helmet": "^5.0.3",
 		"fastify-plugin": "^2.3.4",
 		"hpp": "^0.2.3",
-		"middie": "^5.1.0",
+		"middie": "^5.2.0",
 		"obfuscated-querystring": "git+https://github.com/BlackPearSw/obfuscated-querystring.git",
 		"sanitize-middleware": "^2.0.19"
 	}
