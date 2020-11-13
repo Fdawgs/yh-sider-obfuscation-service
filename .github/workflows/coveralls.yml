@@ -1,0 +1,32 @@
+name: Coveralls
+
+on:
+    push:
+        branches:
+            - master
+    pull_request:
+        # The branches below must be a subset of the branches above
+        branches:
+            - master
+
+jobs:
+    build:
+        name: Generate test coverage
+        runs-on: windows-latest
+        steps:
+            - uses: actions/checkout@v1
+            - name: Use Node.js 14.x
+              uses: actions/setup-node@v1
+              with:
+                  node-version: 14.x
+
+            - run: |
+                  yarn install
+                  cp .env.template .env.test
+                  yarn test-coverage
+                  cat ./coverage/lcov.info
+
+            - name: Coveralls
+              uses: coverallsapp/github-action@v1.1.2
+              with:
+                  github-token: ${{ secrets.GITHUB_TOKEN }}
