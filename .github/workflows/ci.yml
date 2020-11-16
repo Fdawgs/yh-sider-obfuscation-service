@@ -1,4 +1,4 @@
-name: Node.js CI
+name: CI
 
 on:
     push:
@@ -18,7 +18,7 @@ jobs:
         strategy:
             matrix:
                 node-version: [10.x, 12.x, 14.x]
-                os: ['macos-latest', 'ubuntu-latest']
+                os: ['macos-latest', 'ubuntu-latest', 'windows-latest']
 
         runs-on: ${{ matrix.os }}
         steps:
@@ -31,24 +31,21 @@ jobs:
             - name: Run tests
               run: |
                   cp .env.template .env.test
-                  yarn test
-
-    windows:
-        strategy:
-            matrix:
-                node-version: [10.x, 12.x, 14.x]
-                os: ['windows-latest']
-
-        runs-on: ${{ matrix.os }}
-        steps:
-            - uses: actions/checkout@v2
-            - name: Use Node.js ${{ matrix.node-version }} on ${{ matrix.os }}
-              uses: actions/setup-node@v1
-              with:
-                  node-version: ${{ matrix.node-version }}
-            - run: yarn install
-            - name: Run tests
-              run: |
-                  cp .env.template .env.test
-                  yarn test
                   yarn dupe-check
+                  yarn test-coverage
+            - name: Coveralls parallel
+              uses: coverallsapp/github-action@master
+              with:
+                  github-token: ${{ secrets.github_token }}
+                  parallel: true
+
+    coverage:
+        name: Aggregate coverage calculations
+        needs: build
+        runs-on: ubuntu-latest
+        steps:
+            - name: Coveralls finished
+              uses: coverallsapp/github-action@master
+              with:
+                  github-token: ${{ secrets.GITHUB_TOKEN }}
+                  parallel-finished: true
