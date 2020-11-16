@@ -25,7 +25,13 @@ This is a **test repo** to look at migrating Yeovil District Hospital's contextu
 The Express server should now be up and running on the port set in the config. You should see the following output:
 
 ```json
-{"level":30,"time":1605282277689,"pid":14024,"hostname":"MYCOMPUTER","msg":"Server listening at http://127.0.0.1:8204"}
+{
+	"level": 30,
+	"time": 1605282277689,
+	"pid": 14024,
+	"hostname": "MYCOMPUTER",
+	"msg": "Server listening at http://127.0.0.1:8204"
+}
 ```
 
 To quickly test it open a browser of your choice or, if using a request builder (i.e. Insomnia or Postman) create a new GET request, and input the following URL:
@@ -37,7 +43,7 @@ Swap out the organization code and email address with your own if you have alrea
 In the CLI you will see something similar to the following returned:
 
 ```
-{"level":30,"time":1605282628344,"pid":24868,"hostname":"MYCOMPUTER","reqId":1,"req":{"method":"GET","url":"/?patient=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fnhs-number%7C9467335646&birthdate=1932-04-15&location=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fods-organization-code%7CRA4&practitioner=https%3A%2F%2Fsider.nhs.uk%2Fauth%7Cfrazer.smith%40ydh.nhs.uk","hostname":"127.0.0.1:8204","remoteAddress":"127.0.0.1","remotePort":52306},"msg":"incoming request"}        
+{"level":30,"time":1605282628344,"pid":24868,"hostname":"MYCOMPUTER","reqId":1,"req":{"method":"GET","url":"/?patient=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fnhs-number%7C9467335646&birthdate=1932-04-15&location=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fods-organization-code%7CRA4&practitioner=https%3A%2F%2Fsider.nhs.uk%2Fauth%7Cfrazer.smith%40ydh.nhs.uk","hostname":"127.0.0.1:8204","remoteAddress":"127.0.0.1","remotePort":52306},"msg":"incoming request"}
 https://pyrusapps.blackpear.com/esp/#!/launch?location=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fods-organization-code%7CRA4&practitioner=https%3A%2F%2Fsider.nhs.uk%2Fauth%7Cfrazer.smith%40ydh.nhs.uk&enc=k01%7Ccab5a062bddbae5fb8457afc7b0295689a28c1a734d41de9dd061dfb85457014386e203d7d50a8622a98813bed9cf167a9e0e59dcc5275a78b9b8278d752d8794d473b1346a7069732bb7bbe318e3b006cff27a965ce7f48f4e01e36080e4e0b
 {"level":30,"time":1605282628509,"pid":24868,"hostname":"MYCOMPUTER","reqId":1,"res":{"statusCode":302},"responseTime":164.61810000240803,"msg":"request completed"}
 ```

@@ -7,6 +7,7 @@ on:
             - dependabot/**
             - feat/**
         tags:
+            # Wait for push events with tags matching v*, e.g. v1.0, v20.15.10, v0.3.1
             - v*.*.*
     pull_request:
         # The branches below must be a subset of the branches above
@@ -18,7 +19,7 @@ jobs:
         strategy:
             matrix:
                 node-version: [10.x, 12.x, 14.x]
-                os: ['macos-latest', 'ubuntu-latest', 'windows-latest']
+                os: [macos-latest, ubuntu-latest, windows-latest]
 
         runs-on: ${{ matrix.os }}
         steps:
@@ -28,23 +29,23 @@ jobs:
               with:
                   node-version: ${{ matrix.node-version }}
             - run: yarn install
-            - name: Run tests
+            - name: Run Tests
               run: |
                   cp .env.template .env.test
                   yarn dupe-check
                   yarn test-coverage
-            - name: Coveralls parallel
+            - name: Coveralls Parallel
               uses: coverallsapp/github-action@master
               with:
-                  github-token: ${{ secrets.github_token }}
+                  github-token: ${{ secrets.GITHUB_TOKEN }}
                   parallel: true
 
     coverage:
-        name: Aggregate coverage calculations
+        name: Aggregate Coverage Calculations
         needs: build
         runs-on: ubuntu-latest
         steps:
-            - name: Coveralls finished
+            - name: Coveralls Finished
               uses: coverallsapp/github-action@master
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
