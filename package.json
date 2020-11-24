@@ -1,6 +1,6 @@
 {
 	"name": "ydh-sider-obfuscation-service",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"description": "Yeovil District Hospital's SIDeR Service to obfuscate URL query parameters before sending to SIDeR eSP",
 	"main": "src/server.js",
 	"repository": "git+https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service.git",
