@@ -21,7 +21,6 @@ module.exports = {
 	root: true,
 	rules: {
 		'import/no-extraneous-dependencies': 'error',
-		'no-console': 'off',
 		'no-multiple-empty-lines': [
 			'error',
 			{

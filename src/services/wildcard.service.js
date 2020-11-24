@@ -18,7 +18,7 @@ async function routes(fastify, options) {
 			return new Error('recieving endpoint missing');
 		}
 		const espUrl = options.redirectUrl + queryString.stringify(req.query);
-		console.log(espUrl);
+		fastify.log.debug(espUrl);
 		return res.redirect(espUrl);
 	});
 }
