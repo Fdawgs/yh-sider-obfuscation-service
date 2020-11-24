@@ -1,3 +1,19 @@
+## <small>0.0.3 (2020-11-24)</small>
+
+-   build(deps-dev): bump dev dependencies ([80fb5c9](https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service/commit/80fb5c9))
+-   build(deps): bump axios from 0.20.0 to 0.21.0 ([bc8fe23](https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service/commit/bc8fe23))
+-   build(deps): bump fastify from 3.5.1 to 3.8.0 ([9628820](https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service/commit/9628820))
+-   build(deps): bump fastify-plugin from 2.3.4 to 3.0.0 ([d61c9ad](https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service/commit/d61c9ad))
+-   build(deps): bump middie from 5.1.0 to 5.2.0 ([f8287f4](https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service/commit/f8287f4))
+-   build(deps): bump sanitize-middleware from 2.0.19 to 4.0.0 ([547670a](https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service/commit/547670a))
+-   build(docker): restrict mapped ports to localhost ([4d4d29e](https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service/commit/4d4d29e))
+-   ci: add aggregate coverage calculations ([baf2d13](https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service/commit/baf2d13))
+-   ci: clean up config ([66226cd](https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service/commit/66226cd))
+-   ci: name build stage ([4192e82](https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service/commit/4192e82))
+-   ci: replace travis-ci with github actions ([d69ee20](https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service/commit/d69ee20))
+-   docs(readme): add deploy steps and badges ([ec6ac51](https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service/commit/ec6ac51))
+-   style: format codeql.yml ([2f3a825](https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service/commit/2f3a825))
+
 ## <small>0.0.2 (2020-10-09)</small>
 
 -   build: create codeql-analysis.yml workflow file ([d55a014](https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service/commit/d55a014))
