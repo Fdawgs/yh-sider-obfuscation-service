@@ -98,10 +98,10 @@ const appConfig = {
 	// Values used by obfuscate-query-string plugin
 	obfuscation: {
 		encryptionKey: {
-			name: 'k01',
-			value: '0123456789'
+			name: process.env.OBFUSCATION_KEY_NAME,
+			value: process.env.OBFUSCATION_KEY_VALUE
 		},
-		obfuscate: ['birthdate', 'patient']
+		obfuscate: JSON.parse(process.env.OBFUSCATION_QUERYSTRING_KEY_ARRAY)
 	}
 };
 
