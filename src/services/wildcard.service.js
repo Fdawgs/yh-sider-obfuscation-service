@@ -17,8 +17,20 @@ async function routes(fastify, options) {
 		if (!options.redirectUrl) {
 			return new Error('recieving endpoint missing');
 		}
+
+		/**
+		 * Remove query params that TrakCare adds that leads to the resulting
+		 * URL going over the 2048 max character length for IE 11
+		 */
+		const trakcareQueryParams = ['fromiconprofile', 'nounlock', 'tpagid'];
+		Object.keys(req.query).forEach((key) => {
+			if (trakcareQueryParams.includes(key.toLowerCase())) {
+				delete req.query[key];
+			}
+		});
+
 		const espUrl = options.redirectUrl + queryString.stringify(req.query);
-		console.log(espUrl);
+		fastify.log.debug(espUrl);
 		return res.redirect(espUrl);
 	});
 }
