@@ -36,8 +36,8 @@ async function start() {
 
 	try {
 		await fastify.listen(
-			process.env.PORT,
-			process.env.HOST,
+			process.env.SERVICE_PORT,
+			process.env.SERVICE_HOST,
 			(err, address) => {
 				if (err) {
 					fastify.log.error(err);

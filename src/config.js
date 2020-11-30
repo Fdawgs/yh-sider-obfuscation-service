@@ -15,7 +15,8 @@ const fastifyConfig = {
 				return { level: label };
 			}
 		},
-		level: 'info',
+		// Defaults to `info` if not set in env
+		level: process.env.LOGGER_LEVEL,
 		serializers: {
 			req(req) {
 				return pino.stdSerializers.req(req);
@@ -29,34 +30,42 @@ const fastifyConfig = {
 		},
 		// Rotation options: https://github.com/rogerc/file-stream-rotator/#options
 		stream: rotatingLogStream.getStream({
-			filename: `${process.cwd()}/logs/obs-service-%DATE%.log`,
-			frequency: 'daily',
-			verbose: false,
-			date_format: 'YYYY-MM-DD'
+			date_format:
+				process.env.LOGGER_ROTATION_DATE_FORMAT || 'YYYY-MM-DD',
+			filename:
+				process.env.LOGGER_ROTATION_FILENAME ||
+				`${process.cwd()}/logs/obs-service-%DATE%.log`,
+			frequency: process.env.LOGGER_ROTATION_FREQUENCY || 'daily',
+			max_logs: process.env.LOGGER_ROTATION_MAX_LOG,
+			size: process.env.LOGGER_ROTATION_MAX_SIZE,
+			verbose: false
 		})
 	}
 };
 
 // Enable HTTPS using cert/key or passphrase/pfx combinations
 if (
-	fs.existsSync(process.env.SSL_CERT_PATH) &&
-	fs.existsSync(process.env.SSL_KEY_PATH)
+	fs.existsSync(process.env.HTTPS_SSL_CERT_PATH) &&
+	fs.existsSync(process.env.HTTPS_SSL_KEY_PATH)
 ) {
 	fastifyConfig.https = {
-		cert: fs.readFileSync(process.env.SSL_CERT_PATH),
-		key: fs.readFileSync(process.env.SSL_KEY_PATH)
+		cert: fs.readFileSync(process.env.HTTPS_SSL_CERT_PATH),
+		key: fs.readFileSync(process.env.HTTPS_SSL_KEY_PATH)
 	};
 }
 
-if (process.env.PFX_PASSPHRASE && fs.existsSync(process.env.PFX_FILE_PATH)) {
+if (
+	process.env.HTTPS_PFX_PASSPHRASE &&
+	fs.existsSync(process.env.HTTPS_PFX_FILE_PATH)
+) {
 	fastifyConfig.https = {
-		passphrase: process.env.PFX_PASSPHRASE,
-		pfx: fs.readFileSync(process.env.PFX_FILE_PATH)
+		passphrase: process.env.HTTPS_PFX_PASSPHRASE,
+		pfx: fs.readFileSync(process.env.HTTPS_PFX_FILE_PATH)
 	};
 }
 
 const appConfig = {
-	redirectUrl: process.env.REDIRECT_URL,
+	redirectUrl: process.env.SERVICE_REDIRECT_URL,
 
 	// Values used by keycloak-access-token plugin in wildcard service
 	keycloak: {
@@ -67,13 +76,10 @@ const appConfig = {
 				audience: process.env.KC_REQUESTTOKEN_AUDIENCE,
 				client_id: process.env.KC_REQUESTTOKEN_CLIENT_ID,
 				client_secret: process.env.KC_REQUESTTOKEN_CLIENT_SECRET,
-				grant_type:
-					process.env.KC_REQUESTTOKEN_GRANT_TYPE ||
-					'urn:ietf:params:oauth:grant-type:token-exchange',
+				grant_type: process.env.KC_REQUESTTOKEN_GRANT_TYPE,
 				requested_subject: undefined,
 				requested_token_type:
-					process.env.KC_REQUESTTOKEN_REQUESTED_TOKEN_TYPE ||
-					'urn:ietf:params:oauth:token-type:access_token'
+					process.env.KC_REQUESTTOKEN_REQUESTED_TOKEN_TYPE
 			},
 			url: process.env.KC_REQUESTTOKEN_URL
 		},
