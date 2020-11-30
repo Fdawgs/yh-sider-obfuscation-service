@@ -1,9 +1,40 @@
 require('custom-env').env();
 
 const fs = require('fs');
+const pino = require('pino');
+const rotatingLogStream = require('file-stream-rotator');
 
 const fastifyConfig = {
-	logger: true
+	/**
+	 * See https://www.fastify.io/docs/v3.8.x/Logging/
+	 * and https://getpino.io/#/docs/api for logger options
+	 */
+	logger: {
+		formatters: {
+			level(label) {
+				return { level: label };
+			}
+		},
+		level: 'info',
+		serializers: {
+			req(req) {
+				return pino.stdSerializers.req(req);
+			},
+			res(res) {
+				return pino.stdSerializers.res(res);
+			}
+		},
+		timestamp: () => {
+			return pino.stdTimeFunctions.isoTime();
+		},
+		// Rotation options: https://github.com/rogerc/file-stream-rotator/#options
+		stream: rotatingLogStream.getStream({
+			filename: `${process.cwd()}/logs/obs-service-%DATE%.log`,
+			frequency: 'daily',
+			verbose: false,
+			date_format: 'YYYY-MM-DD'
+		})
+	}
 };
 
 // Enable HTTPS using cert/key or passphrase/pfx combinations
@@ -68,37 +99,7 @@ const appConfig = {
 	}
 };
 
-const loggerConfig = {
-	// Pino options: https://github.com/pinojs/pino-http#custom-serializers
-	options: {
-		serializers: {
-			req(req) {
-				return {
-					url: req.url,
-					ip: req.raw.ip,
-					headers: req.headers,
-					method: req.method,
-					query: req.raw.query,
-					httpVersion: req.raw.httpVersion
-				};
-			},
-			res(res) {
-				return { statusCode: res.statusCode };
-			}
-		}
-	},
-
-	// Rotation options: https://github.com/rogerc/file-stream-rotator/#options
-	rotation: {
-		filename: `${process.cwd()}/logs/obs-service-%DATE%.log`,
-		frequency: 'daily',
-		verbose: false,
-		date_format: 'YYYY-MM-DD'
-	}
-};
-
 module.exports = {
 	fastifyConfig,
-	appConfig,
-	loggerConfig
+	appConfig
 };
