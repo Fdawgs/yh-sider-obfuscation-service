@@ -6,25 +6,22 @@ const fastifyConfig = {
 	logger: true
 };
 
-// Enable HTTPS
-if (process.env.USE_HTTPS === 'true') {
-	fastifyConfig.https = {};
+// Enable HTTPS using cert/key or passphrase/pfx combinations
+if (
+	fs.existsSync(process.env.SSL_CERT_PATH) &&
+	fs.existsSync(process.env.SSL_KEY_PATH)
+) {
+	fastifyConfig.https = {
+		cert: fs.readFileSync(process.env.SSL_CERT_PATH),
+		key: fs.readFileSync(process.env.SSL_KEY_PATH)
+	};
+}
 
-	if (process.env.SSL_CERT_PATH) {
-		fastifyConfig.https.cert = fs.readFileSync(process.env.SSL_CERT_PATH);
-	}
-
-	if (process.env.SSL_KEY_PATH) {
-		fastifyConfig.https.cert = fs.readFileSync(process.env.SSL_KEY_PATH);
-	}
-
-	if (process.env.PFX_FILE_PATH) {
-		fastifyConfig.https.pfx = fs.readFileSync(process.env.PFX_FILE_PATH);
-	}
-
-	if (process.env.PFX_PASSPHRASE) {
-		fastifyConfig.https.passphrase = process.env.PFX_PASSPHRASE;
-	}
+if (process.env.PFX_PASSPHRASE && fs.existsSync(process.env.PFX_FILE_PATH)) {
+	fastifyConfig.https = {
+		passphrase: process.env.PFX_PASSPHRASE,
+		pfx: fs.readFileSync(process.env.PFX_FILE_PATH)
+	};
 }
 
 const appConfig = {
