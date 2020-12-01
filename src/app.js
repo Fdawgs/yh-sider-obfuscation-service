@@ -4,7 +4,7 @@ const Fastify = require('fastify');
 const helmet = require('fastify-helmet');
 
 // Import service routes
-const wildcardService = require('./services/wildcard.service');
+const wildcardService = require('./routes/wildcard.service');
 
 /**
  * @author Frazer Smith
