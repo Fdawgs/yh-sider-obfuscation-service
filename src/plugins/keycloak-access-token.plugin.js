@@ -50,7 +50,7 @@ async function keycloakAccessTokenPlugin(fastify, options = {}) {
 				)[1];
 
 				// Request access token for user
-				const userAccessResponse = request.post(
+				const userAccessResponse = await request.post(
 					requestToken.url,
 					queryString.stringify(requestToken.form)
 				);
