@@ -1,10 +1,10 @@
-# Yeovil District Hospital - SIDeR Contextual Link Obfuscation Service - Fastify web framework TEST REPO
+# Yeovil District Hospital - SIDeR Contextual Link Obfuscation Service
 
 [![GitHub Release](https://img.shields.io/github/release/Fdawgs/fastify-sider-obs.svg)](https://github.com/Fdawgs/fastify-sider-obs/releases/latest/) ![Build Status](https://github.com/Fdawgs/fastify-sider-obs/workflows/CI/badge.svg?branch=master) [![Coverage Status](https://coveralls.io/repos/github/Fdawgs/fastify-sider-obs/badge.svg?branch=master)](https://coveralls.io/github/Fdawgs/fastify-sider-obs?branch=master) [![Known Vulnerabilities](https://snyk.io/test/github/Fdawgs/fastify-sider-obs/badge.svg)](https://snyk.io/test/github/Fdawgs/fastify-sider-obs) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 ## Intro
 
-This is a **test repo** to look at migrating Yeovil District Hospital's contextual link obfuscation service from the Express web framework to the Fastify one.
+This is Yeovil District Hospital's contextual link obfuscation service, a Node.js application using the [Fastify](https://www.fastify.io/) web framework and Black Pear's [obfuscated-querystring](https://github.com/BlackPearSw/obfuscated-querystring).
 
 ## Prerequisites
 
@@ -19,16 +19,16 @@ This is a **test repo** to look at migrating Yeovil District Hospital's contextu
 1. Navigate to the repo
 2. Run `yarn install` to install dependencies
 3. Make a copy of `.env.template` in the root directory and rename to `.env.production`
-4. Configure the application using the global variables in `.env.production`
+4. Configure the application using the environment variables in `.env.production`
 5. Run `yarn start`
 
-The Express server should now be up and running on the port set in the config. You should see the following output:
+The service should now be up and running on the port set in the config. You should see the following output in `logs/obs-service-YYYY-MM-DD.log` or the log file specified using the `LOGGER_ROTATION_FILENAME` environment variable:
 
 ```json
 {
-	"level": 30,
-	"time": 1605282277689,
-	"pid": 14024,
+	"level": "info",
+	"time": "2020-12-01T09:48:08.612Z",
+	"pid": 41896,
 	"hostname": "MYCOMPUTER",
 	"msg": "Server listening at http://127.0.0.1:8204"
 }
@@ -36,23 +36,77 @@ The Express server should now be up and running on the port set in the config. Y
 
 To quickly test it open a browser of your choice or, if using a request builder (i.e. Insomnia or Postman) create a new GET request, and input the following URL:
 
-http://0.0.0.0:8204?patient=https://fhir.nhs.uk/Id/nhs-number|9467335646&birthdate=1932-04-15&location=https://fhir.nhs.uk/Id/ods-organization-code|RA4&practitioner=https://sider.nhs.uk/auth|frazer.smith@ydh.nhs.uk
+http://127.0.0.1:8204?patient=https://fhir.nhs.uk/Id/nhs-number|9449304513&birthdate=1934-10-23&location=https://fhir.nhs.uk/Id/ods-organization-code|RA4&practitioner=https://sider.nhs.uk/auth|frazer.smith@ydh.nhs.uk
 
 Swap out the organization code and email address with your own if you have already been set up an account on the eSP.
 
-In the CLI you will see something similar to the following returned:
+In the log file you will see something similar to the following returned:
 
+```json
+{
+	"level": "info",
+	"time": "2020-12-01T10:37:32.133Z",
+	"pid": 30700,
+	"hostname": "MYCOMPUTER",
+	"reqId": 3,
+	"req": {
+		"id": 3,
+		"method": "GET",
+		"url": "/?patient=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fnhs-number%7C9449304513&birthdate=1934-10-23&location=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fods-organization-code%7CRA4&practitioner=https%3A%2F%2Fsider.nhs.uk%2Fauth%7Cfrazer.smith%40ydh.nhs.uk",
+		"headers": {
+			"host": "127.0.0.1:8204",
+			"user-agent": "insomnia/2020.4.2",
+			"accept": "*/*"
+		},
+		"remoteAddress": "127.0.0.1",
+		"remotePort": 63213
+	},
+	"msg": "incoming request"
+}
 ```
-{"level":30,"time":1605282628344,"pid":24868,"hostname":"MYCOMPUTER","reqId":1,"req":{"method":"GET","url":"/?patient=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fnhs-number%7C9467335646&birthdate=1932-04-15&location=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fods-organization-code%7CRA4&practitioner=https%3A%2F%2Fsider.nhs.uk%2Fauth%7Cfrazer.smith%40ydh.nhs.uk","hostname":"127.0.0.1:8204","remoteAddress":"127.0.0.1","remotePort":52306},"msg":"incoming request"}
-https://pyrusapps.blackpear.com/esp/#!/launch?location=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fods-organization-code%7CRA4&practitioner=https%3A%2F%2Fsider.nhs.uk%2Fauth%7Cfrazer.smith%40ydh.nhs.uk&enc=k01%7Ccab5a062bddbae5fb8457afc7b0295689a28c1a734d41de9dd061dfb85457014386e203d7d50a8622a98813bed9cf167a9e0e59dcc5275a78b9b8278d752d8794d473b1346a7069732bb7bbe318e3b006cff27a965ce7f48f4e01e36080e4e0b
-{"level":30,"time":1605282628509,"pid":24868,"hostname":"MYCOMPUTER","reqId":1,"res":{"statusCode":302},"responseTime":164.61810000240803,"msg":"request completed"}
+
+```json
+{
+	"level": "info",
+	"time": "2020-12-01T10:37:32.135Z",
+	"pid": 30700,
+	"hostname": "MYCOMPUTER",
+	"reqId": 3,
+	"res": {
+		"statusCode": 302,
+		"headers": {
+			"content-security-policy": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+			"x-dns-prefetch-control": "off",
+			"expect-ct": "max-age=0",
+			"x-frame-options": "SAMEORIGIN",
+			"strict-transport-security": "max-age=15552000; includeSubDomains",
+			"x-download-options": "noopen",
+			"x-content-type-options": "nosniff",
+			"x-permitted-cross-domain-policies": "none",
+			"referrer-policy": "no-referrer",
+			"x-xss-protection": "0",
+			"location": "https://pyrusapps.blackpear.com/esp/#!/launch?location=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fods-organization-code%7CRA4&practitioner=https%3A%2F%2Fsider.nhs.uk%2Fauth%7Cfrazer.smith%40ydh.nhs.uk&enc=k01%7Ca6c12e7c5969ab5829a3f91ba02c302a0b4f598ad6c03709fbeeb52686a007c99f8b13add1472176b06f1471a0343f2d904d6f41c5776fa6d340834c8ebef92d41dcc164c6c8273854f404fd24b1ec8d4e6829c4a9b76aa08d8a5b63d806fb01",
+			"content-length": "0"
+		}
+	},
+	"responseTime": 1.764799952507019,
+	"msg": "request completed"
+}
 ```
 
-Both the patient and birthdate query parameters of the URL have been obfuscated.
+Both the patient and birthdate query parameters of the URL have been obfuscated in the generated redirect URL in `res.headers.location`.
 
-The web browser or request builder used should be redirected to Black Pear's ESP site, and once logged in will provide the patient note's for the test patient with NHS Number 9467335646, success!
+The web browser or request builder used should be redirected to Black Pear's ESP site, and once logged in will provide the patient note's for the test patient with NHS Number 9449304513, success!
 
-If the patient, birthdate, location or practitioner parameters are removed from the original URL the obfuscation process and redirect will not occur, and a status 400 will be returned with the message "An essential parameter is missing".
+If the patient, birthdate, location or practitioner parameters are removed from the original URL the obfuscation process and redirect will not occur, and a status 400 will be returned with the message similar to the following:
+
+```json
+{
+	"statusCode": 400,
+	"error": "Bad Request",
+	"message": "querystring should have required property 'practitioner'"
+}
+```
 
 ### Deploying using Docker
 
