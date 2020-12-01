@@ -5,7 +5,7 @@ const queryString = require('querystring');
 
 /**
  * @author Frazer Smith
- * @description Retrieves Keycloak access token for passed user.
+ * @description Pre-handler plugin that retrieves Keycloak access token for passed user.
  * @param {Function} fastify - Fastify instance.
  * @param {object} options - Keycloak endpoint access options values.
  * @param {boolean} options.enabled - Toggle to enable or disable use of Keycloak.
@@ -26,7 +26,6 @@ const queryString = require('querystring');
  * @param {string} options.requestToken.form.request_subject
  * @param {string} options.requestToken.form.request_token_type
  * @param {string} options.requestToken.url
- * @returns {Function} Fastify plugin.
  */
 async function keycloakAccessTokenPlugin(fastify, options = {}) {
 	// Don't attempt to retrieve access tokens if Keycloak not enabled
