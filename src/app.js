@@ -12,7 +12,7 @@ const helmet = require('fastify-helmet');
  * @param {object} opts - App configuration values
  * @returns {} Fastify instance
  */
-function build(fastifyOpts, opts) {
+module.exports = (fastifyOpts, opts) => {
 	const fastify = Fastify(fastifyOpts);
 
 	// Register security plugins/middleware
@@ -28,6 +28,4 @@ function build(fastifyOpts, opts) {
 	// fastify.register(wildcardService, appOpts);
 
 	return fastify;
-}
-
-module.exports = build;
+};
