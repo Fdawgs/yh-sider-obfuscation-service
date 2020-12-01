@@ -14,7 +14,7 @@ const queryString = require('querystring');
  * @returns {Function} Fastify plugin.
  */
 async function obfuscateQueryStringPlugin(fastify, options) {
-	fastify.addHook('onRequest', (req, res, next) => {
+	fastify.addHook('preHandler', (req, res, next) => {
 		try {
 			req.query = queryString.parse(
 				obfuscate(queryString.stringify(req.query), options)

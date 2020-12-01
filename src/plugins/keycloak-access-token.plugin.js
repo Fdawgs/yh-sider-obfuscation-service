@@ -31,7 +31,7 @@ const queryString = require('querystring');
 async function keycloakAccessTokenPlugin(fastify, options = {}) {
 	// Don't attempt to retrieve access tokens if Keycloak not enabled
 	if (options.enabled === 'true') {
-		fastify.addHook('onRequest', async (req) => {
+		fastify.addHook('preHandler', async (req) => {
 			try {
 				const { requestToken, serviceAuthorisation } = options;
 
