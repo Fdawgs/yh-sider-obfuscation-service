@@ -18,7 +18,7 @@ async function routes(fastify, options) {
 		querystring: {
 			type: 'object',
 			properties: {
-				birthdate: { type: 'string' },
+				birthdate: { type: 'string', format: 'date' },
 				patient: { type: 'string' },
 				location: { type: 'string' },
 				practitioner: { type: 'string' }
