@@ -1,3 +1,4 @@
+const createError = require('http-errors');
 const fastifyPlugin = require('fastify-plugin');
 const { obfuscate } = require('obfuscated-querystring/lib');
 const queryString = require('querystring');
@@ -19,10 +20,10 @@ async function obfuscateQueryStringPlugin(fastify, options) {
 				obfuscate(queryString.stringify(req.query), options)
 			);
 		} catch (err) {
-			return next(new Error(err));
+			res.send(createError(500, err));
 		}
 
-		return next();
+		next();
 	});
 }
 

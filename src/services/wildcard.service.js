@@ -1,3 +1,4 @@
+const createError = require('http-errors');
 const queryString = require('querystring');
 
 // Import route specific plugins
@@ -29,7 +30,7 @@ async function routes(fastify, options) {
 
 	fastify.get('*', { schema }, async (req, res) => {
 		if (!options.redirectUrl) {
-			throw new Error('Recieving endpoint missing');
+			res.send(createError(500, 'Recieving endpoint missing'));
 		}
 
 		const espUrl = options.redirectUrl + queryString.stringify(req.query);
