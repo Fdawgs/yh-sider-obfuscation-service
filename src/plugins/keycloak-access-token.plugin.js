@@ -1,11 +1,12 @@
 /* eslint-disable jsdoc/require-param-description */
 const fastifyPlugin = require('fastify-plugin');
+const createError = require('http-errors');
 const request = require('axios');
 const queryString = require('querystring');
 
 /**
  * @author Frazer Smith
- * @description Retrieves Keycloak access token for passed user.
+ * @description Pre-handler plugin that retrieves Keycloak access token for passed user.
  * @param {Function} fastify - Fastify instance.
  * @param {object} options - Keycloak endpoint access options values.
  * @param {boolean} options.enabled - Toggle to enable or disable use of Keycloak.
@@ -26,12 +27,11 @@ const queryString = require('querystring');
  * @param {string} options.requestToken.form.request_subject
  * @param {string} options.requestToken.form.request_token_type
  * @param {string} options.requestToken.url
- * @returns {Function} Fastify plugin.
  */
 async function keycloakAccessTokenPlugin(fastify, options = {}) {
 	// Don't attempt to retrieve access tokens if Keycloak not enabled
 	if (options.enabled === 'true') {
-		fastify.addHook('onRequest', async (req) => {
+		fastify.addHook('preHandler', async (req, res) => {
 			try {
 				const { requestToken, serviceAuthorisation } = options;
 
@@ -50,14 +50,19 @@ async function keycloakAccessTokenPlugin(fastify, options = {}) {
 				)[1];
 
 				// Request access token for user
-				const userAccessResponse = request.post(
+				const userAccessResponse = await request.post(
 					requestToken.url,
 					queryString.stringify(requestToken.form)
 				);
 				req.query.access_token = userAccessResponse.data.access_token;
 				return;
 			} catch (err) {
-				Error(err);
+				res.send(
+					createError(
+						500,
+						'Unable to retrieve Keycloak access token(s)'
+					)
+				);
 			}
 		});
 	}

@@ -22,7 +22,7 @@
 	"jest": {
 		"clearMocks": true,
 		"collectCoverageFrom": [
-			"src/server/**/*.js"
+			"src/**/*.js"
 		],
 		"testEnvironment": "node",
 		"testTimeout": 10000
@@ -82,10 +82,8 @@
 		"fastify-helmet": "^5.0.3",
 		"fastify-plugin": "^3.0.0",
 		"file-stream-rotator": "^0.5.7",
-		"hpp": "^0.2.3",
-		"middie": "^5.2.0",
+		"http-errors": "^1.8.0",
 		"obfuscated-querystring": "git+https://github.com/BlackPearSw/obfuscated-querystring.git",
-		"pino": "^6.7.0",
-		"sanitize-middleware": "^4.0.0"
+		"pino": "^6.7.0"
 	}
 }

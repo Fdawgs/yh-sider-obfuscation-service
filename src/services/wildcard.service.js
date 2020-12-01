@@ -1,3 +1,4 @@
+const createError = require('http-errors');
 const queryString = require('querystring');
 
 // Import route specific plugins
@@ -13,25 +14,28 @@ const obfuscationPlugin = require('../plugins/obfuscate-query-string.plugin');
 async function routes(fastify, options) {
 	fastify.register(keycloakPlugin, options.keycloak);
 	fastify.register(obfuscationPlugin, options.obfuscation);
-	fastify.get('*', async (req, res) => {
-		if (!options.redirectUrl) {
-			return new Error('recieving endpoint missing');
-		}
 
-		/**
-		 * Remove query params that TrakCare adds that leads to the resulting
-		 * URL going over the 2048 max character length for IE 11
-		 */
-		const trakcareQueryParams = ['fromiconprofile', 'nounlock', 'tpagid'];
-		Object.keys(req.query).forEach((key) => {
-			if (trakcareQueryParams.includes(key.toLowerCase())) {
-				delete req.query[key];
-			}
-		});
+	const schema = {
+		querystring: {
+			type: 'object',
+			properties: {
+				birthdate: { type: 'string', format: 'date' },
+				patient: { type: 'string' },
+				location: { type: 'string' },
+				practitioner: { type: 'string' }
+			},
+			required: ['patient', 'birthdate', 'location', 'practitioner']
+		}
+	};
+
+	fastify.get('*', { schema }, async (req, res) => {
+		if (!options.redirectUrl) {
+			res.send(createError(500, 'Recieving endpoint missing'));
+		}
 
 		const espUrl = options.redirectUrl + queryString.stringify(req.query);
 		fastify.log.debug(espUrl);
-		return res.redirect(espUrl);
+		res.redirect(espUrl);
 	});
 }
 
