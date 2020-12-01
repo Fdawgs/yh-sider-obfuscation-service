@@ -29,9 +29,9 @@ const queryString = require('querystring');
  * @param {string} options.requestToken.url
  */
 async function keycloakAccessTokenPlugin(fastify, options = {}) {
-	// Don't attempt to retrieve access tokens if Keycloak not enabled
-	if (options.enabled === 'true') {
-		fastify.addHook('preHandler', async (req, res) => {
+	fastify.addHook('preHandler', async (req, res) => {
+		// Don't attempt to retrieve access tokens if Keycloak not enabled
+		if (options.enabled === 'true') {
 			try {
 				const { requestToken, serviceAuthorisation } = options;
 
@@ -64,8 +64,8 @@ async function keycloakAccessTokenPlugin(fastify, options = {}) {
 					)
 				);
 			}
-		});
-	}
+		}
+	});
 }
 
 module.exports = fastifyPlugin(keycloakAccessTokenPlugin);
