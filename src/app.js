@@ -10,7 +10,7 @@ const helmet = require('fastify-helmet');
  * @description Build Fastify instance
  * @param {object} fastifyOpts - Fastify configuration values
  * @param {object} opts - App configuration values
- * @returns {} Fastify instance
+ * @returns {object} Fastify instance
  */
 module.exports = (fastifyOpts, opts) => {
 	const fastify = Fastify(fastifyOpts);
@@ -24,8 +24,6 @@ module.exports = (fastifyOpts, opts) => {
 		dir: path.join(__dirname, 'routes'),
 		options: { ...opts }
 	});
-
-	// fastify.register(wildcardService, appOpts);
 
 	return fastify;
 };
