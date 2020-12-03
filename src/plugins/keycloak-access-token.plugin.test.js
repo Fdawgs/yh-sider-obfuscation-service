@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const cloneDeep = require('lodash/cloneDeep');
 const faker = require('faker/locale/en_GB');
 const Fastify = require('fastify');
