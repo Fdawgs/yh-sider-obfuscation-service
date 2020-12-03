@@ -1,29 +1,29 @@
+const AutoLoad = require('fastify-autoload');
 const Fastify = require('fastify');
+const path = require('path');
 
 // Import plugins
 const helmet = require('fastify-helmet');
-
-// Import service routes
-const wildcardService = require('./services/wildcard.service');
 
 /**
  * @author Frazer Smith
  * @description Build Fastify instance
  * @param {object} fastifyOpts - Fastify configuration values
- * @param {object} appOpts - App configuration values
- * @returns {} Fastify instance
+ * @param {object} opts - App configuration values
+ * @returns {object} Fastify instance
  */
-function build(fastifyOpts, appOpts) {
+module.exports = (fastifyOpts, opts) => {
 	const fastify = Fastify(fastifyOpts);
 
 	// Register security plugins/middleware
 	// Use Helmet to set response security headers: https://helmetjs.github.io/
 	fastify.register(helmet);
 
-	// Register service routes
-	fastify.register(wildcardService, appOpts);
+	// Import and register service routes
+	fastify.register(AutoLoad, {
+		dir: path.join(__dirname, 'routes'),
+		options: { ...opts }
+	});
 
 	return fastify;
-}
-
-module.exports = build;
+};
