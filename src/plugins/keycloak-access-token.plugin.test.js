@@ -26,7 +26,7 @@ describe('Keycloak access token retrieval plugin', () => {
 
 	beforeAll(async () => {
 		try {
-			await mockKeycloakServer.listen(3000, '127.0.0.1');
+			await mockKeycloakServer.listen(3000);
 			console.log('Mock server listening on 3000');
 		} catch (err) {
 			console.log('Error starting server:', err);
