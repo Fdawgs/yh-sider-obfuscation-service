@@ -14,7 +14,7 @@
 		"dupe-check": "yarn jsinspect ./src",
 		"lint": "eslint . --cache --ext js,jsx,ts,tsx --ignore-path .gitignore",
 		"prettier": "prettier . --write --ignore-path .gitignore",
-		"start": "node src/server.js",
+		"start": "cross-env NODE_ENV=production node src/server.js",
 		"test": "cross-env NODE_ENV=test yarn lint && yarn test-only",
 		"test-coverage": "cross-env NODE_ENV=test jest --coverage --runInBand",
 		"test-only": "cross-env NODE_ENV=test jest --detectOpenHandles --runInBand"
@@ -22,7 +22,9 @@
 	"jest": {
 		"clearMocks": true,
 		"collectCoverageFrom": [
-			"src/**/*.js"
+			"src/plugins/*.js",
+			"src/routes/*.js",
+			"src/app*.js"
 		],
 		"testEnvironment": "node",
 		"testTimeout": 10000
@@ -67,6 +69,7 @@
 		"eslint-plugin-promise": "^4.2.1",
 		"eslint-plugin-security": "^1.4.0",
 		"faker": "^5.1.0",
+		"fastify-formbody": "^5.0.0",
 		"jest": "^26.6.3",
 		"jsinspect": "^0.12.7",
 		"lodash": "^4.17.20",

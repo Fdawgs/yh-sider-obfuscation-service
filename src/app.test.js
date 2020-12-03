@@ -20,6 +20,8 @@ const mockParams = {
 	NOUNLOCK: faker.random.number()
 };
 
+delete appConfig.logger;
+
 describe('App deployment', () => {
 	describe('Redirects', () => {
 		let app;
@@ -60,30 +62,6 @@ describe('App deployment', () => {
 
 			expect(res.statusCode).toBe(302);
 		});
-
-		test('Should return HTTP 400 error when any required param is missing', async () => {
-			const alteredParams = { ...mockParams };
-			delete alteredParams.NOUNLOCK;
-			delete alteredParams.TPAGID;
-			delete alteredParams.FromIconProfile;
-
-			await Promise.all(
-				Object.keys(alteredParams).map(async (key) => {
-					const scrubbedParams = { ...alteredParams };
-					delete scrubbedParams[key];
-					await app
-						.inject({
-							method: 'GET',
-							url: '/',
-							headers,
-							query: mockParams
-						})
-						.catch((err) => {
-							expect(err.status).toBe(400);
-						});
-				})
-			);
-		});
 	});
 
 	describe('Keycloak token retrival', () => {
@@ -108,7 +86,7 @@ describe('App deployment', () => {
 			app.close();
 		});
 
-		test('Should return HTTP 500 error when Keycloak endpoint config enabled but other values missing', async () => {
+		test('Should return HTTP 500 error when Keycloak endpoint config enabled but other options undefined', async () => {
 			const altAppConfig = cloneDeep(appConfig);
 			altAppConfig.keycloak.enabled = 'true';
 
@@ -121,7 +99,35 @@ describe('App deployment', () => {
 				query: mockParams
 			});
 
+			const body = JSON.parse(res.body);
+
 			expect(res.statusCode).toBe(500);
+			expect(res.statusMessage).toBe('Internal Server Error');
+			expect(body.statusCode).toBe(500);
+			expect(body.error).toBe('Internal Server Error');
+
+			app.close();
+		});
+
+		test('Should return HTTP 500 error when redirect URL missing', async () => {
+			const altAppConfig = cloneDeep(appConfig);
+			delete altAppConfig.redirectUrl;
+
+			const app = build(fastifyConfig, altAppConfig);
+
+			const res = await app.inject({
+				method: 'GET',
+				url: '/',
+				headers,
+				query: mockParams
+			});
+
+			const body = JSON.parse(res.body);
+
+			expect(res.statusCode).toBe(500);
+			expect(res.statusMessage).toBe('Internal Server Error');
+			expect(body.statusCode).toBe(500);
+			expect(body.error).toBe('Internal Server Error');
 
 			app.close();
 		});

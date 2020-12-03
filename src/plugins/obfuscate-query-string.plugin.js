@@ -20,6 +20,7 @@ async function obfuscateQueryStringPlugin(fastify, options) {
 				obfuscate(queryString.stringify(req.query), options)
 			);
 		} catch (err) {
+			fastify.log.error(err);
 			res.send(createError(500, err));
 		}
 
