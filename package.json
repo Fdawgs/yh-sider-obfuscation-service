@@ -16,8 +16,8 @@
 		"prettier": "prettier . --write --ignore-path .gitignore",
 		"start": "cross-env NODE_ENV=production node src/server.js",
 		"test": "cross-env NODE_ENV=test yarn lint && yarn test-only",
-		"test-coverage": "cross-env NODE_ENV=test jest --coverage --runInBand",
-		"test-only": "cross-env NODE_ENV=test jest --detectOpenHandles --runInBand"
+		"test-coverage": "cross-env NODE_ENV=test LOGGER_ENABLED=false jest --coverage --runInBand",
+		"test-only": "cross-env NODE_ENV=test LOGGER_ENABLED=false jest --detectOpenHandles --runInBand"
 	},
 	"jest": {
 		"clearMocks": true,
