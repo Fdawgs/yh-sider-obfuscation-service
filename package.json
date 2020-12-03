@@ -14,7 +14,7 @@
 		"dupe-check": "yarn jsinspect ./src",
 		"lint": "eslint . --cache --ext js,jsx,ts,tsx --ignore-path .gitignore",
 		"prettier": "prettier . --write --ignore-path .gitignore",
-		"start": "cross-env NODE_ENV=production node src/server.js",
+		"start": "node src/server.js",
 		"test": "cross-env NODE_ENV=test yarn lint && yarn test-only",
 		"test-coverage": "cross-env NODE_ENV=test LOGGER_ENABLED=false jest --coverage --runInBand",
 		"test-only": "cross-env NODE_ENV=test LOGGER_ENABLED=false jest --detectOpenHandles --runInBand"
