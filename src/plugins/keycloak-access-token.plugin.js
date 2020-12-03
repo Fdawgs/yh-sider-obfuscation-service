@@ -57,6 +57,7 @@ async function keycloakAccessTokenPlugin(fastify, options = {}) {
 				req.query.access_token = userAccessResponse.data.access_token;
 				return;
 			} catch (err) {
+				fastify.log.error(err);
 				res.send(
 					createError(
 						500,
