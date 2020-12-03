@@ -20,6 +20,8 @@ const mockParams = {
 	NOUNLOCK: faker.random.number()
 };
 
+delete appConfig.logger;
+
 describe('App deployment', () => {
 	describe('Redirects', () => {
 		let app;
