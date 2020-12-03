@@ -1,3 +1,15 @@
+## 1.0.0 (2020-12-03)
+
+-   feat(config): allow for logger to be enabled/disabled ([78d58e8](https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service/commit/78d58e8))
+-   test: add test ssl certs ([dca7c55](https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service/commit/dca7c55))
+-   test: add unit tests for plugins and route ([d9a65d3](https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service/commit/d9a65d3))
+-   test: disable logging for test instances ([595b635](https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service/commit/595b635))
+-   test: refine coverage collection paths ([59072bc](https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service/commit/59072bc))
+-   chore: suppress console warnings for tests ([90805b2](https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service/commit/90805b2))
+-   chore(scripts): set env for `start` script ([e91e914](https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service/commit/e91e914))
+-   refactor(plugins): log errors thrown by plugins ([4ab37e8](https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service/commit/4ab37e8))
+-   refactor(server): move code out of function ([f8be983](https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service/commit/f8be983))
+
 ## 0.1.0 (2020-12-03)
 
 -   build(deps-dev): bump dev dependencies ([56d2f81](https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service/commit/56d2f81))
