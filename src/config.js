@@ -4,44 +4,48 @@ const fs = require('fs');
 const pino = require('pino');
 const rotatingLogStream = require('file-stream-rotator');
 
-const fastifyConfig = {
-	/**
-	 * See https://www.fastify.io/docs/v3.8.x/Logging/
-	 * and https://getpino.io/#/docs/api for logger options
-	 */
-	logger: {
-		formatters: {
-			level(label) {
-				return { level: label };
-			}
-		},
-		// Defaults to `info` if not set in env
-		level: process.env.LOGGER_LEVEL,
-		serializers: {
-			req(req) {
-				return pino.stdSerializers.req(req);
+let fastifyConfig = {};
+
+if (process.env.LOGGER_ENABLED === 'true') {
+	fastifyConfig = {
+		/**
+		 * See https://www.fastify.io/docs/v3.8.x/Logging/
+		 * and https://getpino.io/#/docs/api for logger options
+		 */
+		logger: {
+			formatters: {
+				level(label) {
+					return { level: label };
+				}
 			},
-			res(res) {
-				return pino.stdSerializers.res(res);
-			}
-		},
-		timestamp: () => {
-			return pino.stdTimeFunctions.isoTime();
-		},
-		// Rotation options: https://github.com/rogerc/file-stream-rotator/#options
-		stream: rotatingLogStream.getStream({
-			date_format:
-				process.env.LOGGER_ROTATION_DATE_FORMAT || 'YYYY-MM-DD',
-			filename:
-				process.env.LOGGER_ROTATION_FILENAME ||
-				`${process.cwd()}/logs/obs-service-%DATE%.log`,
-			frequency: process.env.LOGGER_ROTATION_FREQUENCY || 'daily',
-			max_logs: process.env.LOGGER_ROTATION_MAX_LOG,
-			size: process.env.LOGGER_ROTATION_MAX_SIZE,
-			verbose: false
-		})
-	}
-};
+			// Defaults to `info` if not set in env
+			level: process.env.LOGGER_LEVEL,
+			serializers: {
+				req(req) {
+					return pino.stdSerializers.req(req);
+				},
+				res(res) {
+					return pino.stdSerializers.res(res);
+				}
+			},
+			timestamp: () => {
+				return pino.stdTimeFunctions.isoTime();
+			},
+			// Rotation options: https://github.com/rogerc/file-stream-rotator/#options
+			stream: rotatingLogStream.getStream({
+				date_format:
+					process.env.LOGGER_ROTATION_DATE_FORMAT || 'YYYY-MM-DD',
+				filename:
+					process.env.LOGGER_ROTATION_FILENAME ||
+					`${process.cwd()}/logs/obs-service-%DATE%.log`,
+				frequency: process.env.LOGGER_ROTATION_FREQUENCY || 'daily',
+				max_logs: process.env.LOGGER_ROTATION_MAX_LOG,
+				size: process.env.LOGGER_ROTATION_MAX_SIZE,
+				verbose: false
+			})
+		}
+	};
+}
 
 // Enable HTTPS using cert/key or passphrase/pfx combinations
 if (
