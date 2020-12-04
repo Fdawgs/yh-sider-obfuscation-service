@@ -1,3 +1,12 @@
+## <small>1.0.1 (2020-12-04)</small>
+
+-   docs(readme): add motivation to intro ([cebdea6](https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service/commit/cebdea6))
+-   docs(readme): update deployment script ([af41310](https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service/commit/af41310))
+-   docs(readme): update run script ([87beab4](https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service/commit/87beab4))
+-   chore(env): update note on docker deployment ([82e5f8b](https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service/commit/82e5f8b))
+-   docs(readme): replace reference to expressjs ([d1d697b](https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service/commit/d1d697b))
+-   Revert "chore(scripts): set env for `start` script" ([71ef15e](https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service/commit/71ef15e))
+
 ## 1.0.0 (2020-12-03)
 
 -   feat(config): allow for logger to be enabled/disabled ([78d58e8](https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service/commit/78d58e8))
