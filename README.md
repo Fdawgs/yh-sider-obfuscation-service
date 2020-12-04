@@ -17,7 +17,7 @@ This is Yeovil District Hospital's contextual link obfuscation service, a Node.j
 ### Standard deployment
 
 1. Navigate to the repo
-2. Run `yarn install` to install dependencies
+2. Run `yarn install --production` to install dependencies
 3. Make a copy of `.env.template` in the root directory and rename to `.env.production`
 4. Configure the application using the environment variables in `.env.production`
 5. Run `yarn start`
