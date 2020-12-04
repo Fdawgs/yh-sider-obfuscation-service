@@ -6,6 +6,10 @@
 
 This is Yeovil District Hospital's contextual link obfuscation service, a Node.js application using the [Fastify](https://www.fastify.io/) web framework and Black Pear's [obfuscated-querystring](https://github.com/BlackPearSw/obfuscated-querystring).
 
+This service was created out of a need for query strings parameters containing personal identifiable data [to be obfuscated](https://github.com/Somerset-SIDeR-Programme/SIDeR-interop-patterns/wiki/query-string-obfuscation) when users click on the SIDeR contextual link within Yeovil District Hospital's PAS (InterSystems' TrakCare).
+
+Single sign-on through the use of access tokens for a user from a Keycloak server instance can be enabled using environment variables seen in `.env.template`.
+
 ## Prerequisites
 
 -   [Git](https://git-scm.com/) (to install non-registered dependencies)
