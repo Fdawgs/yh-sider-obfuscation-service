@@ -1,12 +1,12 @@
-# Yeovil District Hospital - SIDeR Contextual Link Obfuscation Service
+# Yeovil District Hospital NHS Foundation Trust - SIDeR Contextual Link Obfuscation Service
 
 [![GitHub Release](https://img.shields.io/github/release/Fdawgs/fastify-sider-obs.svg)](https://github.com/Fdawgs/fastify-sider-obs/releases/latest/) ![Build Status](https://github.com/Fdawgs/fastify-sider-obs/workflows/CI/badge.svg?branch=master) [![Coverage Status](https://coveralls.io/repos/github/Fdawgs/fastify-sider-obs/badge.svg?branch=master)](https://coveralls.io/github/Fdawgs/fastify-sider-obs?branch=master) [![Known Vulnerabilities](https://snyk.io/test/github/Fdawgs/fastify-sider-obs/badge.svg)](https://snyk.io/test/github/Fdawgs/fastify-sider-obs) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 ## Intro
 
-This is Yeovil District Hospital's contextual link obfuscation service, a Node.js application using the [Fastify](https://www.fastify.io/) web framework and Black Pear's [obfuscated-querystring](https://github.com/BlackPearSw/obfuscated-querystring).
+This is [Yeovil District Hospital NHSFT](https://yeovilhospital.co.uk/)'s contextual link obfuscation service, a Node.js application using the [Fastify](https://www.fastify.io/) web framework and Black Pear's [obfuscated-querystring](https://github.com/BlackPearSw/obfuscated-querystring).
 
-This service was created out of a need for query strings parameters containing personal identifiable data [to be obfuscated](https://github.com/Somerset-SIDeR-Programme/SIDeR-interop-patterns/wiki/query-string-obfuscation) when users click on the SIDeR contextual link within Yeovil District Hospital's PAS (InterSystems' TrakCare).
+This service was created out of a need for query strings parameters containing personal identifiable data [to be obfuscated](https://github.com/Somerset-SIDeR-Programme/SIDeR-interop-patterns/wiki/query-string-obfuscation) when users click on the [SIDeR](https://www.somersetccg.nhs.uk/about-us/digital-projects/sider/) contextual link within Yeovil District Hospital NHSFT's Patient Administration System (PAS), InterSystems' TrakCare.
 
 Single sign-on through the use of access tokens for a user from a Keycloak server instance can be enabled using environment variables seen in `.env.template`.
 
@@ -42,7 +42,7 @@ To quickly test it open a browser of your choice or, if using a request builder 
 
 http://127.0.0.1:8204?patient=https://fhir.nhs.uk/Id/nhs-number|9449304513&birthdate=1934-10-23&location=https://fhir.nhs.uk/Id/ods-organization-code|RA4&practitioner=https://sider.nhs.uk/auth|frazer.smith@ydh.nhs.uk
 
-Swap out the organization code and email address with your own if you have already been set up an account on the eSP.
+Replace the organization code and email address in the `location` and `practitioner` query string parameters respectively with your own if you have already been set up with an account in SIDeR.
 
 In the log file you will see something similar to the following returned:
 
@@ -134,7 +134,7 @@ It is recommended that you use a process manager such as [PM2](https://pm2.keyme
 
 #### To install as a Windows service:
 
-Yeovil District Hospital is heavily invested in Microsoft's ecosystem; utilise [pm2-installer](https://github.com/jessety/pm2-installer) to easily install PM2 as a Windows service.
+Yeovil District Hospital NHSFT is heavily invested in Microsoft's ecosystem; utilise [pm2-installer](https://github.com/jessety/pm2-installer) to easily install PM2 as a Windows service.
 
 **Note:** PM2 has been configured to automatically restart the application if modifications are made to `.env.development` or `.env.production`.
 
