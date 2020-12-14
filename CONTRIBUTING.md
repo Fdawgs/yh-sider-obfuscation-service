@@ -54,4 +54,4 @@ When cutting a release, the following steps need to be performed:
 
 ## Issues
 
-Please file your issues [here](https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service/issues) and try to provide as much information in the template as possible/relevant.
+Please file your issues [here](https://github.com/Fdawgs/fastify-sider-obs/issues) and try to provide as much information in the template as possible/relevant.

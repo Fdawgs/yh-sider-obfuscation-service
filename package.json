@@ -3,7 +3,7 @@
 	"version": "1.0.1",
 	"description": "Yeovil District Hospital's SIDeR Service to obfuscate URL query parameters before sending to SIDeR eSP",
 	"main": "src/server.js",
-	"repository": "git+https://github.com/Somerset-SIDeR-Programme/ydh-sider-obfuscation-service.git",
+	"repository": "git+https://github.com/Fdawgs/fastify-sider-obs.git",
 	"author": "Frazer Smith <frazer.smith@ydh.nhs.uk>",
 	"license": "MIT",
 	"engines": {
