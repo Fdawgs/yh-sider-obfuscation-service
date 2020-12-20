@@ -26,6 +26,8 @@ jobs:
               with:
                   node-version: ${{ matrix.node-version }}
             - run: yarn install
+            - name: Run Prettier
+              run: yarn lint:prettier:ci
             - name: Run Tests
               run: |
                   cp .env.template .env.test
