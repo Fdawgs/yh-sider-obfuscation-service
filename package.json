@@ -12,12 +12,13 @@
 	"scripts": {
 		"changelog": "conventional-changelog -p @commitlint/config-conventional -s -i CHANGELOG.md && prettier CHANGELOG.md --write",
 		"dupe-check": "yarn jsinspect ./src",
+		"jest": "cross-env NODE_ENV=test LOGGER_ENABLED=false jest --detectOpenHandles --runInBand",
+		"jest-coverage": "cross-env NODE_ENV=test LOGGER_ENABLED=false jest --coverage --runInBand",
 		"lint": "eslint . --cache --ext js,jsx,ts,tsx --ignore-path .gitignore",
-		"prettier": "prettier . --write --ignore-path .gitignore",
+		"lint:prettier": "prettier . --write --ignore-path .gitignore",
+		"lint:prettier:ci": "prettier . --check --ignore-path .gitignore",
 		"start": "node src/server.js",
-		"test": "cross-env NODE_ENV=test yarn lint && yarn test-only",
-		"test-coverage": "cross-env NODE_ENV=test LOGGER_ENABLED=false jest --coverage --runInBand",
-		"test-only": "cross-env NODE_ENV=test LOGGER_ENABLED=false jest --detectOpenHandles --runInBand"
+		"test": "cross-env NODE_ENV=test yarn lint && yarn jest"
 	},
 	"jest": {
 		"clearMocks": true,
