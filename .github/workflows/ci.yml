@@ -27,6 +27,8 @@ jobs:
                   node-version: ${{ matrix.node-version }}
             - name: Install
               run: yarn --immutable
+            - name: Run ESLint
+              run: yarn lint
             - name: Run Prettier
               run: yarn lint:prettier:ci
             - name: Run Tests
