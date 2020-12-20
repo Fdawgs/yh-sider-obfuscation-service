@@ -28,9 +28,7 @@ if (process.env.LOGGER_ENABLED === 'true') {
 					return pino.stdSerializers.res(res);
 				}
 			},
-			timestamp: () => {
-				return pino.stdTimeFunctions.isoTime();
-			},
+			timestamp: () => pino.stdTimeFunctions.isoTime(),
 			// Rotation options: https://github.com/rogerc/file-stream-rotator/#options
 			stream: rotatingLogStream.getStream({
 				date_format:
