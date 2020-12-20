@@ -1,3 +1,22 @@
+## 1.1.0 (2020-12-20)
+
+-   chore: add stale confg ([4d8c099](https://github.com/Fdawgs/fastify-sider-obs/commit/4d8c099))
+-   chore: remove duplicate install step ([a1d6ab0](https://github.com/Fdawgs/fastify-sider-obs/commit/a1d6ab0))
+-   chore: update repository value ([80549ca](https://github.com/Fdawgs/fastify-sider-obs/commit/80549ca))
+-   chore(package): update description ([cd77415](https://github.com/Fdawgs/fastify-sider-obs/commit/cd77415))
+-   fix: adhere to `arrow-body-style` eslint rule ([f513c96](https://github.com/Fdawgs/fastify-sider-obs/commit/f513c96))
+-   feat: add configurable cors ([334830d](https://github.com/Fdawgs/fastify-sider-obs/commit/334830d))
+-   build(deps-dev): bump eslint from 7.14.0 to 7.16.0 ([b10c720](https://github.com/Fdawgs/fastify-sider-obs/commit/b10c720))
+-   build(deps-dev): bump eslint-config-prettier from 6.15.0 to 7.1.0 ([d7436f9](https://github.com/Fdawgs/fastify-sider-obs/commit/d7436f9))
+-   build(deps-dev): bump eslint-plugin-jsdoc from 30.7.8 to 30.7.9 ([082ec44](https://github.com/Fdawgs/fastify-sider-obs/commit/082ec44))
+-   build(deps): bump fastify from 3.9.1 to 3.9.2 ([c2161a0](https://github.com/Fdawgs/fastify-sider-obs/commit/c2161a0))
+-   build(deps): bump obfuscated-querystring from `72e3a4b` to `8c7c78e` ([f79e54b](https://github.com/Fdawgs/fastify-sider-obs/commit/f79e54b))
+-   build(deps): bump pino from 6.7.0 to 6.8.0 ([b535a33](https://github.com/Fdawgs/fastify-sider-obs/commit/b535a33))
+-   ci: add linting job; expand scope of jobs to all branches/commits besides docs (#36) ([635abff](https://github.com/Fdawgs/fastify-sider-obs/commit/635abff)), closes [#36](https://github.com/Fdawgs/fastify-sider-obs/issues/36)
+-   ci: automatically merge dependabot pull requests on pass build stage ([7c64508](https://github.com/Fdawgs/fastify-sider-obs/commit/7c64508))
+-   ci: require lint job on automerge ([f7b9666](https://github.com/Fdawgs/fastify-sider-obs/commit/f7b9666))
+-   docs(readme): clarify abbreviations ([c8c4d0f](https://github.com/Fdawgs/fastify-sider-obs/commit/c8c4d0f))
+
 ## <small>1.0.1 (2020-12-04)</small>
 
 -   docs(readme): add motivation to intro ([cebdea6](https://github.com/Fdawgs/fastify-sider-obs/commit/cebdea6))
