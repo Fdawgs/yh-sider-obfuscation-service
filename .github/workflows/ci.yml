@@ -21,8 +21,6 @@ jobs:
                   node-version: 14.x
             - name: Install
               run: yarn --immutable
-            - name: Install
-              run: yarn --immutable
             - name: Run ESLint
               run: yarn lint
             - name: Run Prettier
