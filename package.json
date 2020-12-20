@@ -89,6 +89,6 @@
 		"file-stream-rotator": "^0.5.7",
 		"http-errors": "^1.8.0",
 		"obfuscated-querystring": "git+https://github.com/BlackPearSw/obfuscated-querystring.git",
-		"pino": "^6.7.0"
+		"pino": "^6.8.0"
 	}
 }
