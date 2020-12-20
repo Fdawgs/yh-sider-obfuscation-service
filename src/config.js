@@ -71,6 +71,10 @@ if (
 const appConfig = {
 	redirectUrl: process.env.SERVICE_REDIRECT_URL,
 
+	cors: {
+		origin: process.env.CORS_ORIGIN || false
+	},
+
 	// Values used by keycloak-access-token plugin in wildcard service
 	keycloak: {
 		enabled: process.env.KC_ENABLED,
@@ -108,6 +112,16 @@ const appConfig = {
 		obfuscate: JSON.parse(process.env.OBFUSCATION_QUERYSTRING_KEY_ARRAY)
 	}
 };
+
+if (process.env.CORS_METHODS_ARRAY) {
+	appConfig.cors.methods = JSON.parse(process.env.CORS_METHODS_ARRAY);
+}
+
+if (process.env.CORS_ALLOWED_HEADERS_ARRAY) {
+	appConfig.cors.allowedHeaders = JSON.parse(
+		process.env.CORS_ALLOWED_HEADERS_ARRAY
+	);
+}
 
 module.exports = {
 	fastifyConfig,
