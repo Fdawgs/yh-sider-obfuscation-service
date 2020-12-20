@@ -4449,9 +4449,10 @@ oauth-sign@~0.9.0:
 
 "obfuscated-querystring@git+https://github.com/BlackPearSw/obfuscated-querystring.git":
   version "0.0.2"
-  resolved "git+https://github.com/BlackPearSw/obfuscated-querystring.git#72e3a4be35b8bffd159f666f21d6132e5826357f"
+  uid "8c7c78e46d0004ea26e1abc71212f860589503af"
+  resolved "git+https://github.com/BlackPearSw/obfuscated-querystring.git#8c7c78e46d0004ea26e1abc71212f860589503af"
   dependencies:
-    lodash "^4.17.15"
+    lodash "^4.17.20"
 
 object-assign@^4.0.1:
   version "4.1.1"
