@@ -2325,6 +2325,14 @@ fastify-autoload@^3.3.1:
     pkg-up "^3.1.0"
     semver "^7.3.2"
 
+fastify-cors@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/fastify-cors/-/fastify-cors-5.1.0.tgz#f34b11ed0b84fdc212edc2ad38c92ff85f163b8e"
+  integrity sha512-PTq4wSBFljXmbFKmp5eKW9gg0m488nXBl+OSTb/vnWXXLvVn7HFk7WKgt7uQVfd9UuksveCGTXipVlus3qhmrw==
+  dependencies:
+    fastify-plugin "^3.0.0"
+    vary "^1.1.2"
+
 fastify-error@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/fastify-error/-/fastify-error-0.2.0.tgz#9a1c28d4f42b6259e7a549671c8e5e2d85660634"
@@ -4441,7 +4449,6 @@ oauth-sign@~0.9.0:
 
 "obfuscated-querystring@git+https://github.com/BlackPearSw/obfuscated-querystring.git":
   version "0.0.2"
-  uid "8c7c78e46d0004ea26e1abc71212f860589503af"
   resolved "git+https://github.com/BlackPearSw/obfuscated-querystring.git#8c7c78e46d0004ea26e1abc71212f860589503af"
   dependencies:
     lodash "^4.17.20"
@@ -6190,6 +6197,11 @@ validate-npm-package-license@^3.0.1:
   dependencies:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
+
+vary@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
+  integrity sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
 
 verror@1.10.0:
   version "1.10.0"

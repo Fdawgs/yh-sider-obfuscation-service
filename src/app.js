@@ -3,6 +3,7 @@ const Fastify = require('fastify');
 const path = require('path');
 
 // Import plugins
+const cors = require('fastify-cors');
 const helmet = require('fastify-helmet');
 
 /**
@@ -16,6 +17,9 @@ module.exports = (fastifyOpts, opts) => {
 	const fastify = Fastify(fastifyOpts);
 
 	// Register security plugins/middleware
+	// Enable CORS: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+	fastify.register(cors, opts.cors);
+
 	// Use Helmet to set response security headers: https://helmetjs.github.io/
 	fastify.register(helmet);
 
