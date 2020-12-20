@@ -65,7 +65,7 @@ jobs:
 
     automerge:
         name: Automatically merge Dependabot pull requests
-        needs: build
+        needs: [lint, build]
         runs-on: ubuntu-latest
         steps:
             - uses: fastify/github-action-merge-dependabot@v1
