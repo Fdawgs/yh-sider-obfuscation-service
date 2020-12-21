@@ -13,7 +13,10 @@ const headers = {
 const mockParams = {
 	birthdate: faker.date.past().toISOString().split('T')[0],
 	location: 'https://fhir.nhs.uk/Id/ods-organization-code|RA4',
-	patient: `https://fhir.nhs.uk/Id/nhs-number|${faker.random.number(10)}`,
+	patient: `https://fhir.nhs.uk/Id/nhs-number|${faker.random.number({
+		min: 1111111111,
+		max: 9999999999
+	})}`,
 	practitioner: `https://sider.nhs.uk/auth|obsservice.test@ydh.nhs.uk`,
 	TPAGID: faker.random.uuid(),
 	FromIconProfile: faker.random.number(),
