@@ -20,9 +20,22 @@ async function routes(fastify, options) {
 			type: 'object',
 			properties: {
 				birthdate: { type: 'string', format: 'date' },
-				patient: { type: 'string' },
-				location: { type: 'string' },
-				practitioner: { type: 'string' }
+				patient: {
+					type: 'string',
+					pattern:
+						'^https:\\/\\/fhir\\.nhs\\.uk\\/Id\\/nhs-number\\|\\d{10}$'
+				},
+				location: {
+					type: 'string',
+					pattern:
+						'^https:\\/\\/fhir\\.nhs\\.uk\\/Id\\/ods-organization-code\\|\\w*$'
+				},
+				practitioner: {
+					type: 'string',
+					// RFC 5322 compliant email regex
+					pattern:
+						'^https:\\/\\/sider\\.nhs\\.uk\\/auth\\|(([^<>()\\[\\]\\.,;:\\s@"]+(\\.[^<>()\\[\\]\\.,;:\\s@"]+)*)|(".+"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$'
+				}
 			},
 			required: ['patient', 'birthdate', 'location', 'practitioner']
 		}
