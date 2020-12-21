@@ -142,6 +142,11 @@ Yeovil District Hospital NHSFT is heavily invested in Microsoft's ecosystem; uti
 
 Please see [CONTRIBUTING.md](https://github.com/Fdawgs/fastify-sider-obs/blob/master/CONTRIBUTING.md) for more details regarding contributing to this project.
 
+## Acknowledgements
+
+-   [**Mark Hunt**](https://github.com/nhsbandit) - Supported with Keycloak Single sign-on access tokens integration
+-   [**Will Jehring**](https://github.com/wjehring) - Supported query string obfuscation and redirect testing
+
 ## License
 
 `fastify-sider-obs` is licensed under the [MIT](https://github.com/Fdawgs/fastify-sider-obs/blob/master/LICENSE) license.
