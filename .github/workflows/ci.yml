@@ -25,6 +25,8 @@ jobs:
               run: yarn lint
             - name: Run Prettier
               run: yarn lint:prettier:ci
+            - name: Run License Checker
+              run: yarn license-checker
 
     build:
         name: Build
