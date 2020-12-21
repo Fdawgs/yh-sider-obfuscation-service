@@ -38,7 +38,7 @@ The service should now be up and running on the port set in the config. You shou
 }
 ```
 
-To quickly test it open a browser of your choice or, if using a request builder (i.e. Insomnia or Postman) create a new GET request, and input the following URL:
+To quickly test it open a browser of your choice or, if using a request builder (i.e. [Insomnia](https://insomnia.rest/) or [Postman](https://www.postman.com/)) create a new GET request, and input the following URL:
 
 http://127.0.0.1:8204?patient=https://fhir.nhs.uk/Id/nhs-number|9449304513&birthdate=1934-10-23&location=https://fhir.nhs.uk/Id/ods-organization-code|RA4&practitioner=https://sider.nhs.uk/auth|frazer.smith@ydh.nhs.uk
 
@@ -144,7 +144,7 @@ Please see [CONTRIBUTING.md](https://github.com/Fdawgs/fastify-sider-obs/blob/ma
 
 ## Acknowledgements
 
--   [**Mark Hunt**](https://github.com/nhsbandit) - Supported with Keycloak Single sign-on access tokens integration
+-   [**Mark Hunt**](https://github.com/nhsbandit) - Supported Keycloak Single sign-on access tokens integration
 -   [**Will Jehring**](https://github.com/wjehring) - Supported query string obfuscation and redirect testing
 
 ## License
