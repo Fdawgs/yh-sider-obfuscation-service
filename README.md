@@ -8,7 +8,7 @@ This is [Yeovil District Hospital NHSFT](https://yeovilhospital.co.uk/)'s contex
 
 This service was created out of a need for query strings parameters containing personal identifiable data [to be obfuscated](https://github.com/Somerset-SIDeR-Programme/SIDeR-interop-patterns/wiki/query-string-obfuscation) when users click on the [SIDeR](https://www.somersetccg.nhs.uk/about-us/digital-projects/sider/) contextual link within Yeovil District Hospital NHSFT's Patient Administration System (PAS), InterSystems' TrakCare.
 
-Single sign-on through the use of access tokens for a user from a Keycloak server instance can be enabled using environment variables seen in `.env.template`.
+Single sign-on for a user using access tokens from a Keycloak server instance can be enabled using environment variables found in `.env.template`.
 
 ## Prerequisites
 
@@ -102,7 +102,7 @@ Both the patient and birthdate query parameters of the URL have been obfuscated 
 
 The web browser or request builder used should be redirected to Black Pear's ESP site, and once logged in will provide the patient note's for the test patient with NHS Number 9449304513, success!
 
-If the patient, birthdate, location or practitioner parameters are removed from the original URL the obfuscation process and redirect will not occur, and a status 400 will be returned with the message similar to the following:
+If the patient, birthdate, location or practitioner parameters are removed from the original URL the obfuscation process and redirect will not occur, and a 400 HTTP status code will be returned with the message similar to the following:
 
 ```json
 {
