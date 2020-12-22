@@ -1,9 +1,11 @@
+/* eslint-disable no-console */
 const cloneDeep = require('lodash/cloneDeep');
 const faker = require('faker/locale/en_GB');
 const queryString = require('querystring');
 const build = require('./app');
 
 const { appConfig, fastifyConfig } = require('./config');
+const mockServer = require('../test_resources/mocks/sider-server.mock');
 
 const headers = {
 	'Content-Type': 'application/json',
@@ -24,6 +26,21 @@ const mockParams = {
 };
 
 describe('App deployment', () => {
+	beforeAll(async () => {
+		try {
+			await mockServer.listen(3001);
+			appConfig.redirectUrl = 'http://127.0.0.1:3001/esp/#!/launch?';
+			console.log('Mock SIDeR server listening on 3001');
+		} catch (err) {
+			console.log('Error starting SIDeR server:', err);
+			process.exit(1);
+		}
+	});
+
+	afterAll(async () => {
+		await mockServer.close();
+	});
+
 	describe('Redirects', () => {
 		let app;
 
@@ -51,7 +68,7 @@ describe('App deployment', () => {
 			);
 
 			expect(res.headers.location).toMatch(
-				'https://pyrusapps.blackpear.com/esp/#!/launch?'
+				'http://127.0.0.1:3001/esp/#!/launch?'
 			);
 
 			expect(resQueryString).toMatchObject({
@@ -134,7 +151,7 @@ describe('App deployment', () => {
 			});
 
 			expect(res.headers.location).toMatch(
-				'https://pyrusapps.blackpear.com/esp/#!/launch?'
+				'http://127.0.0.1:3001/esp/#!/launch?'
 			);
 			expect(res.statusCode).toBe(302);
 
