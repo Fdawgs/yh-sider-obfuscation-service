@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+const autocannon = require('autocannon');
 const cloneDeep = require('lodash/cloneDeep');
 const faker = require('faker/locale/en_GB');
 const queryString = require('querystring');
@@ -30,7 +31,7 @@ describe('App deployment', () => {
 		try {
 			await mockServer.listen(3001);
 			appConfig.redirectUrl = 'http://127.0.0.1:3001/esp/#!/launch?';
-			console.log('Mock SIDeR server listening on 3001');
+			console.log('Mock SIDeR server listening on http://127.0.0.1:3001');
 		} catch (err) {
 			console.log('Error starting SIDeR server:', err);
 			process.exit(1);
@@ -41,7 +42,7 @@ describe('App deployment', () => {
 		await mockServer.close();
 	});
 
-	describe('Redirects', () => {
+	describe('App', () => {
 		let app;
 
 		beforeEach(() => {
@@ -52,7 +53,7 @@ describe('App deployment', () => {
 			app.close();
 		});
 
-		test("Should redirect to Black Pear's ESP with required params present", async () => {
+		test("Should redirect to 'redirectUrl' with required params present", async () => {
 			const res = await app.inject({
 				method: 'GET',
 				url: '/',
@@ -202,6 +203,35 @@ describe('App deployment', () => {
 			expect(body.error).toBe('Internal Server Error');
 
 			app.close();
+		});
+	});
+
+	describe('Benchmark', () => {
+		const altFastifyConfig = cloneDeep(fastifyConfig);
+		delete altFastifyConfig.https;
+		let app;
+
+		beforeEach(() => {
+			app = build(fastifyConfig, appConfig);
+			try {
+				app.listen(process.env.SERVICE_PORT, process.env.SERVICE_HOST);
+			} catch (err) {
+				console.log('Error starting server:', err);
+				process.exit(1);
+			}
+		});
+
+		afterEach(() => {
+			app.close();
+		});
+
+		test('Shoult have an average latency less than 50ms', async () => {
+			const results = await autocannon({
+				url: `http://127.0.0.1:${process.env.SERVICE_PORT}?birthdate=${mockParams.birthdate}&location=${mockParams.location}&patient=${mockParams.patient}&practitioner=${mockParams.practitioner}`,
+				duration: 9
+			});
+
+			expect(results.latency.average).toBeLessThan(50);
 		});
 	});
 });
