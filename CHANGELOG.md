@@ -1,3 +1,21 @@
+## <small>1.1.1 (2020-12-22)</small>
+
+-   build(deps-dev): add autocannon ([e23a46f](https://github.com/Fdawgs/fastify-sider-obs/commit/e23a46f))
+-   build(deps-dev): add license-checker ([78fb88c](https://github.com/Fdawgs/fastify-sider-obs/commit/78fb88c))
+-   build(deps): bump axios from 0.21.0 to 0.21.1 ([0d6a9dd](https://github.com/Fdawgs/fastify-sider-obs/commit/0d6a9dd))
+-   refactor(plugins): don't add prehandler hook if keycloak option disabled ([7249a9a](https://github.com/Fdawgs/fastify-sider-obs/commit/7249a9a))
+-   refactor(plugins): remove object for mandatory param ([d95b7fe](https://github.com/Fdawgs/fastify-sider-obs/commit/d95b7fe))
+-   refactor(routes): add regex patterns to validate query string params ([81fa44f](https://github.com/Fdawgs/fastify-sider-obs/commit/81fa44f))
+-   test(app): add benchmark tests ([2b80124](https://github.com/Fdawgs/fastify-sider-obs/commit/2b80124))
+-   test(app): query mock path instead of live path ([fcfa94d](https://github.com/Fdawgs/fastify-sider-obs/commit/fcfa94d))
+-   test(app): query string param values schema validation ([62e8eed](https://github.com/Fdawgs/fastify-sider-obs/commit/62e8eed))
+-   docs(readme): add acknowledgements section ([3a301a5](https://github.com/Fdawgs/fastify-sider-obs/commit/3a301a5))
+-   docs(readme): add links to request builders ([6139927](https://github.com/Fdawgs/fastify-sider-obs/commit/6139927))
+-   docs(readme): grammar fixes ([661280a](https://github.com/Fdawgs/fastify-sider-obs/commit/661280a))
+-   chore: move test resources into dedicated folder ([c18408e](https://github.com/Fdawgs/fastify-sider-obs/commit/c18408e))
+-   ci: add license-checker to lint job ([7bfda07](https://github.com/Fdawgs/fastify-sider-obs/commit/7bfda07))
+-   tests(app): fix min and max random numbers ([8fa0abf](https://github.com/Fdawgs/fastify-sider-obs/commit/8fa0abf))
+
 ## 1.1.0 (2020-12-20)
 
 -   chore: add stale confg ([4d8c099](https://github.com/Fdawgs/fastify-sider-obs/commit/4d8c099))
