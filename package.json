@@ -37,8 +37,7 @@
 			"SUPPRESS_SUPPORT": 1
 		},
 		"ignore": [
-			"mocks",
-			"test_ssl_cert"
+			"test_resources"
 		],
 		"verbose": true,
 		"watch": [

@@ -4,8 +4,10 @@ const faker = require('faker/locale/en_GB');
 const Fastify = require('fastify');
 const plugin = require('./keycloak-access-token.plugin');
 
-const { keycloakRetrieveConfig } = require('../../mocks/keycloak-config.mock');
-const mockKeycloakServer = require('../../mocks/keycloak-server.mock');
+const {
+	keycloakRetrieveConfig
+} = require('../../test_resources/mocks/keycloak-config.mock');
+const mockKeycloakServer = require('../../test_resources/mocks/keycloak-server.mock');
 
 const { appConfig } = require('../config');
 
