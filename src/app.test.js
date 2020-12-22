@@ -14,7 +14,7 @@ const mockParams = {
 	birthdate: faker.date.past().toISOString().split('T')[0],
 	location: 'https://fhir.nhs.uk/Id/ods-organization-code|RA4',
 	patient: `https://fhir.nhs.uk/Id/nhs-number|${faker.random.number({
-		min: 1111111111,
+		min: 1000000000,
 		max: 9999999999
 	})}`,
 	practitioner: `https://sider.nhs.uk/auth|obsservice.test@ydh.nhs.uk`,
@@ -62,6 +62,60 @@ describe('App deployment', () => {
 			});
 
 			expect(res.statusCode).toBe(302);
+		});
+
+		test('Should return HTTP 400 error when any required query string parameter is missing', async () => {
+			const altMockParams = cloneDeep(mockParams);
+			delete altMockParams.FromIconProfile;
+			delete altMockParams.NOUNLOCK;
+			delete altMockParams.TPAGID;
+
+			const results = await Promise.all(
+				Object.keys(altMockParams).map(async (key) => {
+					const scrubbedParams = { ...altMockParams };
+					delete scrubbedParams[key];
+
+					const res = await app.inject({
+						method: 'GET',
+						url: '/',
+						headers,
+						query: scrubbedParams
+					});
+
+					return res.statusCode;
+				})
+			);
+
+			expect(results).toEqual(
+				expect.arrayContaining([400, 400, 400, 400])
+			);
+		});
+
+		test('Should return HTTP 400 error when any required query string parameter does not match expected pattern', async () => {
+			const altMockParams = cloneDeep(mockParams);
+			delete altMockParams.FromIconProfile;
+			delete altMockParams.NOUNLOCK;
+			delete altMockParams.TPAGID;
+
+			const results = await Promise.all(
+				Object.keys(altMockParams).map(async (key) => {
+					const scrubbedParams = { ...altMockParams };
+					scrubbedParams[key] = 'test';
+
+					const res = await app.inject({
+						method: 'GET',
+						url: '/',
+						headers,
+						query: scrubbedParams
+					});
+
+					return res.statusCode;
+				})
+			);
+
+			expect(results).toEqual(
+				expect.arrayContaining([400, 400, 400, 400])
+			);
 		});
 	});
 
