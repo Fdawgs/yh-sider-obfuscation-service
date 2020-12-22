@@ -144,8 +144,8 @@ Please see [CONTRIBUTING.md](https://github.com/Fdawgs/fastify-sider-obs/blob/ma
 
 ## Acknowledgements
 
--   [**Mark Hunt**](https://github.com/nhsbandit) - Supported Keycloak Single sign-on access tokens integration
--   [**Will Jehring**](https://github.com/wjehring) - Supported query string obfuscation and redirect testing
+-   [**Mark Hunt**](https://github.com/nhsbandit) - Supporting Keycloak Single sign-on access tokens integration and testing
+-   [**Will Jehring**](https://github.com/wjehring) - Supporting query string obfuscation, redirect testing, and Keycloak testing
 
 ## License
 
