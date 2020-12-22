@@ -1,6 +1,6 @@
 # Yeovil District Hospital NHS Foundation Trust - SIDeR Contextual Link Obfuscation Service
 
-[![GitHub Release](https://img.shields.io/github/release/Fdawgs/fastify-sider-obs.svg)](https://github.com/Fdawgs/fastify-sider-obs/releases/latest/) ![Build Status](https://github.com/Fdawgs/fastify-sider-obs/workflows/CI/badge.svg?branch=master) [![Coverage Status](https://coveralls.io/repos/github/Fdawgs/fastify-sider-obs/badge.svg?branch=master)](https://coveralls.io/github/Fdawgs/fastify-sider-obs?branch=master) [![Known Vulnerabilities](https://snyk.io/test/github/Fdawgs/fastify-sider-obs/badge.svg)](https://snyk.io/test/github/Fdawgs/fastify-sider-obs) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+[![GitHub Release](https://img.shields.io/github/release/Fdawgs/ydh-sider-obfuscation-service.svg)](https://github.com/Fdawgs/ydh-sider-obfuscation-service/releases/latest/) ![Build Status](https://github.com/Fdawgs/ydh-sider-obfuscation-service/workflows/CI/badge.svg?branch=master) [![Coverage Status](https://coveralls.io/repos/github/Fdawgs/ydh-sider-obfuscation-service/badge.svg?branch=master)](https://coveralls.io/github/Fdawgs/ydh-sider-obfuscation-service?branch=master) [![Known Vulnerabilities](https://snyk.io/test/github/Fdawgs/ydh-sider-obfuscation-service/badge.svg)](https://snyk.io/test/github/Fdawgs/ydh-sider-obfuscation-service) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 ## Intro
 
@@ -140,7 +140,7 @@ Yeovil District Hospital NHSFT is heavily invested in Microsoft's ecosystem; uti
 
 ## Contributing
 
-Please see [CONTRIBUTING.md](https://github.com/Fdawgs/fastify-sider-obs/blob/master/CONTRIBUTING.md) for more details regarding contributing to this project.
+Please see [CONTRIBUTING.md](https://github.com/Fdawgs/ydh-sider-obfuscation-service/blob/master/CONTRIBUTING.md) for more details regarding contributing to this project.
 
 ## Acknowledgements
 
@@ -149,4 +149,4 @@ Please see [CONTRIBUTING.md](https://github.com/Fdawgs/fastify-sider-obs/blob/ma
 
 ## License
 
-`fastify-sider-obs` is licensed under the [MIT](https://github.com/Fdawgs/fastify-sider-obs/blob/master/LICENSE) license.
+`ydh-sider-obfuscation-service` is licensed under the [MIT](https://github.com/Fdawgs/ydh-sider-obfuscation-service/blob/master/LICENSE) license.
