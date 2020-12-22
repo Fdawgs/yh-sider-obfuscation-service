@@ -98,17 +98,29 @@ In the log file you will see something similar to the following returned:
 }
 ```
 
-Both the patient and birthdate query parameters of the URL have been obfuscated in the generated redirect URL in `res.headers.location`.
+Both the patient and birthdate query string parameters of the URL have been obfuscated in the generated redirect URL in `res.headers.location`.
 
-The web browser or request builder used should be redirected to Black Pear's ESP site, and once logged in will provide the patient note's for the test patient with NHS Number 9449304513, success!
+The web browser or request builder used should be redirected to Black Pear's ESP site, and once logged in will provide the patient notes for the test patient with NHS Number 9449304513, success!
 
-If the patient, birthdate, location or practitioner parameters are removed from the original URL the obfuscation process and redirect will not occur, and a 400 HTTP status code will be returned with the message similar to the following:
+If the patient, birthdate, location or practitioner query string parameters are removed from the original URL the obfuscation process and redirect will not occur, and a 400 HTTP status code will be returned with the message similar to the following:
 
 ```json
 {
 	"statusCode": 400,
 	"error": "Bad Request",
 	"message": "querystring should have required property 'practitioner'"
+}
+```
+
+Likewise, if the previously mentioned query string parameters do not adhere to the types expected, an error will also be returned.
+
+As an example, providing the birthdate in an invalid date format will return the following:
+
+```json
+{
+	"statusCode": 400,
+	"error": "Bad Request",
+	"message": "querystring.birthdate should match format \"date\""
 }
 ```
 
