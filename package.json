@@ -37,8 +37,7 @@
 			"SUPPRESS_SUPPORT": 1
 		},
 		"ignore": [
-			"mocks",
-			"test_ssl_cert"
+			"test_resources"
 		],
 		"verbose": true,
 		"watch": [
@@ -58,6 +57,7 @@
 	},
 	"devDependencies": {
 		"@commitlint/config-conventional": "^11.0.0",
+		"autocannon": "^7.0.1",
 		"conventional-changelog-cli": "^2.1.1",
 		"coveralls": "^3.1.0",
 		"cross-env": "^7.0.3",

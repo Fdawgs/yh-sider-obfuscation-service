@@ -4,8 +4,10 @@ const faker = require('faker/locale/en_GB');
 const Fastify = require('fastify');
 const plugin = require('./keycloak-access-token.plugin');
 
-const { keycloakRetrieveConfig } = require('../../mocks/keycloak-config.mock');
-const mockKeycloakServer = require('../../mocks/keycloak-server.mock');
+const {
+	keycloakRetrieveConfig
+} = require('../../test_resources/mocks/keycloak-config.mock');
+const mockKeycloakServer = require('../../test_resources/mocks/keycloak-server.mock');
 
 const { appConfig } = require('../config');
 
@@ -27,9 +29,9 @@ describe('Keycloak access token retrieval plugin', () => {
 	beforeAll(async () => {
 		try {
 			await mockKeycloakServer.listen(3000);
-			console.log('Mock server listening on 3000');
+			console.log('Mock Keycloak server listening on 3000');
 		} catch (err) {
-			console.log('Error starting server:', err);
+			console.log('Error starting Keycloak server:', err);
 			process.exit(1);
 		}
 	});

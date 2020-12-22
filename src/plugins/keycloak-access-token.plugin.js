@@ -28,10 +28,10 @@ const queryString = require('querystring');
  * @param {string} options.requestToken.form.request_token_type
  * @param {string} options.requestToken.url
  */
-async function keycloakAccessTokenPlugin(fastify, options = {}) {
-	fastify.addHook('preHandler', async (req, res) => {
-		// Don't attempt to retrieve access tokens if Keycloak not enabled
-		if (options.enabled === 'true') {
+async function keycloakAccessTokenPlugin(fastify, options) {
+	// Don't add preHandler hook and attempt to retrieve access tokens if Keycloak not enabled
+	if (options && options.enabled === 'true') {
+		fastify.addHook('preHandler', async (req, res) => {
 			try {
 				const { requestToken, serviceAuthorisation } = options;
 
@@ -65,8 +65,8 @@ async function keycloakAccessTokenPlugin(fastify, options = {}) {
 					)
 				);
 			}
-		}
-	});
+		});
+	}
 }
 
 module.exports = fastifyPlugin(keycloakAccessTokenPlugin);
