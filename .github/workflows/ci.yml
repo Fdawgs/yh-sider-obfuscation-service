@@ -29,8 +29,8 @@ jobs:
             - name: Run License Checker
               run: yarn license-checker
 
-    build:
-        name: Build
+    unittests:
+        name: Unit Tests
         if: github.event.pull_request.draft == false
         strategy:
             matrix:
@@ -56,9 +56,21 @@ jobs:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   parallel: true
 
+    dockercomposetests:
+        name: Docker Compose Build Tests
+        if: github.event.pull_request.draft == false
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - name: Build and Deploy App
+              run: |
+                  cp .env.template .env.test
+                  NODE_ENV=test docker-compose up --detach
+              # run: docker run --network container:obfuscation-service appropriate/curl -s --retry 10 --retry-connrefused 'http://localhost:8204?patient=https://fhir.nhs.uk/Id/nhs-number|9449304513&birthdate=1934-10-23&location=https://fhir.nhs.uk/Id/ods-organization-code|RA4&practitioner=https://sider.nhs.uk/auth|frazer.smith@ydh.nhs.uk'
+
     coverage:
         name: Aggregate Coverage Calculations
-        needs: build
+        needs: unittests
         runs-on: ubuntu-latest
         steps:
             - name: Coveralls Finished
@@ -69,7 +81,7 @@ jobs:
 
     automerge:
         name: Automatically merge Dependabot pull requests
-        needs: [lint, build]
+        needs: [lint, unittests, dockercomposetests]
         runs-on: ubuntu-latest
         steps:
             - uses: fastify/github-action-merge-dependabot@v1

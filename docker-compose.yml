@@ -1,10 +1,11 @@
 version: '3.8'
 services:
     app:
+        container_name: obfuscation-service
         build:
             args:
-                NODE_ENV: production
+                NODE_ENV: $NODE_ENV
             context: .
-        env_file: .env.production
+        env_file: .env.${NODE_ENV}
         ports:
             - 127.0.0.1:${PORT:-8204}:${PORT:-8204}
