@@ -56,13 +56,24 @@ jobs:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   parallel: true
 
+    dockertests:
+        name: Docker Build Tests
+        if: github.event.pull_request.draft == false
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - name: Build and Start App
+              run: |
+                  docker build --build-arg NODE_ENV=test -t obfuscation-service .
+                  docker run --publish 8204:8204 obfuscation-service
+
     dockercomposetests:
         name: Docker Compose Build Tests
         if: github.event.pull_request.draft == false
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
-            - name: Build and Deploy App
+            - name: Build and Start App
               run: |
                   cp .env.template .env.test
                   NODE_ENV=test docker-compose up --detach
@@ -81,7 +92,7 @@ jobs:
 
     automerge:
         name: Automatically merge Dependabot pull requests
-        needs: [lint, unittests, dockercomposetests]
+        needs: [lint, unittests, dockertests, dockercomposetests]
         runs-on: ubuntu-latest
         steps:
             - uses: fastify/github-action-merge-dependabot@v1
