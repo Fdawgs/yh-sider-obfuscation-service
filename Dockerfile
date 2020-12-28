@@ -2,6 +2,7 @@ FROM node:lts-alpine
 
 ARG NODE_ENV
 ENV NODE_ENV=${NODE_ENV}
+ENV SERVICE_HOST='0.0.0.0'
 
 # Update and upgrade image packages
 RUN apk -U upgrade
