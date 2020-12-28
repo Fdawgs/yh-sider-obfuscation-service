@@ -66,17 +66,17 @@ jobs:
               with:
                   dockerfile: Dockerfile
 
-    dockertests:
-        name: Docker Build Tests
-        if: github.event.pull_request.draft == false
-        needs: lintdockerfile
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v2
-            - name: Build and Start App
-              run: |
-                  docker build --build-arg NODE_ENV=test -t obfuscation-service .
-                  docker run --publish 8204:8204 obfuscation-service
+    # dockertests:
+    #     name: Docker Build Tests
+    #     if: github.event.pull_request.draft == false
+    #     needs: lintdockerfile
+    #     runs-on: ubuntu-latest
+    #     steps:
+    #         - uses: actions/checkout@v2
+    #         - name: Build and Start App
+    #           run: |
+    #               docker build --build-arg NODE_ENV=test -t obfuscation-service .
+    #               docker run --network --publish 8204:8204 obfuscation-service
 
     dockercomposetests:
         name: Docker Compose Build Tests
@@ -104,7 +104,7 @@ jobs:
 
     automerge:
         name: Automatically merge Dependabot pull requests
-        needs: [lint, unittests, dockertests, dockercomposetests]
+        needs: [lint, unittests, dockercomposetests]
         runs-on: ubuntu-latest
         steps:
             - uses: fastify/github-action-merge-dependabot@v1
