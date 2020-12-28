@@ -1,3 +1,27 @@
+## <small>1.1.2 (2020-12-28)</small>
+
+-   docs: clarify on json schema validation ([e529595](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/e529595))
+-   docs(readme): add missing backticks ([665767c](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/665767c))
+-   docs(readme): add note about validation and serialisation ([6b1e865](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/6b1e865))
+-   docs(readme): even more grammar tixes ([f35c97b](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/f35c97b))
+-   docs(readme): grammar fixes ([958b4e5](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/958b4e5))
+-   build(deps-dev): remove eslint-plugin-json ([addb15a](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/addb15a))
+-   build(deps-dev): remove unused dev dependencies ([1bd730b](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/1bd730b))
+-   build(deps): bump fastify-autoload from 3.3.1 to 3.4.0 ([f67e6a6](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/f67e6a6))
+-   build(docker): bump docker-compose from 3.0 to 3.8 ([644cd3b](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/644cd3b))
+-   build(docker): pin git version ([04c1437](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/04c1437))
+-   ci: add docker test job ([42b8f3a](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/42b8f3a))
+-   ci: add docker-compose test job ([3e4e9ad](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/3e4e9ad))
+-   ci: add dockerfile lint job ([878378c](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/878378c))
+-   ci: do not run github actions for draft prs ([6b8e8ca](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/6b8e8ca))
+-   ci: temporarily disable docker test job ([edaf01a](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/edaf01a))
+-   ci: use yarn `--frozen-lockfile` flag for repro deps ([7fbbc05](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/7fbbc05))
+-   fix(docker): set `service_host` env variable ([05c052a](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/05c052a))
+-   style: use default prettier options for trailing commas and quotes ([5c03f65](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/5c03f65))
+-   chore: rename repo ([f9316f4](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/f9316f4))
+-   chore(scripts): summarise count of dependency licenses ([94631f7](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/94631f7))
+-   refactor(docker): remove redundant `if...else` statement ([594eae8](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/594eae8))
+
 ## <small>1.1.1 (2020-12-22)</small>
 
 -   build(deps-dev): add autocannon ([e23a46f](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/e23a46f))
