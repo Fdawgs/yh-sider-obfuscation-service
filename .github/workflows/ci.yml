@@ -12,7 +12,7 @@ on:
 
 jobs:
     lint:
-        name: Lint
+        name: Lint Code
         if: github.event.pull_request.draft == false
         runs-on: ubuntu-latest
         steps:
@@ -56,9 +56,20 @@ jobs:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   parallel: true
 
+    lintdockerfile:
+        name: Lint Dockerfile
+        if: github.event.pull_request.draft == false
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - uses: brpaz/hadolint-action@v1.2.1
+              with:
+                  dockerfile: Dockerfile
+
     dockertests:
         name: Docker Build Tests
         if: github.event.pull_request.draft == false
+        needs: lintdockerfile
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
@@ -70,6 +81,7 @@ jobs:
     dockercomposetests:
         name: Docker Compose Build Tests
         if: github.event.pull_request.draft == false
+        needs: lintdockerfile
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
@@ -80,6 +92,7 @@ jobs:
 
     coverage:
         name: Aggregate Coverage Calculations
+        if: github.event.pull_request.draft == false
         needs: unittests
         runs-on: ubuntu-latest
         steps:
