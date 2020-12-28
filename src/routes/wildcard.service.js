@@ -1,9 +1,9 @@
-const createError = require('http-errors');
-const queryString = require('querystring');
+const createError = require("http-errors");
+const queryString = require("querystring");
 
 // Import route specific plugins
-const keycloakPlugin = require('../plugins/keycloak-access-token.plugin');
-const obfuscationPlugin = require('../plugins/obfuscate-query-string.plugin');
+const keycloakPlugin = require("../plugins/keycloak-access-token.plugin");
+const obfuscationPlugin = require("../plugins/obfuscate-query-string.plugin");
 
 /**
  * @author Frazer Smith
@@ -17,33 +17,33 @@ async function routes(fastify, options) {
 
 	const schema = {
 		querystring: {
-			type: 'object',
+			type: "object",
 			properties: {
-				birthdate: { type: 'string', format: 'date' },
+				birthdate: { type: "string", format: "date" },
 				patient: {
-					type: 'string',
+					type: "string",
 					pattern:
-						'^https:\\/\\/fhir\\.nhs\\.uk\\/Id\\/nhs-number\\|\\d{10}$'
+						"^https:\\/\\/fhir\\.nhs\\.uk\\/Id\\/nhs-number\\|\\d{10}$",
 				},
 				location: {
-					type: 'string',
+					type: "string",
 					pattern:
-						'^https:\\/\\/fhir\\.nhs\\.uk\\/Id\\/ods-organization-code\\|\\w*$'
+						"^https:\\/\\/fhir\\.nhs\\.uk\\/Id\\/ods-organization-code\\|\\w*$",
 				},
 				practitioner: {
-					type: 'string',
+					type: "string",
 					// RFC 5322 compliant email regex
 					pattern:
-						'^https:\\/\\/sider\\.nhs\\.uk\\/auth\\|(([^<>()\\[\\]\\.,;:\\s@"]+(\\.[^<>()\\[\\]\\.,;:\\s@"]+)*)|(".+"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$'
-				}
+						'^https:\\/\\/sider\\.nhs\\.uk\\/auth\\|(([^<>()\\[\\]\\.,;:\\s@"]+(\\.[^<>()\\[\\]\\.,;:\\s@"]+)*)|(".+"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$',
+				},
 			},
-			required: ['patient', 'birthdate', 'location', 'practitioner']
-		}
+			required: ["patient", "birthdate", "location", "practitioner"],
+		},
 	};
 
-	fastify.get('*', { schema }, async (req, res) => {
+	fastify.get("*", { schema }, async (req, res) => {
 		if (!options.redirectUrl) {
-			res.send(createError(500, 'Recieving endpoint missing'));
+			res.send(createError(500, "Recieving endpoint missing"));
 		}
 
 		const espUrl = options.redirectUrl + queryString.stringify(req.query);

@@ -1,10 +1,10 @@
-const AutoLoad = require('fastify-autoload');
-const Fastify = require('fastify');
-const path = require('path');
+const AutoLoad = require("fastify-autoload");
+const Fastify = require("fastify");
+const path = require("path");
 
 // Import plugins
-const cors = require('fastify-cors');
-const helmet = require('fastify-helmet');
+const cors = require("fastify-cors");
+const helmet = require("fastify-helmet");
 
 /**
  * @author Frazer Smith
@@ -25,8 +25,8 @@ module.exports = (fastifyOpts, opts) => {
 
 	// Import and register service routes
 	fastify.register(AutoLoad, {
-		dir: path.join(__dirname, 'routes'),
-		options: { ...opts }
+		dir: path.join(__dirname, "routes"),
+		options: { ...opts },
 	});
 
 	return fastify;

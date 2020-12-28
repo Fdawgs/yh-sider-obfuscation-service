@@ -1,7 +1,7 @@
-const createError = require('http-errors');
-const fastifyPlugin = require('fastify-plugin');
-const { obfuscate } = require('obfuscated-querystring/lib');
-const queryString = require('querystring');
+const createError = require("http-errors");
+const fastifyPlugin = require("fastify-plugin");
+const { obfuscate } = require("obfuscated-querystring/lib");
+const queryString = require("querystring");
 
 /**
  * @author Frazer Smith
@@ -14,7 +14,7 @@ const queryString = require('querystring');
  * @param {Array} options.obfuscate - Query values that should be obfuscated.
  */
 async function obfuscateQueryStringPlugin(fastify, options) {
-	fastify.addHook('preHandler', (req, res, next) => {
+	fastify.addHook("preHandler", (req, res, next) => {
 		try {
 			req.query = queryString.parse(
 				obfuscate(queryString.stringify(req.query), options)
