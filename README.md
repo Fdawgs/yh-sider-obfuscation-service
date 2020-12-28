@@ -156,8 +156,8 @@ Please see [CONTRIBUTING.md](https://github.com/Fdawgs/ydh-sider-obfuscation-ser
 
 ## Acknowledgements
 
--   [**Mark Hunt**](https://github.com/nhsbandit) - Keycloak Single sign-on access tokens integration and testing support
--   [**Will Jehring**](https://github.com/wjehring) - Query string obfuscation, redirect testing, and Keycloak testing support
+-   [**Mark Hunt**](https://github.com/nhsbandit) - Keycloak single sign-on access tokens integration and testing
+-   [**Will Jehring**](https://github.com/wjehring) - Query string obfuscation, redirect testing, and Keycloak testing
 
 ## License
 

@@ -15,6 +15,12 @@ async function routes(fastify, options) {
 	fastify.register(keycloakPlugin, options.keycloak);
 	fastify.register(obfuscationPlugin, options.obfuscation);
 
+	/**
+	 * Fastify uses AJV for JSON Schema Validation,
+	 * see https://www.fastify.io/docs/latest/Validation-and-Serialization/
+	 *
+	 * This validation protects against XSS and HPP attacks.
+	 */
 	const schema = {
 		querystring: {
 			type: "object",
