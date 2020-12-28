@@ -1,12 +1,12 @@
-require('custom-env').env();
+require("custom-env").env();
 
-const fs = require('fs');
-const pino = require('pino');
-const rotatingLogStream = require('file-stream-rotator');
+const fs = require("fs");
+const pino = require("pino");
+const rotatingLogStream = require("file-stream-rotator");
 
 let fastifyConfig = {};
 
-if (process.env.LOGGER_ENABLED === 'true') {
+if (process.env.LOGGER_ENABLED === "true") {
 	fastifyConfig = {
 		/**
 		 * See https://www.fastify.io/docs/v3.8.x/Logging/
@@ -16,7 +16,7 @@ if (process.env.LOGGER_ENABLED === 'true') {
 			formatters: {
 				level(label) {
 					return { level: label };
-				}
+				},
 			},
 			// Defaults to `info` if not set in env
 			level: process.env.LOGGER_LEVEL,
@@ -26,22 +26,22 @@ if (process.env.LOGGER_ENABLED === 'true') {
 				},
 				res(res) {
 					return pino.stdSerializers.res(res);
-				}
+				},
 			},
 			timestamp: () => pino.stdTimeFunctions.isoTime(),
 			// Rotation options: https://github.com/rogerc/file-stream-rotator/#options
 			stream: rotatingLogStream.getStream({
 				date_format:
-					process.env.LOGGER_ROTATION_DATE_FORMAT || 'YYYY-MM-DD',
+					process.env.LOGGER_ROTATION_DATE_FORMAT || "YYYY-MM-DD",
 				filename:
 					process.env.LOGGER_ROTATION_FILENAME ||
 					`${process.cwd()}/logs/obs-service-%DATE%.log`,
-				frequency: process.env.LOGGER_ROTATION_FREQUENCY || 'daily',
+				frequency: process.env.LOGGER_ROTATION_FREQUENCY || "daily",
 				max_logs: process.env.LOGGER_ROTATION_MAX_LOG,
 				size: process.env.LOGGER_ROTATION_MAX_SIZE,
-				verbose: false
-			})
-		}
+				verbose: false,
+			}),
+		},
 	};
 }
 
@@ -52,7 +52,7 @@ if (
 ) {
 	fastifyConfig.https = {
 		cert: fs.readFileSync(process.env.HTTPS_SSL_CERT_PATH),
-		key: fs.readFileSync(process.env.HTTPS_SSL_KEY_PATH)
+		key: fs.readFileSync(process.env.HTTPS_SSL_KEY_PATH),
 	};
 }
 
@@ -62,7 +62,7 @@ if (
 ) {
 	fastifyConfig.https = {
 		passphrase: process.env.HTTPS_PFX_PASSPHRASE,
-		pfx: fs.readFileSync(process.env.HTTPS_PFX_FILE_PATH)
+		pfx: fs.readFileSync(process.env.HTTPS_PFX_FILE_PATH),
 	};
 }
 
@@ -70,7 +70,7 @@ const appConfig = {
 	redirectUrl: process.env.SERVICE_REDIRECT_URL,
 
 	cors: {
-		origin: process.env.CORS_ORIGIN || false
+		origin: process.env.CORS_ORIGIN || false,
 	},
 
 	// Values used by keycloak-access-token plugin in wildcard service
@@ -85,9 +85,9 @@ const appConfig = {
 				grant_type: process.env.KC_REQUESTTOKEN_GRANT_TYPE,
 				requested_subject: undefined,
 				requested_token_type:
-					process.env.KC_REQUESTTOKEN_REQUESTED_TOKEN_TYPE
+					process.env.KC_REQUESTTOKEN_REQUESTED_TOKEN_TYPE,
 			},
-			url: process.env.KC_REQUESTTOKEN_URL
+			url: process.env.KC_REQUESTTOKEN_URL,
 		},
 		// Service authorisation to retrieve subject access token
 		serviceAuthorisation: {
@@ -96,19 +96,19 @@ const appConfig = {
 				client_secret: process.env.KC_SERVICEAUTH_CLIENT_SECRET,
 				grant_type: process.env.KC_SERVICEAUTH_GRANT_TYPE,
 				password: process.env.KC_SERVICEAUTH_PASSWORD,
-				username: process.env.KC_SERVICEAUTH_USERNAME
+				username: process.env.KC_SERVICEAUTH_USERNAME,
 			},
-			url: process.env.KC_SERVICEAUTH_URL
-		}
+			url: process.env.KC_SERVICEAUTH_URL,
+		},
 	},
 	// Values used by obfuscate-query-string plugin
 	obfuscation: {
 		encryptionKey: {
 			name: process.env.OBFUSCATION_KEY_NAME,
-			value: process.env.OBFUSCATION_KEY_VALUE
+			value: process.env.OBFUSCATION_KEY_VALUE,
 		},
-		obfuscate: JSON.parse(process.env.OBFUSCATION_QUERYSTRING_KEY_ARRAY)
-	}
+		obfuscate: JSON.parse(process.env.OBFUSCATION_QUERYSTRING_KEY_ARRAY),
+	},
 };
 
 if (process.env.CORS_METHODS_ARRAY) {
@@ -123,5 +123,5 @@ if (process.env.CORS_ALLOWED_HEADERS_ARRAY) {
 
 module.exports = {
 	fastifyConfig,
-	appConfig
+	appConfig,
 };

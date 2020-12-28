@@ -1,8 +1,8 @@
 /* eslint-disable jsdoc/require-param-description */
-const fastifyPlugin = require('fastify-plugin');
-const createError = require('http-errors');
-const request = require('axios');
-const queryString = require('querystring');
+const fastifyPlugin = require("fastify-plugin");
+const createError = require("http-errors");
+const request = require("axios");
+const queryString = require("querystring");
 
 /**
  * @author Frazer Smith
@@ -30,8 +30,8 @@ const queryString = require('querystring');
  */
 async function keycloakAccessTokenPlugin(fastify, options) {
 	// Don't add preHandler hook and attempt to retrieve access tokens if Keycloak not enabled
-	if (options && options.enabled === 'true') {
-		fastify.addHook('preHandler', async (req, res) => {
+	if (options && options.enabled === "true") {
+		fastify.addHook("preHandler", async (req, res) => {
 			try {
 				const { requestToken, serviceAuthorisation } = options;
 
@@ -46,7 +46,7 @@ async function keycloakAccessTokenPlugin(fastify, options) {
 
 				// Expects the practitioner query to be in [system]|[code] format
 				requestToken.form.requested_subject = req.query.practitioner.split(
-					'|'
+					"|"
 				)[1];
 
 				// Request access token for user
@@ -61,7 +61,7 @@ async function keycloakAccessTokenPlugin(fastify, options) {
 				res.send(
 					createError(
 						500,
-						'Unable to retrieve Keycloak access token(s)'
+						"Unable to retrieve Keycloak access token(s)"
 					)
 				);
 			}
