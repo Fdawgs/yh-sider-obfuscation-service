@@ -29,7 +29,7 @@ jobs:
             - name: Run License Checker
               run: yarn license-checker
 
-    unittests:
+    unit-tests:
         name: Unit Tests
         if: github.event.pull_request.draft == false
         strategy:
@@ -56,7 +56,7 @@ jobs:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   parallel: true
 
-    lintdockerfile:
+    lint-docker-file:
         name: Lint Dockerfile
         if: github.event.pull_request.draft == false
         runs-on: ubuntu-latest
@@ -66,10 +66,10 @@ jobs:
               with:
                   dockerfile: Dockerfile
 
-    # dockertests:
+    # docker-tests:
     #     name: Docker Build Tests
     #     if: github.event.pull_request.draft == false
-    #     needs: lintdockerfile
+    #     needs: lint-docker-file
     #     runs-on: ubuntu-latest
     #     steps:
     #         - uses: actions/checkout@v2
@@ -78,10 +78,10 @@ jobs:
     #               docker build --build-arg NODE_ENV=test -t obfuscation-service .
     #               docker run --network --publish 8204:8204 obfuscation-service
 
-    dockercomposetests:
+    docker-compose-tests:
         name: Docker Compose Build Tests
         if: github.event.pull_request.draft == false
-        needs: lintdockerfile
+        needs: lint-docker-file
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
@@ -93,7 +93,7 @@ jobs:
     coverage:
         name: Aggregate Coverage Calculations
         if: github.event.pull_request.draft == false
-        needs: unittests
+        needs: unit-tests
         runs-on: ubuntu-latest
         steps:
             - name: Coveralls Finished
@@ -104,7 +104,8 @@ jobs:
 
     automerge:
         name: Automatically merge Dependabot pull requests
-        needs: [lint, unittests, dockercomposetests]
+        if: github.event.pull_request.draft == false
+        needs: [lint, unit-tests, docker-compose-tests]
         runs-on: ubuntu-latest
         steps:
             - uses: fastify/github-action-merge-dependabot@v1.1.1
