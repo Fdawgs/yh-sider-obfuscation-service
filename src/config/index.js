@@ -181,7 +181,7 @@ async function getConfig() {
 				key: await fsp.readFile(env.HTTPS_SSL_KEY_PATH),
 			};
 		} catch (err) {
-			console.log(
+			throw Error(
 				`No such file or directory ${err.path} for SSL cert/key, falling back to HTTP`
 			);
 		}
@@ -194,7 +194,7 @@ async function getConfig() {
 				pfx: await fsp.readFile(env.HTTPS_PFX_FILE_PATH),
 			};
 		} catch (err) {
-			console.log(
+			throw Error(
 				`No such file or directory ${err.path} for PFX file, falling back to HTTP`
 			);
 		}
