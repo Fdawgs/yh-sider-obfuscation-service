@@ -10,8 +10,6 @@ const {
 const mockKeycloakServer = require("../../../test_resources/mocks/keycloak-server.mock");
 const getConfig = require("../../config");
 
-const config = getConfig();
-
 const headers = {
 	"Content-Type": "application/json",
 	"cache-control": "no-cache",
@@ -26,8 +24,10 @@ const mockParams = {
 
 describe("Keycloak access token retrieval plugin", () => {
 	let server;
+	let config;
 
 	beforeAll(async () => {
+		config = await getConfig();
 		try {
 			await mockKeycloakServer.listen(3000);
 			console.log("Mock Keycloak server listening on 3000");

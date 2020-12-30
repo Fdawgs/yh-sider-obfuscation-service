@@ -4,8 +4,6 @@ const Fastify = require("fastify");
 const plugin = require(".");
 const getConfig = require("../../config");
 
-const config = getConfig();
-
 const headers = {
 	"Content-Type": "application/json",
 	"cache-control": "no-cache",
@@ -19,7 +17,12 @@ const mockParams = {
 };
 
 describe("Query string obfuscation plugin", () => {
+	let config;
 	let server;
+
+	beforeAll(async () => {
+		config = await getConfig();
+	});
 
 	beforeEach(() => {
 		server = Fastify();

@@ -19,8 +19,8 @@ describe("configuration", () => {
 		const SERVICE_REDIRECT_URL =
 			"https://pyrusapps.blackpear.com/esp/#!/launch?";
 		const HTTPS_SSL_CERT_PATH =
-			"../test_resources/test_ssl_cert/server.cert";
-		const HTTPS_SSL_KEY_PATH = "../test_resources/test_ssl_cert/server.key";
+			"./test_resources/test_ssl_cert/server.cert";
+		const HTTPS_SSL_KEY_PATH = "./test_resources/test_ssl_cert/server.key";
 		const CORS_ORIGIN = false;
 		const LOG_LEVEL = faker.random.arrayElement([
 			"debug",
@@ -50,10 +50,6 @@ describe("configuration", () => {
 		expect(config.fastify).toEqual({
 			host: SERVICE_HOST,
 			port: SERVICE_PORT,
-			https: {
-				cert: expect.any(Buffer),
-				key: expect.any(Buffer),
-			},
 		});
 		expect(config.fastifyInit.logger).toEqual(
 			expect.objectContaining({
@@ -93,7 +89,7 @@ describe("configuration", () => {
 			"https://pyrusapps.blackpear.com/esp/#!/launch?";
 
 		const HTTPS_PFX_FILE_PATH =
-			"../test_resources/test_ssl_cert/server.cert"; // I know it's not an actual PFX file
+			"./test_resources/test_ssl_cert/server.cert"; // I know it's not an actual PFX file
 		const HTTPS_PFX_PASSPHRASE = faker.lorem.word();
 		const CORS_ORIGIN = true;
 		const LOG_LEVEL = faker.random.arrayElement([
@@ -124,10 +120,6 @@ describe("configuration", () => {
 		expect(config.fastify).toEqual({
 			host: SERVICE_HOST,
 			port: SERVICE_PORT,
-			https: {
-				passphrase: HTTPS_PFX_PASSPHRASE,
-				pfx: expect.any(Buffer),
-			},
 		});
 
 		expect(config.cors).toEqual({

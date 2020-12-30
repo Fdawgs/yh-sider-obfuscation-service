@@ -9,8 +9,6 @@ const startServer = require("./server");
 const mockServer = require("../test_resources/mocks/sider-server.mock");
 const getConfig = require("./config");
 
-const config = await getConfig();
-
 const headers = {
 	"Content-Type": "application/json",
 	"cache-control": "no-cache",
@@ -30,7 +28,10 @@ const mockParams = {
 };
 
 describe("Server deployment", () => {
+	let config;
+
 	beforeAll(async () => {
+		config = await getConfig();
 		try {
 			await mockServer.listen(3001);
 			config.redirectUrl = "http://127.0.0.1:3001/esp/#!/launch?";
@@ -218,27 +219,22 @@ describe("Server deployment", () => {
 	});
 
 	describe("Benchmark", () => {
-		const altConfig = cloneDeep(config);
-		delete altConfig.https;
-		let server;
+		test("Should have an average latency less than 50ms", async () => {
+			const altConfig = cloneDeep(config);
+			delete altConfig.fastifyInit.https;
 
-		beforeEach(async () => {
-			server = Fastify();
+			const server = Fastify();
 			server.register(startServer, altConfig);
 			await server.listen(altConfig.fastify);
-		});
 
-		afterEach(() => {
-			server.close();
-		});
-
-		test("Should have an average latency less than 50ms", async () => {
 			const results = await autocannon({
 				url: `http://127.0.0.1:${process.env.SERVICE_PORT}?birthdate=${mockParams.birthdate}&location=${mockParams.location}&patient=${mockParams.patient}&practitioner=${mockParams.practitioner}`,
 				duration: 9,
 			});
 
 			expect(results.latency.average).toBeLessThan(50);
+
+			server.close();
 		});
 	});
 });
