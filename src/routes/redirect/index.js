@@ -48,7 +48,7 @@ async function routes(server, options) {
 		},
 	};
 
-	server.get("*", { schema }, async (req, res) => {
+	server.get("/redirect", { schema }, async (req, res) => {
 		if (!options.redirectUrl) {
 			res.send(createError(500, "Recieving endpoint missing"));
 		}

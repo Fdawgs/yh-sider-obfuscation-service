@@ -62,7 +62,7 @@ describe("Server deployment", () => {
 		test("Should redirect to 'redirectUrl' with required params present", async () => {
 			const res = await server.inject({
 				method: "GET",
-				url: "/",
+				url: "/redirect",
 				headers,
 				query: mockParams,
 			});
@@ -101,7 +101,7 @@ describe("Server deployment", () => {
 
 					const res = await server.inject({
 						method: "GET",
-						url: "/",
+						url: "/redirect",
 						headers,
 						query: scrubbedParams,
 					});
@@ -128,7 +128,7 @@ describe("Server deployment", () => {
 
 					const res = await server.inject({
 						method: "GET",
-						url: "/",
+						url: "/redirect",
 						headers,
 						query: scrubbedParams,
 					});
@@ -154,7 +154,7 @@ describe("Server deployment", () => {
 
 			const res = await server.inject({
 				method: "GET",
-				url: "/",
+				url: "/redirect",
 				headers,
 				query: mockParams,
 			});
@@ -177,7 +177,7 @@ describe("Server deployment", () => {
 
 			const res = await server.inject({
 				method: "GET",
-				url: "/",
+				url: "/redirect",
 				headers,
 				query: mockParams,
 			});
@@ -202,7 +202,7 @@ describe("Server deployment", () => {
 
 			const res = await server.inject({
 				method: "GET",
-				url: "/",
+				url: "/redirect",
 				headers,
 				query: mockParams,
 			});
@@ -228,7 +228,7 @@ describe("Server deployment", () => {
 			await server.listen(altConfig.fastify);
 
 			const results = await autocannon({
-				url: `http://127.0.0.1:${process.env.SERVICE_PORT}?birthdate=${mockParams.birthdate}&location=${mockParams.location}&patient=${mockParams.patient}&practitioner=${mockParams.practitioner}`,
+				url: `http://127.0.0.1:${process.env.SERVICE_PORT}/redirect?birthdate=${mockParams.birthdate}&location=${mockParams.location}&patient=${mockParams.patient}&practitioner=${mockParams.practitioner}`,
 				duration: 9,
 			});
 
