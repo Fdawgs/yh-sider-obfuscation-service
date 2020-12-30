@@ -48,7 +48,6 @@ jobs:
             - name: Run Tests
               run: |
                   cp .env.template .env.test
-                  yarn dupe-check
                   yarn jest-coverage
             - name: Coveralls Parallel
               uses: coverallsapp/github-action@master
