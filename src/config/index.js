@@ -2,7 +2,7 @@ require("custom-env").env();
 
 const envSchema = require("env-schema");
 const S = require("fluent-json-schema");
-const fs = require("fs").promises;
+const fsp = require("fs").promises;
 const pino = require("pino");
 const rotatingLogStream = require("file-stream-rotator");
 
@@ -178,21 +178,30 @@ async function getConfig() {
 	};
 
 	// Enable HTTPS using cert/key or passphrase/pfx combinations
-	if (
-		fs.access(env.HTTPS_SSL_CERT_PATH) &&
-		fs.access(env.HTTPS_SSL_KEY_PATH)
-	) {
-		config.fastify.https = {
-			cert: await fs.readFile(env.HTTPS_SSL_CERT_PATH),
-			key: await fs.readFile(env.HTTPS_SSL_KEY_PATH),
-		};
+	if (env.HTTPS_SSL_CERT_PATH && env.HTTPS_SSL_KEY_PATH) {
+		try {
+			config.fastifyInit.https = {
+				cert: await fsp.readFile(env.HTTPS_SSL_CERT_PATH),
+				key: await fsp.readFile(env.HTTPS_SSL_KEY_PATH),
+			};
+		} catch (err) {
+			console.log(
+				`No such file or directory ${err.path}, falling back to HTTP`
+			);
+		}
 	}
 
-	if (env.HTTPS_PFX_PASSPHRASE && fs.access(env.HTTPS_PFX_FILE_PATH)) {
-		config.fastify.https = {
-			passphrase: env.HTTPS_PFX_PASSPHRASE,
-			pfx: await fs.readFile(env.HTTPS_PFX_FILE_PATH),
-		};
+	if (env.HTTPS_PFX_PASSPHRASE && env.HTTPS_PFX_FILE_PATH) {
+		try {
+			config.fastifyInit.https = {
+				passphrase: env.HTTPS_PFX_PASSPHRASE,
+				pfx: await fsp.readFile(env.HTTPS_PFX_FILE_PATH),
+			};
+		} catch (err) {
+			console.log(
+				`No such file or directory ${err.path}, falling back to HTTP`
+			);
+		}
 	}
 
 	return config;
