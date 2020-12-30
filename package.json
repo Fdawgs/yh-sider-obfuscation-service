@@ -23,7 +23,8 @@
 	"jest": {
 		"clearMocks": true,
 		"collectCoverageFrom": [
-			"src/**/*.js"
+			"src/**/*.js",
+			"!src/app.js"
 		],
 		"testEnvironment": "node",
 		"testTimeout": 10000
