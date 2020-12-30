@@ -112,7 +112,7 @@ async function getConfig() {
 						return { level: label };
 					},
 				},
-				level: env.LOG_LEVEL,
+				level: env.LOG_LEVEL || "info",
 				serializers: {
 					req(req) {
 						return pino.stdSerializers.req(req);
@@ -124,9 +124,11 @@ async function getConfig() {
 				timestamp: () => pino.stdTimeFunctions.isoTime(),
 				// Rotation options: https://github.com/rogerc/file-stream-rotator/#options
 				stream: rotatingLogStream.getStream({
-					date_format: env.LOG_ROTATION_DATE_FORMAT,
-					filename: env.LOG_ROTATION_FILENAME,
-					frequency: env.LOG_ROTATION_FREQUENCY,
+					date_format: env.LOG_ROTATION_DATE_FORMAT || "YYYY-MM-DD",
+					filename:
+						env.LOG_ROTATION_FILENAME ||
+						`${process.cwd()}/logs/obs-service-%DATE%.log`,
+					frequency: env.LOG_ROTATION_FREQUENCY || "daily",
 					max_logs: env.LOG_ROTATION_MAX_LOG,
 					size: env.LOG_ROTATION_MAX_SIZE,
 					verbose: false,
@@ -134,7 +136,7 @@ async function getConfig() {
 			},
 		},
 		cors: {
-			origin: parseCorsParameter(env.CORS_ORIGIN),
+			origin: parseCorsParameter(env.CORS_ORIGIN) || false,
 			methods: ["Accept"],
 			allowedHeaders: ["GET", "OPTIONS"],
 		},
@@ -186,7 +188,7 @@ async function getConfig() {
 			};
 		} catch (err) {
 			console.log(
-				`No such file or directory ${err.path}, falling back to HTTP`
+				`No such file or directory ${err.path} for SSL cert/key, falling back to HTTP`
 			);
 		}
 	}
@@ -199,7 +201,7 @@ async function getConfig() {
 			};
 		} catch (err) {
 			console.log(
-				`No such file or directory ${err.path}, falling back to HTTP`
+				`No such file or directory ${err.path} for PFX file, falling back to HTTP`
 			);
 		}
 	}
