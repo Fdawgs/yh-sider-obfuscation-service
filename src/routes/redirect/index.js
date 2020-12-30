@@ -22,40 +22,44 @@ async function routes(server, options) {
 	 *
 	 * This validation protects against XSS and HPP attacks.
 	 */
-	const schema = {
-		querystring: {
-			type: "object",
-			properties: {
-				birthdate: { type: "string", format: "date" },
-				patient: {
-					type: "string",
-					pattern:
-						"^https:\\/\\/fhir\\.nhs\\.uk\\/Id\\/nhs-number\\|\\d{10}$",
+	server.route({
+		method: "GET",
+		url: "/redirect",
+		schema: {
+			querystring: {
+				type: "object",
+				properties: {
+					birthdate: { type: "string", format: "date" },
+					patient: {
+						type: "string",
+						pattern:
+							"^https:\\/\\/fhir\\.nhs\\.uk\\/Id\\/nhs-number\\|\\d{10}$",
+					},
+					location: {
+						type: "string",
+						pattern:
+							"^https:\\/\\/fhir\\.nhs\\.uk\\/Id\\/ods-organization-code\\|\\w*$",
+					},
+					practitioner: {
+						type: "string",
+						// RFC 5322 compliant email regex
+						pattern:
+							'^https:\\/\\/sider\\.nhs\\.uk\\/auth\\|(([^<>()\\[\\]\\.,;:\\s@"]+(\\.[^<>()\\[\\]\\.,;:\\s@"]+)*)|(".+"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$',
+					},
 				},
-				location: {
-					type: "string",
-					pattern:
-						"^https:\\/\\/fhir\\.nhs\\.uk\\/Id\\/ods-organization-code\\|\\w*$",
-				},
-				practitioner: {
-					type: "string",
-					// RFC 5322 compliant email regex
-					pattern:
-						'^https:\\/\\/sider\\.nhs\\.uk\\/auth\\|(([^<>()\\[\\]\\.,;:\\s@"]+(\\.[^<>()\\[\\]\\.,;:\\s@"]+)*)|(".+"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$',
-				},
+				required: ["patient", "birthdate", "location", "practitioner"],
 			},
-			required: ["patient", "birthdate", "location", "practitioner"],
 		},
-	};
+		async handler(req, res) {
+			if (!options.redirectUrl) {
+				res.send(createError(500, "Recieving endpoint missing"));
+			}
 
-	server.get("/redirect", { schema }, async (req, res) => {
-		if (!options.redirectUrl) {
-			res.send(createError(500, "Recieving endpoint missing"));
-		}
-
-		const espUrl = options.redirectUrl + queryString.stringify(req.query);
-		server.log.debug(espUrl);
-		res.redirect(espUrl);
+			const espUrl =
+				options.redirectUrl + queryString.stringify(req.query);
+			server.log.debug(espUrl);
+			res.redirect(espUrl);
+		},
 	});
 }
 
