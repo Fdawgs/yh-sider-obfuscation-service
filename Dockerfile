@@ -3,6 +3,7 @@ FROM node:lts-alpine
 ARG NODE_ENV
 ENV NODE_ENV=${NODE_ENV}
 ENV SERVICE_HOST='0.0.0.0'
+ENV LOG_ROTATION_FILENAME='/logs/obs-service-%DATE%.log'
 
 # Create unprivileged user to run app and prevent
 # privilege escalation attacks
