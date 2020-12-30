@@ -1,3 +1,37 @@
+## 2.0.0 (2020-12-30)
+
+-   docs(contributing): update prettier script ([1141bf7](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/1141bf7))
+-   docs(readme): correct output reference ([d0875d8](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/d0875d8))
+-   build: update github-actions and docker with dependabot ([6923ddd](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/6923ddd))
+-   build(deps-dev): remove jsinspect ([e2e25ff](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/e2e25ff))
+-   build(deps): add env-schema ([ea3b6a1](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/ea3b6a1))
+-   build(deps): add fluent-json-schema ([fe6e47a](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/fe6e47a))
+-   build(deps): bump brpaz/hadolint-action from v1.2.1 to v1.3.1 ([e08c026](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/e08c026))
+-   build(deps): bump fastify/github-action-merge-dependabot (#51) ([f5e49b1](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/f5e49b1)), closes [#51](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/51)
+-   build(docker): declare log_rotation_filename env variable ([1e3b646](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/1e3b646))
+-   refactor(config): make fs calls async ([bd33e14](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/bd33e14))
+-   refactor(plugins/keycloak): change `option` param handling ([ed5be5a](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/ed5be5a))
+-   refactor(plugins/obfuscate): change `option` param handling ([b6ac30c](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/b6ac30c))
+-   refactor(routes): add redirect path ([2e05bb6](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/2e05bb6))
+-   refactor(routes/wildcard): autoloads plugins ([669f626](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/669f626))
+-   refactor(server): rename app to server; server now plugin ([2f20375](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/2f20375))
+-   test: fix calling of `getconfig()` function ([b40bcb9](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/b40bcb9))
+-   test(app): ignore app.js for coverage ([48a07ee](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/48a07ee))
+-   chore: tidy jsdoc tags and eslint comments ([6507667](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/6507667))
+-   fix(config): defaults ([696d0a6](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/696d0a6))
+-   fix(config): location of `https` object ([b3fe4b4](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/b3fe4b4))
+-   fix(config): log_rotation_filename default ([54b2bb7](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/54b2bb7))
+-   feat(config): add config validation ([171430f](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/171430f))
+-   ci: refactor `codeql-analysis.yml` ([a19272a](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/a19272a))
+-   style(ci): tidy job names ([f6398a9](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/f6398a9))
+
+### BREAKING CHANGE
+
+-   env variables prefixed with `LOGGER_` changed to `LOG_`. `CORS_ALLOWED_HEADERS_ARRAY` and `CORS_METHODS_ARRAY` have been removed.
+-   keycloak plugin function now expects `options.keycloak` not `options`
+-   obfuscate plugin function now expects `options.obfuscate` not `options`
+-   Redirect made to `/` must now be made to `/redirect`
+
 ## <small>1.1.2 (2020-12-28)</small>
 
 -   docs: clarify on json schema validation ([e529595](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/e529595))
