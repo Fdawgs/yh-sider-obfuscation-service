@@ -12,8 +12,8 @@
 	"scripts": {
 		"changelog": "conventional-changelog -p @commitlint/config-conventional -s -i CHANGELOG.md && prettier CHANGELOG.md --write",
 		"dupe-check": "yarn jsinspect ./src",
-		"jest": "cross-env NODE_ENV=test LOGGER_ENABLED=false jest --detectOpenHandles --runInBand",
-		"jest-coverage": "cross-env NODE_ENV=test LOGGER_ENABLED=false jest --coverage --runInBand",
+		"jest": "cross-env NODE_ENV=test jest --detectOpenHandles --runInBand",
+		"jest-coverage": "cross-env NODE_ENV=test jest --coverage --runInBand",
 		"license-checker": "license-checker --production --summary --onlyAllow=\"MIT;ISC;BSD-3-Clause;BSD-2-Clause\" --excludePackages=\"obfuscated-querystring@0.0.2\"",
 		"lint": "eslint . --cache --ext js,jsx,ts,tsx --ignore-path .gitignore",
 		"lint:prettier": "prettier . --write --ignore-path .gitignore",
