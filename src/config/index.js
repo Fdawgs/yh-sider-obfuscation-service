@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 require("custom-env").env();
 
 const envSchema = require("env-schema");
