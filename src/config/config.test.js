@@ -13,14 +13,14 @@ describe("configuration", () => {
 		Object.assign(process.env, currentEnv);
 	});
 
-	test("Should return values according to environment variables - SSL enabled and CORS disabled", () => {
+	test("Should return values according to environment variables - SSL enabled and CORS disabled", async () => {
 		const SERVICE_HOST = faker.internet.ip();
 		const SERVICE_PORT = faker.random.number();
 		const SERVICE_REDIRECT_URL =
 			"https://pyrusapps.blackpear.com/esp/#!/launch?";
 		const HTTPS_SSL_CERT_PATH =
-			"./test_resources/test_ssl_cert/server.cert";
-		const HTTPS_SSL_KEY_PATH = "./test_resources/test_ssl_cert/server.key";
+			"../test_resources/test_ssl_cert/server.cert";
+		const HTTPS_SSL_KEY_PATH = "../test_resources/test_ssl_cert/server.key";
 		const CORS_ORIGIN = false;
 		const LOG_LEVEL = faker.random.arrayElement([
 			"debug",
@@ -45,7 +45,7 @@ describe("configuration", () => {
 			OBFUSCATION_QUERYSTRING_KEY_ARRAY,
 		});
 
-		const config = getConfig();
+		const config = await getConfig();
 
 		expect(config.fastify).toEqual({
 			host: SERVICE_HOST,
@@ -86,14 +86,14 @@ describe("configuration", () => {
 		});
 	});
 
-	test("Should return values according to environment variables - PFX enabled and CORS enabled", () => {
+	test("Should return values according to environment variables - PFX enabled and CORS enabled", async () => {
 		const SERVICE_HOST = faker.internet.ip();
 		const SERVICE_PORT = faker.random.number();
 		const SERVICE_REDIRECT_URL =
 			"https://pyrusapps.blackpear.com/esp/#!/launch?";
 
 		const HTTPS_PFX_FILE_PATH =
-			"./test_resources/test_ssl_cert/server.cert"; // I know it's not an actual PFX file
+			"../test_resources/test_ssl_cert/server.cert"; // I know it's not an actual PFX file
 		const HTTPS_PFX_PASSPHRASE = faker.lorem.word();
 		const CORS_ORIGIN = true;
 		const LOG_LEVEL = faker.random.arrayElement([
@@ -119,7 +119,7 @@ describe("configuration", () => {
 			OBFUSCATION_QUERYSTRING_KEY_ARRAY,
 		});
 
-		const config = getConfig();
+		const config = await getConfig();
 
 		expect(config.fastify).toEqual({
 			host: SERVICE_HOST,

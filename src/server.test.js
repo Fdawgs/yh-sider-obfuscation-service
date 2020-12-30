@@ -9,7 +9,7 @@ const startServer = require("./server");
 const mockServer = require("../test_resources/mocks/sider-server.mock");
 const getConfig = require("./config");
 
-const config = getConfig();
+const config = await getConfig();
 
 const headers = {
 	"Content-Type": "application/json",

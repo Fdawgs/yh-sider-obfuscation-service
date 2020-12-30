@@ -2,12 +2,13 @@ require("custom-env").env();
 
 const envSchema = require("env-schema");
 const S = require("fluent-json-schema");
-const fs = require("fs");
+const fs = require("fs").promises;
 const pino = require("pino");
 const rotatingLogStream = require("file-stream-rotator");
 
 /**
  * @author Frazer Smith
+ * @author Colm Harte
  * @author Jack Murdoch
  * @description Convert string boolean to boolean.
  * @param {string} param - CORS parameter.
@@ -28,7 +29,7 @@ function parseCorsParameter(param) {
  * @description Validate environment variables and build server config.
  * @returns {object} Server config.
  */
-function getConfig() {
+async function getConfig() {
 	// Validate env variables
 	const env = envSchema({
 		dotenv: true,
@@ -178,23 +179,21 @@ function getConfig() {
 
 	// Enable HTTPS using cert/key or passphrase/pfx combinations
 	if (
-		fs.existsSync(env.HTTPS_SSL_CERT_PATH) &&
-		fs.existsSync(env.HTTPS_SSL_KEY_PATH)
+		fs.access(env.HTTPS_SSL_CERT_PATH) &&
+		fs.access(env.HTTPS_SSL_KEY_PATH)
 	) {
 		config.fastify.https = {
-			cert: fs.readFileSync(env.HTTPS_SSL_CERT_PATH),
-			key: fs.readFileSync(env.HTTPS_SSL_KEY_PATH),
+			cert: await fs.readFile(env.HTTPS_SSL_CERT_PATH),
+			key: await fs.readFile(env.HTTPS_SSL_KEY_PATH),
 		};
 	}
 
-	if (env.HTTPS_PFX_PASSPHRASE && fs.existsSync(env.HTTPS_PFX_FILE_PATH)) {
+	if (env.HTTPS_PFX_PASSPHRASE && fs.access(env.HTTPS_PFX_FILE_PATH)) {
 		config.fastify.https = {
 			passphrase: env.HTTPS_PFX_PASSPHRASE,
-			pfx: fs.readFileSync(env.HTTPS_PFX_FILE_PATH),
+			pfx: await fs.readFile(env.HTTPS_PFX_FILE_PATH),
 		};
 	}
-
-	console.log(config.fastify);
 
 	return config;
 }
