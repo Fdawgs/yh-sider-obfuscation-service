@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const Fastify = require("fastify");
 const startServer = require("./server");
 const getConfig = require("./config");
@@ -9,7 +10,6 @@ const getConfig = require("./config");
  */
 const main = async () => {
 	process.on("unhandledRejection", (err) => {
-		// eslint-disable-next-line no-console
 		console.error(err);
 		process.exit(1);
 	});

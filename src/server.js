@@ -9,7 +9,7 @@ const helmet = require("fastify-helmet");
 /**
  * @author Frazer Smith
  * @description Build Fastify instance
- * @param server -
+ * @param {Function} server - Fastify instance.
  * @param {object} config - Fastify configuration values
  */
 async function plugin(server, config) {
