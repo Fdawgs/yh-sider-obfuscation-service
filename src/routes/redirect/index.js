@@ -1,19 +1,20 @@
+const autoLoad = require("fastify-autoload");
+const fastifyPlugin = require("fastify-plugin");
+const path = require("path");
 const createError = require("http-errors");
 const queryString = require("querystring");
-
-// Import route specific plugins
-const keycloakPlugin = require("../plugins/keycloak-access-token.plugin");
-const obfuscationPlugin = require("../plugins/obfuscate-query-string.plugin");
 
 /**
  * @author Frazer Smith
  * @description Sets routing options for server.
- * @param {Function} fastify - Fastify instance.
+ * @param {Function} server - Fastify instance.
  * @param {object} options - Object containing route config objects.
  */
-async function routes(fastify, options) {
-	fastify.register(keycloakPlugin, options.keycloak);
-	fastify.register(obfuscationPlugin, options.obfuscation);
+async function routes(server, options) {
+	server.register(autoLoad, {
+		dir: path.join(__dirname, "../../plugins"),
+		options,
+	});
 
 	/**
 	 * Fastify uses AJV for JSON Schema Validation,
@@ -47,15 +48,15 @@ async function routes(fastify, options) {
 		},
 	};
 
-	fastify.get("*", { schema }, async (req, res) => {
+	server.get("/redirect", { schema }, async (req, res) => {
 		if (!options.redirectUrl) {
 			res.send(createError(500, "Recieving endpoint missing"));
 		}
 
 		const espUrl = options.redirectUrl + queryString.stringify(req.query);
-		fastify.log.debug(espUrl);
+		server.log.debug(espUrl);
 		res.redirect(espUrl);
 	});
 }
 
-module.exports = routes;
+module.exports = fastifyPlugin(routes);

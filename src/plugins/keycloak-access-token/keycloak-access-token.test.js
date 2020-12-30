@@ -2,14 +2,13 @@
 const cloneDeep = require("lodash/cloneDeep");
 const faker = require("faker/locale/en_GB");
 const Fastify = require("fastify");
-const plugin = require("./keycloak-access-token.plugin");
+const plugin = require(".");
 
 const {
 	keycloakRetrieveConfig,
-} = require("../../test_resources/mocks/keycloak-config.mock");
-const mockKeycloakServer = require("../../test_resources/mocks/keycloak-server.mock");
-
-const { appConfig } = require("../config");
+} = require("../../../test_resources/mocks/keycloak-config.mock");
+const mockKeycloakServer = require("../../../test_resources/mocks/keycloak-server.mock");
+const getConfig = require("../../config");
 
 const headers = {
 	"Content-Type": "application/json",
@@ -24,9 +23,11 @@ const mockParams = {
 };
 
 describe("Keycloak access token retrieval plugin", () => {
-	let fastify;
+	let server;
+	let config;
 
 	beforeAll(async () => {
+		config = await getConfig();
 		try {
 			await mockKeycloakServer.listen(3000);
 			console.log("Mock Keycloak server listening on 3000");
@@ -37,9 +38,9 @@ describe("Keycloak access token retrieval plugin", () => {
 	});
 
 	beforeEach(() => {
-		fastify = Fastify();
+		server = Fastify();
 
-		fastify.get("/", (req, res) => {
+		server.get("/", (req, res) => {
 			res.send(req.query);
 		});
 	});
@@ -49,13 +50,13 @@ describe("Keycloak access token retrieval plugin", () => {
 	});
 
 	afterEach(() => {
-		fastify.close();
+		server.close();
 	});
 
 	test("Should continue when Keycloak options are not defined", async () => {
-		fastify.register(plugin);
+		server.register(plugin);
 
-		const res = await fastify.inject({
+		const res = await server.inject({
 			method: "GET",
 			url: "/",
 			headers,
@@ -67,9 +68,9 @@ describe("Keycloak access token retrieval plugin", () => {
 
 	test("Should return Keycloak access_token", async () => {
 		// console.log(keycloakRetrieveConfig);
-		fastify.register(plugin, keycloakRetrieveConfig);
+		server.register(plugin, keycloakRetrieveConfig);
 
-		const res = await fastify.inject({
+		const res = await server.inject({
 			method: "GET",
 			url: "/",
 			headers,
@@ -88,12 +89,15 @@ describe("Keycloak access token retrieval plugin", () => {
 	});
 
 	test("Should return HTTP 500 error when Keycloak endpoint config enabled but other options undefined", async () => {
-		const altAppConfig = cloneDeep(appConfig);
-		altAppConfig.keycloak.enabled = "true";
+		const altConfig = cloneDeep(config);
+		delete altConfig.keycloak;
+		altConfig.keycloak = {
+			enabled: true,
+		};
 
-		fastify.register(plugin, altAppConfig.keycloak);
+		server.register(plugin, altConfig);
 
-		const res = await fastify.inject({
+		const res = await server.inject({
 			method: "GET",
 			url: "/",
 			headers,
@@ -107,6 +111,6 @@ describe("Keycloak access token retrieval plugin", () => {
 		expect(body.statusCode).toBe(500);
 		expect(body.error).toBe("Internal Server Error");
 
-		fastify.close();
+		server.close();
 	});
 });

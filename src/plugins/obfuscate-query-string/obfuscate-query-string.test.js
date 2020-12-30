@@ -1,9 +1,8 @@
 const cloneDeep = require("lodash/cloneDeep");
 const faker = require("faker/locale/en_GB");
 const Fastify = require("fastify");
-const plugin = require("./obfuscate-query-string.plugin");
-
-const { appConfig } = require("../config");
+const plugin = require(".");
+const getConfig = require("../../config");
 
 const headers = {
 	"Content-Type": "application/json",
@@ -18,23 +17,28 @@ const mockParams = {
 };
 
 describe("Query string obfuscation plugin", () => {
-	let fastify;
+	let config;
+	let server;
+
+	beforeAll(async () => {
+		config = await getConfig();
+	});
 
 	beforeEach(() => {
-		fastify = Fastify();
+		server = Fastify();
 
-		fastify.get("/", (req, res) => {
+		server.get("/", (req, res) => {
 			res.send(req.query);
 		});
 	});
 
 	afterEach(() => {
-		fastify.close();
+		server.close();
 	});
 
 	test("Should obfuscate patient and birthdate parameters", async () => {
-		const altAppConfig = cloneDeep(appConfig);
-		altAppConfig.obfuscation = {
+		const altConfig = cloneDeep(config);
+		altConfig.obfuscation = {
 			encryptionKey: {
 				name: "k01",
 				value: "0123456789",
@@ -42,9 +46,9 @@ describe("Query string obfuscation plugin", () => {
 			obfuscate: ["birthdate", "patient"],
 		};
 
-		fastify.register(plugin, altAppConfig.obfuscation);
+		server.register(plugin, altConfig);
 
-		const { body } = await fastify.inject({
+		const { body } = await server.inject({
 			method: "GET",
 			url: "/",
 			headers,
@@ -62,9 +66,9 @@ describe("Query string obfuscation plugin", () => {
 	});
 
 	test("Should return HTTP 500 error when options are not passed to plugin", async () => {
-		fastify.register(plugin);
+		server.register(plugin);
 
-		const res = await fastify.inject({
+		const res = await server.inject({
 			method: "GET",
 			url: "/",
 			headers,
