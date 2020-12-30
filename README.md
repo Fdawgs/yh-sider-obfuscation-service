@@ -26,7 +26,7 @@ Single sign-on for a user using access tokens from a Keycloak server instance ca
 4. Configure the application using the environment variables in `.env.production`
 5. Run `NODE_ENV=production yarn start`
 
-The service should now be up and running on the port set in the config. You should see the following output in `logs/obs-service-YYYY-MM-DD.log` or the log file specified using the `LOGGER_ROTATION_FILENAME` environment variable:
+The service should now be up and running on the port set in the config. You should see the following output in stdout or the log file specified using the `LOGGER_ROTATION_FILENAME` environment variable:
 
 ```json
 {
@@ -44,7 +44,7 @@ http://127.0.0.1:8204/redirect?patient=https://fhir.nhs.uk/Id/nhs-number|9449304
 
 Replace the organization code and email address in the `location` and `practitioner` query string parameters respectively with your own if you have already been set up with an account in SIDeR.
 
-In the log file you will see something similar to the following returned:
+In stdout or the log file you will see something similar to the following returned:
 
 ```json
 {
