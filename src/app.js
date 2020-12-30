@@ -1,33 +1,38 @@
-const AutoLoad = require("fastify-autoload");
 const Fastify = require("fastify");
-const path = require("path");
-
-// Import plugins
-const cors = require("fastify-cors");
-const helmet = require("fastify-helmet");
+const startServer = require("./server");
+const getConfig = require("./config");
 
 /**
  * @author Frazer Smith
- * @description Build Fastify instance
- * @param {object} fastifyOpts - Fastify configuration values
- * @param {object} opts - App configuration values
- * @returns {object} Fastify instance
+ * @description Start server
  */
-module.exports = (fastifyOpts, opts) => {
-	const fastify = Fastify(fastifyOpts);
-
-	// Register security plugins/middleware
-	// Enable CORS: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
-	fastify.register(cors, opts.cors);
-
-	// Use Helmet to set response security headers: https://helmetjs.github.io/
-	fastify.register(helmet);
-
-	// Import and register service routes
-	fastify.register(AutoLoad, {
-		dir: path.join(__dirname, "routes"),
-		options: { ...opts },
+const main = async () => {
+	process.on("unhandledRejection", (err) => {
+		// eslint-disable-next-line no-console
+		console.error(err);
+		process.exit(1);
 	});
 
-	return fastify;
+	const config = await getConfig();
+
+	const server = Fastify(config.fastifyInit);
+	server.register(startServer, config);
+	await server.listen(config.fastify);
+
+	["SIGINT", "SIGTERM"].forEach((signal) => {
+		// Use once() so that double signals exits the app
+		process.once(signal, async () => {
+			server.log.info({ signal }, "closing application");
+			try {
+				await server.close();
+				server.log.info({ signal }, "application closed");
+				process.exit(0);
+			} catch (err) {
+				server.log.error({ err }, "Error closing the application");
+				process.exit(1);
+			}
+		});
+	});
 };
+
+main();

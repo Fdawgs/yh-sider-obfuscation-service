@@ -2,11 +2,14 @@
 const autocannon = require("autocannon");
 const cloneDeep = require("lodash/cloneDeep");
 const faker = require("faker/locale/en_GB");
+const Fastify = require("fastify");
 const queryString = require("querystring");
-const build = require("./app");
+const startServer = require("./server");
 
-const { appConfig, fastifyConfig } = require("./config");
 const mockServer = require("../test_resources/mocks/sider-server.mock");
+const getConfig = require("./config");
+
+const config = getConfig();
 
 const headers = {
 	"Content-Type": "application/json",
@@ -26,11 +29,11 @@ const mockParams = {
 	NOUNLOCK: faker.random.number(),
 };
 
-describe("App deployment", () => {
+describe("Server deployment", () => {
 	beforeAll(async () => {
 		try {
 			await mockServer.listen(3001);
-			appConfig.redirectUrl = "http://127.0.0.1:3001/esp/#!/launch?";
+			config.redirectUrl = "http://127.0.0.1:3001/esp/#!/launch?";
 			console.log("Mock SIDeR server listening on http://127.0.0.1:3001");
 		} catch (err) {
 			console.log("Error starting SIDeR server:", err);
@@ -42,19 +45,21 @@ describe("App deployment", () => {
 		await mockServer.close();
 	});
 
-	describe("App", () => {
-		let app;
+	describe("Server", () => {
+		let server;
 
-		beforeEach(() => {
-			app = build(fastifyConfig, appConfig);
+		beforeEach(async () => {
+			server = Fastify();
+			server.register(startServer, config);
+			await server.ready();
 		});
 
 		afterEach(() => {
-			app.close();
+			server.close();
 		});
 
 		test("Should redirect to 'redirectUrl' with required params present", async () => {
-			const res = await app.inject({
+			const res = await server.inject({
 				method: "GET",
 				url: "/",
 				headers,
@@ -93,7 +98,7 @@ describe("App deployment", () => {
 					const scrubbedParams = { ...altMockParams };
 					delete scrubbedParams[key];
 
-					const res = await app.inject({
+					const res = await server.inject({
 						method: "GET",
 						url: "/",
 						headers,
@@ -120,7 +125,7 @@ describe("App deployment", () => {
 					const scrubbedParams = { ...altMockParams };
 					scrubbedParams[key] = "test";
 
-					const res = await app.inject({
+					const res = await server.inject({
 						method: "GET",
 						url: "/",
 						headers,
@@ -139,12 +144,14 @@ describe("App deployment", () => {
 
 	describe("Keycloak token retrival", () => {
 		test("Should continue when Keycloak endpoint config is disabled", async () => {
-			const altAppConfig = cloneDeep(appConfig);
-			altAppConfig.keycloak.enabled = "false";
+			const altConfig = cloneDeep(config);
+			altConfig.keycloak.enabled = false;
 
-			const app = build(fastifyConfig, altAppConfig);
+			const server = Fastify();
+			server.register(startServer, altConfig);
+			await server.ready();
 
-			const res = await app.inject({
+			const res = await server.inject({
 				method: "GET",
 				url: "/",
 				headers,
@@ -156,16 +163,18 @@ describe("App deployment", () => {
 			);
 			expect(res.statusCode).toBe(302);
 
-			app.close();
+			server.close();
 		});
 
 		test("Should return HTTP 500 error when Keycloak endpoint config enabled but other options undefined", async () => {
-			const altAppConfig = cloneDeep(appConfig);
-			altAppConfig.keycloak.enabled = "true";
+			const altConfig = cloneDeep(config);
+			altConfig.keycloak.enabled = true;
 
-			const app = build(fastifyConfig, altAppConfig);
+			const server = Fastify();
+			server.register(startServer, altConfig);
+			await server.ready();
 
-			const res = await app.inject({
+			const res = await server.inject({
 				method: "GET",
 				url: "/",
 				headers,
@@ -179,16 +188,18 @@ describe("App deployment", () => {
 			expect(body.statusCode).toBe(500);
 			expect(body.error).toBe("Internal Server Error");
 
-			app.close();
+			server.close();
 		});
 
 		test("Should return HTTP 500 error when redirect URL missing", async () => {
-			const altAppConfig = cloneDeep(appConfig);
-			delete altAppConfig.redirectUrl;
+			const altConfig = cloneDeep(config);
+			delete altConfig.redirectUrl;
 
-			const app = build(fastifyConfig, altAppConfig);
+			const server = Fastify();
+			server.register(startServer, altConfig);
+			await server.ready();
 
-			const res = await app.inject({
+			const res = await server.inject({
 				method: "GET",
 				url: "/",
 				headers,
@@ -202,30 +213,26 @@ describe("App deployment", () => {
 			expect(body.statusCode).toBe(500);
 			expect(body.error).toBe("Internal Server Error");
 
-			app.close();
+			server.close();
 		});
 	});
 
 	describe("Benchmark", () => {
-		const altFastifyConfig = cloneDeep(fastifyConfig);
-		delete altFastifyConfig.https;
-		let app;
+		const altConfig = cloneDeep(config);
+		delete altConfig.https;
+		let server;
 
-		beforeEach(() => {
-			app = build(fastifyConfig, appConfig);
-			try {
-				app.listen(process.env.SERVICE_PORT, process.env.SERVICE_HOST);
-			} catch (err) {
-				console.log("Error starting server:", err);
-				process.exit(1);
-			}
+		beforeEach(async () => {
+			server = Fastify();
+			server.register(startServer, altConfig);
+			await server.listen(altConfig.fastify);
 		});
 
 		afterEach(() => {
-			app.close();
+			server.close();
 		});
 
-		test("Shoult have an average latency less than 50ms", async () => {
+		test("Should have an average latency less than 50ms", async () => {
 			const results = await autocannon({
 				url: `http://127.0.0.1:${process.env.SERVICE_PORT}?birthdate=${mockParams.birthdate}&location=${mockParams.location}&patient=${mockParams.patient}&practitioner=${mockParams.practitioner}`,
 				duration: 9,

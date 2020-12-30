@@ -2,7 +2,7 @@
 	"name": "ydh-sider-obfuscation-service",
 	"version": "1.1.2",
 	"description": "Yeovil District Hospital NHSFT's SIDeR Contextual Link Obfuscation Service",
-	"main": "src/server.js",
+	"main": "src/app.js",
 	"repository": "git+https://github.com/Fdawgs/ydh-sider-obfuscation-service.git",
 	"author": "Frazer Smith <frazer.smith@ydh.nhs.uk>",
 	"license": "MIT",
@@ -18,15 +18,13 @@
 		"lint": "eslint . --cache --ext js,jsx,ts,tsx --ignore-path .gitignore",
 		"lint:prettier": "prettier . --write --ignore-path .gitignore",
 		"lint:prettier:ci": "prettier . --check --ignore-path .gitignore",
-		"start": "node src/server.js",
+		"start": "node src/app.js",
 		"test": "cross-env NODE_ENV=test yarn lint && yarn jest"
 	},
 	"jest": {
 		"clearMocks": true,
 		"collectCoverageFrom": [
-			"src/plugins/*.js",
-			"src/routes/*.js",
-			"src/app*.js"
+			"src/**/*.js"
 		],
 		"testEnvironment": "node",
 		"testTimeout": 10000
