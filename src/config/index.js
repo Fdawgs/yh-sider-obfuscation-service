@@ -57,12 +57,7 @@ async function getConfig() {
 					.default("info")
 			)
 			.prop("LOG_ROTATION_DATE_FORMAT", S.string().default("YYYY-MM-DD"))
-			.prop(
-				"LOG_ROTATION_FILENAME",
-				S.string().default(
-					`${process.cwd()}/logs/obs-service-%DATE%.log`
-				)
-			)
+			.prop("LOG_ROTATION_FILENAME", S.anyOf([S.string(), S.null()]))
 			.prop(
 				"LOG_ROTATION_FREQUENCY",
 				S.string().enum(["custom", "daily", "test"]).default("daily")
@@ -125,9 +120,7 @@ async function getConfig() {
 				// Rotation options: https://github.com/rogerc/file-stream-rotator/#options
 				stream: rotatingLogStream.getStream({
 					date_format: env.LOG_ROTATION_DATE_FORMAT || "YYYY-MM-DD",
-					filename:
-						env.LOG_ROTATION_FILENAME ||
-						`${process.cwd()}/logs/obs-service-%DATE%.log`,
+					filename: env.LOG_ROTATION_FILENAME,
 					frequency: env.LOG_ROTATION_FREQUENCY || "daily",
 					max_logs: env.LOG_ROTATION_MAX_LOG,
 					size: env.LOG_ROTATION_MAX_SIZE,
