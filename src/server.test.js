@@ -32,6 +32,12 @@ describe("Server deployment", () => {
 
 	beforeAll(async () => {
 		config = await getConfig();
+		// Scrub any dev/test keycloak config values leftover from `.env`
+		delete config.keycloak;
+		config.keycloak = {
+			enabled: false,
+		};
+
 		try {
 			await mockServer.listen(3001);
 			config.redirectUrl = "http://127.0.0.1:3001/esp/#!/launch?";
@@ -146,7 +152,10 @@ describe("Server deployment", () => {
 	describe("Keycloak token retrival", () => {
 		test("Should continue when Keycloak endpoint config is disabled", async () => {
 			const altConfig = cloneDeep(config);
-			altConfig.keycloak.enabled = false;
+			delete altConfig.keycloak;
+			altConfig.keycloak = {
+				enabled: false,
+			};
 
 			const server = Fastify();
 			server.register(startServer, altConfig);
@@ -169,7 +178,10 @@ describe("Server deployment", () => {
 
 		test("Should return HTTP 500 error when Keycloak endpoint config enabled but other options undefined", async () => {
 			const altConfig = cloneDeep(config);
-			altConfig.keycloak.enabled = true;
+			delete altConfig.keycloak;
+			altConfig.keycloak = {
+				enabled: true,
+			};
 
 			const server = Fastify();
 			server.register(startServer, altConfig);
@@ -222,6 +234,10 @@ describe("Server deployment", () => {
 		test("Should have an average latency less than 50ms", async () => {
 			const altConfig = cloneDeep(config);
 			delete altConfig.fastifyInit.https;
+			delete altConfig.keycloak;
+			altConfig.keycloak = {
+				enabled: true,
+			};
 
 			const server = Fastify();
 			server.register(startServer, altConfig);

@@ -66,8 +66,7 @@ describe("Keycloak access token retrieval plugin", () => {
 		expect(res.statusCode).toBe(200);
 	});
 
-	test("Should return Keycloak access_token", async () => {
-		// console.log(keycloakRetrieveConfig);
+	test("Should return Keycloak access_token from mock server", async () => {
 		server.register(plugin, keycloakRetrieveConfig);
 
 		const res = await server.inject({

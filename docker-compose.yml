@@ -3,9 +3,9 @@ services:
     app:
         container_name: obfuscation-service
         build:
-            args:
-                NODE_ENV: $NODE_ENV
             context: .
-        env_file: .env.${NODE_ENV}
+        environment:
+            - LOG_ROTATION_FILENAME=
+        env_file: .env
         ports:
-            - 127.0.0.1:${PORT:-8204}:${PORT:-8204}
+            - 127.0.0.1:${SERVICE_PORT:-8204}:${SERVICE_PORT:-8204}

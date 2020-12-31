@@ -1,4 +1,4 @@
-require("custom-env").env();
+require("dotenv").config();
 
 const envSchema = require("env-schema");
 const S = require("fluent-json-schema");

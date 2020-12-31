@@ -27,7 +27,7 @@ describe("configuration", () => {
 			"warn",
 			"silent",
 		]);
-
+		const KC_ENABLED = false;
 		const OBFUSCATION_KEY_NAME = "k01";
 		const OBFUSCATION_KEY_VALUE = "0123456789";
 		const OBFUSCATION_QUERYSTRING_KEY_ARRAY = '["birthdate", "patient"]';
@@ -40,6 +40,7 @@ describe("configuration", () => {
 			HTTPS_SSL_KEY_PATH,
 			CORS_ORIGIN,
 			LOG_LEVEL,
+			KC_ENABLED,
 			OBFUSCATION_KEY_NAME,
 			OBFUSCATION_KEY_VALUE,
 			OBFUSCATION_QUERYSTRING_KEY_ARRAY,
@@ -87,7 +88,6 @@ describe("configuration", () => {
 		const SERVICE_PORT = faker.random.number();
 		const SERVICE_REDIRECT_URL =
 			"https://pyrusapps.blackpear.com/esp/#!/launch?";
-
 		const HTTPS_PFX_FILE_PATH =
 			"./test_resources/test_ssl_cert/server.cert"; // I know it's not an actual PFX file
 		const HTTPS_PFX_PASSPHRASE = faker.lorem.word();
@@ -97,7 +97,7 @@ describe("configuration", () => {
 			"warn",
 			"silent",
 		]);
-
+		const KC_ENABLED = false;
 		const OBFUSCATION_KEY_NAME = "k01";
 		const OBFUSCATION_KEY_VALUE = "0123456789";
 		const OBFUSCATION_QUERYSTRING_KEY_ARRAY = '["birthdate", "patient"]';
@@ -110,6 +110,7 @@ describe("configuration", () => {
 			HTTPS_PFX_PASSPHRASE,
 			CORS_ORIGIN,
 			LOG_LEVEL,
+			KC_ENABLED,
 			OBFUSCATION_KEY_NAME,
 			OBFUSCATION_KEY_VALUE,
 			OBFUSCATION_QUERYSTRING_KEY_ARRAY,
@@ -134,7 +135,6 @@ describe("configuration", () => {
 		const SERVICE_PORT = faker.random.number();
 		const SERVICE_REDIRECT_URL =
 			"https://pyrusapps.blackpear.com/esp/#!/launch?";
-
 		const HTTPS_PFX_FILE_PATH = "./test_resources/test_ssl_cert/error.pfx";
 		const HTTPS_PFX_PASSPHRASE = faker.lorem.word();
 		const CORS_ORIGIN = true;
@@ -143,7 +143,7 @@ describe("configuration", () => {
 			"warn",
 			"silent",
 		]);
-
+		const KC_ENABLED = false;
 		const OBFUSCATION_KEY_NAME = "k01";
 		const OBFUSCATION_KEY_VALUE = "0123456789";
 		const OBFUSCATION_QUERYSTRING_KEY_ARRAY = '["birthdate", "patient"]';
@@ -156,6 +156,7 @@ describe("configuration", () => {
 			HTTPS_PFX_PASSPHRASE,
 			CORS_ORIGIN,
 			LOG_LEVEL,
+			KC_ENABLED,
 			OBFUSCATION_KEY_NAME,
 			OBFUSCATION_KEY_VALUE,
 			OBFUSCATION_QUERYSTRING_KEY_ARRAY,
@@ -169,7 +170,6 @@ describe("configuration", () => {
 		const SERVICE_PORT = faker.random.number();
 		const SERVICE_REDIRECT_URL =
 			"https://pyrusapps.blackpear.com/esp/#!/launch?";
-
 		const HTTPS_SSL_CERT_PATH = "./test_resources/test_ssl_cert/error.cert";
 		const HTTPS_SSL_KEY_PATH = "./test_resources/test_ssl_cert/error.key";
 		const CORS_ORIGIN = true;
@@ -178,7 +178,7 @@ describe("configuration", () => {
 			"warn",
 			"silent",
 		]);
-
+		const KC_ENABLED = false;
 		const OBFUSCATION_KEY_NAME = "k01";
 		const OBFUSCATION_KEY_VALUE = "0123456789";
 		const OBFUSCATION_QUERYSTRING_KEY_ARRAY = '["birthdate", "patient"]';
@@ -191,6 +191,7 @@ describe("configuration", () => {
 			HTTPS_SSL_KEY_PATH,
 			CORS_ORIGIN,
 			LOG_LEVEL,
+			KC_ENABLED,
 			OBFUSCATION_KEY_NAME,
 			OBFUSCATION_KEY_VALUE,
 			OBFUSCATION_QUERYSTRING_KEY_ARRAY,

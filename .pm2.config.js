@@ -13,7 +13,7 @@ module.exports = {
 			instances: "max",
 			name: "sider-obfu",
 			script: "./src/index.js",
-			watch: [".env.development", ".env.production"],
+			watch: [".env"],
 		},
 	],
 };
