@@ -18,7 +18,7 @@ Other processes and specifications that are in use in this repository are:
 As noted in the prerequisites section of the readme file, this project requires that you have Node.js and Yarn installed.
 
 With those in place, you can fork the repository, clone it, and then run `yarn install` to install all development dependencies.
-Make a copy of `.env.template` in the root directory and rename to `.env.development`, configuring the environment variables as required.
+Make a copy of `.env.template` in the root directory and rename to `.env`, configuring the environment variables as required.
 
 ### Development Workflow
 
@@ -27,7 +27,7 @@ After cloning and installing all the dependencies, there are several commands av
 -   `yarn lint` - Lints everything in src directory
 -   `yarn jest` - Runs Jest over all tests in src directory
 -   `yarn test` - Runs `yarn lint` and `yarn jest` together
--   `yarn nodemon` - Starts a development server with live reload, available on `localhost:8204` unless you specify your own port
+-   `yarn start:dev` - Starts a development server with live reload, available on `localhost:8204` unless you specify your own port
 
 ### Production Workflow
 

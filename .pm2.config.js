@@ -12,7 +12,7 @@ module.exports = {
 			exec_mode: "cluster",
 			instances: "max",
 			name: "sider-obfu",
-			script: "./src/index.js",
+			script: "./src/app.js",
 			watch: [".env"],
 		},
 	],

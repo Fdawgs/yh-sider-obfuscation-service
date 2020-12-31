@@ -4,8 +4,8 @@ services:
         container_name: obfuscation-service
         build:
             context: .
-        environment:
-            - LOG_ROTATION_FILENAME=
+        # environment:
+        #     - LOG_ROTATION_FILENAME=
         env_file: .env
         ports:
             - 127.0.0.1:${SERVICE_PORT:-8204}:${SERVICE_PORT:-8204}
