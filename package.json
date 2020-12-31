@@ -18,6 +18,7 @@
 		"lint:prettier": "prettier . --write --ignore-path .gitignore",
 		"lint:prettier:ci": "prettier . --check --ignore-path .gitignore",
 		"start": "node .",
+		"start:dev": "nodemon | pino-pretty --colorize",
 		"test": "yarn lint && yarn jest"
 	},
 	"jest": {
@@ -39,7 +40,7 @@
 		],
 		"verbose": true,
 		"watch": [
-			".env.development",
+			".env",
 			"src"
 		]
 	},
@@ -68,6 +69,7 @@
 		"license-checker": "^25.0.1",
 		"lodash": "^4.17.20",
 		"nodemon": "^2.0.6",
+		"pino-pretty": "^4.3.0",
 		"prettier": "2.2.1"
 	},
 	"dependencies": {
