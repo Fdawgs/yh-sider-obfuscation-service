@@ -52,6 +52,7 @@ describe("configuration", () => {
 			host: SERVICE_HOST,
 			port: SERVICE_PORT,
 		});
+
 		expect(config.fastifyInit.logger).toEqual(
 			expect.objectContaining({
 				formatters: { level: expect.any(Function) },
@@ -63,6 +64,11 @@ describe("configuration", () => {
 				timestamp: expect.any(Function),
 			})
 		);
+
+		expect(config.fastifyInit.https).toEqual({
+			cert: expect.any(Buffer),
+			key: expect.any(Buffer),
+		});
 
 		expect(config.cors).toEqual({
 			origin: CORS_ORIGIN,
@@ -108,6 +114,53 @@ describe("configuration", () => {
 			SERVICE_REDIRECT_URL,
 			HTTPS_PFX_FILE_PATH,
 			HTTPS_PFX_PASSPHRASE,
+			CORS_ORIGIN,
+			LOG_LEVEL,
+			KC_ENABLED,
+			OBFUSCATION_KEY_NAME,
+			OBFUSCATION_KEY_VALUE,
+			OBFUSCATION_QUERYSTRING_KEY_ARRAY,
+		});
+
+		const config = await getConfig();
+
+		expect(config.fastify).toEqual({
+			host: SERVICE_HOST,
+			port: SERVICE_PORT,
+		});
+
+		expect(config.fastifyInit.https).toEqual({
+			passphrase: HTTPS_PFX_PASSPHRASE,
+			pfx: expect.any(Buffer),
+		});
+
+		expect(config.cors).toEqual({
+			origin: CORS_ORIGIN,
+			methods: ["Accept"],
+			allowedHeaders: ["GET", "OPTIONS"],
+		});
+	});
+
+	test("Should return values according to environment variables - HTTPS disabled and CORS set to value", async () => {
+		const SERVICE_HOST = faker.internet.ip();
+		const SERVICE_PORT = faker.random.number();
+		const SERVICE_REDIRECT_URL =
+			"https://pyrusapps.blackpear.com/esp/#!/launch?";
+		const CORS_ORIGIN = "https://ydh.nhs.uk";
+		const LOG_LEVEL = faker.random.arrayElement([
+			"debug",
+			"warn",
+			"silent",
+		]);
+		const KC_ENABLED = false;
+		const OBFUSCATION_KEY_NAME = "k01";
+		const OBFUSCATION_KEY_VALUE = "0123456789";
+		const OBFUSCATION_QUERYSTRING_KEY_ARRAY = '["birthdate", "patient"]';
+
+		Object.assign(process.env, {
+			SERVICE_HOST,
+			SERVICE_PORT,
+			SERVICE_REDIRECT_URL,
 			CORS_ORIGIN,
 			LOG_LEVEL,
 			KC_ENABLED,
