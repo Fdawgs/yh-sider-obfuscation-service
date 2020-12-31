@@ -22,11 +22,11 @@ Single sign-on for a user using access tokens from a Keycloak server instance ca
 
 1. Navigate to the repo
 2. Run `yarn install --production` to install dependencies
-3. Make a copy of `.env.template` in the root directory and rename to `.env.production`
-4. Configure the application using the environment variables in `.env.production`
-5. Run `NODE_ENV=production yarn start`
+3. Make a copy of `.env.template` in the root directory and rename to `.env`
+4. Configure the application using the environment variables in `.env`
+5. Run `yarn start`
 
-The service should now be up and running on the port set in the config. You should see the following output in stdout or the log file specified using the `LOGGER_ROTATION_FILENAME` environment variable:
+The service should now be up and running on the port set in the config. You should see the following output in stdout or the log file specified using the `LOG_ROTATION_FILENAME` environment variable:
 
 ```json
 {
@@ -128,18 +128,18 @@ As an example, providing `birthdate` in an invalid date format will return the f
 
 This requires [Docker](https://www.docker.com/products) installed.
 
-1. Make a copy of `.env.template` in the root directory and rename to `.env.production`
-2. Configure the application using the global variables in `.env.production`
+1. Make a copy of `.env.template` in the root directory and rename to `.env`
+2. Configure the application using the global variables in `.env`
 3. Run `docker-compose up`
 
 ### Deploying using PM2
 
-It is recommended that you use a process manager such as [PM2](https://pm2.keymetrics.io/) when deploying Fastify applications like this into production.
+If you are unable to deploy this into production using Docker, it is recommended that you use a process manager such as [PM2](https://pm2.keymetrics.io/).
 
 1. Navigate to the repo
 2. Run `yarn install --production` to install dependencies
-3. Make a copy of `.env.template` in the root directory and rename to `.env.production`
-4. Configure the application using the global variables in `.env.production`
+3. Make a copy of `.env.template` in the root directory and rename to `.env`
+4. Configure the application using the global variables in `.env`
 5. Run `yarn global add pm2` to install pm2 globally
 6. Launch application with `pm2 start .pm2.config.js --env production`
 7. Check the application has been deployed using `pm2 list` or `pm2 monit`
@@ -148,7 +148,7 @@ It is recommended that you use a process manager such as [PM2](https://pm2.keyme
 
 Yeovil District Hospital NHSFT is heavily invested in Microsoft's ecosystem; utilise [pm2-installer](https://github.com/jessety/pm2-installer) to easily install PM2 as a Windows service.
 
-**Note:** PM2 has been configured to automatically restart the application if modifications are made to `.env.development` or `.env.production`.
+**Note:** PM2 has been configured to automatically restart the application if modifications are made to `.env`.
 
 ## Contributing
 
