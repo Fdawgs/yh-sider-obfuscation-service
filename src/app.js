@@ -5,7 +5,6 @@ const getConfig = require("./config");
 
 /**
  * @author Frazer Smith
- * @author Colm Harte
  * @description Start server
  */
 const main = async () => {

@@ -8,8 +8,6 @@ const rotatingLogStream = require("file-stream-rotator");
 
 /**
  * @author Frazer Smith
- * @author Colm Harte
- * @author Jack Murdoch
  * @description Convert string boolean to boolean.
  * @param {string} param - CORS parameter.
  * @returns {string|boolean} CORS parameter.
