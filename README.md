@@ -134,7 +134,7 @@ This requires [Docker](https://www.docker.com/products) installed.
 
 ### Deploying using PM2
 
-It is recommended that you use a process manager such as [PM2](https://pm2.keymetrics.io/) when deploying Fastify applications like this into production.
+If you are unable to deploy this into production using Docker, it is recommended that you use a process manager such as [PM2](https://pm2.keymetrics.io/).
 
 1. Navigate to the repo
 2. Run `yarn install --production` to install dependencies
