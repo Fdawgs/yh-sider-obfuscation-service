@@ -1,3 +1,18 @@
+## <small>2.0.1 (2020-12-31)</small>
+
+-   build(deps): bump pino from 6.8.0 to 6.9.0 (#58) ([7cdfa13](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/7cdfa13)), closes [#58](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/58)
+-   build(docker): fix log directory ([ca3ea87](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/ca3ea87))
+-   chore: remove old .env files from gitignore ([007cef9](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/007cef9))
+-   chore(scripts): add `start:dev` dev script ([85aaeb3](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/85aaeb3))
+-   docs(readme): add ydh logo ([b26b180](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/b26b180))
+-   docs(readme): recommend docker usage over pm2 ([fc0f749](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/fc0f749))
+-   fix(pm2): config file script ([f004e7a](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/f004e7a))
+-   test(config): cover cors origin string; add ssl/pfx checks ([e0dcbeb](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/e0dcbeb))
+-   test(config): cover ssl/pfx error branches ([c57f736](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/c57f736))
+-   refactor: replace custom-env and cross-env with dotenv ([ddf1447](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/ddf1447))
+-   refactor(config): throw error rather than log ([18003d2](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/18003d2))
+-   style(routes/redirect): use full declaration method ([77eb02d](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/77eb02d))
+
 ## 2.0.0 (2020-12-30)
 
 -   docs(contributing): update prettier script ([1141bf7](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/1141bf7))
