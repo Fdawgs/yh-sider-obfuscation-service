@@ -13,6 +13,13 @@
 -   refactor(config): throw error rather than log ([18003d2](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/18003d2))
 -   style(routes/redirect): use full declaration method ([77eb02d](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/77eb02d))
 
+## [2.1.0](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v2.0.1...v2.1.0) (2021-01-03)
+
+
+### Features
+
+* **routes/docs:** add basic swagger documentation route ([d2e15e2](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/d2e15e227705e3c9e79530d8d27d40824c4cc37c))
+
 ## 2.0.0 (2020-12-30)
 
 -   docs(contributing): update prettier script ([1141bf7](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/1141bf7))
