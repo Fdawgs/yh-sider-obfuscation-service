@@ -1,3 +1,16 @@
+## 2.1.0 (2021-01-03)
+
+-   build(deps-dev): bump eslint from 7.16.0 to 7.17.0 (#63) ([a289575](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/a289575)), closes [#63](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/63)
+-   build(deps-dev): bump eslint-plugin-jsdoc from 30.7.9 to 30.7.12 (#64) ([b24c32f](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/b24c32f)), closes [#64](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/64)
+-   refactor(routes/redirect): add route-specific plugins under route dir ([9866253](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/9866253))
+-   refactor(routes/redirect): remove plugin registration ([2bca5b7](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/2bca5b7))
+-   ci: fix caching of node dependencies ([4539c1d](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/4539c1d))
+-   ci: use yarn cache of node dependencies if present ([6f6b316](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/6f6b316))
+-   ci(codeql): specify more query suites ([023d178](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/023d178))
+-   feat(routes/docs): add basic swagger documentation route ([d2e15e2](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/d2e15e2))
+-   style(routes/redirect): rename function ([39c4f48](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/39c4f48))
+-   style(server): chain register functions ([4049848](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/4049848))
+
 ## <small>2.0.1 (2020-12-31)</small>
 
 -   build(deps): bump pino from 6.8.0 to 6.9.0 (#58) ([7cdfa13](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/7cdfa13)), closes [#58](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/58)
