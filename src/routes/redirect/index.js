@@ -1,5 +1,4 @@
 const autoLoad = require("fastify-autoload");
-const fastifyPlugin = require("fastify-plugin");
 const path = require("path");
 const createError = require("http-errors");
 const queryString = require("querystring");
@@ -24,7 +23,7 @@ async function route(server, options) {
 	 */
 	server.route({
 		method: "GET",
-		url: "/redirect",
+		url: "/",
 		schema: {
 			querystring: {
 				type: "object",
@@ -63,4 +62,4 @@ async function route(server, options) {
 	});
 }
 
-module.exports = fastifyPlugin(route);
+module.exports = route;
