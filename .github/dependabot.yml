@@ -13,7 +13,7 @@ updates:
       open-pull-requests-limit: 99
 
     - package-ecosystem: npm
-      directory: "/"
+      directory: /
       schedule:
           interval: monthly
       open-pull-requests-limit: 99
