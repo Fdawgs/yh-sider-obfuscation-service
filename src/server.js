@@ -5,6 +5,7 @@ const path = require("path");
 // Import plugins
 const cors = require("fastify-cors");
 const helmet = require("fastify-helmet");
+const swagger = require("fastify-swagger");
 
 /**
  * @author Frazer Smith
@@ -14,12 +15,25 @@ const helmet = require("fastify-helmet");
  */
 async function plugin(server, config) {
 	// Enable plugins
-	// Use CORS: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
 	server
+		// Use CORS: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
 		.register(cors, config.cors)
 
+		.register(swagger, config.swagger)
+
 		// Use Helmet to set response security headers: https://helmetjs.github.io/
-		.register(helmet)
+		.register(helmet, (instance) => ({
+			contentSecurityPolicy: {
+				directives: {
+					defaultSrc: ["'self'"], // default source is mandatory
+					imgSrc: ["'self'", "data:", "validator.swagger.io"],
+					scriptSrc: ["'self'"].concat(instance.swaggerCSP.script),
+					styleSrc: ["'self'", "https:"].concat(
+						instance.swaggerCSP.style
+					),
+				},
+			},
+		}))
 
 		// Import and register service routes
 		.register(autoLoad, {

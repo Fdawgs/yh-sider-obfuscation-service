@@ -6,6 +6,8 @@ const fsp = require("fs").promises;
 const pino = require("pino");
 const rotatingLogStream = require("file-stream-rotator");
 
+const { name, description, version } = require("../../package.json");
+
 /**
  * @author Frazer Smith
  * @description Convert string boolean to boolean.
@@ -130,6 +132,17 @@ async function getConfig() {
 			origin: parseCorsParameter(env.CORS_ORIGIN) || false,
 			methods: ["Accept"],
 			allowedHeaders: ["GET", "OPTIONS"],
+		},
+		swagger: {
+			routePrefix: "/docs",
+			exposeRoute: true,
+			swagger: {
+				info: {
+					title: name,
+					description,
+					version,
+				},
+			},
 		},
 		redirectUrl: env.SERVICE_REDIRECT_URL,
 		// Values used by keycloak-access-token plugin in wildcard service
