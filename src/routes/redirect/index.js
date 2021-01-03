@@ -1,5 +1,4 @@
 const autoLoad = require("fastify-autoload");
-const fastifyPlugin = require("fastify-plugin");
 const path = require("path");
 const createError = require("http-errors");
 const queryString = require("querystring");
@@ -10,7 +9,7 @@ const queryString = require("querystring");
  * @param {Function} server - Fastify instance.
  * @param {object} options - Object containing route config objects.
  */
-async function routes(server, options) {
+async function route(server, options) {
 	server.register(autoLoad, {
 		dir: path.join(__dirname, "../../plugins"),
 		options,
@@ -24,23 +23,46 @@ async function routes(server, options) {
 	 */
 	server.route({
 		method: "GET",
-		url: "/redirect",
+		url: "/",
+		prefixTrailingSlash: "no-slash",
 		schema: {
 			querystring: {
 				type: "object",
 				properties: {
-					birthdate: { type: "string", format: "date" },
+					birthdate: {
+						description:
+							"The birthdate of the patient in ISO-8601 format (YYYY-MM-DD)",
+						examples: ["1900-01-01"],
+						type: "string",
+						format: "date",
+					},
 					patient: {
+						description: "The Identifier for the patient",
+						examples: [
+							"https://fhir.nhs.uk/Id/nhs-number|9999999999",
+						],
 						type: "string",
 						pattern:
 							"^https:\\/\\/fhir\\.nhs\\.uk\\/Id\\/nhs-number\\|\\d{10}$",
 					},
 					location: {
+						description:
+							"The Identifier of the organisation or site of the practitioner launching the app",
+						default:
+							"https://fhir.nhs.uk/Id/ods-organization-code|RA4",
+						examples: [
+							"https://fhir.nhs.uk/Id/ods-organization-code|RA4",
+						],
 						type: "string",
 						pattern:
 							"^https:\\/\\/fhir\\.nhs\\.uk\\/Id\\/ods-organization-code\\|\\w*$",
 					},
 					practitioner: {
+						description:
+							"The Identifier of the practitioner launching the app",
+						examples: [
+							"https://fhir.nhs.uk/Id/ods-organization-code|frazer.smith@ydh.nhs.uk",
+						],
 						type: "string",
 						// RFC 5322 compliant email regex
 						pattern:
@@ -63,4 +85,4 @@ async function routes(server, options) {
 	});
 }
 
-module.exports = fastifyPlugin(routes);
+module.exports = route;

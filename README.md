@@ -36,13 +36,15 @@ The service should now be up and running on the port set in the config. You shou
 	"time": "2020-12-01T09:48:08.612Z",
 	"pid": 41896,
 	"hostname": "MYCOMPUTER",
-	"msg": "Server listening at http://127.0.0.1:8204"
+	"msg": "Server listening at http://0.0.0.0:8204"
 }
 ```
 
 To quickly test it open a browser of your choice or, if using a request builder (i.e. [Insomnia](https://insomnia.rest/) or [Postman](https://www.postman.com/)) create a new GET request, and input the following URL:
 
-http://127.0.0.1:8204/redirect?patient=https://fhir.nhs.uk/Id/nhs-number|9449304513&birthdate=1934-10-23&location=https://fhir.nhs.uk/Id/ods-organization-code|RA4&practitioner=https://sider.nhs.uk/auth|frazer.smith@ydh.nhs.uk
+http://0.0.0.0:8204/redirect?patient=https://fhir.nhs.uk/Id/nhs-number|9449304513&birthdate=1934-10-23&location=https://fhir.nhs.uk/Id/ods-organization-code|RA4&practitioner=https://sider.nhs.uk/auth|frazer.smith@ydh.nhs.uk
+
+Alternatively, you can navigate to http://0.0.0.0:8204/docs and generate a request through the example input there.
 
 Replace the organization code and email address in the `location` and `practitioner` query string parameters respectively with your own if you have already been set up with an account in SIDeR.
 
@@ -60,11 +62,11 @@ In stdout or the log file you will see something similar to the following return
 		"method": "GET",
 		"url": "/redirect?patient=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fnhs-number%7C9449304513&birthdate=1934-10-23&location=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fods-organization-code%7CRA4&practitioner=https%3A%2F%2Fsider.nhs.uk%2Fauth%7Cfrazer.smith%40ydh.nhs.uk",
 		"headers": {
-			"host": "127.0.0.1:8204",
+			"host": "0.0.0.0:8204",
 			"user-agent": "insomnia/2020.4.2",
 			"accept": "*/*"
 		},
-		"remoteAddress": "127.0.0.1",
+		"remoteAddress": "0.0.0.0",
 		"remotePort": 63213
 	},
 	"msg": "incoming request"
