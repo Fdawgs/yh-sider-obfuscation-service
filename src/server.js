@@ -15,16 +15,17 @@ const helmet = require("fastify-helmet");
 async function plugin(server, config) {
 	// Enable plugins
 	// Use CORS: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
-	server.register(cors, config.cors);
+	server
+		.register(cors, config.cors)
 
-	// Use Helmet to set response security headers: https://helmetjs.github.io/
-	server.register(helmet);
+		// Use Helmet to set response security headers: https://helmetjs.github.io/
+		.register(helmet)
 
-	// Import and register service routes
-	server.register(autoLoad, {
-		dir: path.join(__dirname, "routes"),
-		options: config,
-	});
+		// Import and register service routes
+		.register(autoLoad, {
+			dir: path.join(__dirname, "routes"),
+			options: config,
+		});
 }
 
 module.exports = fastifyPlugin(plugin);
