@@ -10,7 +10,7 @@ const queryString = require("querystring");
  * @param {Function} server - Fastify instance.
  * @param {object} options - Object containing route config objects.
  */
-async function routes(server, options) {
+async function route(server, options) {
 	server.register(autoLoad, {
 		dir: path.join(__dirname, "../../plugins"),
 		options,
@@ -63,4 +63,4 @@ async function routes(server, options) {
 	});
 }
 
-module.exports = fastifyPlugin(routes);
+module.exports = fastifyPlugin(route);
