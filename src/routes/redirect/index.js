@@ -11,7 +11,7 @@ const queryString = require("querystring");
  */
 async function route(server, options) {
 	server.register(autoLoad, {
-		dir: path.join(__dirname, "../../plugins"),
+		dir: path.join(__dirname, "plugins"),
 		options,
 	});
 
