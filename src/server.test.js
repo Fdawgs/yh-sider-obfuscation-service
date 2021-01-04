@@ -1,12 +1,10 @@
 /* eslint-disable no-console */
-const autocannon = require("autocannon");
 const cloneDeep = require("lodash/cloneDeep");
 const faker = require("faker/locale/en_GB");
 const Fastify = require("fastify");
 const queryString = require("querystring");
-const startServer = require("./server");
-
 const mockServer = require("../test_resources/mocks/sider-server.mock");
+const startServer = require("./server");
 const getConfig = require("./config");
 
 const headers = {
@@ -225,30 +223,6 @@ describe("Server deployment", () => {
 			expect(res.statusMessage).toBe("Internal Server Error");
 			expect(body.statusCode).toBe(500);
 			expect(body.error).toBe("Internal Server Error");
-
-			server.close();
-		});
-	});
-
-	describe("Benchmark", () => {
-		test("Should have an average latency less than 50ms", async () => {
-			const altConfig = cloneDeep(config);
-			delete altConfig.fastifyInit.https;
-			delete altConfig.keycloak;
-			altConfig.keycloak = {
-				enabled: true,
-			};
-
-			const server = Fastify();
-			server.register(startServer, altConfig);
-			await server.listen(altConfig.fastify);
-
-			const results = await autocannon({
-				url: `http://127.0.0.1:${process.env.SERVICE_PORT}/redirect?birthdate=${mockParams.birthdate}&location=${mockParams.location}&patient=${mockParams.patient}&practitioner=${mockParams.practitioner}`,
-				duration: 9,
-			});
-
-			expect(results.latency.average).toBeLessThan(50);
 
 			server.close();
 		});
