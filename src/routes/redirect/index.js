@@ -3,6 +3,8 @@ const path = require("path");
 const createError = require("http-errors");
 const queryString = require("querystring");
 
+const { redirectGetSchema } = require("./schema");
+
 /**
  * @author Frazer Smith
  * @description Sets routing options for server.
@@ -25,53 +27,7 @@ async function route(server, options) {
 		method: "GET",
 		url: "/",
 		prefixTrailingSlash: "no-slash",
-		schema: {
-			querystring: {
-				type: "object",
-				properties: {
-					birthdate: {
-						description:
-							"The birthdate of the patient in ISO-8601 format (YYYY-MM-DD)",
-						examples: ["1900-01-01"],
-						type: "string",
-						format: "date",
-					},
-					patient: {
-						description: "The Identifier for the patient",
-						examples: [
-							"https://fhir.nhs.uk/Id/nhs-number|9999999999",
-						],
-						type: "string",
-						pattern:
-							"^https:\\/\\/fhir\\.nhs\\.uk\\/Id\\/nhs-number\\|\\d{10}$",
-					},
-					location: {
-						description:
-							"The Identifier of the organisation or site of the practitioner launching the app",
-						default:
-							"https://fhir.nhs.uk/Id/ods-organization-code|RA4",
-						examples: [
-							"https://fhir.nhs.uk/Id/ods-organization-code|RA4",
-						],
-						type: "string",
-						pattern:
-							"^https:\\/\\/fhir\\.nhs\\.uk\\/Id\\/ods-organization-code\\|\\w*$",
-					},
-					practitioner: {
-						description:
-							"The Identifier of the practitioner launching the app",
-						examples: [
-							"https://fhir.nhs.uk/Id/ods-organization-code|frazer.smith@ydh.nhs.uk",
-						],
-						type: "string",
-						// RFC 5322 compliant email regex
-						pattern:
-							'^https:\\/\\/sider\\.nhs\\.uk\\/auth\\|(([^<>()\\[\\]\\.,;:\\s@"]+(\\.[^<>()\\[\\]\\.,;:\\s@"]+)*)|(".+"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$',
-					},
-				},
-				required: ["patient", "birthdate", "location", "practitioner"],
-			},
-		},
+		schema: redirectGetSchema,
 		async handler(req, res) {
 			if (!options.redirectUrl) {
 				res.send(createError(500, "Recieving endpoint missing"));
