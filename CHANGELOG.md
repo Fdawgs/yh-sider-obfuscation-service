@@ -1,3 +1,10 @@
+## <small>2.1.1 (2021-01-05)</small>
+
+-   refactor(routes/redirect): use fluent schema validation ([ae152e1](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/ae152e1))
+-   test(server): remove benchmarking from unit tests ([0cc8249](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/0cc8249))
+-   chore: remove leftover commented over code ([8097336](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/8097336))
+-   chore: remove test https cert and key from `.env.template` ([c6d6b41](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/c6d6b41))
+
 ## 2.1.0 (2021-01-03)
 
 -   build(deps-dev): bump eslint from 7.16.0 to 7.17.0 (#63) ([a289575](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/a289575)), closes [#63](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/63)
