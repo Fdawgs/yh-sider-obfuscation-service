@@ -2494,9 +2494,9 @@ fastify-plugin@^3.0.0:
   integrity sha512-ZdCvKEEd92DNLps5n0v231Bha8bkz1DjnPP/aEz37rz/q42Z5JVLmgnqR4DYuNn3NXAO3IDCPyRvgvxtJ4Ym4w==
 
 fastify-static@^3.3.0:
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/fastify-static/-/fastify-static-3.3.0.tgz#33b639f1fa6fde703326a9ef353d6b1469146f46"
-  integrity sha512-NaaeGWz25TmCYTGR8z90rhpfCuQqxDJauMC7fUTaswtxkM5CUmGGpwInm5/A55qfn9MbUQbPOWtWwSvhY73xHg==
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/fastify-static/-/fastify-static-3.3.1.tgz#e2e83849374dea1e0a037b6dcc1c50a2452bd51a"
+  integrity sha512-PpQ1ejqXgWNjzrj7i9xvveEm/j+beKt6AHJ2LB8223mfCKBCEhUuRvb+WkgyArLZBeiL+EjOzBqIBTSlYQ3J2A==
   dependencies:
     fastify-plugin "^3.0.0"
     glob "^7.1.4"
@@ -2706,9 +2706,9 @@ fs.realpath@^1.0.0:
   integrity sha1-FQStJSMVjKpA20onh8sBQRmU6k8=
 
 fsevents@^2.1.2:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.3.0.tgz#ed42dc76d22943057d58a3856ce3885c0f982948"
-  integrity sha512-SmvpCnCbknBKrMhodrIdwGBhn8kAEp8VUyrcH13clA5cq1C5fyN2+b3lQBdjpO1X/yJrTNySaggyYA62h+28ug==
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.3.1.tgz#b209ab14c61012636c8863507edf7fb68cc54e9f"
+  integrity sha512-YR47Eg4hChJGAB1O3yEAOkGO+rlzutoICGqGo9EZ4lKWokzZRSyIW1QmTzqjtw8MJdj9srP869CuWw/hyzSiBw==
 
 fsevents@~2.1.2:
   version "2.1.3"
