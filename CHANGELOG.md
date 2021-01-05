@@ -1,3 +1,7 @@
+## <small>2.1.2 (2021-01-05)</small>
+
+-   fix(server): set missing content-security-policy directives ([26a3eea](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/26a3eea))
+
 ## <small>2.1.1 (2021-01-05)</small>
 
 -   refactor(routes/redirect): use fluent schema validation ([ae152e1](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/ae152e1))
