@@ -16,7 +16,7 @@ Single sign-on for a user using access tokens from a Keycloak server instance ca
 
 -   [Git](https://git-scm.com/) (to install non-registered dependencies)
 -   [Node.js](https://nodejs.org/en/)
--   [Yarn](https://yarnpkg.com)
+-   [Yarn](https://classic.yarnpkg.com)
 
 ## Deployment
 
