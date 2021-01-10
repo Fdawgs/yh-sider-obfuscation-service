@@ -42,10 +42,21 @@ async function plugin(server, config) {
 			},
 		}))
 
-		// Import and register service routes
-		.register(autoLoad, {
-			dir: path.join(__dirname, "routes"),
-			options: config,
+		/**
+		 * Encapsulate plugins and routes into secured child context, so that swagger
+		 * route doesn't inherit Keycloak plugin
+		 */
+		.register(async (securedContext) => {
+			securedContext
+				.register(autoLoad, {
+					dir: path.join(__dirname, "plugins"),
+					options: config,
+				})
+				// Import and register service routes
+				.register(autoLoad, {
+					dir: path.join(__dirname, "routes"),
+					options: config,
+				});
 		});
 }
 

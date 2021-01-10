@@ -2,7 +2,7 @@ const cloneDeep = require("lodash/cloneDeep");
 const faker = require("faker/locale/en_GB");
 const Fastify = require("fastify");
 const plugin = require(".");
-const getConfig = require("../../../../config");
+const getConfig = require("../../config");
 
 const headers = {
 	"Content-Type": "application/json",

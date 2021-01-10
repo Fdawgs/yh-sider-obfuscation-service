@@ -6,9 +6,9 @@ const plugin = require(".");
 
 const {
 	keycloakRetrieveConfig,
-} = require("../../../../../test_resources/mocks/keycloak-config.mock");
-const mockKeycloakServer = require("../../../../../test_resources/mocks/keycloak-server.mock");
-const getConfig = require("../../../../config");
+} = require("../../../test_resources/mocks/keycloak-config.mock");
+const mockKeycloakServer = require("../../../test_resources/mocks/keycloak-server.mock");
+const getConfig = require("../../config");
 
 const headers = {
 	"Content-Type": "application/json",
