@@ -127,6 +127,7 @@ async function getConfig() {
 					verbose: false,
 				}),
 			},
+			ignoreTrailingSlash: true,
 		},
 		cors: {
 			origin: parseCorsParameter(env.CORS_ORIGIN) || false,

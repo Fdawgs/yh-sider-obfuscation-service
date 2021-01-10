@@ -20,7 +20,6 @@ async function route(server, options) {
 	server.route({
 		method: "GET",
 		url: "/redirect",
-		prefixTrailingSlash: "no-slash",
 		schema: redirectGetSchema,
 		async handler(req, res) {
 			if (!options.redirectUrl) {
