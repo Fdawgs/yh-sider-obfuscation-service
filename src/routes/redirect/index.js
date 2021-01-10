@@ -1,6 +1,5 @@
-const autoLoad = require("fastify-autoload");
-const path = require("path");
 const createError = require("http-errors");
+const fastifyPlugin = require("fastify-plugin");
 const queryString = require("querystring");
 
 const { redirectGetSchema } = require("./schema");
@@ -12,11 +11,6 @@ const { redirectGetSchema } = require("./schema");
  * @param {object} options - Object containing route config objects.
  */
 async function route(server, options) {
-	server.register(autoLoad, {
-		dir: path.join(__dirname, "plugins"),
-		options,
-	});
-
 	/**
 	 * Fastify uses AJV for JSON Schema Validation,
 	 * see https://www.fastify.io/docs/latest/Validation-and-Serialization/
@@ -25,8 +19,7 @@ async function route(server, options) {
 	 */
 	server.route({
 		method: "GET",
-		url: "/",
-		prefixTrailingSlash: "no-slash",
+		url: "/redirect",
 		schema: redirectGetSchema,
 		async handler(req, res) {
 			if (!options.redirectUrl) {
@@ -41,4 +34,4 @@ async function route(server, options) {
 	});
 }
 
-module.exports = route;
+module.exports = fastifyPlugin(route);
