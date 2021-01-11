@@ -6,6 +6,7 @@ const path = require("path");
 const cors = require("fastify-cors");
 const helmet = require("fastify-helmet");
 const helmConfig = require("helmet");
+const nocache = require("fastify-disablecache");
 const swagger = require("fastify-swagger");
 
 // Import healthcheck route
@@ -22,6 +23,8 @@ async function plugin(server, config) {
 	server
 		// Use CORS: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
 		.register(cors, config.cors)
+
+		.register(nocache)
 
 		.register(swagger, config.swagger)
 
