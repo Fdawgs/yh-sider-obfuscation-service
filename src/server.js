@@ -6,6 +6,7 @@ const path = require("path");
 const cors = require("fastify-cors");
 const helmet = require("fastify-helmet");
 const helmConfig = require("helmet");
+const nocache = require("fastify-disablecache");
 const swagger = require("fastify-swagger");
 
 // Import healthcheck route
@@ -23,6 +24,8 @@ async function plugin(server, config) {
 		// Use CORS: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
 		.register(cors, config.cors)
 
+		.register(nocache)
+
 		.register(swagger, config.swagger)
 
 		// Use Helmet to set response security headers: https://helmetjs.github.io/
@@ -30,6 +33,7 @@ async function plugin(server, config) {
 			contentSecurityPolicy: {
 				directives: {
 					...helmConfig.contentSecurityPolicy.getDefaultDirectives(),
+					"form-action": ["'self'"],
 					"img-src": ["'self'", "data:", "validator.swagger.io"],
 					"script-src": ["'self'"].concat(instance.swaggerCSP.script),
 					"style-src": ["'self'", "https:"].concat(
