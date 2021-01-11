@@ -53,6 +53,10 @@ const redirectGetSchema = {
 				)
 				.required()
 		),
+
+	response: {
+		304: S.string().raw({ nullable: true }),
+	},
 };
 
 module.exports = { redirectGetSchema };
