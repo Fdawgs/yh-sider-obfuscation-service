@@ -1,3 +1,9 @@
+## <small>2.2.1 (2021-01-11)</small>
+
+-   fix(env): set default cors to wildcard as boolean option broken ([1699db1](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/1699db1))
+-   fix(server): add form-action csp directive ([026733f](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/026733f))
+-   fix(server): disable caching ([f93470b](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/f93470b))
+
 ## 2.2.0 (2021-01-11)
 
 -   build: add typoci config file ([7b795a4](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/7b795a4))
