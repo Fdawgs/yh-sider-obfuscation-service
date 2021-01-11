@@ -1,5 +1,5 @@
 /* eslint-disable jsdoc/require-param-description */
-const fastifyPlugin = require("fastify-plugin");
+const fp = require("fastify-plugin");
 const createError = require("http-errors");
 const request = require("axios");
 const queryString = require("querystring");
@@ -70,4 +70,4 @@ async function plugin(server, options) {
 	}
 }
 
-module.exports = fastifyPlugin(plugin);
+module.exports = fp(plugin);

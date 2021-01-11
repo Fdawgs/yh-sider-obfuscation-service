@@ -1,6 +1,6 @@
 /* eslint-disable jsdoc/require-param-description */
 const createError = require("http-errors");
-const fastifyPlugin = require("fastify-plugin");
+const fp = require("fastify-plugin");
 const { obfuscate } = require("obfuscated-querystring/lib");
 const queryString = require("querystring");
 
@@ -30,4 +30,4 @@ async function plugin(server, options) {
 	});
 }
 
-module.exports = fastifyPlugin(plugin);
+module.exports = fp(plugin);
