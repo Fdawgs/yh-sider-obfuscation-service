@@ -1,5 +1,5 @@
 const createError = require("http-errors");
-const fastifyPlugin = require("fastify-plugin");
+const fp = require("fastify-plugin");
 const queryString = require("querystring");
 
 const { redirectGetSchema } = require("./schema");
@@ -34,4 +34,4 @@ async function route(server, options) {
 	});
 }
 
-module.exports = fastifyPlugin(route);
+module.exports = fp(route);
