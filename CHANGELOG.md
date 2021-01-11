@@ -1,3 +1,17 @@
+## 2.2.0 (2021-01-11)
+
+-   build: add typoci config file ([7b795a4](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/7b795a4))
+-   build(deps-dev): bump eslint-plugin-jsdoc from 30.7.13 to 31.0.1 (#72) ([fe27d17](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/fe27d17)), closes [#72](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/72)
+-   build(deps-dev): bump nodemon from 2.0.6 to 2.0.7 (#71) ([bfd35fc](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/bfd35fc)), closes [#71](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/71)
+-   build(deps): bump fastify-helmet from 5.0.3 to 5.1.0 (#74) ([a15119f](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/a15119f)), closes [#74](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/74)
+-   build(deps): bump pino from 6.9.0 to 6.10.0 (#73) ([6c466ac](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/6c466ac)), closes [#73](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/73)
+-   feat(routes): add healthcheck route ([bc56c06](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/bc56c06))
+-   style: rename fastifyplugin variable to fp ([10a5aa4](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/10a5aa4))
+-   refactor: ignore trailing slash service-wide ([b6d8223](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/b6d8223))
+-   refactor(plugins): move plugins back to src/plugins; add secured context ([5f727f4](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/5f727f4))
+-   refactor(server): use helmet default csp directives function ([30bc29e](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/30bc29e))
+-   docs(readme): update yarn link ([6439fea](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/6439fea))
+
 ## <small>2.1.2 (2021-01-05)</small>
 
 -   fix(server): set missing content-security-policy directives ([26a3eea](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/26a3eea))
