@@ -6,7 +6,7 @@ const fsp = require("fs").promises;
 const pino = require("pino");
 const rotatingLogStream = require("file-stream-rotator");
 
-const { name, description, version } = require("../../package.json");
+const { name, description, license, version } = require("../../package.json");
 
 /**
  * @author Frazer Smith
@@ -141,8 +141,28 @@ async function getConfig() {
 				info: {
 					title: name,
 					description,
+					contact: {
+						name: "Solutions Development Team",
+						email: "servicedesk@ydh.nhs.uk",
+					},
+					license: {
+						name: license,
+						url:
+							"https://raw.githubusercontent.com/Fdawgs/ydh-sider-obfuscation-service/master/LICENSE",
+					},
 					version,
 				},
+				tags: [
+					{
+						name: "Redirects",
+						description:
+							"Endpoints relating to redirection to SIDeR",
+					},
+					{
+						name: "System Administration",
+						description: "",
+					},
+				],
 			},
 		},
 		redirectUrl: env.SERVICE_REDIRECT_URL,
