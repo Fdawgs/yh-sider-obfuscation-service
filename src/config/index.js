@@ -152,6 +152,17 @@ async function getConfig() {
 					},
 					version,
 				},
+				tags: [
+					{
+						name: "Redirects",
+						description:
+							"Endpoints relating to redirection to SIDeR",
+					},
+					{
+						name: "System Administration",
+						description: "",
+					},
+				],
 			},
 		},
 		redirectUrl: env.SERVICE_REDIRECT_URL,

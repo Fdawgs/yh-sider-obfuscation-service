@@ -1,5 +1,7 @@
 const S = require("fluent-json-schema");
 
+const tags = ["Redirects"];
+
 /**
  * Fastify uses AJV for JSON Schema Validation,
  * see https://www.fastify.io/docs/latest/Validation-and-Serialization/
@@ -7,6 +9,8 @@ const S = require("fluent-json-schema");
  * This validation protects against XSS and HPP attacks.
  */
 const redirectGetSchema = {
+	tags,
+	summary: "Redirect to SIDeR",
 	querystring: S.object()
 		.prop(
 			"birthdate",
