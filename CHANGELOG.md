@@ -1,3 +1,12 @@
+## <small>2.2.2 (2021-01-12)</small>
+
+-   build(deps): bump fastify-disablecache from 1.0.0 to 1.0.1 (#78) ([79fad03](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/79fad03)), closes [#78](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/78)
+-   chore: add metadata to api schema ([a4f9d56](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/a4f9d56))
+-   chore: add tags ([47c9af1](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/47c9af1))
+-   ci: remove redundant javascript dictionary ([1ca5375](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/1ca5375))
+-   test: set resetmocks option in jest config ([46e63b4](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/46e63b4))
+-   fix(routes): correct schema to be nullable string ([4ff507a](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/4ff507a))
+
 ## <small>2.2.1 (2021-01-11)</small>
 
 -   fix(env): set default cors to wildcard as boolean option broken ([1699db1](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/1699db1))
