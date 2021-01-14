@@ -6,7 +6,7 @@ const path = require("path");
 const cors = require("fastify-cors");
 const helmet = require("fastify-helmet");
 const helmConfig = require("helmet");
-const nocache = require("fastify-disablecache");
+const disableCache = require("fastify-disablecache");
 const swagger = require("fastify-swagger");
 
 // Import healthcheck route
@@ -24,7 +24,7 @@ async function plugin(server, config) {
 		// Use CORS: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
 		.register(cors, config.cors)
 
-		.register(nocache)
+		.register(disableCache)
 
 		.register(swagger, config.swagger)
 
@@ -40,6 +40,9 @@ async function plugin(server, config) {
 						instance.swaggerCSP.style
 					),
 				},
+			},
+			referrerPolicy: {
+				policy: ["no-referrer", "strict-origin-when-cross-origin"],
 			},
 		}))
 
