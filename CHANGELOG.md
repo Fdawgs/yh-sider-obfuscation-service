@@ -1,3 +1,9 @@
+## <small>2.2.3 (2021-01-14)</small>
+
+-   fix(server): set referrer policy with fallback ([7567f0a](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/7567f0a))
+-   style(server): rename plugin variable ([6b8d7d2](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/6b8d7d2))
+-   chore: disable cors in template ([4a7c671](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/4a7c671))
+
 ## <small>2.2.2 (2021-01-12)</small>
 
 -   build(deps): bump fastify-disablecache from 1.0.0 to 1.0.1 (#78) ([79fad03](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/79fad03)), closes [#78](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/78)
