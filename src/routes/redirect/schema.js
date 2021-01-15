@@ -11,7 +11,7 @@ const tags = ["Redirects"];
 const redirectGetSchema = {
 	tags,
 	summary: "Redirect to SIDeR",
-	querystring: S.object()
+	query: S.object()
 		.prop(
 			"birthdate",
 			S.string()
