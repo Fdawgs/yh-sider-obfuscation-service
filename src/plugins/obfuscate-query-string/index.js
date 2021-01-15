@@ -1,4 +1,3 @@
-/* eslint-disable jsdoc/require-param-description */
 const createError = require("http-errors");
 const fp = require("fastify-plugin");
 const { obfuscate } = require("obfuscated-querystring/lib");
@@ -8,7 +7,7 @@ const queryString = require("querystring");
  * @author Frazer Smith
  * @description Pre-handler plugin that obfuscates request query string keys and values.
  * @param {Function} server - Fastify instance.
- * @param {object} options
+ * @param {object} options - Fastify config values.
  * @param {object} options.obfuscation - Obfuscation values.
  * @param {object} options.obfuscation.encryptionKey - Object containing encryption key values.
  * @param {string} options.obfuscation.encryptionKey.name - Encryption key name.
