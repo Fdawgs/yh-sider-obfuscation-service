@@ -8,7 +8,7 @@
 
 This is [Yeovil District Hospital NHSFT](https://yeovilhospital.co.uk/)'s contextual link obfuscation service, a Node.js application using the [Fastify](https://www.fastify.io/) web framework and Black Pear's [obfuscated-querystring](https://github.com/BlackPearSw/obfuscated-querystring).
 
-This service was created out of a need for query strings parameters containing personal identifiable data [to be obfuscated](https://github.com/Somerset-SIDeR-Programme/SIDeR-interop-patterns/wiki/query-string-obfuscation) when users click on the [SIDeR](https://www.somersetccg.nhs.uk/about-us/digital-projects/sider/) contextual link within Yeovil District Hospital NHSFT's Patient Administration System (PAS), InterSystems' TrakCare.
+This service was created out of a need for query strings parameters containing personal identifiable data [to be obfuscated](https://github.com/Somerset-SIDeR-Programme/SIDeR-interop-patterns/wiki/query-string-obfuscation) when users click on the [SIDeR](https://www.somersetccg.nhs.uk/about-us/digital-projects/sider/) contextual link within Yeovil District Hospital NHSFT's Patient Administration System (PAS), InterSystems TrakCare.
 
 Single sign-on for a user using access tokens from a Keycloak server instance can be enabled using environment variables found in `.env.template`.
 
@@ -152,6 +152,16 @@ If you are unable to deploy this into production using Docker, it is recommended
 Yeovil District Hospital NHSFT is heavily entrenched in Microsoft's ecosystem; utilise [pm2-installer](https://github.com/jessety/pm2-installer) to easily install PM2 as a Windows service.
 
 **Note:** PM2 has been configured to automatically restart the application if modifications are made to `.env`.
+
+### Contextual Link in PAS (TrakCare)
+
+This section is for members of the Solutions Development and Application Support teams at Yeovil District Hospital NHSFT, or other NHSFTs that use InterSystems TrakCare as their PAS.
+
+The SIDeR contextual link's icon profile values in TrakCare should be set to the following:
+
+Link URL: `<obfuscation service path>/redirect`
+
+Link expression: `"&"_##class(Custom.ENYH.Integration.ContextualLink.GenericPatientLink).BuildURLVars("patient=https://fhir.nhs.uk/Id/nhs-number|{NHSNumber}&birthdate={DateOfBirthISO8601}&location=https://fhir.nhs.uk/Id/ods-organization-code|RA4&practitioner=https://sider.nhs.uk/auth|{UserName}@ydh.nhs.uk")`
 
 ## Contributing
 
