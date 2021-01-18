@@ -1,3 +1,16 @@
+## <small>2.2.4 (2021-01-18)</small>
+
+-   build: remove `yarn` as package manager, revert to `npm` ([118752e](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/118752e))
+-   build(deps-dev): bump eslint-plugin-jsdoc from 31.0.6 to 31.0.7 (#82) ([935dd6a](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/935dd6a)), closes [#82](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/82)
+-   build(deps): bump fastify-disablecache from 1.0.1 to 1.0.2 (#83) ([8fa3b48](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/8fa3b48)), closes [#83](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/83)
+-   build(deps): bump helmet from 4.3.1 to 4.4.0 (#84) ([1c33fc9](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/1c33fc9)), closes [#84](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/84)
+-   docs(readme): add contextual link guidance ([2169b2d](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/2169b2d))
+-   docs(readme): correct script ([651f651](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/651f651))
+-   ci(typo-ci): add `ydh` to list of excluded words ([b7d6291](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/b7d6291))
+-   chore(package): add homepage and bug urls ([8f2d827](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/8f2d827))
+-   chore(plugins): add missing param descriptions ([5e29358](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/5e29358))
+-   style: rename `querystring` to `query` ([bed5792](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/bed5792))
+
 ## <small>2.2.3 (2021-01-14)</small>
 
 -   fix(server): set referrer policy with fallback ([7567f0a](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/7567f0a))
