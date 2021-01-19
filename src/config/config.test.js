@@ -14,6 +14,7 @@ describe("configuration", () => {
 	});
 
 	test("Should return values according to environment variables - SSL enabled and CORS disabled", async () => {
+		const NODE_ENV = "development";
 		const SERVICE_HOST = faker.internet.ip();
 		const SERVICE_PORT = faker.random.number();
 		const SERVICE_REDIRECT_URL =
@@ -33,6 +34,7 @@ describe("configuration", () => {
 		const OBFUSCATION_QUERYSTRING_KEY_ARRAY = '["birthdate", "patient"]';
 
 		Object.assign(process.env, {
+			NODE_ENV,
 			SERVICE_HOST,
 			SERVICE_PORT,
 			SERVICE_REDIRECT_URL,
@@ -47,6 +49,8 @@ describe("configuration", () => {
 		});
 
 		const config = await getConfig();
+
+		expect(config.isProduction).toEqual(false);
 
 		expect(config.fastify).toEqual({
 			host: SERVICE_HOST,

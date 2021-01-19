@@ -41,7 +41,7 @@ const redirectGetSchema = {
 				)
 				.examples(["https://fhir.nhs.uk/Id/ods-organization-code|RA4"])
 				.pattern(
-					"^https:\\/\\/fhir\\.nhs\\.uk\\/Id\\/ods-organization-code\\|\\w*$"
+					"^https:\\/\\/fhir\\.nhs\\.uk\\/Id\\/ods-organization-code\\|\\w{1,9}$"
 				)
 				.required()
 		)
