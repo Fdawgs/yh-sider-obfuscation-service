@@ -1,3 +1,13 @@
+## <small>2.2.5 (2021-01-19)</small>
+
+-   build(deps-dev): bump eslint-config-prettier from 7.1.0 to 7.2.0 (#88) ([d0ea793](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/d0ea793)), closes [#88](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/88)
+-   build(deps): bump fastify-disablecache from 1.0.2 to 1.0.3 (#87) ([9ece242](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/9ece242)), closes [#87](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/87)
+-   build(deps): bump helmet from 4.4.0 to 4.4.1 (#86) ([e4977fd](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/e4977fd)), closes [#86](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/86)
+-   fix(routes/redirect): limit ods code length to max of 9 ([b4e560e](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/b4e560e))
+-   fix(server): disable swagger `/docs` route if production instance ([ce510a2](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/ce510a2))
+-   refactor(routes/healthcheck): remove unused `options` param ([a1ab2d1](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/a1ab2d1))
+-   ci: lint lockfile ([cd13b0a](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/cd13b0a))
+
 ## <small>2.2.4 (2021-01-18)</small>
 
 -   build: remove `yarn` as package manager, revert to `npm` ([118752e](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/118752e))

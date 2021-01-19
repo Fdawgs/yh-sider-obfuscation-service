@@ -43,7 +43,7 @@ To quickly test it open a browser of your choice or, if using a request builder 
 
 http://0.0.0.0:8204/redirect?patient=https://fhir.nhs.uk/Id/nhs-number|9449304513&birthdate=1934-10-23&location=https://fhir.nhs.uk/Id/ods-organization-code|RA4&practitioner=https://sider.nhs.uk/auth|frazer.smith@ydh.nhs.uk
 
-Alternatively, you can navigate to http://0.0.0.0:8204/docs and generate a request through the example input there.
+Alternatively, you can navigate to http://0.0.0.0:8204/docs (if `NODE_ENV` is not set to 'production') and generate a request through the example input there.
 
 Replace the organization code and email address in the `location` and `practitioner` query string parameters respectively with your own if you have already been set up with an account in SIDeR.
 
