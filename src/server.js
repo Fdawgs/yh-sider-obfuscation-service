@@ -19,33 +19,48 @@ const healthCheck = require("./routes/healthcheck");
  * @param {object} config - Fastify configuration values
  */
 async function plugin(server, config) {
+	if (config.isProduction === false) {
+		server
+			.register(swagger, config.swagger)
+			.register(helmet, (instance) => ({
+				contentSecurityPolicy: {
+					directives: {
+						...helmConfig.contentSecurityPolicy.getDefaultDirectives(),
+						"form-action": ["'self'"],
+						"img-src": ["'self'", "data:", "validator.swagger.io"],
+						"script-src": ["'self'"].concat(
+							instance.swaggerCSP.script
+						),
+						"style-src": ["'self'", "https:"].concat(
+							instance.swaggerCSP.style
+						),
+					},
+				},
+				referrerPolicy: {
+					policy: ["no-referrer", "strict-origin-when-cross-origin"],
+				},
+			}));
+	} else {
+		// Use Helmet to set response security headers: https://helmetjs.github.io/
+		server.register(helmet, () => ({
+			contentSecurityPolicy: {
+				directives: {
+					...helmConfig.contentSecurityPolicy.getDefaultDirectives(),
+					"form-action": ["'self'"],
+				},
+			},
+			referrerPolicy: {
+				policy: ["no-referrer", "strict-origin-when-cross-origin"],
+			},
+		}));
+	}
+
 	// Enable plugins
 	server
 		// Use CORS: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
 		.register(cors, config.cors)
 
 		.register(disableCache)
-
-		.register(swagger, config.swagger)
-
-		// Use Helmet to set response security headers: https://helmetjs.github.io/
-		.register(helmet, (instance) => ({
-			contentSecurityPolicy: {
-				directives: {
-					...helmConfig.contentSecurityPolicy.getDefaultDirectives(),
-					"form-action": ["'self'"],
-					"img-src": ["'self'", "data:", "validator.swagger.io"],
-					"script-src": ["'self'"].concat(instance.swaggerCSP.script),
-					"style-src": ["'self'", "https:"].concat(
-						instance.swaggerCSP.style
-					),
-				},
-			},
-			referrerPolicy: {
-				policy: ["no-referrer", "strict-origin-when-cross-origin"],
-			},
-		}))
-
 		.register(healthCheck)
 
 		/**

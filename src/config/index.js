@@ -34,6 +34,7 @@ async function getConfig() {
 	const env = envSchema({
 		dotenv: true,
 		schema: S.object()
+			.prop("NODE_ENV", S.string())
 			.prop("SERVICE_HOST", S.string())
 			.prop("SERVICE_PORT", S.number())
 			.prop("SERVICE_REDIRECT_URL", S.anyOf([S.string(), S.null()]))
@@ -91,7 +92,10 @@ async function getConfig() {
 			.prop("OBFUSCATION_QUERYSTRING_KEY_ARRAY", S.string()),
 	});
 
+	const isProduction = env.NODE_ENV === "production";
+
 	const config = {
+		isProduction,
 		fastify: {
 			host: env.SERVICE_HOST,
 			port: env.SERVICE_PORT,
