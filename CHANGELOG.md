@@ -1,3 +1,12 @@
+## <small>2.2.6 (2021-01-22)</small>
+
+-   refactor(pm2): use repo name for instances; remove redundant env setting ([54aecfa](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/54aecfa))
+-   refactor(server): use default helmet referrer policy ([595bbfa](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/595bbfa))
+-   build(deps-dev): bump autocannon from 7.0.1 to 7.0.3 (#89) ([c4ce84d](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/c4ce84d)), closes [#89](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/89)
+-   build(deps-dev): bump eslint-plugin-jsdoc from 31.0.7 to 31.0.8 (#90) ([b0894de](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/b0894de)), closes [#90](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/90)
+-   build(docker): speed up install by using `npm ci` over `npm install` ([c9100b7](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/c9100b7))
+-   test(routes/healthcheck): correct description ([ecf0f73](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/ecf0f73))
+
 ## <small>2.2.5 (2021-01-19)</small>
 
 -   build(deps-dev): bump eslint-config-prettier from 7.1.0 to 7.2.0 (#88) ([d0ea793](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/d0ea793)), closes [#88](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/88)
