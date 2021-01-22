@@ -36,9 +36,6 @@ async function plugin(server, config) {
 						),
 					},
 				},
-				referrerPolicy: {
-					policy: ["no-referrer", "strict-origin-when-cross-origin"],
-				},
 			}));
 	} else {
 		// Use Helmet to set response security headers: https://helmetjs.github.io/
@@ -48,9 +45,6 @@ async function plugin(server, config) {
 					...helmConfig.contentSecurityPolicy.getDefaultDirectives(),
 					"form-action": ["'self'"],
 				},
-			},
-			referrerPolicy: {
-				policy: ["no-referrer", "strict-origin-when-cross-origin"],
 			},
 		}));
 	}
