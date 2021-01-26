@@ -64,7 +64,7 @@ describe("Server deployment", () => {
 		});
 
 		test("Should redirect to 'redirectUrl' with required params present", async () => {
-			const res = await server.inject({
+			const response = await server.inject({
 				method: "GET",
 				url: "/redirect",
 				headers,
@@ -72,13 +72,13 @@ describe("Server deployment", () => {
 			});
 
 			const resQueryString = queryString.parse(
-				res.headers.location.substring(
-					res.headers.location.indexOf("?") + 1,
-					res.headers.location.length
+				response.headers.location.substring(
+					response.headers.location.indexOf("?") + 1,
+					response.headers.location.length
 				)
 			);
 
-			expect(res.headers.location).toMatch(
+			expect(response.headers.location).toMatch(
 				"http://127.0.0.1:3001/esp/#!/launch?"
 			);
 
@@ -89,7 +89,7 @@ describe("Server deployment", () => {
 				enc: expect.any(String),
 			});
 
-			expect(res.statusCode).toBe(302);
+			expect(response.statusCode).toBe(302);
 		});
 
 		test("Should return HTTP 400 error when any required query string parameter is missing", async () => {
@@ -103,14 +103,14 @@ describe("Server deployment", () => {
 					const scrubbedParams = { ...altMockParams };
 					delete scrubbedParams[key];
 
-					const res = await server.inject({
+					const response = await server.inject({
 						method: "GET",
 						url: "/redirect",
 						headers,
 						query: scrubbedParams,
 					});
 
-					return res.statusCode;
+					return response.statusCode;
 				})
 			);
 
@@ -130,14 +130,14 @@ describe("Server deployment", () => {
 					const scrubbedParams = { ...altMockParams };
 					scrubbedParams[key] = "test";
 
-					const res = await server.inject({
+					const response = await server.inject({
 						method: "GET",
 						url: "/redirect",
 						headers,
 						query: scrubbedParams,
 					});
 
-					return res.statusCode;
+					return response.statusCode;
 				})
 			);
 
@@ -159,17 +159,17 @@ describe("Server deployment", () => {
 			server.register(startServer, altConfig);
 			await server.ready();
 
-			const res = await server.inject({
+			const response = await server.inject({
 				method: "GET",
 				url: "/redirect",
 				headers,
 				query: mockParams,
 			});
 
-			expect(res.headers.location).toMatch(
+			expect(response.headers.location).toMatch(
 				"http://127.0.0.1:3001/esp/#!/launch?"
 			);
-			expect(res.statusCode).toBe(302);
+			expect(response.statusCode).toBe(302);
 
 			server.close();
 		});
@@ -185,17 +185,17 @@ describe("Server deployment", () => {
 			server.register(startServer, altConfig);
 			await server.ready();
 
-			const res = await server.inject({
+			const response = await server.inject({
 				method: "GET",
 				url: "/redirect",
 				headers,
 				query: mockParams,
 			});
 
-			const body = JSON.parse(res.body);
+			const body = JSON.parse(response.body);
 
-			expect(res.statusCode).toBe(500);
-			expect(res.statusMessage).toBe("Internal Server Error");
+			expect(response.statusCode).toBe(500);
+			expect(response.statusMessage).toBe("Internal Server Error");
 			expect(body.statusCode).toBe(500);
 			expect(body.error).toBe("Internal Server Error");
 
@@ -210,17 +210,17 @@ describe("Server deployment", () => {
 			server.register(startServer, altConfig);
 			await server.ready();
 
-			const res = await server.inject({
+			const response = await server.inject({
 				method: "GET",
 				url: "/redirect",
 				headers,
 				query: mockParams,
 			});
 
-			const body = JSON.parse(res.body);
+			const body = JSON.parse(response.body);
 
-			expect(res.statusCode).toBe(500);
-			expect(res.statusMessage).toBe("Internal Server Error");
+			expect(response.statusCode).toBe(500);
+			expect(response.statusMessage).toBe("Internal Server Error");
 			expect(body.statusCode).toBe(500);
 			expect(body.error).toBe("Internal Server Error");
 

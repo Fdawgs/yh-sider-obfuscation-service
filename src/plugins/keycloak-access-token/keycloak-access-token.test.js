@@ -56,29 +56,29 @@ describe("Keycloak access token retrieval plugin", () => {
 	test("Should continue when Keycloak options are not defined", async () => {
 		server.register(plugin);
 
-		const res = await server.inject({
+		const response = await server.inject({
 			method: "GET",
 			url: "/",
 			headers,
 			query: mockParams,
 		});
 
-		expect(res.statusCode).toBe(200);
+		expect(response.statusCode).toBe(200);
 	});
 
 	test("Should return Keycloak access_token from mock server", async () => {
 		server.register(plugin, keycloakRetrieveConfig);
 
-		const res = await server.inject({
+		const response = await server.inject({
 			method: "GET",
 			url: "/",
 			headers,
 			query: mockParams,
 		});
 
-		const body = JSON.parse(res.body);
+		const body = JSON.parse(response.body);
 
-		expect(res.statusCode).toBe(200);
+		expect(response.statusCode).toBe(200);
 		expect(body.access_token).not.toBeUndefined();
 		expect(typeof body.access_token).toBe("string");
 		expect(body.birthdate).not.toBeUndefined();
@@ -96,17 +96,17 @@ describe("Keycloak access token retrieval plugin", () => {
 
 		server.register(plugin, altConfig);
 
-		const res = await server.inject({
+		const response = await server.inject({
 			method: "GET",
 			url: "/",
 			headers,
 			query: mockParams,
 		});
 
-		const body = JSON.parse(res.body);
+		const body = JSON.parse(response.body);
 
-		expect(res.statusCode).toBe(500);
-		expect(res.statusMessage).toBe("Internal Server Error");
+		expect(response.statusCode).toBe(500);
+		expect(response.statusMessage).toBe("Internal Server Error");
 		expect(body.statusCode).toBe(500);
 		expect(body.error).toBe("Internal Server Error");
 
