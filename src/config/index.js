@@ -89,7 +89,8 @@ async function getConfig() {
 			.prop("KC_SERVICEAUTH_USERNAME", S.anyOf([S.string(), S.null()]))
 			.prop("OBFUSCATION_KEY_NAME", S.string())
 			.prop("OBFUSCATION_KEY_VALUE", S.string())
-			.prop("OBFUSCATION_QUERYSTRING_KEY_ARRAY", S.string()),
+			.prop("OBFUSCATION_QUERYSTRING_KEY_ARRAY", S.string())
+			.required(["NODE_ENV", "SERVICE_HOST", "SERVICE_PORT"]),
 	});
 
 	const isProduction = env.NODE_ENV === "production";
