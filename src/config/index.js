@@ -42,7 +42,10 @@ async function getConfig() {
 			.prop("HTTPS_PFX_FILE_PATH", S.anyOf([S.string(), S.null()]))
 			.prop("HTTPS_SSL_CERT_PATH", S.anyOf([S.string(), S.null()]))
 			.prop("HTTPS_SSL_KEY_PATH", S.anyOf([S.string(), S.null()]))
-			.prop("CORS_ORIGIN", S.string().default("false"))
+			.prop("CORS_ORIGIN", S.anyOf([S.string(), S.null()]))
+			.prop("CORS_METHODS", S.anyOf([S.string(), S.null()]))
+			.prop("CORS_ALLOWED_HEADERS", S.anyOf([S.string(), S.null()]))
+			.prop("CORS_EXPOSED_HEADERS", S.anyOf([S.string(), S.null()]))
 			.prop(
 				"LOG_LEVEL",
 				S.string()
@@ -89,7 +92,8 @@ async function getConfig() {
 			.prop("KC_SERVICEAUTH_USERNAME", S.anyOf([S.string(), S.null()]))
 			.prop("OBFUSCATION_KEY_NAME", S.string())
 			.prop("OBFUSCATION_KEY_VALUE", S.string())
-			.prop("OBFUSCATION_QUERYSTRING_KEY_ARRAY", S.string()),
+			.prop("OBFUSCATION_QUERYSTRING_KEY_ARRAY", S.string())
+			.required(["NODE_ENV", "SERVICE_HOST", "SERVICE_PORT"]),
 	});
 
 	const isProduction = env.NODE_ENV === "production";
@@ -135,8 +139,6 @@ async function getConfig() {
 		},
 		cors: {
 			origin: parseCorsParameter(env.CORS_ORIGIN) || false,
-			methods: ["Accept"],
-			allowedHeaders: ["GET", "OPTIONS"],
 		},
 		swagger: {
 			routePrefix: "/docs",
@@ -207,6 +209,16 @@ async function getConfig() {
 			obfuscate: JSON.parse(env.OBFUSCATION_QUERYSTRING_KEY_ARRAY),
 		},
 	};
+
+	if (env.CORS_METHODS) {
+		config.cors.methods = env.CORS_METHODS;
+	}
+	if (env.CORS_ALLOWED_HEADERS) {
+		config.cors.allowedHeaders = env.CORS_ALLOWED_HEADERS;
+	}
+	if (env.CORS_EXPOSED_HEADERS) {
+		config.cors.exposedHeaders = env.CORS_EXPOSED_HEADERS;
+	}
 
 	// Enable HTTPS using cert/key or passphrase/pfx combinations
 	if (env.HTTPS_SSL_CERT_PATH && env.HTTPS_SSL_KEY_PATH) {
