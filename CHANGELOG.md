@@ -1,3 +1,27 @@
+## 2.3.0 (2021-01-28)
+
+-   build(deps-dev): add husky for git hook handling ([59dc590](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/59dc590))
+-   build(deps-dev): bump eslint-plugin-jsdoc from 31.0.8 to 31.4.0 (#95) ([300e62f](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/300e62f)), closes [#95](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/95)
+-   build(deps-dev): bump faker from 5.1.0 to 5.2.0 (#98) ([d667e00](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/d667e00)), closes [#98](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/98)
+-   build(deps): bump fastify from 3.10.1 to 3.11.0 (#99) ([7565482](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/7565482)), closes [#99](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/99)
+-   build(deps): bump fastify-autoload from 3.4.0 to 3.4.2 (#96) ([82a6b4d](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/82a6b4d)), closes [#96](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/96)
+-   build(deps): bump fastify-cors from 5.1.0 to 5.2.0 (#94) ([6a7144b](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/6a7144b)), closes [#94](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/94)
+-   build(deps): bump fastify-swagger from 3.5.0 to 4.0.0 (#97) ([daf054b](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/daf054b)), closes [#97](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/97)
+-   feat(config): allow configurable cors headers ([c6a0dbc](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/c6a0dbc))
+-   style: capitalise headings correctly ([c6d9bf6](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/c6d9bf6))
+-   style(ci): capitalise jobs and job step names ([29228a8](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/29228a8))
+-   style(readme): capitalise headings correctly ([b919062](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/b919062))
+-   style(readme): prettier badge shape ([abed326](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/abed326))
+-   style(tests): rename `res` to `response` ([46ceeb6](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/46ceeb6))
+-   fix(config): add required properties ([af86f94](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/af86f94))
+-   docs: bump coc from v1.4.0 to v2.0.0 ([915b17e](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/915b17e))
+-   docs(readme): add description ([bb35ec4](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/bb35ec4))
+-   chore: add pull request template ([c6fb466](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/c6fb466))
+-   chore: standardise `license-checker` script ([05d6917](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/05d6917))
+-   ci: cache on `node-version` as well as `os` ([2a3aa33](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/2a3aa33))
+-   ci(github-actions): set `flag-name` for parallel coverage tests ([d5d6a60](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/d5d6a60))
+-   ci(github-actions): set semver for coverallsapp ([a29900b](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/a29900b))
+
 ## <small>2.2.6 (2021-01-22)</small>
 
 -   refactor(pm2): use repo name for instances; remove redundant env setting ([54aecfa](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/54aecfa))
