@@ -5,7 +5,6 @@ const path = require("path");
 // Import plugins
 const cors = require("fastify-cors");
 const helmet = require("fastify-helmet");
-const helmConfig = require("helmet");
 const disableCache = require("fastify-disablecache");
 const swagger = require("fastify-swagger");
 
@@ -25,7 +24,7 @@ async function plugin(server, config) {
 			.register(helmet, (instance) => ({
 				contentSecurityPolicy: {
 					directives: {
-						...helmConfig.contentSecurityPolicy.getDefaultDirectives(),
+						...helmet.contentSecurityPolicy.getDefaultDirectives(),
 						"form-action": ["'self'"],
 						"img-src": ["'self'", "data:", "validator.swagger.io"],
 						"script-src": ["'self'"].concat(
@@ -42,7 +41,7 @@ async function plugin(server, config) {
 		server.register(helmet, () => ({
 			contentSecurityPolicy: {
 				directives: {
-					...helmConfig.contentSecurityPolicy.getDefaultDirectives(),
+					...helmet.contentSecurityPolicy.getDefaultDirectives(),
 					"form-action": ["'self'"],
 				},
 			},
