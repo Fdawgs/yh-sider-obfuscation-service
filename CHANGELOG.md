@@ -1,3 +1,22 @@
+## <small>2.3.1 (2021-02-01)</small>
+
+-   chore: check that direct dependencies use permissible licenses ([a423d78](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/a423d78))
+-   chore: exclude obs - allowed lgpl as library not altered/compiled ([d41ea85](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/d41ea85))
+-   chore: stop excess coverage files being generated ([0342eba](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/0342eba))
+-   chore(routes): specify further openapi spec values ([35327a1](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/35327a1))
+-   fix(docker): use node command over npm ([0a5235c](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/0a5235c))
+-   refactor(server): use new exposed CSP dir from `fastify-helmet` ([d4d068b](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/d4d068b))
+-   style: rename `license-checker` to `lint:licenses` ([17d8c32](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/17d8c32))
+-   build(deps-dev): bump eslint from 7.18.0 to 7.19.0 (#105) ([e115fd3](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/e115fd3)), closes [#105](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/105)
+-   build(deps-dev): bump eslint-plugin-jsdoc from 31.4.0 to 31.6.0 (#103) ([376684b](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/376684b)), closes [#103](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/103)
+-   build(deps-dev): bump pino-pretty from 4.3.0 to 4.4.0 (#101) ([50cf14c](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/50cf14c)), closes [#101](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/101)
+-   build(deps-dev): remove coveralls, replaced by github action ([b107c12](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/b107c12))
+-   build(deps-dev): replace lodash with lodash.clonedeep ([92fdfef](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/92fdfef))
+-   build(deps): bump fastify-disablecache from 1.0.3 to 1.0.4 (#107) ([1e941a0](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/1e941a0)), closes [#107](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/107)
+-   build(deps): bump fastify-helmet from 5.1.0 to 5.2.0 (#102) ([03066aa](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/03066aa)), closes [#102](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/102)
+-   build(deps): bump fastify-swagger from 4.0.0 to 4.0.1 (#104) ([2370604](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/2370604)), closes [#104](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/104)
+-   docs(readme): remove superfluous text in pm2 install instructions ([4572cf2](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/4572cf2))
+
 ## 2.3.0 (2021-01-28)
 
 -   build(deps-dev): add husky for git hook handling ([59dc590](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/59dc590))
