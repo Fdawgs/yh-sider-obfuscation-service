@@ -94,7 +94,7 @@
 		"fastify": "^3.11.0",
 		"fastify-autoload": "^3.4.2",
 		"fastify-cors": "^5.2.0",
-		"fastify-disablecache": "^1.0.3",
+		"fastify-disablecache": "^1.0.4",
 		"fastify-helmet": "^5.2.0",
 		"fastify-plugin": "^3.0.0",
 		"fastify-swagger": "^4.0.1",
