@@ -1,4 +1,4 @@
-const cloneDeep = require("lodash.clonedeep");
+const cloneDeep = require("lodash").cloneDeep;
 const faker = require("faker/locale/en_GB");
 const Fastify = require("fastify");
 const plugin = require(".");
