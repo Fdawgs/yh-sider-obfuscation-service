@@ -1,3 +1,10 @@
+## <small>2.3.2 (2021-02-02)</small>
+
+-   build(deps-dev): bump pino-pretty from 4.4.0 to 4.5.0 (#111) ([f5501e3](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/f5501e3)), closes [#111](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/111)
+-   build(deps-dev): replace deprecated lodash.clonedeep ([8acbd18](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/8acbd18))
+-   fix(config): stop rotatinglogstream flooding stdout ([5f8e41b](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/5f8e41b))
+-   refactor(config): update openapi docs from v2.\*.\* to v3.\*.\* ([382eb45](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/382eb45))
+
 ## <small>2.3.1 (2021-02-01)</small>
 
 -   chore: check that direct dependencies use permissible licenses ([a423d78](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/a423d78))
