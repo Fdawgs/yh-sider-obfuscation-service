@@ -143,7 +143,7 @@ async function getConfig() {
 		swagger: {
 			routePrefix: "/docs",
 			exposeRoute: true,
-			swagger: {
+			openapi: {
 				info: {
 					title: name,
 					description,
