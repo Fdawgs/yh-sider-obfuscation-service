@@ -22,7 +22,7 @@ const mockParams = {
 	practitioner: `https://sider.nhs.uk/auth|obsservice.test@ydh.nhs.uk`,
 };
 
-describe("Keycloak access token retrieval plugin", () => {
+describe("Keycloak Access Token Retrieval Plugin", () => {
 	let server;
 	let config;
 

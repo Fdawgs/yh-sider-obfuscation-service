@@ -25,7 +25,7 @@ const mockParams = {
 	NOUNLOCK: faker.random.number(),
 };
 
-describe("Server deployment", () => {
+describe("Server Deployment", () => {
 	let config;
 
 	beforeAll(async () => {
@@ -147,7 +147,7 @@ describe("Server deployment", () => {
 		});
 	});
 
-	describe("Keycloak token retrival", () => {
+	describe("Keycloak Token Retrival", () => {
 		test("Should continue when Keycloak endpoint config is disabled", async () => {
 			const altConfig = cloneDeep(config);
 			delete altConfig.keycloak;

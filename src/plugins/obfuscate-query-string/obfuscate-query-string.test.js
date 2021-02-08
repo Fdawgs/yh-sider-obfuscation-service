@@ -16,7 +16,7 @@ const mockParams = {
 	practitioner: `https://sider.nhs.uk/auth|obsservice.test@ydh.nhs.uk`,
 };
 
-describe("Query string obfuscation plugin", () => {
+describe("Query String Obfuscation plugin", () => {
 	let config;
 	let server;
 
