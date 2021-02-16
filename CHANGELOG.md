@@ -1,3 +1,33 @@
+## <small>2.3.3 (2021-02-16)</small>
+
+-   build(deps-dev): bump eslint from 7.19.0 to 7.20.0 (#119) ([5e7916d](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/5e7916d)), closes [#119](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/119)
+-   build(deps-dev): bump eslint-plugin-jsdoc from 31.6.0 to 32.0.1 (#120) ([6c656ff](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/6c656ff)), closes [#120](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/120)
+-   build(deps-dev): bump eslint-plugin-promise from 4.2.1 to 4.3.1 (#121) ([905c6cd](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/905c6cd)), closes [#121](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/121)
+-   build(deps-dev): bump faker from 5.2.0 to 5.4.0 (#123) ([b9e35b5](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/b9e35b5)), closes [#123](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/123)
+-   build(deps-dev): pin husky major version ([ca34bac](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/ca34bac))
+-   build(deps): bump actions/cache from v2 to v2.1.4 (#117) ([5601b15](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/5601b15)), closes [#117](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/117)
+-   build(deps): bump env-schema from 2.0.1 to 2.1.0 (#118) ([2ad9149](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/2ad9149)), closes [#118](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/118)
+-   build(deps): bump fastify from 3.11.0 to 3.12.0 (#124) ([6143ce4](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/6143ce4)), closes [#124](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/124)
+-   build(deps): bump fastify-swagger from 4.0.1 to 4.3.1 (#125) ([844db15](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/844db15)), closes [#125](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/125)
+-   build(deps): bump pino from 6.11.0 to 6.11.1 (#122) ([b24e991](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/b24e991)), closes [#122](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/122)
+-   build(deps): bump wagoid/commitlint-github-action from v2.0.3 to v2.2.3 (#116) ([c16ce92](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/c16ce92)), closes [#116](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/116)
+-   ci: add commit-lint job ([2261c79](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/2261c79))
+-   ci: replace typo ci app with action ([2878197](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/2878197))
+-   ci(dependabot): ignore husky updates ([2c976d4](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/2c976d4))
+-   style: shorten husky pre-push script ([90186c5](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/90186c5))
+-   style(readme): add linebreaks between badges ([c28d50c](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/c28d50c))
+-   style(scripts): rename `jest-coverage` to `jest:coverage` ([bb9dd78](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/bb9dd78))
+-   style(tests): use apa header style for describe name params ([d8aa936](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/d8aa936))
+-   chore: add 0bsd and unlicense to list of allowed licenses ([4d3981a](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/4d3981a))
+-   chore: add apache-2.0 to list of allowed licenses ([c1e5520](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/c1e5520))
+-   chore: add commitlint husky `commit-msg` hook ([912bd69](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/912bd69))
+-   chore: add documentation style link to pr template ([379353b](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/379353b))
+-   chore(vscode): add `redhat.vscode-yaml` as recommended extension ([c3cba66](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/c3cba66))
+-   chore(vscode): add `updateImportsOnFileMove` setting ([cbc75a2](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/cbc75a2))
+-   chore(vscode): add workspace settings and extensions ([b135375](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/b135375))
+-   docs(contributing): add documentation style ([17f5513](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/17f5513))
+-   docs(readme): add ignore scripts arg ([e37a067](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/e37a067))
+
 ## <small>2.3.2 (2021-02-02)</small>
 
 -   build(deps-dev): bump pino-pretty from 4.4.0 to 4.5.0 (#111) ([f5501e3](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/f5501e3)), closes [#111](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/111)
