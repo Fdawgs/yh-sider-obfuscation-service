@@ -171,7 +171,7 @@ Link expression: `"&"_##class(Custom.ENYH.Integration.ContextualLink.GenericPati
 
 ## Contributing
 
-Please see [CONTRIBUTING.md](https://github.com/Fdawgs/ydh-sider-obfuscation-service/blob/master/CONTRIBUTING.md) for more details regarding contributing to this project.
+Please see [CONTRIBUTING.md](./CONTRIBUTING) for more details regarding contributing to this project.
 
 ## Acknowledgements
 
@@ -180,4 +180,4 @@ Please see [CONTRIBUTING.md](https://github.com/Fdawgs/ydh-sider-obfuscation-ser
 
 ## License
 
-`ydh-sider-obfuscation-service` is licensed under the [MIT](https://github.com/Fdawgs/ydh-sider-obfuscation-service/blob/master/LICENSE) license.
+`ydh-sider-obfuscation-service` is licensed under the [MIT](./LICENSE) license.
