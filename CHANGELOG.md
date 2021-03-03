@@ -1,3 +1,7 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
 ## <small>2.3.3 (2021-02-16)</small>
 
 -   build(deps-dev): bump eslint from 7.19.0 to 7.20.0 (#119) ([5e7916d](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/5e7916d)), closes [#119](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/119)
