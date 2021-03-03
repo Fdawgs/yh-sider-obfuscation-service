@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## <small>2.3.3 (2021-02-16)</small>
+### 2.3.3 (2021-02-16)
 
 -   build(deps-dev): bump eslint from 7.19.0 to 7.20.0 (#119) ([5e7916d](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/5e7916d)), closes [#119](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/119)
 -   build(deps-dev): bump eslint-plugin-jsdoc from 31.6.0 to 32.0.1 (#120) ([6c656ff](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/6c656ff)), closes [#120](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/120)
@@ -32,14 +32,14 @@ All notable changes to this project will be documented in this file.
 -   docs(contributing): add documentation style ([17f5513](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/17f5513))
 -   docs(readme): add ignore scripts arg ([e37a067](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/e37a067))
 
-## <small>2.3.2 (2021-02-02)</small>
+### 2.3.2 (2021-02-02)
 
 -   build(deps-dev): bump pino-pretty from 4.4.0 to 4.5.0 (#111) ([f5501e3](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/f5501e3)), closes [#111](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/111)
 -   build(deps-dev): replace deprecated lodash.clonedeep ([8acbd18](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/8acbd18))
 -   fix(config): stop rotatinglogstream flooding stdout ([5f8e41b](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/5f8e41b))
 -   refactor(config): update openapi docs from v2.\*.\* to v3.\*.\* ([382eb45](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/382eb45))
 
-## <small>2.3.1 (2021-02-01)</small>
+### 2.3.1 (2021-02-01)
 
 -   chore: check that direct dependencies use permissible licenses ([a423d78](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/a423d78))
 -   chore: exclude obs - allowed lgpl as library not altered/compiled ([d41ea85](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/d41ea85))
@@ -82,7 +82,7 @@ All notable changes to this project will be documented in this file.
 -   ci(github-actions): set `flag-name` for parallel coverage tests ([d5d6a60](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/d5d6a60))
 -   ci(github-actions): set semver for coverallsapp ([a29900b](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/a29900b))
 
-## <small>2.2.6 (2021-01-22)</small>
+### 2.2.6 (2021-01-22)
 
 -   refactor(pm2): use repo name for instances; remove redundant env setting ([54aecfa](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/54aecfa))
 -   refactor(server): use default helmet referrer policy ([595bbfa](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/595bbfa))
@@ -91,7 +91,7 @@ All notable changes to this project will be documented in this file.
 -   build(docker): speed up install by using `npm ci` over `npm install` ([c9100b7](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/c9100b7))
 -   test(routes/healthcheck): correct description ([ecf0f73](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/ecf0f73))
 
-## <small>2.2.5 (2021-01-19)</small>
+### 2.2.5 (2021-01-19)
 
 -   build(deps-dev): bump eslint-config-prettier from 7.1.0 to 7.2.0 (#88) ([d0ea793](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/d0ea793)), closes [#88](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/88)
 -   build(deps): bump fastify-disablecache from 1.0.2 to 1.0.3 (#87) ([9ece242](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/9ece242)), closes [#87](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/87)
@@ -101,7 +101,7 @@ All notable changes to this project will be documented in this file.
 -   refactor(routes/healthcheck): remove unused `options` param ([a1ab2d1](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/a1ab2d1))
 -   ci: lint lockfile ([cd13b0a](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/cd13b0a))
 
-## <small>2.2.4 (2021-01-18)</small>
+### 2.2.4 (2021-01-18)
 
 -   build: remove `yarn` as package manager, revert to `npm` ([118752e](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/118752e))
 -   build(deps-dev): bump eslint-plugin-jsdoc from 31.0.6 to 31.0.7 (#82) ([935dd6a](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/935dd6a)), closes [#82](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/82)
@@ -114,13 +114,13 @@ All notable changes to this project will be documented in this file.
 -   chore(plugins): add missing param descriptions ([5e29358](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/5e29358))
 -   style: rename `querystring` to `query` ([bed5792](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/bed5792))
 
-## <small>2.2.3 (2021-01-14)</small>
+### 2.2.3 (2021-01-14)
 
 -   fix(server): set referrer policy with fallback ([7567f0a](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/7567f0a))
 -   style(server): rename plugin variable ([6b8d7d2](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/6b8d7d2))
 -   chore: disable cors in template ([4a7c671](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/4a7c671))
 
-## <small>2.2.2 (2021-01-12)</small>
+### 2.2.2 (2021-01-12)
 
 -   build(deps): bump fastify-disablecache from 1.0.0 to 1.0.1 (#78) ([79fad03](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/79fad03)), closes [#78](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/78)
 -   chore: add metadata to api schema ([a4f9d56](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/a4f9d56))
@@ -129,7 +129,7 @@ All notable changes to this project will be documented in this file.
 -   test: set resetmocks option in jest config ([46e63b4](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/46e63b4))
 -   fix(routes): correct schema to be nullable string ([4ff507a](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/4ff507a))
 
-## <small>2.2.1 (2021-01-11)</small>
+### 2.2.1 (2021-01-11)
 
 -   fix(env): set default cors to wildcard as boolean option broken ([1699db1](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/1699db1))
 -   fix(server): add form-action csp directive ([026733f](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/026733f))
@@ -149,11 +149,11 @@ All notable changes to this project will be documented in this file.
 -   refactor(server): use helmet default csp directives function ([30bc29e](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/30bc29e))
 -   docs(readme): update yarn link ([6439fea](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/6439fea))
 
-## <small>2.1.2 (2021-01-05)</small>
+### 2.1.2 (2021-01-05)
 
 -   fix(server): set missing content-security-policy directives ([26a3eea](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/26a3eea))
 
-## <small>2.1.1 (2021-01-05)</small>
+### 2.1.1 (2021-01-05)
 
 -   refactor(routes/redirect): use fluent schema validation ([ae152e1](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/ae152e1))
 -   test(server): remove benchmarking from unit tests ([0cc8249](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/0cc8249))
@@ -173,7 +173,7 @@ All notable changes to this project will be documented in this file.
 -   style(routes/redirect): rename function ([39c4f48](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/39c4f48))
 -   style(server): chain register functions ([4049848](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/4049848))
 
-## <small>2.0.1 (2020-12-31)</small>
+### 2.0.1 (2020-12-31)
 
 -   build(deps): bump pino from 6.8.0 to 6.9.0 (#58) ([7cdfa13](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/7cdfa13)), closes [#58](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/58)
 -   build(docker): fix log directory ([ca3ea87](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/ca3ea87))
@@ -222,7 +222,7 @@ All notable changes to this project will be documented in this file.
 -   obfuscate plugin function now expects `options.obfuscate` not `options`
 -   Redirect made to `/` must now be made to `/redirect`
 
-## <small>1.1.2 (2020-12-28)</small>
+### 1.1.2 (2020-12-28)
 
 -   docs: clarify on json schema validation ([e529595](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/e529595))
 -   docs(readme): add missing backticks ([665767c](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/665767c))
@@ -246,7 +246,7 @@ All notable changes to this project will be documented in this file.
 -   chore(scripts): summarise count of dependency licenses ([94631f7](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/94631f7))
 -   refactor(docker): remove redundant `if...else` statement ([594eae8](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/594eae8))
 
-## <small>1.1.1 (2020-12-22)</small>
+### 1.1.1 (2020-12-22)
 
 -   build(deps-dev): add autocannon ([e23a46f](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/e23a46f))
 -   build(deps-dev): add license-checker ([78fb88c](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/78fb88c))
@@ -283,7 +283,7 @@ All notable changes to this project will be documented in this file.
 -   ci: require lint job on automerge ([f7b9666](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/f7b9666))
 -   docs(readme): clarify abbreviations ([c8c4d0f](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/c8c4d0f))
 
-## <small>1.0.1 (2020-12-04)</small>
+### 1.0.1 (2020-12-04)
 
 -   docs(readme): add motivation to intro ([cebdea6](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/cebdea6))
 -   docs(readme): update deployment script ([af41310](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/af41310))
@@ -330,7 +330,7 @@ All notable changes to this project will be documented in this file.
 -   fix(config): check https files exist ([a4172d3](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/a4172d3))
 -   fix(plugins): await second request ([370ac1c](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/370ac1c))
 
-## <small>0.0.3 (2020-11-24)</small>
+### 0.0.3 (2020-11-24)
 
 -   build(deps-dev): bump dev dependencies ([80fb5c9](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/80fb5c9))
 -   build(deps): bump axios from 0.20.0 to 0.21.0 ([bc8fe23](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/bc8fe23))
@@ -346,7 +346,7 @@ All notable changes to this project will be documented in this file.
 -   docs(readme): add deploy steps and badges ([ec6ac51](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/ec6ac51))
 -   style: format codeql.yml ([2f3a825](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/2f3a825))
 
-## <small>0.0.2 (2020-10-09)</small>
+### 0.0.2 (2020-10-09)
 
 -   build: create codeql-analysis.yml workflow file ([d55a014](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/d55a014))
 -   build(deps-dev): bump dev dependencies ([a495dcd](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/a495dcd))
