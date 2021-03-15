@@ -10,7 +10,7 @@ RUN chown -R node ./logs/
 # If appropriate env file missing, use template
 RUN cp .env.template .env
 # git needed to install node modules from github
-RUN apk add --no-cache git=2.24.3-r0
+RUN apk add --no-cache git=2.24.4-r0
 
 RUN npm ci --ignore-scripts && npm cache clean --force
 
