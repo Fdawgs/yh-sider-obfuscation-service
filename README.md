@@ -161,7 +161,7 @@ If using a Microsoft Windows OS utilise [pm2-installer](https://github.com/jesse
 
 ### Contextual Link in PAS (TrakCare)
 
-This section is for members of the Solutions Development and Application Support teams at Yeovil District Hospital NHSFT, or other NHSFTs that use InterSystems TrakCare as their PAS.
+This section is for members of the Solutions Development and Application Support teams at Yeovil District Hospital NHSFT, or other NHS Trusts that use InterSystems TrakCare as their PAS.
 
 The SIDeR contextual link's icon profile values in TrakCare should be set to the following:
 
