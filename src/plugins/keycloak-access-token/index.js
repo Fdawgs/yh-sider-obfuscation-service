@@ -30,7 +30,7 @@ const queryString = require("querystring");
  * @param {string} options.keycloak.requestToken.url
  */
 async function plugin(server, options) {
-	// Don't add preHandler hook and attempt to retrieve access tokens if Keycloak not enabled
+	// Do not add preHandler hook and attempt to retrieve access tokens if Keycloak not enabled
 	if (options && options.keycloak && options.keycloak.enabled === true) {
 		server.addHook("preHandler", async (req, res) => {
 			try {

@@ -54,11 +54,12 @@ async function plugin(server, config) {
 		.register(cors, config.cors)
 
 		.register(disableCache)
+		// Basic healthcheck route to ping
 		.register(healthCheck)
 
 		/**
 		 * Encapsulate plugins and routes into secured child context, so that swagger
-		 * route doesn't inherit Keycloak plugin
+		 * route does not inherit Keycloak plugin
 		 */
 		.register(async (securedContext) => {
 			securedContext
