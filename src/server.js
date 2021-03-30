@@ -35,6 +35,13 @@ async function plugin(server, config) {
 						),
 					},
 				},
+				referrerPolicy: {
+					/**
+					 * "no-referrer" will only be used as a fallback if "strict-origin-when-cross-origin"
+					 * is not supported by the browser
+					 */
+					policy: ["no-referrer", "strict-origin-when-cross-origin"],
+				},
 			}));
 	} else {
 		// Use Helmet to set response security headers: https://helmetjs.github.io/

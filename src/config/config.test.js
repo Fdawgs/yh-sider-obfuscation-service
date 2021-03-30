@@ -25,13 +25,15 @@ describe("Configuration", () => {
 	test("Should return values according to environment variables - SSL enabled and CORS disabled", async () => {
 		const NODE_ENV = "development";
 		const SERVICE_HOST = faker.internet.ip();
-		const SERVICE_PORT = faker.random.number();
+		const SERVICE_PORT = faker.datatype.number();
 		const SERVICE_REDIRECT_URL =
 			"https://pyrusapps.blackpear.com/esp/#!/launch?";
 		const HTTPS_SSL_CERT_PATH =
 			"./test_resources/test_ssl_cert/server.cert";
 		const HTTPS_SSL_KEY_PATH = "./test_resources/test_ssl_cert/server.key";
 		const CORS_ORIGIN = false;
+		const CORS_METHODS = "";
+		const CORS_ALLOWED_HEADERS = "";
 		const LOG_LEVEL = faker.random.arrayElement([
 			"debug",
 			"warn",
@@ -51,6 +53,8 @@ describe("Configuration", () => {
 			HTTPS_SSL_CERT_PATH,
 			HTTPS_SSL_KEY_PATH,
 			CORS_ORIGIN,
+			CORS_METHODS,
+			CORS_ALLOWED_HEADERS,
 			LOG_LEVEL,
 			LOG_ROTATION_FILENAME,
 			KC_ENABLED,
@@ -105,13 +109,15 @@ describe("Configuration", () => {
 
 	test("Should return values according to environment variables - PFX enabled and CORS enabled", async () => {
 		const SERVICE_HOST = faker.internet.ip();
-		const SERVICE_PORT = faker.random.number();
+		const SERVICE_PORT = faker.datatype.number();
 		const SERVICE_REDIRECT_URL =
 			"https://pyrusapps.blackpear.com/esp/#!/launch?";
 		const HTTPS_PFX_FILE_PATH =
 			"./test_resources/test_ssl_cert/server.cert"; // I know it's not an actual PFX file
 		const HTTPS_PFX_PASSPHRASE = faker.lorem.word();
 		const CORS_ORIGIN = true;
+		const CORS_METHODS = "";
+		const CORS_ALLOWED_HEADERS = "";
 		const LOG_LEVEL = faker.random.arrayElement([
 			"debug",
 			"warn",
@@ -129,6 +135,8 @@ describe("Configuration", () => {
 			HTTPS_PFX_FILE_PATH,
 			HTTPS_PFX_PASSPHRASE,
 			CORS_ORIGIN,
+			CORS_METHODS,
+			CORS_ALLOWED_HEADERS,
 			LOG_LEVEL,
 			KC_ENABLED,
 			OBFUSCATION_KEY_NAME,
@@ -155,7 +163,7 @@ describe("Configuration", () => {
 
 	test("Should return values according to environment variables - HTTPS disabled and CORS set to value", async () => {
 		const SERVICE_HOST = faker.internet.ip();
-		const SERVICE_PORT = faker.random.number();
+		const SERVICE_PORT = faker.datatype.number();
 		const SERVICE_REDIRECT_URL =
 			"https://pyrusapps.blackpear.com/esp/#!/launch?";
 		const CORS_ORIGIN = "https://ydh.nhs.uk";
@@ -205,12 +213,14 @@ describe("Configuration", () => {
 
 	test("Should throw error if invalid PFX file path", async () => {
 		const SERVICE_HOST = faker.internet.ip();
-		const SERVICE_PORT = faker.random.number();
+		const SERVICE_PORT = faker.datatype.number();
 		const SERVICE_REDIRECT_URL =
 			"https://pyrusapps.blackpear.com/esp/#!/launch?";
 		const HTTPS_PFX_FILE_PATH = "./test_resources/test_ssl_cert/error.pfx";
 		const HTTPS_PFX_PASSPHRASE = faker.lorem.word();
 		const CORS_ORIGIN = true;
+		const CORS_METHODS = "";
+		const CORS_ALLOWED_HEADERS = "";
 		const LOG_LEVEL = faker.random.arrayElement([
 			"debug",
 			"warn",
@@ -228,6 +238,8 @@ describe("Configuration", () => {
 			HTTPS_PFX_FILE_PATH,
 			HTTPS_PFX_PASSPHRASE,
 			CORS_ORIGIN,
+			CORS_METHODS,
+			CORS_ALLOWED_HEADERS,
 			LOG_LEVEL,
 			KC_ENABLED,
 			OBFUSCATION_KEY_NAME,
@@ -240,12 +252,14 @@ describe("Configuration", () => {
 
 	test("Should throw error if invalid SSL cert file path", async () => {
 		const SERVICE_HOST = faker.internet.ip();
-		const SERVICE_PORT = faker.random.number();
+		const SERVICE_PORT = faker.datatype.number();
 		const SERVICE_REDIRECT_URL =
 			"https://pyrusapps.blackpear.com/esp/#!/launch?";
 		const HTTPS_SSL_CERT_PATH = "./test_resources/test_ssl_cert/error.cert";
 		const HTTPS_SSL_KEY_PATH = "./test_resources/test_ssl_cert/error.key";
 		const CORS_ORIGIN = true;
+		const CORS_METHODS = "";
+		const CORS_ALLOWED_HEADERS = "";
 		const LOG_LEVEL = faker.random.arrayElement([
 			"debug",
 			"warn",
@@ -263,6 +277,8 @@ describe("Configuration", () => {
 			HTTPS_SSL_CERT_PATH,
 			HTTPS_SSL_KEY_PATH,
 			CORS_ORIGIN,
+			CORS_METHODS,
+			CORS_ALLOWED_HEADERS,
 			LOG_LEVEL,
 			KC_ENABLED,
 			OBFUSCATION_KEY_NAME,
