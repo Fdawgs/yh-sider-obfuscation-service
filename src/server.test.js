@@ -15,14 +15,14 @@ const headers = {
 const mockParams = {
 	birthdate: faker.date.past().toISOString().split("T")[0],
 	location: "https://fhir.nhs.uk/Id/ods-organization-code|RA4",
-	patient: `https://fhir.nhs.uk/Id/nhs-number|${faker.random.number({
+	patient: `https://fhir.nhs.uk/Id/nhs-number|${faker.datatype.number({
 		min: 1000000000,
 		max: 9999999999,
 	})}`,
 	practitioner: `https://sider.nhs.uk/auth|obsservice.test@ydh.nhs.uk`,
 	TPAGID: faker.random.uuid(),
-	FromIconProfile: faker.random.number(),
-	NOUNLOCK: faker.random.number(),
+	FromIconProfile: faker.datatype.number(),
+	NOUNLOCK: faker.datatype.number(),
 };
 
 describe("Server Deployment", () => {
