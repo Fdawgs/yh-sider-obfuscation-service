@@ -2,6 +2,9 @@ const createError = require("http-errors");
 const fp = require("fastify-plugin");
 const queryString = require("querystring");
 
+// Import plugins
+const cors = require("fastify-cors");
+
 const { redirectGetSchema } = require("./schema");
 
 /**
@@ -11,12 +14,9 @@ const { redirectGetSchema } = require("./schema");
  * @param {object} options - Object containing route config objects.
  */
 async function route(server, options) {
-	/**
-	 * Fastify uses AJV for JSON Schema Validation,
-	 * see https://www.fastify.io/docs/latest/Validation-and-Serialization/
-	 *
-	 * This validation protects against XSS and HPP attacks.
-	 */
+	// Use CORS: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+	server.register(cors, { ...options.cors, methods: ["GET"] });
+
 	server.route({
 		method: "GET",
 		url: "/redirect",

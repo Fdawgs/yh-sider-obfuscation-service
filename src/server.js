@@ -3,7 +3,6 @@ const fp = require("fastify-plugin");
 const path = require("path");
 
 // Import plugins
-const cors = require("fastify-cors");
 const helmet = require("fastify-helmet");
 const disableCache = require("fastify-disablecache");
 const swagger = require("fastify-swagger");
@@ -52,14 +51,18 @@ async function plugin(server, config) {
 					"form-action": ["'self'"],
 				},
 			},
+			referrerPolicy: {
+				/**
+				 * "no-referrer" will only be used as a fallback if "strict-origin-when-cross-origin"
+				 * is not supported by the browser
+				 */
+				policy: ["no-referrer", "strict-origin-when-cross-origin"],
+			},
 		}));
 	}
 
 	// Enable plugins
 	server
-		// Use CORS: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
-		.register(cors, config.cors)
-
 		.register(disableCache)
 		// Basic healthcheck route to ping
 		.register(healthCheck)
