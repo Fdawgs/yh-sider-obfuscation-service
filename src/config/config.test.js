@@ -161,7 +161,7 @@ describe("Configuration", () => {
 		});
 	});
 
-	test("Should return values according to environment variables - HTTPS disabled and CORS set to value", async () => {
+	test("Should return values according to environment variables - HTTPS disabled and CORS set to string value", async () => {
 		const SERVICE_HOST = faker.internet.ip();
 		const SERVICE_PORT = faker.datatype.number();
 		const SERVICE_REDIRECT_URL =
@@ -205,6 +205,60 @@ describe("Configuration", () => {
 
 		expect(config.cors).toEqual({
 			origin: CORS_ORIGIN,
+			methods: CORS_METHODS,
+			allowedHeaders: CORS_ALLOWED_HEADERS,
+			exposedHeaders: CORS_EXPOSED_HEADERS,
+		});
+	});
+
+	test("Should return values according to environment variables - HTTPS disabled and CORS set to comma-delimited string value", async () => {
+		const SERVICE_HOST = faker.internet.ip();
+		const SERVICE_PORT = faker.datatype.number();
+		const SERVICE_REDIRECT_URL =
+			"https://pyrusapps.blackpear.com/esp/#!/launch?";
+		const CORS_ORIGIN =
+			"https://test1.ydh.nhs.uk, https://test2.ydh.nhs.uk";
+		const CORS_METHODS = "GET";
+		const CORS_ALLOWED_HEADERS =
+			"Accept, Authorization, Content-Type, Origin, X-Requested-With";
+		const CORS_EXPOSED_HEADERS = "Location";
+		const LOG_LEVEL = faker.random.arrayElement([
+			"debug",
+			"warn",
+			"silent",
+		]);
+		const KC_ENABLED = false;
+		const OBFUSCATION_KEY_NAME = "k01";
+		const OBFUSCATION_KEY_VALUE = "0123456789";
+		const OBFUSCATION_QUERYSTRING_KEY_ARRAY = '["birthdate", "patient"]';
+
+		Object.assign(process.env, {
+			SERVICE_HOST,
+			SERVICE_PORT,
+			SERVICE_REDIRECT_URL,
+			CORS_ORIGIN,
+			CORS_METHODS,
+			CORS_ALLOWED_HEADERS,
+			CORS_EXPOSED_HEADERS,
+			LOG_LEVEL,
+			KC_ENABLED,
+			OBFUSCATION_KEY_NAME,
+			OBFUSCATION_KEY_VALUE,
+			OBFUSCATION_QUERYSTRING_KEY_ARRAY,
+		});
+
+		const config = await getConfig();
+
+		expect(config.fastify).toEqual({
+			host: SERVICE_HOST,
+			port: SERVICE_PORT,
+		});
+
+		expect(config.cors).toEqual({
+			origin: expect.arrayContaining([
+				"https://test1.ydh.nhs.uk",
+				"https://test2.ydh.nhs.uk",
+			]),
 			methods: CORS_METHODS,
 			allowedHeaders: CORS_ALLOWED_HEADERS,
 			exposedHeaders: CORS_EXPOSED_HEADERS,
