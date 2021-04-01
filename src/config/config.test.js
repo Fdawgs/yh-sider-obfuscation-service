@@ -33,6 +33,7 @@ describe("Configuration", () => {
 		const HTTPS_SSL_KEY_PATH = "./test_resources/test_ssl_cert/server.key";
 		const CORS_ORIGIN = false;
 		const CORS_ALLOWED_HEADERS = "";
+		const CORS_ALLOW_CREDENTIALS = "";
 		const LOG_LEVEL = faker.random.arrayElement([
 			"debug",
 			"warn",
@@ -53,6 +54,7 @@ describe("Configuration", () => {
 			HTTPS_SSL_KEY_PATH,
 			CORS_ORIGIN,
 			CORS_ALLOWED_HEADERS,
+			CORS_ALLOW_CREDENTIALS,
 			LOG_LEVEL,
 			LOG_ROTATION_FILENAME,
 			KC_ENABLED,
@@ -115,6 +117,7 @@ describe("Configuration", () => {
 		const HTTPS_PFX_PASSPHRASE = faker.lorem.word();
 		const CORS_ORIGIN = true;
 		const CORS_ALLOWED_HEADERS = "";
+		const CORS_ALLOW_CREDENTIALS = true;
 		const LOG_LEVEL = faker.random.arrayElement([
 			"debug",
 			"warn",
@@ -133,6 +136,7 @@ describe("Configuration", () => {
 			HTTPS_PFX_PASSPHRASE,
 			CORS_ORIGIN,
 			CORS_ALLOWED_HEADERS,
+			CORS_ALLOW_CREDENTIALS,
 			LOG_LEVEL,
 			KC_ENABLED,
 			OBFUSCATION_KEY_NAME,
@@ -153,6 +157,7 @@ describe("Configuration", () => {
 		});
 
 		expect(config.cors).toEqual({
+			credentials: CORS_ALLOW_CREDENTIALS,
 			origin: CORS_ORIGIN,
 		});
 	});
@@ -165,6 +170,7 @@ describe("Configuration", () => {
 		const CORS_ORIGIN = "https://ydh.nhs.uk";
 		const CORS_ALLOWED_HEADERS =
 			"Accept, Authorization, Content-Type, Origin, X-Requested-With";
+		const CORS_ALLOW_CREDENTIALS = "";
 		const CORS_EXPOSED_HEADERS = "Location";
 		const LOG_LEVEL = faker.random.arrayElement([
 			"debug",
@@ -182,6 +188,7 @@ describe("Configuration", () => {
 			SERVICE_REDIRECT_URL,
 			CORS_ORIGIN,
 			CORS_ALLOWED_HEADERS,
+			CORS_ALLOW_CREDENTIALS,
 			CORS_EXPOSED_HEADERS,
 			LOG_LEVEL,
 			KC_ENABLED,
@@ -213,6 +220,7 @@ describe("Configuration", () => {
 			"https://test1.ydh.nhs.uk, https://test2.ydh.nhs.uk";
 		const CORS_ALLOWED_HEADERS =
 			"Accept, Authorization, Content-Type, Origin, X-Requested-With";
+		const CORS_ALLOW_CREDENTIALS = "";
 		const CORS_EXPOSED_HEADERS = "Location";
 		const LOG_LEVEL = faker.random.arrayElement([
 			"debug",
@@ -230,6 +238,7 @@ describe("Configuration", () => {
 			SERVICE_REDIRECT_URL,
 			CORS_ORIGIN,
 			CORS_ALLOWED_HEADERS,
+			CORS_ALLOW_CREDENTIALS,
 			CORS_EXPOSED_HEADERS,
 			LOG_LEVEL,
 			KC_ENABLED,
@@ -264,6 +273,7 @@ describe("Configuration", () => {
 		const HTTPS_PFX_PASSPHRASE = faker.lorem.word();
 		const CORS_ORIGIN = true;
 		const CORS_ALLOWED_HEADERS = "";
+		const CORS_ALLOW_CREDENTIALS = "";
 		const LOG_LEVEL = faker.random.arrayElement([
 			"debug",
 			"warn",
@@ -282,6 +292,7 @@ describe("Configuration", () => {
 			HTTPS_PFX_PASSPHRASE,
 			CORS_ORIGIN,
 			CORS_ALLOWED_HEADERS,
+			CORS_ALLOW_CREDENTIALS,
 			LOG_LEVEL,
 			KC_ENABLED,
 			OBFUSCATION_KEY_NAME,
@@ -301,6 +312,7 @@ describe("Configuration", () => {
 		const HTTPS_SSL_KEY_PATH = "./test_resources/test_ssl_cert/error.key";
 		const CORS_ORIGIN = true;
 		const CORS_ALLOWED_HEADERS = "";
+		const CORS_ALLOW_CREDENTIALS = "";
 		const LOG_LEVEL = faker.random.arrayElement([
 			"debug",
 			"warn",
@@ -319,6 +331,7 @@ describe("Configuration", () => {
 			HTTPS_SSL_KEY_PATH,
 			CORS_ORIGIN,
 			CORS_ALLOWED_HEADERS,
+			CORS_ALLOW_CREDENTIALS,
 			LOG_LEVEL,
 			KC_ENABLED,
 			OBFUSCATION_KEY_NAME,
