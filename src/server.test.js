@@ -20,7 +20,7 @@ const mockParams = {
 		max: 9999999999,
 	})}`,
 	practitioner: `https://sider.nhs.uk/auth|obsservice.test@ydh.nhs.uk`,
-	TPAGID: faker.random.uuid(),
+	TPAGID: faker.datatype.uuid(),
 	FromIconProfile: faker.datatype.number(),
 	NOUNLOCK: faker.datatype.number(),
 };
