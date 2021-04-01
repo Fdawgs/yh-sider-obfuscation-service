@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file.
 
+### [2.4.1](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v2.4.0...v2.4.1) (2021-04-01)
+
+
+### Bug Fixes
+
+* **config:** comma-delimited string support for cors origin value ([a5a3bf4](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/a5a3bf4e9bfc199cbf039297688ee662e394399d))
+
+
+### Miscellaneous
+
+* **env.template:** add note discouraging reflecting cors origin ([c6f3548](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/c6f35480d9494c3b93119ab788e919bac691093f))
+* **env.template:** remove bad example ([ba21860](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/ba218607c16d9162632299c8e7fba6170ddcdedf))
+* **tests:** standardise test file names ([4733bff](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/4733bffb803c4987ffb6a8e796bdd537e2a8971a))
+
+
+### Dependencies
+
+* **deps-dev:** bump faker from 5.5.1 to 5.5.2 ([59d53f9](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/59d53f9a0ac0c0e2ecb7c3e3a3c6a9feb00790a4))
+* **deps:** bump actions/github-script from v3.1.0 to v3.1.1 ([84f6671](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/84f6671f1c1f2b12de8be3387acda55f9f3bb6c3))
+
 ## [2.4.0](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v2.3.4...v2.4.0) (2021-03-30)
 
 
