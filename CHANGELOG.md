@@ -2,6 +2,46 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.0.0](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v2.4.0...v3.0.0) (2021-04-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* `CORS_METHODS` env variable removed
+
+### Features
+
+* add support for cors preflight requests ([107f776](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/107f776479ee299b8d6239781f3cc8ba918bbad2))
+* **config:** support `access-control-allow-credentials` cors header ([41d6ba0](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/41d6ba087fb80425ef156c3a220443e5b3cbafe5))
+
+
+### Bug Fixes
+
+* **config:** comma-delimited string support for cors origin value ([a5a3bf4](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/a5a3bf4e9bfc199cbf039297688ee662e394399d))
+
+
+### Miscellaneous
+
+* **env.template:** add note discouraging reflecting cors origin ([c6f3548](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/c6f35480d9494c3b93119ab788e919bac691093f))
+* **env.template:** remove bad example ([ba21860](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/ba218607c16d9162632299c8e7fba6170ddcdedf))
+* **tests:** standardise test file names ([4733bff](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/4733bffb803c4987ffb6a8e796bdd537e2a8971a))
+
+
+### Continuous Integration
+
+* add cleanup-run job ([0623dae](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/0623dae8935936506a3c70dffc79ddf221d614af))
+
+
+### Dependencies
+
+* **deps-dev:** bump @commitlint/cli from 12.0.1 to 12.1.1 ([1e5969d](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/1e5969d5228706f23c6c99fa3866d8e5469f99d5))
+* **deps-dev:** bump @commitlint/config-conventional ([08a7927](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/08a79272aa4e0585fdeda3e775657504b1d20d67))
+* **deps-dev:** bump eslint-plugin-jest from 24.3.2 to 24.3.4 ([6674161](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/66741611cb02676053d08909f0d0053d761c9d46))
+* **deps-dev:** bump faker from 5.5.1 to 5.5.2 ([59d53f9](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/59d53f9a0ac0c0e2ecb7c3e3a3c6a9feb00790a4))
+* **deps:** bump actions/github-script from v3.1.0 to v3.1.1 ([84f6671](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/84f6671f1c1f2b12de8be3387acda55f9f3bb6c3))
+* **deps:** bump fastify-swagger from 4.4.2 to 4.5.0 ([36a1403](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/36a14036d7d45ca9dcb4e484165a5112f4900aa1))
+* **deps:** bump wagoid/commitlint-github-action from v3.0.6 to v3.1.0 ([4317754](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/431775477d9352715d6f157d6d0edbf79f7b3ed3))
+
 ## [2.4.0](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v2.3.4...v2.4.0) (2021-03-30)
 
 
