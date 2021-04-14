@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+### [3.0.1](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v3.0.0...v3.0.1) (2021-04-14)
+
+
+### Continuous Integration
+
+* do not run coveralls steps/jobs on forks ([6aa0be2](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/6aa0be27d27041d2032e97f4ac3896ca7ea9035f))
+* **link-check:** fix skip regex ([33bbbf8](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/33bbbf88f441de3ce049d1bbe94bef00637475a0))
+
 ## [3.0.0](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v2.4.0...v3.0.0) (2021-04-06)
 
 
