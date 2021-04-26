@@ -6,8 +6,9 @@ const path = require("path");
 const helmet = require("fastify-helmet");
 const disableCache = require("fastify-disablecache");
 const flocOff = require("fastify-floc-off");
-const underPressure = require("under-pressure");
+const rateLimit = require("fastify-rate-limit");
 const swagger = require("fastify-swagger");
+const underPressure = require("under-pressure");
 
 // Import healthcheck route
 const healthCheck = require("./routes/healthcheck");
@@ -76,6 +77,13 @@ async function plugin(server, config) {
 			maxHeapUsedBytes: 100000000,
 			maxRssBytes: 100000000,
 			maxEventLoopUtilization: 0.98,
+		})
+
+		// Rate limiting and 429 response handling
+		.register(rateLimit, {
+			allowList: ["127.0.0.1"],
+			max: 60,
+			timeWindow: 60000,
 		})
 
 		// Basic healthcheck route to ping
