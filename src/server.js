@@ -6,6 +6,7 @@ const path = require("path");
 const helmet = require("fastify-helmet");
 const disableCache = require("fastify-disablecache");
 const flocOff = require("fastify-floc-off");
+const underPressure = require("under-pressure");
 const swagger = require("fastify-swagger");
 
 // Import healthcheck route
@@ -67,6 +68,15 @@ async function plugin(server, config) {
 		.register(disableCache)
 
 		.register(flocOff)
+
+
+		// Process load and 503 response handling
+		.register(underPressure, {
+			maxEventLoopDelay: 1000,
+			maxHeapUsedBytes: 100000000,
+			maxRssBytes: 100000000,
+			maxEventLoopUtilization: 0.98,
+		})
 
 		// Basic healthcheck route to ping
 		.register(healthCheck)
