@@ -5,6 +5,7 @@ const path = require("path");
 // Import plugins
 const helmet = require("fastify-helmet");
 const disableCache = require("fastify-disablecache");
+const flocOff = require("fastify-floc-off");
 const swagger = require("fastify-swagger");
 
 // Import healthcheck route
@@ -64,6 +65,9 @@ async function plugin(server, config) {
 	// Enable plugins
 	server
 		.register(disableCache)
+
+		.register(flocOff)
+
 		// Basic healthcheck route to ping
 		.register(healthCheck)
 
