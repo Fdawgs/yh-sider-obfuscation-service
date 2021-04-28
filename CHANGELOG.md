@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.1.0](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v3.0.0...v3.1.0) (2021-04-28)
+
+
+### Features
+
+* **server:** disable google floc support ([2e2f0a9](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/2e2f0a9477c91beb2f395819474d24cc86dfd9e6))
+
+
+### Continuous Integration
+
+* do not run coveralls steps/jobs on forks ([6aa0be2](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/6aa0be27d27041d2032e97f4ac3896ca7ea9035f))
+* **link-check:** fix skip regex ([33bbbf8](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/33bbbf88f441de3ce049d1bbe94bef00637475a0))
+
+
+### Documentation
+
+* grammar and readability fixes ([50c3df1](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/50c3df1fe8985d3910c6ad8b6a7b8afb5ae3442c))
+
 ## [3.0.0](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v2.4.0...v3.0.0) (2021-04-06)
 
 
