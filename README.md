@@ -14,7 +14,7 @@
 
 This is [Yeovil District Hospital NHSFT](https://yeovilhospital.co.uk/)'s contextual link obfuscation service, a Node.js application using the [Fastify](https://www.fastify.io/) web framework and Black Pear's [obfuscated-querystring](https://github.com/BlackPearSw/obfuscated-querystring).
 
-This service was created out of a need for query strings parameters containing personal identifiable data [to be obfuscated](https://github.com/Somerset-SIDeR-Programme/SIDeR-interop-patterns/wiki/query-string-obfuscation) when users click on the [SIDeR](https://www.somersetccg.nhs.uk/about-us/digital-projects/sider/) contextual link within Yeovil District Hospital NHSFT's Patient Administration System (PAS), InterSystems TrakCare.
+This service was created out of a need for query strings parameters containing personally identifiable data [to be obfuscated](https://github.com/Somerset-SIDeR-Programme/SIDeR-interop-patterns/wiki/query-string-obfuscation) when users click on the [SIDeR](https://www.somersetccg.nhs.uk/about-us/digital-projects/sider/) contextual link within Yeovil District Hospital NHSFT's Patient Administration System (PAS), InterSystems TrakCare.
 
 Single sign-on for a user using access tokens from a Keycloak server instance can be enabled using environment variables found in `.env.template`.
 
@@ -29,7 +29,7 @@ Single sign-on for a user using access tokens from a Keycloak server instance ca
 
 1. Navigate to the repo
 2. Run `npm install --ignore-scripts --production` to install dependencies
-3. Make a copy of `.env.template` in the root directory and rename to `.env`
+3. Make a copy of `.env.template` in the root directory and rename it to `.env`
 4. Configure the application using the environment variables in `.env`
 5. Run `npm start`
 
@@ -137,7 +137,7 @@ As an example, providing `birthdate` in an invalid date format will return the f
 
 This requires [Docker](https://www.docker.com/products) installed.
 
-1. Make a copy of `.env.template` in the root directory and rename to `.env`
+1. Make a copy of `.env.template` in the root directory and rename it to `.env`
 2. Configure the application using the global variables in `.env`
 3. Run `docker-compose up`
 
@@ -147,7 +147,7 @@ If you are unable to deploy this into production using Docker, it is recommended
 
 1. Navigate to the repo
 2. Run `npm install --ignore-scripts --production` to install dependencies
-3. Make a copy of `.env.template` in the root directory and rename to `.env`
+3. Make a copy of `.env.template` in the root directory and rename it to `.env`
 4. Configure the application using the global variables in `.env`
 5. Run `npm install -g pm2` to install pm2 globally
 6. Launch application with `pm2 start .pm2.config.js`
