@@ -93,11 +93,13 @@
     "fastify-floc-off": "^1.0.0",
     "fastify-helmet": "^5.3.1",
     "fastify-plugin": "^3.0.0",
+    "fastify-rate-limit": "^5.5.0",
     "fastify-swagger": "^4.7.0",
     "file-stream-rotator": "^0.5.7",
     "fluent-json-schema": "^2.0.4",
     "http-errors": "^1.8.0",
     "obfuscated-querystring": "git+https://github.com/BlackPearSw/obfuscated-querystring.git",
-    "pino": "^6.11.3"
+    "pino": "^6.11.3",
+    "under-pressure": "^5.6.0"
   }
 }

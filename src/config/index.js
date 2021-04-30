@@ -62,6 +62,27 @@ async function getConfig() {
 			)
 			.prop("CORS_EXPOSED_HEADERS", S.anyOf([S.string(), S.null()]))
 			.prop(
+				"PROC_LOAD_MAX_EVENT_LOOP_DELAY",
+				S.anyOf([S.number(), S.null()]).default(0)
+			)
+			.prop(
+				"PROC_LOAD_MAX_HEAP_USED_BYTES",
+				S.anyOf([S.number(), S.null()]).default(0)
+			)
+			.prop(
+				"PROC_LOAD_MAX_RSS_BYTES",
+				S.anyOf([S.number(), S.null()]).default(0)
+			)
+			.prop(
+				"PROC_LOAD_MAX_EVENT_LOOP_UTILIZATION",
+				S.anyOf([S.number(), S.null()]).default(0)
+			)
+			.prop("RATE_LIMIT_EXCLUDED_ARRAY", S.anyOf([S.string(), S.null()]))
+			.prop(
+				"RATE_LIMIT_MAX_CONNECTIONS_PER_MIN",
+				S.anyOf([S.number(), S.null()]).default(1000)
+			)
+			.prop(
 				"LOG_LEVEL",
 				S.string()
 					.enum([
@@ -145,6 +166,17 @@ async function getConfig() {
 		},
 		cors: {
 			origin: parseCorsParameter(env.CORS_ORIGIN) || false,
+		},
+		processLoad: {
+			maxEventLoopDelay: env.PROC_LOAD_MAX_EVENT_LOOP_DELAY || 0,
+			maxHeapUsedBytes: env.PROC_LOAD_MAX_HEAP_USED_BYTES || 0,
+			maxRssBytes: env.PROC_LOAD_MAX_RSS_BYTES || 0,
+			maxEventLoopUtilization:
+				env.PROC_LOAD_MAX_EVENT_LOOP_UTILIZATION || 0,
+		},
+		rateLimit: {
+			max: env.RATE_LIMIT_MAX_CONNECTIONS_PER_MIN || 1000,
+			timeWindow: 60000,
 		},
 		swagger: {
 			routePrefix: "/docs",
@@ -235,6 +267,10 @@ async function getConfig() {
 	 */
 	if (env.NODE_ENV !== "PRODUCTION" && !env.LOG_ROTATION_FILENAME) {
 		config.fastifyInit.logger.prettyPrint = true;
+	}
+
+	if (env.RATE_LIMIT_EXCLUDED_ARRAY) {
+		config.rateLimit.allowList = JSON.parse(env.RATE_LIMIT_EXCLUDED_ARRAY);
 	}
 
 	if (String(env.CORS_ALLOW_CREDENTIALS) === "true") {
