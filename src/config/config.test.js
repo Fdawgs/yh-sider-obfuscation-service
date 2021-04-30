@@ -34,6 +34,12 @@ describe("Configuration", () => {
 		const CORS_ORIGIN = false;
 		const CORS_ALLOWED_HEADERS = "";
 		const CORS_ALLOW_CREDENTIALS = "";
+		const PROC_LOAD_MAX_EVENT_LOOP_DELAY = 1000;
+		const PROC_LOAD_MAX_HEAP_USED_BYTES = 100000000;
+		const PROC_LOAD_MAX_RSS_BYTES = 100000000;
+		const PROC_LOAD_MAX_EVENT_LOOP_UTILIZATION = 0.98;
+		const RATE_LIMIT_MAX_CONNECTIONS_PER_MIN = 2000;
+		const RATE_LIMIT_EXCLUDED_ARRAY = '["127.0.0.1"]';
 		const LOG_LEVEL = faker.random.arrayElement([
 			"debug",
 			"warn",
@@ -55,6 +61,12 @@ describe("Configuration", () => {
 			CORS_ORIGIN,
 			CORS_ALLOWED_HEADERS,
 			CORS_ALLOW_CREDENTIALS,
+			PROC_LOAD_MAX_EVENT_LOOP_DELAY,
+			PROC_LOAD_MAX_HEAP_USED_BYTES,
+			PROC_LOAD_MAX_RSS_BYTES,
+			PROC_LOAD_MAX_EVENT_LOOP_UTILIZATION,
+			RATE_LIMIT_MAX_CONNECTIONS_PER_MIN,
+			RATE_LIMIT_EXCLUDED_ARRAY,
 			LOG_LEVEL,
 			LOG_ROTATION_FILENAME,
 			KC_ENABLED,
@@ -92,6 +104,19 @@ describe("Configuration", () => {
 
 		expect(config.cors).toEqual({
 			origin: CORS_ORIGIN,
+		});
+
+		expect(config.processLoad).toEqual({
+			maxEventLoopDelay: PROC_LOAD_MAX_EVENT_LOOP_DELAY,
+			maxHeapUsedBytes: PROC_LOAD_MAX_HEAP_USED_BYTES,
+			maxRssBytes: PROC_LOAD_MAX_RSS_BYTES,
+			maxEventLoopUtilization: PROC_LOAD_MAX_EVENT_LOOP_UTILIZATION,
+		});
+
+		expect(config.rateLimit).toEqual({
+			allowList: JSON.parse(RATE_LIMIT_EXCLUDED_ARRAY),
+			max: RATE_LIMIT_MAX_CONNECTIONS_PER_MIN,
+			timeWindow: 60000,
 		});
 
 		expect(config.redirectUrl).toEqual(SERVICE_REDIRECT_URL);

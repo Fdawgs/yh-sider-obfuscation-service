@@ -70,21 +70,11 @@ async function plugin(server, config) {
 
 		.register(flocOff)
 
-
 		// Process load and 503 response handling
-		.register(underPressure, {
-			maxEventLoopDelay: 1000,
-			maxHeapUsedBytes: 100000000,
-			maxRssBytes: 100000000,
-			maxEventLoopUtilization: 0.98,
-		})
+		.register(underPressure, config.processLoad)
 
 		// Rate limiting and 429 response handling
-		.register(rateLimit, {
-			allowList: ["127.0.0.1"],
-			max: 60,
-			timeWindow: 60000,
-		})
+		.register(rateLimit, config.rateLimit)
 
 		// Basic healthcheck route to ping
 		.register(healthCheck)
