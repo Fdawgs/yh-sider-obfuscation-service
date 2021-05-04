@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+### [4.0.1](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v4.0.0...v4.0.1) (2021-05-04)
+
+
+### Dependencies
+
+* **deps:** bump fastify from 3.15.0 to 3.15.1 ([8456d63](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/8456d63096dbec384750347f32dcd893b8cb38c7))
+* **deps:** bump GoogleCloudPlatform/release-please-action ([5b2eb68](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/5b2eb68b0adbcdbe52d1bc836fcefbc8277e2a15))
+
+
+### Documentation
+
+* **readme:** compress duplicate setup steps into a single section ([#217](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/issues/217)) ([dd9ea26](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/dd9ea26a6353573431bfe55f28d05598d89636c1))
+
 ## [4.0.0](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v3.0.0...v4.0.0) (2021-04-30)
 
 
