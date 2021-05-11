@@ -147,6 +147,46 @@ describe("Server Deployment", () => {
 		});
 	});
 
+	describe("Production Server", () => {
+		test("Should redirect to 'redirectUrl' with required params present as production server", async () => {
+			const altConfig = cloneDeep(config);
+			altConfig.isProduction = true;
+
+			const server = Fastify();
+			server.register(startServer, altConfig);
+			await server.ready();
+
+			const response = await server.inject({
+				method: "GET",
+				url: "/redirect",
+				headers,
+				query: mockParams,
+			});
+
+			const resQueryString = queryString.parse(
+				response.headers.location.substring(
+					response.headers.location.indexOf("?") + 1,
+					response.headers.location.length
+				)
+			);
+
+			expect(response.headers.location).toMatch(
+				"http://127.0.0.1:3001/esp/#!/launch?"
+			);
+
+			expect(resQueryString).toMatchObject({
+				location: "https://fhir.nhs.uk/Id/ods-organization-code|RA4",
+				practitioner:
+					"https://sider.nhs.uk/auth|obsservice.test@ydh.nhs.uk",
+				enc: expect.any(String),
+			});
+
+			expect(response.statusCode).toBe(302);
+
+			server.close();
+		});
+	});
+
 	describe("Keycloak Token Retrival", () => {
 		test("Should continue when Keycloak endpoint config is disabled", async () => {
 			const altConfig = cloneDeep(config);
