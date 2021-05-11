@@ -46,9 +46,8 @@ async function plugin(server, options) {
 					serviceAuthResponse.data.access_token;
 
 				// Expects the practitioner query to be in [system]|[code] format
-				requestToken.form.requested_subject = req.query.practitioner.split(
-					"|"
-				)[1];
+				requestToken.form.requested_subject =
+					req.query.practitioner.split("|")[1];
 
 				// Request access token for user
 				const userAccessResponse = await request.post(
