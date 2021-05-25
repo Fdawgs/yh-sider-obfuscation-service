@@ -49,8 +49,8 @@ describe("Keycloak Access Token Retrieval Plugin", () => {
 		await mockKeycloakServer.close();
 	});
 
-	afterEach(() => {
-		server.close();
+	afterEach(async () => {
+		await server.close();
 	});
 
 	test("Should continue when Keycloak options are not defined", async () => {
@@ -110,6 +110,6 @@ describe("Keycloak Access Token Retrieval Plugin", () => {
 		expect(body.statusCode).toBe(500);
 		expect(body.error).toBe("Internal Server Error");
 
-		server.close();
+		await server.close();
 	});
 });

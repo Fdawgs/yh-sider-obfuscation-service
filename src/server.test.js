@@ -59,8 +59,8 @@ describe("Server Deployment", () => {
 			await server.ready();
 		});
 
-		afterEach(() => {
-			server.close();
+		afterEach(async () => {
+			await server.close();
 		});
 
 		test("Should redirect to 'redirectUrl' with required params present", async () => {
@@ -183,7 +183,7 @@ describe("Server Deployment", () => {
 
 			expect(response.statusCode).toBe(302);
 
-			server.close();
+			await server.close();
 		});
 	});
 
@@ -211,7 +211,7 @@ describe("Server Deployment", () => {
 			);
 			expect(response.statusCode).toBe(302);
 
-			server.close();
+			await server.close();
 		});
 
 		test("Should return HTTP 500 error when Keycloak endpoint config enabled but other options undefined", async () => {
@@ -239,7 +239,7 @@ describe("Server Deployment", () => {
 			expect(body.statusCode).toBe(500);
 			expect(body.error).toBe("Internal Server Error");
 
-			server.close();
+			await server.close();
 		});
 
 		test("Should return HTTP 500 error when redirect URL missing", async () => {
@@ -264,7 +264,7 @@ describe("Server Deployment", () => {
 			expect(body.statusCode).toBe(500);
 			expect(body.error).toBe("Internal Server Error");
 
-			server.close();
+			await server.close();
 		});
 	});
 });

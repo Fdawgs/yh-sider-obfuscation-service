@@ -32,8 +32,8 @@ describe("Query String Obfuscation plugin", () => {
 		});
 	});
 
-	afterEach(() => {
-		server.close();
+	afterEach(async () => {
+		await server.close();
 	});
 
 	test("Should obfuscate patient and birthdate parameters", async () => {
