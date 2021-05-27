@@ -101,6 +101,7 @@ describe("Server Deployment", () => {
 			const results = await Promise.all(
 				Object.keys(altMockParams).map(async (key) => {
 					const scrubbedParams = { ...altMockParams };
+					// eslint-disable-next-line security/detect-object-injection
 					delete scrubbedParams[key];
 
 					const response = await server.inject({
@@ -128,6 +129,7 @@ describe("Server Deployment", () => {
 			const results = await Promise.all(
 				Object.keys(altMockParams).map(async (key) => {
 					const scrubbedParams = { ...altMockParams };
+					// eslint-disable-next-line security/detect-object-injection
 					scrubbedParams[key] = "test";
 
 					const response = await server.inject({
