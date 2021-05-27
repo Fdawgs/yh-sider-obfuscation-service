@@ -59,7 +59,7 @@ describe("Query String Obfuscation plugin", () => {
 
 		expect(response.birthdate).toBeUndefined();
 		expect(response.enc).not.toBeUndefined();
-		expect(typeof response.enc).toBe("string");
+		expect(typeof response.enc).toEqual("string");
 		expect(response.location).not.toBeUndefined();
 		expect(response.patient).toBeUndefined();
 		expect(response.practitioner).not.toBeUndefined();
@@ -77,9 +77,9 @@ describe("Query String Obfuscation plugin", () => {
 
 		const body = JSON.parse(response.body);
 
-		expect(response.statusCode).toBe(500);
-		expect(response.statusMessage).toBe("Internal Server Error");
-		expect(body.statusCode).toBe(500);
-		expect(body.error).toBe("Internal Server Error");
+		expect(response.statusCode).toEqual(500);
+		expect(response.statusMessage).toEqual("Internal Server Error");
+		expect(body.statusCode).toEqual(500);
+		expect(body.error).toEqual("Internal Server Error");
 	});
 });

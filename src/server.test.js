@@ -89,7 +89,7 @@ describe("Server Deployment", () => {
 				enc: expect.any(String),
 			});
 
-			expect(response.statusCode).toBe(302);
+			expect(response.statusCode).toEqual(302);
 		});
 
 		test("Should return HTTP 400 error when any required query string parameter is missing", async () => {
@@ -101,6 +101,7 @@ describe("Server Deployment", () => {
 			const results = await Promise.all(
 				Object.keys(altMockParams).map(async (key) => {
 					const scrubbedParams = { ...altMockParams };
+					// eslint-disable-next-line security/detect-object-injection
 					delete scrubbedParams[key];
 
 					const response = await server.inject({
@@ -128,6 +129,7 @@ describe("Server Deployment", () => {
 			const results = await Promise.all(
 				Object.keys(altMockParams).map(async (key) => {
 					const scrubbedParams = { ...altMockParams };
+					// eslint-disable-next-line security/detect-object-injection
 					scrubbedParams[key] = "test";
 
 					const response = await server.inject({
@@ -181,7 +183,7 @@ describe("Server Deployment", () => {
 				enc: expect.any(String),
 			});
 
-			expect(response.statusCode).toBe(302);
+			expect(response.statusCode).toEqual(302);
 
 			await server.close();
 		});
@@ -209,7 +211,7 @@ describe("Server Deployment", () => {
 			expect(response.headers.location).toMatch(
 				"http://127.0.0.1:3001/esp/#!/launch?"
 			);
-			expect(response.statusCode).toBe(302);
+			expect(response.statusCode).toEqual(302);
 
 			await server.close();
 		});
@@ -234,10 +236,10 @@ describe("Server Deployment", () => {
 
 			const body = JSON.parse(response.body);
 
-			expect(response.statusCode).toBe(500);
-			expect(response.statusMessage).toBe("Internal Server Error");
-			expect(body.statusCode).toBe(500);
-			expect(body.error).toBe("Internal Server Error");
+			expect(response.statusCode).toEqual(500);
+			expect(response.statusMessage).toEqual("Internal Server Error");
+			expect(body.statusCode).toEqual(500);
+			expect(body.error).toEqual("Internal Server Error");
 
 			await server.close();
 		});
@@ -259,10 +261,10 @@ describe("Server Deployment", () => {
 
 			const body = JSON.parse(response.body);
 
-			expect(response.statusCode).toBe(500);
-			expect(response.statusMessage).toBe("Internal Server Error");
-			expect(body.statusCode).toBe(500);
-			expect(body.error).toBe("Internal Server Error");
+			expect(response.statusCode).toEqual(500);
+			expect(response.statusMessage).toEqual("Internal Server Error");
+			expect(body.statusCode).toEqual(500);
+			expect(body.error).toEqual("Internal Server Error");
 
 			await server.close();
 		});

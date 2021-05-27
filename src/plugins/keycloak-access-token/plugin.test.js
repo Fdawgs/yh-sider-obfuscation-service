@@ -63,7 +63,7 @@ describe("Keycloak Access Token Retrieval Plugin", () => {
 			query: mockParams,
 		});
 
-		expect(response.statusCode).toBe(200);
+		expect(response.statusCode).toEqual(200);
 	});
 
 	test("Should return Keycloak access_token from mock server", async () => {
@@ -78,9 +78,9 @@ describe("Keycloak Access Token Retrieval Plugin", () => {
 
 		const body = JSON.parse(response.body);
 
-		expect(response.statusCode).toBe(200);
+		expect(response.statusCode).toEqual(200);
 		expect(body.access_token).not.toBeUndefined();
-		expect(typeof body.access_token).toBe("string");
+		expect(typeof body.access_token).toEqual("string");
 		expect(body.birthdate).not.toBeUndefined();
 		expect(body.location).not.toBeUndefined();
 		expect(body.patient).not.toBeUndefined();
@@ -105,10 +105,10 @@ describe("Keycloak Access Token Retrieval Plugin", () => {
 
 		const body = JSON.parse(response.body);
 
-		expect(response.statusCode).toBe(500);
-		expect(response.statusMessage).toBe("Internal Server Error");
-		expect(body.statusCode).toBe(500);
-		expect(body.error).toBe("Internal Server Error");
+		expect(response.statusCode).toEqual(500);
+		expect(response.statusMessage).toEqual("Internal Server Error");
+		expect(body.statusCode).toEqual(500);
+		expect(body.error).toEqual("Internal Server Error");
 
 		await server.close();
 	});
