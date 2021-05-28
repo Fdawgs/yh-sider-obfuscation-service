@@ -16,6 +16,8 @@ This is [Yeovil District Hospital NHSFT](https://yeovilhospital.co.uk/)'s contex
 
 This service was created out of a need for query strings parameters containing personally identifiable data [to be obfuscated](https://github.com/Somerset-SIDeR-Programme/SIDeR-interop-patterns/wiki/query-string-obfuscation) when users click on the [SIDeR](https://www.somersetccg.nhs.uk/about-us/digital-projects/sider/) contextual link within Yeovil District Hospital NHSFT's Patient Administration System (PAS), InterSystems TrakCare.
 
+A video demonstrating the contextual link in action can be found [here](./docs/videos/).
+
 Single sign-on for a user using access tokens from a Keycloak server instance can be enabled using environment variables found in `.env.template`.
 
 ## Prerequisites
@@ -161,6 +163,8 @@ If using a Microsoft Windows OS utilise [pm2-installer](https://github.com/jesse
 
 ### Contextual Link in PAS (TrakCare)
 
+<img src="https://raw.githubusercontent.com/Fdawgs/ydh-sider-obfuscation-service/master/docs/images/ydh_trakcare_sider_contextual_link.png" width="800">
+
 This section is for members of the Solutions Development and Application Support teams at Yeovil District Hospital NHSFT, or other NHS Trusts that use InterSystems TrakCare as their PAS.
 
 The SIDeR contextual link's icon profile values in TrakCare should be set to the following:
@@ -168,6 +172,10 @@ The SIDeR contextual link's icon profile values in TrakCare should be set to the
 Link URL: `<obfuscation service path>/redirect`
 
 Link expression: `"&"_##class(Custom.ENYH.Integration.ContextualLink.GenericPatientLink).BuildURLVars("patient=https://fhir.nhs.uk/Id/nhs-number|{NHSNumber}&birthdate={DateOfBirthISO8601}&location=https://fhir.nhs.uk/Id/ods-organization-code|RA4&practitioner=https://sider.nhs.uk/auth|{UserName}@ydh.nhs.uk")`
+
+<img src="https://raw.githubusercontent.com/Fdawgs/ydh-sider-obfuscation-service/master/docs/images/SIDeR_32.png">
+
+The icon itself can be found in the root of [the images folder](./docs/images/).
 
 ## Contributing
 
@@ -178,6 +186,8 @@ Please adhere to this project's [Code of Conduct](./CODE_OF_CONDUCT.md) when con
 
 ## Acknowledgements
 
+-   Anthony Smith - Contextual link logo design
+-   David Suckling - Contextual link implementation and testing
 -   [**Mark Hunt**](https://github.com/nhsbandit) - Keycloak single sign-on access tokens integration and testing
 -   [**Will Jehring**](https://github.com/wjehring) - Query string obfuscation, redirect testing, and Keycloak testing
 
