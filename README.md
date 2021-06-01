@@ -145,7 +145,7 @@ As an example, providing `birthdate` in an invalid date format will return the f
 
 This requires [Docker](https://www.docker.com/products) installed.
 
-1. Run `docker-compose up`
+1. Run `docker compose up`
 
 ### Deploying Using PM2
 
@@ -163,7 +163,7 @@ If using a Microsoft Windows OS utilise [pm2-installer](https://github.com/jesse
 
 ### Contextual Link in PAS (TrakCare)
 
-<img src="https://raw.githubusercontent.com/Fdawgs/ydh-sider-obfuscation-service/master/docs/images/ydh_trakcare_sider_contextual_link.png" width="800">
+<img src="https://raw.githubusercontent.com/Fdawgs/ydh-sider-obfuscation-service/master/docs/images/ydh_trakcare_sider_contextual_link.png" width="474">
 
 This section is for members of the Solutions Development and Application Support teams at Yeovil District Hospital NHSFT, or other NHS Trusts that use InterSystems TrakCare as their PAS.
 
