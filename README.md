@@ -145,7 +145,7 @@ As an example, providing `birthdate` in an invalid date format will return the f
 
 This requires [Docker](https://www.docker.com/products) installed.
 
-1. Run `docker-compose up`
+1. Run `docker compose up`
 
 ### Deploying Using PM2
 
