@@ -1,6 +1,6 @@
 services:
     app:
-        container_name: obfuscation-service
+        container_name: ydh-sider-obfuscation-service
         build:
             context: .
         env_file: .env
