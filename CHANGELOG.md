@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file.
 
+### [4.0.5](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v4.0.4...v4.0.5) (2021-06-01)
+
+
+### Miscellaneous
+
+* **dockerfile:** consolidate consecutive `run` instructions ([98bdbc4](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/98bdbc4c9d1ddc6e9d231b91bef0646d3e387d46))
+
+
+### Continuous Integration
+
+* remove redundant docker build job ([2a54c46](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/2a54c4622829a9acf0e624e06fe98331f0da8c83))
+
+
+### Dependencies
+
+* **deps-dev:** bump pino-pretty from 5.0.1 to 5.0.2 ([4fb0dc2](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/4fb0dc24407df51faed1201e19f72d85a900d041))
+* **docker:** bump git from v2.24.4-r0 to v2.30.2-r0 ([5a0a2f2](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/5a0a2f2796617047f7a0dc34b017070816b32e63))
+* **docker:** bump image from lts-alpine to 14-alpine.3.13 ([0f8e24c](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/0f8e24c63c0bc1cce7ba7f1973bf6780ff895085))
+
 ### [4.0.4](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v4.0.3...v4.0.4) (2021-06-01)
 
 
