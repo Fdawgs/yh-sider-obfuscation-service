@@ -2,6 +2,41 @@
 
 All notable changes to this project will be documented in this file.
 
+### [4.0.4](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v4.0.3...v4.0.4) (2021-06-01)
+
+
+### Continuous Integration
+
+* add nodejs v16 to test matrix ([4ee0c16](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/4ee0c168b8a018c4259bc82a81a782158abefabf))
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint-plugin-import from 2.23.3 to 2.23.4 ([82bd38f](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/82bd38fa442a6d1244bda496ef8f05801c1d4460))
+* **deps-dev:** bump eslint-plugin-jsdoc from 35.0.0 to 35.1.2 ([0644477](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/064447721a5d31fd46ebc0c11766454f837cb11a))
+* **deps-dev:** bump jest from 27.0.1 to 27.0.3 ([17b621c](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/17b621cc9ab11cb87a40d09be76828477ba59bf2))
+* **deps-dev:** bump pino-pretty from 5.0.0 to 5.0.1 ([9e914fa](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/9e914fa4ec129652f0ac1106b2ed222e48c59691))
+* **deps:** bump actions/cache from 2.1.5 to 2.1.6 ([1a6fd20](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/1a6fd2026a0b5aba57f8fbfdc70c167d4f634e7e))
+* **deps:** bump fastify from 3.16.2 to 3.17.0 ([7cae0cd](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/7cae0cdc16502d1a779bcf3e33bc7edfaebd7e94))
+* **docker-compose:** update `container_name` ([5b14942](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/5b14942a6258a5ca367c3cee3121070cf6c96670))
+* **docker-compose:** use a volume to persist log files ([8942f2a](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/8942f2a58345f275aa19d5865ceb801b89d744bd))
+* **dockerignore:** add test and dev files ([e6d228d](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/e6d228dcf258976da8a777b57ce1ad60fddf872e))
+* **docker:** update workdir ([ba69d9c](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/ba69d9c6d924754456298fbceca0d65a9af2c3ad))
+
+
+### Miscellaneous
+
+* **.env.template:** remove comment re docker and log files ([08c0835](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/08c0835b3ac7a8c9152c5d55e7cf8f3d003337a3))
+* **docker:** reorder instructions ([d40996a](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/d40996a502cca5a7b2887049f5193c4cac5e19f2))
+* **prettierignore:** use shorter syntax ([a8c1e60](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/a8c1e6010151bccf8569040c611b520a9d62906c))
+
+
+### Documentation
+
+* add images and videos ([78ed024](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/78ed024c6fe487d8fd9ed107663d0c4bb5c21a12))
+* **readme:** reduce width of contextual link image ([e89abb1](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/e89abb150f0bcd2138942da6f8eb9032183fc02a))
+* **readme:** update docker compose command ([e4f12fa](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/e4f12faeda2c394c12ce3a0e70aba4ffc2c3dbb1))
+
 ### [4.0.3](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v4.0.2...v4.0.3) (2021-05-27)
 
 
