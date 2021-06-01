@@ -1,6 +1,8 @@
 FROM node:lts-alpine
 
-WORKDIR /usr/src/app
+# Workdir
+WORKDIR /usr/app
+
 COPY . .
 
 # Pre-emptively make logs directory if used for logs storage set 
