@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file.
 
+### [4.0.6](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v4.0.5...v4.0.6) (2021-06-02)
+
+
+### Bug Fixes
+
+* **env:** missing comment `#` ([3197583](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/3197583376422377288f419f73493f221cd6759f))
+
+
+### Documentation
+
+* **readme:** add note regarding using `docker compose up` ([c0ea538](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/c0ea538d7d03bb5b4c020628500c7dd4a3b89e06))
+* **readme:** update contributing section ([6ded22e](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/6ded22e9be5ed8da66c290353db33e907e57eed8))
+
+
+### Dependencies
+
+* **deps:** bump node from 14-alpine3.13 to 16-alpine3.13 ([4e04042](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/4e04042ea85f06c0f9f078f0701a23a8a4ec6702))
+* **docker-compose:** use oci labels ([d91be52](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/d91be52059cb0118b7a580765645d2e5a36f9a64))
+* **docker:** add resource limit, restart policy, and healthcheck ([7c5ec67](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/7c5ec6772e43bdc07f00a91ba547bcce91fb2e81))
+* **docker:** remove redundant `mkdir` run ([f3a91f9](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/f3a91f904e8bdf2639a6405248d1a9c7ea39fbee))
+* **docker:** revert docker image back to `lts-alpine` ([df5eb84](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/df5eb84fd60751d2df2911125281d2f87d435a19))
+* **docker:** use docker's native daemon for logging and rotation ([778da0a](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/778da0a89169067d8a217ca83d7d48587032e3c0))
+
 ### [4.0.5](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v4.0.4...v4.0.5) (2021-06-01)
 
 
