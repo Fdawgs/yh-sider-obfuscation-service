@@ -61,7 +61,7 @@ Alternatively, you can navigate to http://0.0.0.0:8204/docs (if `NODE_ENV` is no
 
 Replace the organization code and email address in the `location` and `practitioner` query string parameters respectively with your own if you have already been set up with an account in SIDeR.
 
-In stdout or the log file you will see something similar to the following returned:
+In stdout, or the log file, you will see something similar to the following returned:
 
 ```json
 {
@@ -159,7 +159,7 @@ If you are unable to deploy this into production using Docker, it is recommended
 
 If using a Microsoft Windows OS utilise [pm2-installer](https://github.com/jessety/pm2-installer) to install PM2 as a Windows service.
 
-**Note:** PM2 has been configured to automatically restart the application if modifications are made to `.env`.
+**Note:** PM2 will automatically restart the application if `.env` is modified.
 
 ### Contextual Link in PAS (TrakCare)
 
@@ -179,9 +179,9 @@ The icon itself can be found in the root of [the images folder](./docs/images/).
 
 ## Contributing
 
-Contributions are welcome and any help that can be offered is greatly appreciated!
+Contributions are welcome, and any help is greatly appreciated!
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md) for how to get started.
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for details on how to get started.
 Please adhere to this project's [Code of Conduct](./CODE_OF_CONDUCT.md) when contributing.
 
 ## Acknowledgements
