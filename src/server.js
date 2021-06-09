@@ -21,33 +21,23 @@ const healthCheck = require("./routes/healthcheck");
  */
 async function plugin(server, config) {
 	if (config.isProduction === false) {
-		server
-			.register(swagger, config.swagger)
-			.register(helmet, (instance) => ({
-				contentSecurityPolicy: {
-					directives: {
-						...helmet.contentSecurityPolicy.getDefaultDirectives(),
-						"form-action": ["'self'"],
-						"img-src": ["'self'", "data:", "validator.swagger.io"],
-						"script-src": ["'self'"].concat(
-							instance.swaggerCSP.script
-						),
-						"style-src": ["'self'", "https:"].concat(
-							instance.swaggerCSP.style
-						),
-					},
-				},
-				referrerPolicy: {
-					/**
-					 * "no-referrer" will only be used as a fallback if "strict-origin-when-cross-origin"
-					 * is not supported by the browser
-					 */
-					policy: ["no-referrer", "strict-origin-when-cross-origin"],
-				},
-			}));
-	} else {
+		server.register(swagger, config.swagger);
+	}
+
+	// Register plugins
+	server
+		.register(disableCache)
+
+		.register(flocOff)
+
+		// Process load and 503 response handling
+		.register(underPressure, config.processLoad)
+
+		// Rate limiting and 429 response handling
+		.register(rateLimit, config.rateLimit)
+
 		// Use Helmet to set response security headers: https://helmetjs.github.io/
-		server.register(helmet, () => ({
+		.register(helmet, () => ({
 			contentSecurityPolicy: {
 				directives: {
 					...helmet.contentSecurityPolicy.getDefaultDirectives(),
@@ -61,20 +51,7 @@ async function plugin(server, config) {
 				 */
 				policy: ["no-referrer", "strict-origin-when-cross-origin"],
 			},
-		}));
-	}
-
-	// Enable plugins
-	server
-		.register(disableCache)
-
-		.register(flocOff)
-
-		// Process load and 503 response handling
-		.register(underPressure, config.processLoad)
-
-		// Rate limiting and 429 response handling
-		.register(rateLimit, config.rateLimit)
+		}))
 
 		// Basic healthcheck route to ping
 		.register(healthCheck)
