@@ -21,50 +21,10 @@ const healthCheck = require("./routes/healthcheck");
  */
 async function plugin(server, config) {
 	if (config.isProduction === false) {
-		server
-			.register(swagger, config.swagger)
-			.register(helmet, (instance) => ({
-				contentSecurityPolicy: {
-					directives: {
-						...helmet.contentSecurityPolicy.getDefaultDirectives(),
-						"form-action": ["'self'"],
-						"img-src": ["'self'", "data:", "validator.swagger.io"],
-						"script-src": ["'self'"].concat(
-							instance.swaggerCSP.script
-						),
-						"style-src": ["'self'", "https:"].concat(
-							instance.swaggerCSP.style
-						),
-					},
-				},
-				referrerPolicy: {
-					/**
-					 * "no-referrer" will only be used as a fallback if "strict-origin-when-cross-origin"
-					 * is not supported by the browser
-					 */
-					policy: ["no-referrer", "strict-origin-when-cross-origin"],
-				},
-			}));
-	} else {
-		// Use Helmet to set response security headers: https://helmetjs.github.io/
-		server.register(helmet, () => ({
-			contentSecurityPolicy: {
-				directives: {
-					...helmet.contentSecurityPolicy.getDefaultDirectives(),
-					"form-action": ["'self'"],
-				},
-			},
-			referrerPolicy: {
-				/**
-				 * "no-referrer" will only be used as a fallback if "strict-origin-when-cross-origin"
-				 * is not supported by the browser
-				 */
-				policy: ["no-referrer", "strict-origin-when-cross-origin"],
-			},
-		}));
+		server.register(swagger, config.swagger);
 	}
 
-	// Enable plugins
+	// Register plugins
 	server
 		.register(disableCache)
 
@@ -75,6 +35,25 @@ async function plugin(server, config) {
 
 		// Rate limiting and 429 response handling
 		.register(rateLimit, config.rateLimit)
+
+		// Use Helmet to set response security headers: https://helmetjs.github.io/
+		.register(helmet, () => ({
+			contentSecurityPolicy: {
+				directives: {
+					...helmet.contentSecurityPolicy.getDefaultDirectives(),
+					"child-src": ["'self'"],
+					"frame-ancestors": ["'none'"],
+					"form-action": ["'self'"],
+				},
+			},
+			referrerPolicy: {
+				/**
+				 * "no-referrer" will only be used as a fallback if "strict-origin-when-cross-origin"
+				 * is not supported by the browser
+				 */
+				policy: ["no-referrer", "strict-origin-when-cross-origin"],
+			},
+		}))
 
 		// Basic healthcheck route to ping
 		.register(healthCheck)
