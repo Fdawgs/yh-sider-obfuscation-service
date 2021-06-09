@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file.
 
+### [4.0.7](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v4.0.6...v4.0.7) (2021-06-09)
+
+
+### Bug Fixes
+
+* **server:** remove swagger from csp for all routes apart from doc route ([cdefa1c](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/cdefa1c662d9c54d4a3b3aaa995a374c3181ce24))
+* **server:** set `frame-ancestors` csp to `'none'`; add `child-src` csp ([1db1753](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/1db17534e89c77cace607b1852355a5cdc5e3fd2))
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint from 7.27.0 to 7.28.0 ([f471c5c](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/f471c5cbb974f8eef9c16120e75f437540845b85))
+* **deps-dev:** bump eslint-plugin-jsdoc from 35.1.2 to 35.1.3 ([4f538b8](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/4f538b82db37c8ddb3cd640ce7efb840ec32b8a2))
+* **deps-dev:** bump jest from 27.0.3 to 27.0.4 ([0c28799](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/0c28799e24f5a571a6cf95398d04dca9ad5d2771))
+* **deps-dev:** bump prettier from 2.3.0 to 2.3.1 ([d258e44](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/d258e4457597cdfea91ebff1b746d0c13ba13420))
+* **deps:** bump glob-parent from 5.1.1 to 5.1.2 ([af45cdc](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/af45cdc5202cc58900f75bc9386671f765ba56a4))
+* **deps:** bump normalize-url from 4.5.0 to 4.5.1 ([4ffd8f1](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/4ffd8f1ce1d094f35bdc3c7cf81b50145b01f62a))
+* **deps:** bump trim-newlines from 3.0.0 to 3.0.1 ([98128f6](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/98128f6b24624db7cbec45479151865710c57823))
+* **deps:** fix package-lock.json ([73419cb](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/73419cba8c25e9c359072f9681e1871db5096ff9))
+
 ### [4.0.6](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v4.0.5...v4.0.6) (2021-06-02)
 
 
