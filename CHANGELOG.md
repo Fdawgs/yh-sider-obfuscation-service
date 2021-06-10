@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+### [4.0.8](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v4.0.7...v4.0.8) (2021-06-09)
+
+
+### Dependencies
+
+* **deps:** fix `js-yaml` dependency tree ([#277](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/issues/277)) ([2472402](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/24724022c3aa39ed4dddca6f9a1a9a48fdba739e))
+
 ### [4.0.7](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v4.0.6...v4.0.7) (2021-06-09)
 
 
