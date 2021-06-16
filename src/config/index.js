@@ -134,7 +134,7 @@ async function getConfig() {
 			.required(["NODE_ENV", "SERVICE_HOST", "SERVICE_PORT"]),
 	});
 
-	const isProduction = env.NODE_ENV === "production";
+	const isProduction = env.NODE_ENV.toLowerCase() === "production";
 
 	const config = {
 		isProduction,
@@ -267,7 +267,10 @@ async function getConfig() {
 	 * Replaces using `pino-pretty` in scripts, as it does not play
 	 * well with Nodemon
 	 */
-	if (env.NODE_ENV !== "PRODUCTION" && !env.LOG_ROTATION_FILENAME) {
+	if (
+		isProduction === false &&
+		(!env.LOG_ROTATION_FILENAME || env.LOG_ROTATION_FILENAME === "")
+	) {
 		config.fastifyInit.logger.prettyPrint = true;
 	}
 
