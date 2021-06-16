@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+### [4.0.9](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v4.0.8...v4.0.9) (2021-06-16)
+
+
+### Bug Fixes
+
+* **config:** `isProduction` and `prettyPrint` conditionals ([e95ead3](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/e95ead387c3ddb722b047eaf4596fff7497ec20f))
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint-plugin-jsdoc from 35.1.3 to 35.3.0 ([8223c56](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/8223c5647884b52a0a1af13e361dea692e859198))
+* **deps:** bump fastify-disablecache from 2.0.0 to 2.0.1 ([cdd4053](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/cdd405356c3b072483bf5be1dd9eef523998a4f1))
+
 ### [4.0.8](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v4.0.7...v4.0.8) (2021-06-09)
 
 
