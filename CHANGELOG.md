@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+### [4.0.10](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v4.0.9...v4.0.10) (2021-06-17)
+
+
+### Dependencies
+
+* **deps:** bump actions/upload-artifact from 2.2.3 to 2.2.4 ([cd762f5](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/cd762f5f689fdc43736aaf370d86438a07bca76f))
+* **deps:** bump fastify from 3.17.0 to 3.18.0 ([77e054a](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/77e054aa616c35d846203c1f08eb66409e0f2381))
+* **deps:** bump fastify-disablecache from 2.0.1 to 2.0.2 ([0e5e6a2](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/0e5e6a2d7082d841e14032bfe8b3b61d07bacfb3))
+
 ### [4.0.9](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v4.0.8...v4.0.9) (2021-06-16)
 
 
