@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file.
 
+### [4.0.11](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v4.0.10...v4.0.11) (2021-06-22)
+
+
+### Bug Fixes
+
+* **server:** increase `Strict-Transport-Security` max age to 365 days ([6c191d6](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/6c191d61284cc6c7fa3f365d2c0cde0c8b174570))
+* **server:** move hsts value to correct object ([#290](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/issues/290)) ([610b295](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/610b295fa1a08aa3d026d6acf7a6c4fc6c9c1bd3))
+* **server:** use stricter `Content-Security-Policy` values ([47b616b](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/47b616bdc503bd351f0bf36baa0e493abdb27fa9))
+
+
+### Continuous Integration
+
+* **link-check:** reduce frequency from weekly to monthly ([#287](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/issues/287)) ([24063b1](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/24063b12838bacb4f680386f4b75a1c0bf5b0d67))
+
+
+### Miscellaneous
+
+* **server:** clarify on what each registered plugin does ([064a054](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/064a054c7ddd65314e7375598bdc53c754043fe3))
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint from 7.28.0 to 7.29.0 ([4582d29](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/4582d29c2f31a49137c5898d80dcec33a9ea2ae0))
+* **deps-dev:** bump eslint-plugin-jsdoc from 35.3.0 to 35.4.0 ([7ec008b](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/7ec008bb2b8ba9b7dcee95f7bad60fe7301d494f))
+* **deps-dev:** bump jest from 27.0.4 to 27.0.5 ([b29a69a](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/b29a69a7ef56932c2c43474c136a56fb88d4b27f))
+* **deps:** bump fastify-autoload from 3.7.1 to 3.8.0 ([5c317bb](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/5c317bb7ff80643e94fcea09831f7119477a7ed7))
+* **deps:** bump fastify-swagger from 4.7.0 to 4.8.0 ([54440f6](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/54440f698e685834c1035e1b29f6f0abdd59fe89))
+* **deps:** bump under-pressure from 5.6.0 to 5.7.0 ([824446a](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/824446ac10d0d1acd8e53e1bddf4909b955f6c12))
+
 ### [4.0.10](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v4.0.9...v4.0.10) (2021-06-17)
 
 
