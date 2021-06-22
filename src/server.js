@@ -26,8 +26,10 @@ async function plugin(server, config) {
 
 	// Register plugins
 	server
+		// Set response headers to disable client-side caching
 		.register(disableCache)
 
+		// Opt-out of Google's FLoC advertising-surveillance network
 		.register(flocOff)
 
 		// Process load and 503 response handling
