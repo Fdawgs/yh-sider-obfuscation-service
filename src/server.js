@@ -26,8 +26,10 @@ async function plugin(server, config) {
 
 	// Register plugins
 	server
+		// Set response headers to disable client-side caching
 		.register(disableCache)
 
+		// Opt-out of Google's FLoC advertising-surveillance network
 		.register(flocOff)
 
 		// Process load and 503 response handling
@@ -40,10 +42,18 @@ async function plugin(server, config) {
 		.register(helmet, () => ({
 			contentSecurityPolicy: {
 				directives: {
-					...helmet.contentSecurityPolicy.getDefaultDirectives(),
+					"default-src": ["'self'"],
+					"base-uri": ["'self'"],
+					"img-src": ["'self'", "data:"],
+					"object-src": ["'none'"],
 					"child-src": ["'self'"],
 					"frame-ancestors": ["'none'"],
 					"form-action": ["'self'"],
+					"upgrade-insecure-requests": [],
+					"block-all-mixed-content": [],
+				},
+				hsts: {
+					maxAge: 31536000,
 				},
 			},
 			referrerPolicy: {
