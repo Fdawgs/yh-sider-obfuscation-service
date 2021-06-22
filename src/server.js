@@ -50,6 +50,9 @@ async function plugin(server, config) {
 					"upgrade-insecure-requests": [],
 					"block-all-mixed-content": [],
 				},
+				hsts: {
+					maxAge: 31536000,
+				},
 			},
 			referrerPolicy: {
 				/**
