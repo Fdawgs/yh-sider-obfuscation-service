@@ -3,6 +3,7 @@ const fp = require("fastify-plugin");
 const path = require("path");
 
 // Import plugins
+const accepts = require("fastify-accepts");
 const helmet = require("fastify-helmet");
 const disableCache = require("fastify-disablecache");
 const flocOff = require("fastify-floc-off");
@@ -26,6 +27,9 @@ async function plugin(server, config) {
 
 	// Register plugins
 	server
+		// Accept header handler
+		.register(accepts)
+
 		// Set response headers to disable client-side caching
 		.register(disableCache)
 
