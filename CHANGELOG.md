@@ -2,6 +2,41 @@
 
 All notable changes to this project will be documented in this file.
 
+### [4.0.12](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v4.0.11...v4.0.12) (2021-07-09)
+
+
+### Bug Fixes
+
+* **routes/healthcheck:** add `Accept` request header handling ([#317](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/issues/317)) ([d2f1e8d](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/d2f1e8d74043a952b41f969a6f3e1578008381b2))
+
+
+### Miscellaneous
+
+* **vscode:** disable redhat telemetry ([1015060](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/10150602b450d36c1c15828803cacce863922ec6))
+
+
+### Dependencies
+
+* **deps-dev:** bump autocannon from 7.3.0 to 7.4.0 ([ae63629](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/ae63629393fc5f52e69ec0d713a582a7bc7ed0fa))
+* **deps-dev:** bump eslint from 7.29.0 to 7.30.0 ([9ef5c32](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/9ef5c328090e8899da2b17541c6d8683687aef4c))
+* **deps-dev:** bump eslint-plugin-jsdoc from 35.4.0 to 35.4.1 ([44f3cbe](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/44f3cbe246a9f5258a586f215ccd95491b7dba30))
+* **deps-dev:** bump eslint-plugin-jsdoc from 35.4.1 to 35.4.2 ([c7aa266](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/c7aa266b4a3eaa8e4d7fb75385d7a62ef5e1a0d7))
+* **deps-dev:** bump husky from 6.0.0 to 7.0.0 ([40f7419](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/40f7419d3c59f639bf8af9577dbe9c0522e3ef89))
+* **deps-dev:** bump husky from 7.0.0 to 7.0.1 ([e42ead7](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/e42ead7186ad75a8309b1228e1a8cb6c1972289f))
+* **deps-dev:** bump jest from 27.0.5 to 27.0.6 ([a75782d](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/a75782dca077e3ef8b1eedb42306bf45dff967a9))
+* **deps-dev:** bump nodemon from 2.0.7 to 2.0.9 ([c3d39cd](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/c3d39cd47f9e11d0343cf743a74412ddb64ba73f))
+* **deps-dev:** bump nodemon from 2.0.9 to 2.0.10 ([880a0d5](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/880a0d5a57dfc8724cdaf76b5de1fcc621d9c462))
+* **deps-dev:** bump pino-pretty from 5.0.2 to 5.1.0 ([2e271e7](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/2e271e74706bfc8b19cdaff641dff3c89118f0ef))
+* **deps-dev:** bump pino-pretty from 5.1.0 to 5.1.1 ([c48bf91](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/c48bf91b2cbaec5dadaaa69b0bf7f3093d5dba00))
+* **deps-dev:** bump prettier from 2.3.1 to 2.3.2 ([81e6fc7](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/81e6fc7ad392130f3336033183b0ca915a8c6e27))
+* **deps:** bump actions/setup-node from 2.1.5 to 2.2.0 ([0e35368](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/0e35368246dc3db77e5b87a3d008a99cfa6d6286))
+* **deps:** bump coverallsapp/github-action from 1.1.2 to 1.1.3 ([daeca4d](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/daeca4d35ec62de70fbdb7d31c7ab3a7a699d6a1))
+* **deps:** bump fastify from 3.18.0 to 3.18.1 ([28262b2](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/28262b2182db65158b3b839b549d1e1730af4324))
+* **deps:** bump fastify from 3.18.1 to 3.19.0 ([6d44d66](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/6d44d66fb6bee4e2364aa181001405fa583cc6ca))
+* **deps:** bump fastify-helmet from 5.3.1 to 5.3.2 ([23bd6dc](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/23bd6dc37a726b2a11e90950654908e66494813a))
+* **deps:** bump fastify-swagger from 4.8.0 to 4.8.2 ([9a4f532](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/9a4f53297e7e06ab9d4e1eb06d62d9c26521250f))
+* **deps:** bump obfuscated-querystring from `25016a8` to `69d5602` ([49bc2b2](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/49bc2b24a9194816c5a2ebcc60fb3e67df883d28))
+
 ### [4.0.11](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v4.0.10...v4.0.11) (2021-06-22)
 
 
