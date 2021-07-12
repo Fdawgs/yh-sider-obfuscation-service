@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file.
 
+### [4.0.13](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v4.0.12...v4.0.13) (2021-07-12)
+
+
+### Bug Fixes
+
+* **routes:** `Accept` header handling encapsulation ([#319](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/issues/319)) ([656c0bf](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/656c0bf6a93e9ba4187633b732aa38ab6534ba84))
+
+
+### Miscellaneous
+
+* **vscode:** remove user space config setting ([50908c8](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/50908c8fb47fc29ab6ab4a3babc4c155fc143856))
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint-plugin-jsdoc from 35.4.2 to 35.4.3 ([1f2af98](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/1f2af981f271c160aabfaefa60fb7825d07b7c51))
+* **deps-dev:** bump nodemon from 2.0.10 to 2.0.12 ([0aa0606](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/0aa0606ea90ed4d8d890fbf115850e6286a332c6))
+* **deps:** bump env-schema from 3.0.1 to 3.1.0 ([4c304be](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/4c304bef464f64feae837c7f7f20023d079e9aa7))
+* **deps:** bump fastify-swagger from 4.8.2 to 4.8.3 ([77e4c01](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/77e4c016b7a5d9a11e067dfa5cad78ee70496404))
+* **deps:** bump fluent-json-schema from 3.0.0 to 3.0.1 ([74ba0af](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/74ba0afff9e753aadc4a445b6de4d5cf1fbbba88))
+* **deps:** bump pino from 6.11.3 to 6.12.0 ([167dcc1](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/167dcc10fcd9ce0a5f088fe1013e314f4020f687))
+
 ### [4.0.12](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v4.0.11...v4.0.12) (2021-07-09)
 
 
