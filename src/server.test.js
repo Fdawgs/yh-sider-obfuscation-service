@@ -147,6 +147,19 @@ describe("Server Deployment", () => {
 				expect.arrayContaining([400, 400, 400, 400])
 			);
 		});
+
+		test("Should return HTTP status code 406 if content-type in `Accept` request header unsupported", async () => {
+			const response = await server.inject({
+				method: "GET",
+				url: "/redirect",
+				headers: {
+					accept: "application/javascript",
+				},
+				query: mockParams,
+			});
+
+			expect(response.statusCode).toEqual(406);
+		});
 	});
 
 	describe("Production Server", () => {
