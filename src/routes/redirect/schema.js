@@ -66,6 +66,16 @@ const redirectGetSchema = {
 			.prop("statusCode", S.number().const(406))
 			.prop("error", S.string().const("Not Acceptable"))
 			.prop("message", S.string().const("Not Acceptable")),
+		500: S.object()
+			.prop("statusCode", S.number().const(500))
+			.prop("error", S.string().const("Internal Server Error"))
+			.prop(
+				"message",
+				S.string().enum([
+					"Internal Server Error",
+					"Recieving endpoint missing",
+				])
+			),
 	},
 };
 
