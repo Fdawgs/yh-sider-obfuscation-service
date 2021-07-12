@@ -8,7 +8,7 @@ const startServer = require("./server");
 const getConfig = require("./config");
 
 const headers = {
-	"Content-Type": "application/json",
+	accept: "text/html",
 	"cache-control": "no-cache",
 };
 
