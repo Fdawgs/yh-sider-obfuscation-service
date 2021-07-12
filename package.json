@@ -100,7 +100,7 @@
     "fluent-json-schema": "^3.0.1",
     "http-errors": "^1.8.0",
     "obfuscated-querystring": "git+https://github.com/BlackPearSw/obfuscated-querystring.git",
-    "pino": "^6.11.3",
+    "pino": "^6.12.0",
     "under-pressure": "^5.7.0"
   }
 }
