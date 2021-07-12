@@ -8,7 +8,7 @@ const startServer = require("./server");
 const getConfig = require("./config");
 
 const headers = {
-	"Content-Type": "application/json",
+	accept: "text/html",
 	"cache-control": "no-cache",
 };
 
@@ -146,6 +146,19 @@ describe("Server Deployment", () => {
 			expect(results).toEqual(
 				expect.arrayContaining([400, 400, 400, 400])
 			);
+		});
+
+		test("Should return HTTP status code 406 if content-type in `Accept` request header unsupported", async () => {
+			const response = await server.inject({
+				method: "GET",
+				url: "/redirect",
+				headers: {
+					accept: "application/javascript",
+				},
+				query: mockParams,
+			});
+
+			expect(response.statusCode).toEqual(406);
 		});
 	});
 

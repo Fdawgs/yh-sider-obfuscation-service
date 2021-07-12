@@ -1,4 +1,4 @@
-const createError = require("http-errors");
+const { createError, NotAcceptable } = require("http-errors");
 const fp = require("fastify-plugin");
 const queryString = require("querystring");
 
@@ -28,6 +28,15 @@ async function route(server, options) {
 		async handler(req, res) {
 			if (!options.redirectUrl) {
 				res.send(createError(500, "Recieving endpoint missing"));
+			}
+
+			if (
+				// Catch unsupported Accept header MIME types
+				!redirectGetSchema.produces.includes(
+					req.accepts().type(redirectGetSchema.produces)
+				)
+			) {
+				res.send(NotAcceptable());
 			}
 
 			const espUrl =
