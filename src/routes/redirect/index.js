@@ -1,5 +1,4 @@
 const { createError, NotAcceptable } = require("http-errors");
-const fp = require("fastify-plugin");
 const queryString = require("querystring");
 
 // Import plugins
@@ -34,7 +33,7 @@ async function route(server, options) {
 
 	server.route({
 		method: "GET",
-		url: "/redirect",
+		url: "/",
 		schema: redirectGetSchema,
 		async handler(req, res) {
 			if (!options.redirectUrl) {
@@ -49,8 +48,4 @@ async function route(server, options) {
 	});
 }
 
-module.exports = fp(route, {
-	fastify: "3.x",
-	name: "route-redirect",
-	dependencies: ["fastify-accepts"],
-});
+module.exports = route;
