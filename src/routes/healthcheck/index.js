@@ -29,4 +29,8 @@ async function route(server) {
 	});
 }
 
-module.exports = fp(route);
+module.exports = fp(route, {
+	fastify: "3.x",
+	name: "route-healthcheck",
+	dependencies: ["fastify-accepts"],
+});

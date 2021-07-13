@@ -47,4 +47,8 @@ async function route(server, options) {
 	});
 }
 
-module.exports = fp(route);
+module.exports = fp(route, {
+	fastify: "3.x",
+	name: "route-redirect",
+	dependencies: ["fastify-accepts"],
+});
