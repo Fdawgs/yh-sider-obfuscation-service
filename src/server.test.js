@@ -26,19 +26,9 @@ const mockParams = {
 };
 
 describe("Server Deployment", () => {
-	let config;
-
 	beforeAll(async () => {
-		config = await getConfig();
-		// Scrub any dev/test keycloak config values leftover from `.env`
-		delete config.keycloak;
-		config.keycloak = {
-			enabled: false,
-		};
-
 		try {
 			await mockServer.listen(3001);
-			config.redirectUrl = "http://127.0.0.1:3001/esp/#!/launch?";
 			console.log("Mock SIDeR server listening on http://127.0.0.1:3001");
 		} catch (err) {
 			console.log("Error starting SIDeR server:", err);
@@ -52,6 +42,13 @@ describe("Server Deployment", () => {
 
 	describe("End-To-End", () => {
 		let server;
+		let config;
+
+		beforeAll(async () => {
+			config = await getConfig();
+			config.redirectUrl = "http://127.0.0.1:3001/esp/#!/launch?";
+			delete config.keycloak;
+		});
 
 		beforeEach(async () => {
 			server = Fastify();
@@ -193,15 +190,54 @@ describe("Server Deployment", () => {
 	});
 
 	describe("End-To-End - Production Server", () => {
+		let server;
+		let config;
+
+		beforeAll(async () => {
+			config = await getConfig();
+			config.redirectUrl = "http://127.0.0.1:3001/esp/#!/launch?";
+			config.isProduction = true;
+		});
+
+		beforeEach(async () => {
+			server = Fastify();
+			server.register(startServer, config);
+			await server.ready();
+		});
+
+		afterEach(async () => {
+			await server.close();
+		});
+
+		describe("/healthcheck Route", () => {
+			test("Should return `ok`", async () => {
+				const response = await server.inject({
+					method: "GET",
+					url: "/healthcheck",
+					headers: {
+						accept: "text/plain",
+					},
+				});
+
+				expect(response.statusCode).toEqual(200);
+				expect(response.payload).toEqual("ok");
+			});
+
+			test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
+				const response = await server.inject({
+					method: "GET",
+					url: "/healthcheck",
+					headers: {
+						accept: "application/javascript",
+					},
+				});
+
+				expect(response.statusCode).toEqual(406);
+			});
+		});
+
 		describe("/redirect Route", () => {
 			test("Should redirect to 'redirectUrl' with required params present as production server", async () => {
-				const altConfig = cloneDeep(config);
-				altConfig.isProduction = true;
-
-				const server = Fastify();
-				server.register(startServer, altConfig);
-				await server.ready();
-
 				const response = await server.inject({
 					method: "GET",
 					url: "/redirect",
@@ -235,19 +271,58 @@ describe("Server Deployment", () => {
 		});
 	});
 
-	describe("End-To-End - Keycloak Token Retrieval Config", () => {
+	describe("End-To-End - Keycloak Token Retrieval Config Disabled", () => {
+		let server;
+		let config;
+
+		beforeAll(async () => {
+			config = await getConfig();
+			config.redirectUrl = "http://127.0.0.1:3001/esp/#!/launch?";
+			delete config.keycloak;
+			config.keycloak = {
+				enabled: false,
+			};
+		});
+
+		beforeEach(async () => {
+			server = Fastify();
+			server.register(startServer, config);
+			await server.ready();
+		});
+
+		afterEach(async () => {
+			await server.close();
+		});
+
+		describe("/healthcheck Route", () => {
+			test("Should return `ok`", async () => {
+				const response = await server.inject({
+					method: "GET",
+					url: "/healthcheck",
+					headers: {
+						accept: "text/plain",
+					},
+				});
+
+				expect(response.statusCode).toEqual(200);
+				expect(response.payload).toEqual("ok");
+			});
+
+			test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
+				const response = await server.inject({
+					method: "GET",
+					url: "/healthcheck",
+					headers: {
+						accept: "application/javascript",
+					},
+				});
+
+				expect(response.statusCode).toEqual(406);
+			});
+		});
+
 		describe("/redirect Route", () => {
 			test("Should continue when Keycloak endpoint config is disabled", async () => {
-				const altConfig = cloneDeep(config);
-				delete altConfig.keycloak;
-				altConfig.keycloak = {
-					enabled: false,
-				};
-
-				const server = Fastify();
-				server.register(startServer, altConfig);
-				await server.ready();
-
 				const response = await server.inject({
 					method: "GET",
 					url: "/redirect",
@@ -262,18 +337,61 @@ describe("Server Deployment", () => {
 
 				await server.close();
 			});
+		});
+	});
 
-			test("Should return HTTP 500 error when Keycloak endpoint config enabled but other options undefined", async () => {
-				const altConfig = cloneDeep(config);
-				delete altConfig.keycloak;
-				altConfig.keycloak = {
-					enabled: true,
-				};
+	describe("End-To-End - Keycloak Token Retrieval Config Enabled But Keycloak Options Undefined", () => {
+		let server;
+		let config;
 
-				const server = Fastify();
-				server.register(startServer, altConfig);
-				await server.ready();
+		beforeAll(async () => {
+			config = await getConfig();
+			config.redirectUrl = "http://127.0.0.1:3001/esp/#!/launch?";
+			delete config.keycloak;
+			config.keycloak = {
+				enabled: true,
+			};
+		});
 
+		beforeEach(async () => {
+			server = Fastify();
+			server.register(startServer, config);
+			await server.ready();
+		});
+
+		afterEach(async () => {
+			await server.close();
+		});
+
+		describe("/healthcheck Route", () => {
+			test("Should return `ok`", async () => {
+				const response = await server.inject({
+					method: "GET",
+					url: "/healthcheck",
+					headers: {
+						accept: "text/plain",
+					},
+				});
+
+				expect(response.statusCode).toEqual(200);
+				expect(response.payload).toEqual("ok");
+			});
+
+			test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
+				const response = await server.inject({
+					method: "GET",
+					url: "/healthcheck",
+					headers: {
+						accept: "application/javascript",
+					},
+				});
+
+				expect(response.statusCode).toEqual(406);
+			});
+		});
+
+		describe("/redirect Route", () => {
+			test("Should return HTTP 500 error", async () => {
 				const response = await server.inject({
 					method: "GET",
 					url: "/redirect",
@@ -290,15 +408,58 @@ describe("Server Deployment", () => {
 
 				await server.close();
 			});
+		});
+	});
 
+	describe("End-To-End - Redirect URL Missing", () => {
+		let server;
+		let config;
+
+		beforeAll(async () => {
+			config = await getConfig();
+			config.redirectUrl = "http://127.0.0.1:3001/esp/#!/launch?";
+			delete config.redirectUrl;
+		});
+
+		beforeEach(async () => {
+			server = Fastify();
+			server.register(startServer, config);
+			await server.ready();
+		});
+
+		afterEach(async () => {
+			await server.close();
+		});
+
+		describe("/healthcheck Route", () => {
+			test("Should return `ok`", async () => {
+				const response = await server.inject({
+					method: "GET",
+					url: "/healthcheck",
+					headers: {
+						accept: "text/plain",
+					},
+				});
+
+				expect(response.statusCode).toEqual(200);
+				expect(response.payload).toEqual("ok");
+			});
+
+			test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
+				const response = await server.inject({
+					method: "GET",
+					url: "/healthcheck",
+					headers: {
+						accept: "application/javascript",
+					},
+				});
+
+				expect(response.statusCode).toEqual(406);
+			});
+		});
+
+		describe("/redirect Route", () => {
 			test("Should return HTTP 500 error when redirect URL missing", async () => {
-				const altConfig = cloneDeep(config);
-				delete altConfig.redirectUrl;
-
-				const server = Fastify();
-				server.register(startServer, altConfig);
-				await server.ready();
-
 				const response = await server.inject({
 					method: "GET",
 					url: "/redirect",
