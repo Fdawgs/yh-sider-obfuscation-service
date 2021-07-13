@@ -73,8 +73,10 @@ async function plugin(server, config) {
 		.register(healthCheck)
 
 		/**
-		 * Encapsulate plugins and routes into secured child context, so that swagger
-		 * route does not inherit Keycloak plugin
+		 * Encapsulate plugins and routes into secured child context, so that swagger and healthcheck
+		 * routes do not inherit Keycloak or querystring obfuscation plugins, or any other
+		 * hooks or plugins in routes.
+		 * See https://www.fastify.io/docs/latest/Encapsulation/ for more info
 		 */
 		.register(async (securedContext) => {
 			securedContext
@@ -91,4 +93,4 @@ async function plugin(server, config) {
 		});
 }
 
-module.exports = fp(plugin);
+module.exports = fp(plugin, { fastify: "3.x", name: "server" });

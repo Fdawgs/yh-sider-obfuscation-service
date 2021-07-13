@@ -50,7 +50,7 @@ describe("Server Deployment", () => {
 		await mockServer.close();
 	});
 
-	describe("Server", () => {
+	describe("End-To-End", () => {
 		let server;
 
 		beforeEach(async () => {
@@ -63,223 +63,258 @@ describe("Server Deployment", () => {
 			await server.close();
 		});
 
-		test("Should redirect to 'redirectUrl' with required params present", async () => {
-			const response = await server.inject({
-				method: "GET",
-				url: "/redirect",
-				headers,
-				query: mockParams,
+		describe("/healthcheck Route", () => {
+			test("Should return `ok`", async () => {
+				const response = await server.inject({
+					method: "GET",
+					url: "/healthcheck",
+					headers: {
+						accept: "text/plain",
+					},
+				});
+
+				expect(response.statusCode).toEqual(200);
+				expect(response.payload).toEqual("ok");
 			});
 
-			const resQueryString = queryString.parse(
-				response.headers.location.substring(
-					response.headers.location.indexOf("?") + 1,
-					response.headers.location.length
-				)
-			);
+			test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
+				const response = await server.inject({
+					method: "GET",
+					url: "/healthcheck",
+					headers: {
+						accept: "application/javascript",
+					},
+				});
 
-			expect(response.headers.location).toMatch(
-				"http://127.0.0.1:3001/esp/#!/launch?"
-			);
-
-			expect(resQueryString).toMatchObject({
-				location: "https://fhir.nhs.uk/Id/ods-organization-code|RA4",
-				practitioner:
-					"https://sider.nhs.uk/auth|obsservice.test@ydh.nhs.uk",
-				enc: expect.any(String),
+				expect(response.statusCode).toEqual(406);
 			});
-
-			expect(response.statusCode).toEqual(302);
 		});
 
-		test("Should return HTTP 400 error when any required query string parameter is missing", async () => {
-			const altMockParams = cloneDeep(mockParams);
-			delete altMockParams.FromIconProfile;
-			delete altMockParams.NOUNLOCK;
-			delete altMockParams.TPAGID;
+		describe("/redirect Route", () => {
+			test("Should redirect to 'redirectUrl' with required params present", async () => {
+				const response = await server.inject({
+					method: "GET",
+					url: "/redirect",
+					headers,
+					query: mockParams,
+				});
 
-			const results = await Promise.all(
-				Object.keys(altMockParams).map(async (key) => {
-					const scrubbedParams = { ...altMockParams };
-					// eslint-disable-next-line security/detect-object-injection
-					delete scrubbedParams[key];
+				const resQueryString = queryString.parse(
+					response.headers.location.substring(
+						response.headers.location.indexOf("?") + 1,
+						response.headers.location.length
+					)
+				);
 
-					const response = await server.inject({
-						method: "GET",
-						url: "/redirect",
-						headers,
-						query: scrubbedParams,
-					});
+				expect(response.headers.location).toMatch(
+					"http://127.0.0.1:3001/esp/#!/launch?"
+				);
 
-					return response.statusCode;
-				})
-			);
+				expect(resQueryString).toMatchObject({
+					location:
+						"https://fhir.nhs.uk/Id/ods-organization-code|RA4",
+					practitioner:
+						"https://sider.nhs.uk/auth|obsservice.test@ydh.nhs.uk",
+					enc: expect.any(String),
+				});
 
-			expect(results).toEqual(
-				expect.arrayContaining([400, 400, 400, 400])
-			);
-		});
-
-		test("Should return HTTP 400 error when any required query string parameter does not match expected pattern", async () => {
-			const altMockParams = cloneDeep(mockParams);
-			delete altMockParams.FromIconProfile;
-			delete altMockParams.NOUNLOCK;
-			delete altMockParams.TPAGID;
-
-			const results = await Promise.all(
-				Object.keys(altMockParams).map(async (key) => {
-					const scrubbedParams = { ...altMockParams };
-					// eslint-disable-next-line security/detect-object-injection
-					scrubbedParams[key] = "test";
-
-					const response = await server.inject({
-						method: "GET",
-						url: "/redirect",
-						headers,
-						query: scrubbedParams,
-					});
-
-					return response.statusCode;
-				})
-			);
-
-			expect(results).toEqual(
-				expect.arrayContaining([400, 400, 400, 400])
-			);
-		});
-
-		test("Should return HTTP status code 406 if content-type in `Accept` request header unsupported", async () => {
-			const response = await server.inject({
-				method: "GET",
-				url: "/redirect",
-				headers: {
-					accept: "application/javascript",
-				},
-				query: mockParams,
+				expect(response.statusCode).toEqual(302);
 			});
 
-			expect(response.statusCode).toEqual(406);
-		});
-	});
+			test("Should return HTTP 400 error when any required query string parameter is missing", async () => {
+				const altMockParams = cloneDeep(mockParams);
+				delete altMockParams.FromIconProfile;
+				delete altMockParams.NOUNLOCK;
+				delete altMockParams.TPAGID;
 
-	describe("Production Server", () => {
-		test("Should redirect to 'redirectUrl' with required params present as production server", async () => {
-			const altConfig = cloneDeep(config);
-			altConfig.isProduction = true;
+				const results = await Promise.all(
+					Object.keys(altMockParams).map(async (key) => {
+						const scrubbedParams = { ...altMockParams };
+						// eslint-disable-next-line security/detect-object-injection
+						delete scrubbedParams[key];
 
-			const server = Fastify();
-			server.register(startServer, altConfig);
-			await server.ready();
+						const response = await server.inject({
+							method: "GET",
+							url: "/redirect",
+							headers,
+							query: scrubbedParams,
+						});
 
-			const response = await server.inject({
-				method: "GET",
-				url: "/redirect",
-				headers,
-				query: mockParams,
+						return response.statusCode;
+					})
+				);
+
+				expect(results).toEqual(
+					expect.arrayContaining([400, 400, 400, 400])
+				);
 			});
 
-			const resQueryString = queryString.parse(
-				response.headers.location.substring(
-					response.headers.location.indexOf("?") + 1,
-					response.headers.location.length
-				)
-			);
+			test("Should return HTTP 400 error when any required query string parameter does not match expected pattern", async () => {
+				const altMockParams = cloneDeep(mockParams);
+				delete altMockParams.FromIconProfile;
+				delete altMockParams.NOUNLOCK;
+				delete altMockParams.TPAGID;
 
-			expect(response.headers.location).toMatch(
-				"http://127.0.0.1:3001/esp/#!/launch?"
-			);
+				const results = await Promise.all(
+					Object.keys(altMockParams).map(async (key) => {
+						const scrubbedParams = { ...altMockParams };
+						// eslint-disable-next-line security/detect-object-injection
+						scrubbedParams[key] = "test";
 
-			expect(resQueryString).toMatchObject({
-				location: "https://fhir.nhs.uk/Id/ods-organization-code|RA4",
-				practitioner:
-					"https://sider.nhs.uk/auth|obsservice.test@ydh.nhs.uk",
-				enc: expect.any(String),
+						const response = await server.inject({
+							method: "GET",
+							url: "/redirect",
+							headers,
+							query: scrubbedParams,
+						});
+
+						return response.statusCode;
+					})
+				);
+
+				expect(results).toEqual(
+					expect.arrayContaining([400, 400, 400, 400])
+				);
 			});
 
-			expect(response.statusCode).toEqual(302);
+			test("Should return HTTP status code 406 if content-type in `Accept` request header unsupported", async () => {
+				const response = await server.inject({
+					method: "GET",
+					url: "/redirect",
+					headers: {
+						accept: "application/javascript",
+					},
+					query: mockParams,
+				});
 
-			await server.close();
+				expect(response.statusCode).toEqual(406);
+			});
 		});
 	});
 
-	describe("Keycloak Token Retrival", () => {
-		test("Should continue when Keycloak endpoint config is disabled", async () => {
-			const altConfig = cloneDeep(config);
-			delete altConfig.keycloak;
-			altConfig.keycloak = {
-				enabled: false,
-			};
+	describe("End-To-End - Production Server", () => {
+		describe("/redirect Route", () => {
+			test("Should redirect to 'redirectUrl' with required params present as production server", async () => {
+				const altConfig = cloneDeep(config);
+				altConfig.isProduction = true;
 
-			const server = Fastify();
-			server.register(startServer, altConfig);
-			await server.ready();
+				const server = Fastify();
+				server.register(startServer, altConfig);
+				await server.ready();
 
-			const response = await server.inject({
-				method: "GET",
-				url: "/redirect",
-				headers,
-				query: mockParams,
+				const response = await server.inject({
+					method: "GET",
+					url: "/redirect",
+					headers,
+					query: mockParams,
+				});
+
+				const resQueryString = queryString.parse(
+					response.headers.location.substring(
+						response.headers.location.indexOf("?") + 1,
+						response.headers.location.length
+					)
+				);
+
+				expect(response.headers.location).toMatch(
+					"http://127.0.0.1:3001/esp/#!/launch?"
+				);
+
+				expect(resQueryString).toMatchObject({
+					location:
+						"https://fhir.nhs.uk/Id/ods-organization-code|RA4",
+					practitioner:
+						"https://sider.nhs.uk/auth|obsservice.test@ydh.nhs.uk",
+					enc: expect.any(String),
+				});
+
+				expect(response.statusCode).toEqual(302);
+
+				await server.close();
 			});
-
-			expect(response.headers.location).toMatch(
-				"http://127.0.0.1:3001/esp/#!/launch?"
-			);
-			expect(response.statusCode).toEqual(302);
-
-			await server.close();
 		});
+	});
 
-		test("Should return HTTP 500 error when Keycloak endpoint config enabled but other options undefined", async () => {
-			const altConfig = cloneDeep(config);
-			delete altConfig.keycloak;
-			altConfig.keycloak = {
-				enabled: true,
-			};
+	describe("End-To-End - Keycloak Token Retrieval Config", () => {
+		describe("/redirect Route", () => {
+			test("Should continue when Keycloak endpoint config is disabled", async () => {
+				const altConfig = cloneDeep(config);
+				delete altConfig.keycloak;
+				altConfig.keycloak = {
+					enabled: false,
+				};
 
-			const server = Fastify();
-			server.register(startServer, altConfig);
-			await server.ready();
+				const server = Fastify();
+				server.register(startServer, altConfig);
+				await server.ready();
 
-			const response = await server.inject({
-				method: "GET",
-				url: "/redirect",
-				headers,
-				query: mockParams,
+				const response = await server.inject({
+					method: "GET",
+					url: "/redirect",
+					headers,
+					query: mockParams,
+				});
+
+				expect(response.headers.location).toMatch(
+					"http://127.0.0.1:3001/esp/#!/launch?"
+				);
+				expect(response.statusCode).toEqual(302);
+
+				await server.close();
 			});
 
-			const body = JSON.parse(response.body);
+			test("Should return HTTP 500 error when Keycloak endpoint config enabled but other options undefined", async () => {
+				const altConfig = cloneDeep(config);
+				delete altConfig.keycloak;
+				altConfig.keycloak = {
+					enabled: true,
+				};
 
-			expect(response.statusCode).toEqual(500);
-			expect(response.statusMessage).toEqual("Internal Server Error");
-			expect(body.statusCode).toEqual(500);
-			expect(body.error).toEqual("Internal Server Error");
+				const server = Fastify();
+				server.register(startServer, altConfig);
+				await server.ready();
 
-			await server.close();
-		});
+				const response = await server.inject({
+					method: "GET",
+					url: "/redirect",
+					headers,
+					query: mockParams,
+				});
 
-		test("Should return HTTP 500 error when redirect URL missing", async () => {
-			const altConfig = cloneDeep(config);
-			delete altConfig.redirectUrl;
+				const body = JSON.parse(response.body);
 
-			const server = Fastify();
-			server.register(startServer, altConfig);
-			await server.ready();
+				expect(response.statusCode).toEqual(500);
+				expect(response.statusMessage).toEqual("Internal Server Error");
+				expect(body.statusCode).toEqual(500);
+				expect(body.error).toEqual("Internal Server Error");
 
-			const response = await server.inject({
-				method: "GET",
-				url: "/redirect",
-				headers,
-				query: mockParams,
+				await server.close();
 			});
 
-			const body = JSON.parse(response.body);
+			test("Should return HTTP 500 error when redirect URL missing", async () => {
+				const altConfig = cloneDeep(config);
+				delete altConfig.redirectUrl;
 
-			expect(response.statusCode).toEqual(500);
-			expect(response.statusMessage).toEqual("Internal Server Error");
-			expect(body.statusCode).toEqual(500);
-			expect(body.error).toEqual("Internal Server Error");
+				const server = Fastify();
+				server.register(startServer, altConfig);
+				await server.ready();
 
-			await server.close();
+				const response = await server.inject({
+					method: "GET",
+					url: "/redirect",
+					headers,
+					query: mockParams,
+				});
+
+				const body = JSON.parse(response.body);
+
+				expect(response.statusCode).toEqual(500);
+				expect(response.statusMessage).toEqual("Internal Server Error");
+				expect(body.statusCode).toEqual(500);
+				expect(body.error).toEqual("Internal Server Error");
+
+				await server.close();
+			});
 		});
 	});
 });

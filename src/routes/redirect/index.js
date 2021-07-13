@@ -21,6 +21,17 @@ async function route(server, options) {
 		hideOptionsRoute: true,
 	});
 
+	server.addHook("onRequest", async (req, res) => {
+		if (
+			// Catch unsupported Accept header media types
+			!redirectGetSchema.produces.includes(
+				req.accepts().type(redirectGetSchema.produces)
+			)
+		) {
+			res.send(NotAcceptable());
+		}
+	});
+
 	server.route({
 		method: "GET",
 		url: "/redirect",
@@ -28,15 +39,6 @@ async function route(server, options) {
 		async handler(req, res) {
 			if (!options.redirectUrl) {
 				res.send(createError(500, "Recieving endpoint missing"));
-			}
-
-			if (
-				// Catch unsupported Accept header media types
-				!redirectGetSchema.produces.includes(
-					req.accepts().type(redirectGetSchema.produces)
-				)
-			) {
-				res.send(NotAcceptable());
 			}
 
 			const espUrl =
@@ -47,4 +49,8 @@ async function route(server, options) {
 	});
 }
 
-module.exports = fp(route);
+module.exports = fp(route, {
+	fastify: "3.x",
+	name: "route-redirect",
+	dependencies: ["fastify-accepts"],
+});
