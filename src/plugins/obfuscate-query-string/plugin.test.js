@@ -65,7 +65,7 @@ describe("Query String Obfuscation plugin", () => {
 		expect(response.practitioner).not.toBeUndefined();
 	});
 
-	test("Should return HTTP 500 error when options are not passed to plugin", async () => {
+	test("Should return HTTP status code 500 if options are not passed to plugin", async () => {
 		server.register(plugin);
 
 		const response = await server.inject({
