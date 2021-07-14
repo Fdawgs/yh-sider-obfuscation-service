@@ -322,7 +322,7 @@ describe("Server Deployment", () => {
 		});
 
 		describe("/redirect Route", () => {
-			test("Should continue when Keycloak endpoint config is disabled", async () => {
+			test("Should continue if Keycloak endpoint config is disabled", async () => {
 				const response = await server.inject({
 					method: "GET",
 					url: "/redirect",

@@ -53,7 +53,7 @@ describe("Keycloak Access Token Retrieval Plugin", () => {
 		await server.close();
 	});
 
-	test("Should continue when Keycloak options are not defined", async () => {
+	test("Should continue if Keycloak options are not defined", async () => {
 		server.register(plugin);
 
 		const response = await server.inject({
