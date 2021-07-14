@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+### [4.0.14](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v4.0.13...v4.0.14) (2021-07-14)
+
+
+### Improvements
+
+* **routes/healthcheck:** move `Accept` header handling back to hook ([7ec00a6](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/7ec00a6c8f725a68b482a85c52a17ce5a3ee05af))
+* **routes/redirect:** move `Accept` header handling back into hook ([97ab3b8](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/97ab3b8edf895a34fd4701bffaf94a2ea94d427a))
+* **routes:** do not treat routes as plugins ([20b93bb](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/20b93bb7f97e4f8a597168b4dbafabd0e9ebcb36))
+
+
+### Miscellaneous
+
+* change mentions of "MIME type" to "media type" ([#327](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/issues/327)) ([0c2f166](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/0c2f1663ade6c3db865630fd7cf11ea7177523d9))
+* **server:** update encapsulation comment ([783f640](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/783f640fbd4684ee0d2898b1878ca5734967e362))
+* update plugin metadata for server dependency graph ([1087dba](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/1087dbaecd6ce461bfc686fd3ac6386f5f05da8a))
+
 ### [4.0.13](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v4.0.12...v4.0.13) (2021-07-12)
 
 
