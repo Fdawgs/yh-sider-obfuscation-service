@@ -118,7 +118,7 @@ describe("Server Deployment", () => {
 				expect(response.statusCode).toEqual(302);
 			});
 
-			test("Should return HTTP 400 error when any required query string parameter is missing", async () => {
+			test("Should return HTTP status code 400 if any required query string parameter is missing", async () => {
 				const altMockParams = cloneDeep(mockParams);
 				delete altMockParams.FromIconProfile;
 				delete altMockParams.NOUNLOCK;
@@ -146,7 +146,7 @@ describe("Server Deployment", () => {
 				);
 			});
 
-			test("Should return HTTP 400 error when any required query string parameter does not match expected pattern", async () => {
+			test("Should return HTTP status code 400 if any required query string parameter does not match expected pattern", async () => {
 				const altMockParams = cloneDeep(mockParams);
 				delete altMockParams.FromIconProfile;
 				delete altMockParams.NOUNLOCK;
@@ -391,7 +391,7 @@ describe("Server Deployment", () => {
 		});
 
 		describe("/redirect Route", () => {
-			test("Should return HTTP 500 error", async () => {
+			test("Should return HTTP status code 500", async () => {
 				const response = await server.inject({
 					method: "GET",
 					url: "/redirect",
@@ -459,7 +459,7 @@ describe("Server Deployment", () => {
 		});
 
 		describe("/redirect Route", () => {
-			test("Should return HTTP 500 error when redirect URL missing", async () => {
+			test("Should return HTTP status code 500 if redirect URL missing", async () => {
 				const response = await server.inject({
 					method: "GET",
 					url: "/redirect",

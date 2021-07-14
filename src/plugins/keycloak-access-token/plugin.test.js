@@ -87,7 +87,7 @@ describe("Keycloak Access Token Retrieval Plugin", () => {
 		expect(body.practitioner).not.toBeUndefined();
 	});
 
-	test("Should return HTTP 500 error when Keycloak endpoint config enabled but other options undefined", async () => {
+	test("Should return HTTP status code 500 if Keycloak endpoint config enabled but other options undefined", async () => {
 		const altConfig = cloneDeep(config);
 		delete altConfig.keycloak;
 		altConfig.keycloak = {
