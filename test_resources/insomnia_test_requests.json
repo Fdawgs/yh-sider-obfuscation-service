@@ -1,0 +1,144 @@
+{
+	"_type": "export",
+	"__export_format": 4,
+	"__export_date": "2021-07-15T09:08:08.766Z",
+	"__export_source": "insomnia.desktop.app:v2021.4.1",
+	"resources": [
+		{
+			"_id": "req_d3b9c116dd394674a3ac2ebc0f6885cb",
+			"parentId": "fld_23dc4d413e554c46800bdcf52caf8239",
+			"modified": 1626339133177,
+			"created": 1626337919349,
+			"url": "http://localhost:8204/docs/json",
+			"name": "docs",
+			"description": "",
+			"method": "GET",
+			"body": {},
+			"parameters": [],
+			"headers": [
+				{
+					"id": "pair_3e836be6c1bc4310a2a351b76455491f",
+					"name": "Accept",
+					"value": "application/json",
+					"description": ""
+				},
+				{
+					"id": "pair_cc14239bf9b44f81ac8394f82293cee0",
+					"name": "Accept-Encoding",
+					"value": "br, gzip, deflate",
+					"description": ""
+				}
+			],
+			"authentication": {},
+			"metaSortKey": -1572339188973,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "fld_23dc4d413e554c46800bdcf52caf8239",
+			"parentId": "wrk_5f78877c54f94a73ad20a010ac5c4fde",
+			"modified": 1626337941631,
+			"created": 1626337919340,
+			"name": "Example SIDeR Obfuscation Service Requests",
+			"description": "",
+			"environment": {},
+			"environmentPropertyOrder": null,
+			"metaSortKey": -1000000000,
+			"_type": "request_group"
+		},
+		{
+			"_id": "wrk_5f78877c54f94a73ad20a010ac5c4fde",
+			"parentId": null,
+			"modified": 1623333579859,
+			"created": 1611841010710,
+			"name": "Examples",
+			"description": "",
+			"scope": "collection",
+			"_type": "workspace"
+		},
+		{
+			"_id": "req_bf57a4d8c0424512af72b7ef58cf1c1d",
+			"parentId": "fld_23dc4d413e554c46800bdcf52caf8239",
+			"modified": 1626337974902,
+			"created": 1626337919353,
+			"url": "http://localhost:8204/healthcheck",
+			"name": "healthcheck",
+			"description": "",
+			"method": "GET",
+			"body": {},
+			"parameters": [],
+			"headers": [
+				{
+					"id": "pair_d96797f1e2934efba03140337471f26c",
+					"name": "Accept",
+					"value": "text/plain",
+					"description": ""
+				},
+				{
+					"id": "pair_0a92ba879d094124900608a8310bd0c9",
+					"name": "Accept-Encoding",
+					"value": "br, gzip, deflate",
+					"description": ""
+				},
+				{
+					"id": "pair_f4d5762cd9b44abc9f258bef5870fbb2",
+					"name": "Cache-Control",
+					"value": "no-store, max-age=0",
+					"description": ""
+				}
+			],
+			"authentication": {},
+			"metaSortKey": -1572339188923,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_290b13caacb2427f8e5d54a4902e8f38",
+			"parentId": "fld_23dc4d413e554c46800bdcf52caf8239",
+			"modified": 1626338143851,
+			"created": 1626337919345,
+			"url": "http://localhost:8204/redirect?patient=https://fhir.nhs.uk/Id/nhs-number|9449304513&birthdate=1934-10-23&location=https://fhir.nhs.uk/Id/ods-organization-code|RA4&practitioner=https://sider.nhs.uk/auth|frazer.smith@ydh.nhs.uk",
+			"name": "redirect",
+			"description": "",
+			"method": "GET",
+			"body": {},
+			"parameters": [],
+			"headers": [
+				{
+					"id": "pair_d32176177de746afb8014266d5bb19be",
+					"name": "Accept",
+					"value": "text/html",
+					"description": ""
+				},
+				{
+					"id": "pair_66a9e91c1a6c4e2a93cb33b06eaca8c8",
+					"name": "Accept-Encoding",
+					"value": "br, gzip, deflate",
+					"description": ""
+				}
+			],
+			"authentication": {},
+			"metaSortKey": -1572339188873,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		}
+	]
+}
