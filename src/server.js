@@ -4,9 +4,10 @@ const path = require("path");
 
 // Import plugins
 const accepts = require("fastify-accepts");
-const helmet = require("fastify-helmet");
+const compress = require("fastify-compress");
 const disableCache = require("fastify-disablecache");
 const flocOff = require("fastify-floc-off");
+const helmet = require("fastify-helmet");
 const rateLimit = require("fastify-rate-limit");
 const swagger = require("fastify-swagger");
 const underPressure = require("under-pressure");
@@ -21,26 +22,19 @@ const healthCheck = require("./routes/healthcheck");
  * @param {object} config - Fastify configuration values
  */
 async function plugin(server, config) {
-	if (config.isProduction === false) {
-		server.register(swagger, config.swagger);
-	}
-
 	// Register plugins
 	server
 		// Accept header handler
 		.register(accepts)
+
+		// Support Content-Encoding
+		.register(compress, { inflateIfDeflated: true })
 
 		// Set response headers to disable client-side caching
 		.register(disableCache)
 
 		// Opt-out of Google's FLoC advertising-surveillance network
 		.register(flocOff)
-
-		// Process load and 503 response handling
-		.register(underPressure, config.processLoad)
-
-		// Rate limiting and 429 response handling
-		.register(rateLimit, config.rateLimit)
 
 		// Use Helmet to set response security headers: https://helmetjs.github.io/
 		.register(helmet, () => ({
@@ -60,16 +54,20 @@ async function plugin(server, config) {
 			hsts: {
 				maxAge: 31536000,
 			},
-			referrerPolicy: {
-				/**
-				 * "no-referrer" will only be used as a fallback if "strict-origin-when-cross-origin"
-				 * is not supported by the browser
-				 */
-				policy: ["no-referrer", "strict-origin-when-cross-origin"],
-			},
 		}))
 
-		// Basic healthcheck route to ping
+		// Rate limiting and 429 response handling
+		.register(rateLimit, config.rateLimit)
+
+		// Process load and 503 response handling
+		.register(underPressure, config.processLoad);
+
+	if (config.isProduction === false) {
+		server.register(swagger, config.swagger);
+	}
+
+	// Basic healthcheck route to ping
+	server
 		.register(healthCheck)
 
 		/**
