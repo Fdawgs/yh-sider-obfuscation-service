@@ -21,10 +21,6 @@ const healthCheck = require("./routes/healthcheck");
  * @param {object} config - Fastify configuration values
  */
 async function plugin(server, config) {
-	if (config.isProduction === false) {
-		server.register(swagger, config.swagger);
-	}
-
 	// Register plugins
 	server
 		// Accept header handler
@@ -60,9 +56,14 @@ async function plugin(server, config) {
 			hsts: {
 				maxAge: 31536000,
 			},
-		}))
+		}));
 
-		// Basic healthcheck route to ping
+	if (config.isProduction === false) {
+		server.register(swagger, config.swagger);
+	}
+
+	// Basic healthcheck route to ping
+	server
 		.register(healthCheck)
 
 		/**
