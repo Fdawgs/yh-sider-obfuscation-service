@@ -4,6 +4,7 @@ const path = require("path");
 
 // Import plugins
 const accepts = require("fastify-accepts");
+const compress = require("fastify-compress");
 const helmet = require("fastify-helmet");
 const disableCache = require("fastify-disablecache");
 const flocOff = require("fastify-floc-off");
@@ -31,6 +32,9 @@ async function plugin(server, config) {
 
 		// Opt-out of Google's FLoC advertising-surveillance network
 		.register(flocOff)
+
+		// Support Content-Encoding
+		.register(compress, { inflateIfDeflated: true })
 
 		// Process load and 503 response handling
 		.register(underPressure, config.processLoad)
