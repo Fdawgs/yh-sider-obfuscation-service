@@ -11,6 +11,7 @@ const helmet = require("fastify-helmet");
 const rateLimit = require("fastify-rate-limit");
 const swagger = require("fastify-swagger");
 const underPressure = require("under-pressure");
+const contentLanguages = require("./plugins/content-language");
 
 // Import healthcheck route
 const healthCheck = require("./routes/healthcheck");
@@ -26,6 +27,9 @@ async function plugin(server, config) {
 	server
 		// Accept header handler
 		.register(accepts)
+
+		// Set Content-Language header and handle Accept-Language header
+		.register(contentLanguages, { contentLanguages: ["en"] })
 
 		// Support Content-Encoding
 		.register(compress, { inflateIfDeflated: true })
@@ -79,6 +83,7 @@ async function plugin(server, config) {
 			securedContext
 				.register(autoLoad, {
 					dir: path.join(__dirname, "plugins"),
+					ignorePattern: /content-language/,
 					options: config,
 				})
 				// Import and register service routes
