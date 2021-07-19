@@ -2,6 +2,48 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.1.0](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v4.0.13...v4.1.0) (2021-07-19)
+
+
+### Features
+
+* **server:** add content-encoding support ([c51cfad](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/c51cfad5eff2c2344872f372b6b55e1c279a5a12))
+
+
+### Bug Fixes
+
+* **package:** move `pino-pretty` to production dependency list ([#335](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/issues/335)) ([17c80db](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/17c80dbad37b4bce6a1ea87fa89ceb6f1d116ee0))
+* **server:** ensure doc route also inherits plugins ([a8fabb5](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/a8fabb59681eff8d92c40a6e03f9a01fa7d0093e))
+* **server:** revert Referrer-Policy directives to "no-referrer" only ([f0e6adb](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/f0e6adb2f92c5226961bd8a707772ff5f2837965))
+
+
+### Improvements
+
+* **routes/healthcheck:** move `Accept` header handling back to hook ([7ec00a6](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/7ec00a6c8f725a68b482a85c52a17ce5a3ee05af))
+* **routes/redirect:** move `Accept` header handling back into hook ([97ab3b8](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/97ab3b8edf895a34fd4701bffaf94a2ea94d427a))
+* **routes:** do not treat routes as plugins ([20b93bb](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/20b93bb7f97e4f8a597168b4dbafabd0e9ebcb36))
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint from 7.30.0 to 7.31.0 ([fcba32f](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/fcba32f7094ce9db8972eee28d4be0fc2fef3960))
+* **deps-dev:** bump eslint-plugin-jsdoc from 35.4.3 to 35.4.5 ([3bf4eed](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/3bf4eedc825d38ac3d0e76dc90e872cdfc44b1a5))
+* **deps:** bump fastify from 3.19.0 to 3.19.1 ([fc524a6](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/fc524a6a6331cbfbb66364b1ab71a4202b7634b6))
+* **deps:** bump fastify-cors from 6.0.1 to 6.0.2 ([533fc9a](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/533fc9a1e8d80ce72ddaa7172607fb47ef967cca))
+* **deps:** bump obfuscated-querystring from `25016a8` to `69d5602` ([09e144f](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/09e144f9f03600912f2356ea109b716b95d1b914))
+* **deps:** bump wagoid/commitlint-github-action from 3.1.4 to 4.1.1 ([cbafd33](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/cbafd33730b0ea690a575a8871d51c03f62de697))
+
+
+### Miscellaneous
+
+* change mentions of "MIME type" to "media type" ([#327](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/issues/327)) ([0c2f166](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/0c2f1663ade6c3db865630fd7cf11ea7177523d9))
+* **env.template:** use double quotes ([#334](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/issues/334)) ([79f7b71](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/79f7b71399f5685e4577678260a54ff6157180fa))
+* **server:** sort plugin registering alphabetically ascending ([14390c9](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/14390c9395ff5a09a56ee6f4d90461110422d4e1))
+* **server:** update encapsulation comment ([783f640](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/783f640fbd4684ee0d2898b1878ca5734967e362))
+* **test_resources:** add Insomnia REST client test requests ([fee4b9e](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/fee4b9e28bafe61559798a09c5059ef252d2d8fe))
+* update jsdoc tag comments ([0ab1e6f](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/0ab1e6f1e2e971323113febe6268063edc94d27c))
+* update plugin metadata for server dependency graph ([1087dba](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/1087dbaecd6ce461bfc686fd3ac6386f5f05da8a))
+
 ### [4.0.13](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v4.0.12...v4.0.13) (2021-07-12)
 
 
