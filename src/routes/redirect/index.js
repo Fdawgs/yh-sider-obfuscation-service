@@ -10,7 +10,9 @@ const { redirectGetSchema } = require("./schema");
  * @author Frazer Smith
  * @description Sets routing options for server.
  * @param {Function} server - Fastify instance.
- * @param {object} options - Object containing route config objects.
+ * @param {object} options - Route config values.
+ * @param {object} options.cors - CORS settings.
+ * @param {string} options.redirectUrl - URL and port the Mirth Connect FHIR/HTTP Listener channel is listening on.
  */
 async function route(server, options) {
 	// Use CORS: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
