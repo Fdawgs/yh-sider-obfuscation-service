@@ -85,6 +85,18 @@ describe("Server Deployment", () => {
 
 				expect(response.statusCode).toEqual(406);
 			});
+
+			test("Should return HTTP status code 406 if media type in `Accept-Language` request header is unsupported", async () => {
+				const response = await server.inject({
+					method: "GET",
+					url: "/healthcheck",
+					headers: {
+						"accept-language": "fr",
+					},
+				});
+
+				expect(response.statusCode).toEqual(406);
+			});
 		});
 
 		describe("/redirect Route", () => {
@@ -186,6 +198,18 @@ describe("Server Deployment", () => {
 
 				expect(response.statusCode).toEqual(406);
 			});
+
+			test("Should return HTTP status code 406 if media type in `Accept-Language` request header is unsupported", async () => {
+				const response = await server.inject({
+					method: "GET",
+					url: "/redirect",
+					headers: {
+						"accept-language": "fr",
+					},
+				});
+
+				expect(response.statusCode).toEqual(406);
+			});
 		});
 	});
 
@@ -229,6 +253,18 @@ describe("Server Deployment", () => {
 					url: "/healthcheck",
 					headers: {
 						accept: "application/javascript",
+					},
+				});
+
+				expect(response.statusCode).toEqual(406);
+			});
+
+			test("Should return HTTP status code 406 if media type in `Accept-Language` request header is unsupported", async () => {
+				const response = await server.inject({
+					method: "GET",
+					url: "/healthcheck",
+					headers: {
+						"accept-language": "fr",
 					},
 				});
 
@@ -319,6 +355,18 @@ describe("Server Deployment", () => {
 
 				expect(response.statusCode).toEqual(406);
 			});
+
+			test("Should return HTTP status code 406 if media type in `Accept-Language` request header is unsupported", async () => {
+				const response = await server.inject({
+					method: "GET",
+					url: "/healthcheck",
+					headers: {
+						"accept-language": "fr",
+					},
+				});
+
+				expect(response.statusCode).toEqual(406);
+			});
 		});
 
 		describe("/redirect Route", () => {
@@ -388,6 +436,18 @@ describe("Server Deployment", () => {
 
 				expect(response.statusCode).toEqual(406);
 			});
+
+			test("Should return HTTP status code 406 if media type in `Accept-Language` request header is unsupported", async () => {
+				const response = await server.inject({
+					method: "GET",
+					url: "/healthcheck",
+					headers: {
+						"accept-language": "fr",
+					},
+				});
+
+				expect(response.statusCode).toEqual(406);
+			});
 		});
 
 		describe("/redirect Route", () => {
@@ -451,6 +511,18 @@ describe("Server Deployment", () => {
 					url: "/healthcheck",
 					headers: {
 						accept: "application/javascript",
+					},
+				});
+
+				expect(response.statusCode).toEqual(406);
+			});
+
+			test("Should return HTTP status code 406 if media type in `Accept-Language` request header is unsupported", async () => {
+				const response = await server.inject({
+					method: "GET",
+					url: "/healthcheck",
+					headers: {
+						"accept-language": "fr",
 					},
 				});
 
