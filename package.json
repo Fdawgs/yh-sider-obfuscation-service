@@ -72,7 +72,7 @@
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-security": "^1.4.0",
     "faker": "^5.5.3",
-    "fastify-formbody": "^5.0.0",
+    "fastify-formbody": "^5.1.0",
     "glob": "^7.1.7",
     "husky": "^7.0.1",
     "jest": "^27.0.6",
