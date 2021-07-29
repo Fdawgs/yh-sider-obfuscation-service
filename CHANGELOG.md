@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file.
 
+### [4.1.1](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v4.1.0...v4.1.1) (2021-07-29)
+
+
+### Bug Fixes
+
+* **docker-compose:** wrap variables in quotes ([#344](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/issues/344)) ([c7313b4](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/c7313b45c46604d56af0c3ab3f85eddb5030fbf6))
+
+
+### Dependencies
+
+* **deps:** bump actions/setup-node from 2.2.0 to 2.3.0 ([74759fb](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/74759fb4d283281ef7cee4a8178d44067b7222f1))
+* **deps:** bump dependencies ([#357](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/issues/357)) ([896be30](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/896be30cfcaed919819657965feb936d0c8762f8))
+* **deps:** bump GoogleCloudPlatform/release-please-action ([b7db3fe](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/b7db3fe3eb6824a553c1d542ceb325174722bb19))
+* **docker:** bump curl from 7.67.0-r4 to 7.67.0-r5 ([#356](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/issues/356)) ([50a7bbd](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/50a7bbd3944ba4b4c5bf5fe8ad8fba1896629f55))
+
+
+### Miscellaneous
+
+* grammar fixes for jsdoc tags ([#359](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/issues/359)) ([86f52b4](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/86f52b4aca3a61ef177af595051f838ba2ac72f6))
+
 ## [4.1.0](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v4.0.13...v4.1.0) (2021-07-19)
 
 
