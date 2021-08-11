@@ -85,12 +85,6 @@
 					"name": "Accept-Encoding",
 					"value": "br, gzip, deflate",
 					"description": ""
-				},
-				{
-					"id": "pair_f4d5762cd9b44abc9f258bef5870fbb2",
-					"name": "Cache-Control",
-					"value": "no-store, max-age=0",
-					"description": ""
 				}
 			],
 			"authentication": {},
