@@ -2,6 +2,49 @@
 
 All notable changes to this project will be documented in this file.
 
+## [6.0.0](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v5.0.0...v6.0.0) (2021-08-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* **routes:** `/healthcheck` moved to `/admin/healthcheck`
+
+### Features
+
+* **routes/admin/healthcheck:** add cors header support ([ba3646b](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/ba3646b4df62c51fc3cad1335b93a8732a7b385a))
+
+
+### Bug Fixes
+
+* **app:** logging grammar fixes ([a15ca14](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/a15ca148de38662ca1c8718bbb24eb514670663e))
+
+
+### Documentation
+
+* **readme:** update example requests ([9cc672a](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/9cc672a5ff585bded6a2ff5ce8002072badc5d68))
+
+
+### Miscellaneous
+
+* remove redundant header from example requests ([92c6596](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/92c65961a599377d1a21e469393af1234814b088))
+
+
+### Improvements
+
+* **routes:** `/healthcheck` moved to `/admin/healthcheck` ([7ae0ec5](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/7ae0ec500545b31949e4fc009f14dcf40dd97d0d))
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint-plugin-import from 2.23.4 to 2.24.0 ([04301bf](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/04301bf6296045373b30c14667db2ce201ff72ad))
+* **deps-dev:** bump eslint-plugin-jsdoc from 36.0.6 to 36.0.7 ([a08951e](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/a08951e7e2326b4c5be5f8cc55209f0e93f1cadd))
+* **deps:** bump actions/setup-node from 2.3.0 to 2.4.0 ([5534c55](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/5534c5504580a8aa83e0495ffb7a7c073ac9c4a8))
+* **deps:** bump env-schema from 3.1.0 to 3.2.0 ([e3d4a68](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/e3d4a6869bc9cd44751939f197e82ed6edf7be34))
+* **deps:** bump fastify from 3.19.2 to 3.20.1 ([daa157d](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/daa157d799dd51cd8e2c10a7acefdf431e2e1b8e))
+* **deps:** bump fastify-swagger from 4.8.3 to 4.8.4 ([5696b7f](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/5696b7ff74149cc705fc4fcecf7bebeb0dec821e))
+* **deps:** bump pino-pretty from 5.1.2 to 5.1.3 ([85c5eae](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/85c5eaec320ce636553a0a346be9086fd6c6126b))
+* **docker:** update healthcheck route in docker-compose ([d62c6cd](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/d62c6cdb654c5929f6b35a835d0d35661f351824))
+
 ## [5.0.0](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v4.1.0...v5.0.0) (2021-08-02)
 
 
