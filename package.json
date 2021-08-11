@@ -101,7 +101,7 @@
     "http-errors": "^1.8.0",
     "obfuscated-querystring": "git+https://github.com/BlackPearSw/obfuscated-querystring.git",
     "pino": "^6.13.0",
-    "pino-pretty": "^5.1.2",
+    "pino-pretty": "^5.1.3",
     "under-pressure": "^5.7.0"
   }
 }
