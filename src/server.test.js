@@ -60,11 +60,11 @@ describe("Server Deployment", () => {
 			await server.close();
 		});
 
-		describe("/healthcheck Route", () => {
+		describe("/admin/healthcheck Route", () => {
 			test("Should return `ok`", async () => {
 				const response = await server.inject({
 					method: "GET",
-					url: "/healthcheck",
+					url: "/admin/healthcheck",
 					headers: {
 						accept: "text/plain",
 					},
@@ -77,7 +77,7 @@ describe("Server Deployment", () => {
 			test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
 				const response = await server.inject({
 					method: "GET",
-					url: "/healthcheck",
+					url: "/admin/healthcheck",
 					headers: {
 						accept: "application/javascript",
 					},
@@ -209,11 +209,11 @@ describe("Server Deployment", () => {
 			await server.close();
 		});
 
-		describe("/healthcheck Route", () => {
+		describe("/admin/healthcheck Route", () => {
 			test("Should return `ok`", async () => {
 				const response = await server.inject({
 					method: "GET",
-					url: "/healthcheck",
+					url: "/admin/healthcheck",
 					headers: {
 						accept: "text/plain",
 					},
@@ -226,7 +226,7 @@ describe("Server Deployment", () => {
 			test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
 				const response = await server.inject({
 					method: "GET",
-					url: "/healthcheck",
+					url: "/admin/healthcheck",
 					headers: {
 						accept: "application/javascript",
 					},
@@ -294,11 +294,11 @@ describe("Server Deployment", () => {
 			await server.close();
 		});
 
-		describe("/healthcheck Route", () => {
+		describe("/admin/healthcheck Route", () => {
 			test("Should return `ok`", async () => {
 				const response = await server.inject({
 					method: "GET",
-					url: "/healthcheck",
+					url: "/admin/healthcheck",
 					headers: {
 						accept: "text/plain",
 					},
@@ -311,7 +311,7 @@ describe("Server Deployment", () => {
 			test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
 				const response = await server.inject({
 					method: "GET",
-					url: "/healthcheck",
+					url: "/admin/healthcheck",
 					headers: {
 						accept: "application/javascript",
 					},
@@ -363,11 +363,11 @@ describe("Server Deployment", () => {
 			await server.close();
 		});
 
-		describe("/healthcheck Route", () => {
+		describe("/admin/healthcheck Route", () => {
 			test("Should return `ok`", async () => {
 				const response = await server.inject({
 					method: "GET",
-					url: "/healthcheck",
+					url: "/admin/healthcheck",
 					headers: {
 						accept: "text/plain",
 					},
@@ -380,7 +380,7 @@ describe("Server Deployment", () => {
 			test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
 				const response = await server.inject({
 					method: "GET",
-					url: "/healthcheck",
+					url: "/admin/healthcheck",
 					headers: {
 						accept: "application/javascript",
 					},
@@ -431,11 +431,11 @@ describe("Server Deployment", () => {
 			await server.close();
 		});
 
-		describe("/healthcheck Route", () => {
+		describe("/admin/healthcheck Route", () => {
 			test("Should return `ok`", async () => {
 				const response = await server.inject({
 					method: "GET",
-					url: "/healthcheck",
+					url: "/admin/healthcheck",
 					headers: {
 						accept: "text/plain",
 					},
@@ -448,7 +448,7 @@ describe("Server Deployment", () => {
 			test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
 				const response = await server.inject({
 					method: "GET",
-					url: "/healthcheck",
+					url: "/admin/healthcheck",
 					headers: {
 						accept: "application/javascript",
 					},

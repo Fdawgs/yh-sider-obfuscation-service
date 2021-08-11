@@ -67,8 +67,8 @@
 			"parentId": "fld_23dc4d413e554c46800bdcf52caf8239",
 			"modified": 1626337974902,
 			"created": 1626337919353,
-			"url": "http://localhost:8204/healthcheck",
-			"name": "healthcheck",
+			"url": "http://localhost:8204/admin/healthcheck",
+			"name": "admin/healthcheck",
 			"description": "",
 			"method": "GET",
 			"body": {},
@@ -84,12 +84,6 @@
 					"id": "pair_0a92ba879d094124900608a8310bd0c9",
 					"name": "Accept-Encoding",
 					"value": "br, gzip, deflate",
-					"description": ""
-				},
-				{
-					"id": "pair_f4d5762cd9b44abc9f258bef5870fbb2",
-					"name": "Cache-Control",
-					"value": "no-store, max-age=0",
 					"description": ""
 				}
 			],

@@ -12,9 +12,6 @@ const rateLimit = require("fastify-rate-limit");
 const swagger = require("fastify-swagger");
 const underPressure = require("under-pressure");
 
-// Import healthcheck route
-const healthCheck = require("./routes/healthcheck");
-
 /**
  * @author Frazer Smith
  * @description Build Fastify instance.
@@ -68,7 +65,12 @@ async function plugin(server, config) {
 
 	// Basic healthcheck route to ping
 	server
-		.register(healthCheck)
+		// Import and register admin routes
+		.register(autoLoad, {
+			dir: path.join(__dirname, "routes"),
+			ignorePattern: /redirect/,
+			options: config,
+		})
 
 		/**
 		 * Encapsulate plugins and routes into secured child context, so that swagger and healthcheck
