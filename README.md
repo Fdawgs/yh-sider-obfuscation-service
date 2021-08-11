@@ -46,8 +46,8 @@ The service should now be up and running on the port set in the config. You shou
 ```json
 {
 	"level": "info",
-	"time": "2020-12-01T09:48:08.612Z",
-	"pid": 41896,
+	"time": "2021-08-11T10:48:36.471Z",
+	"pid": 3572,
 	"hostname": "MYCOMPUTER",
 	"msg": "Server listening at http://0.0.0.0:8204"
 }
@@ -66,21 +66,22 @@ In stdout, or the log file, you will see something similar to the following retu
 ```json
 {
 	"level": "info",
-	"time": "2020-12-01T10:37:32.133Z",
-	"pid": 30700,
+	"time": "2021-08-11T10:49:15.608Z",
+	"pid": 3572,
 	"hostname": "MYCOMPUTER",
-	"reqId": 3,
+	"reqId": "req-1",
 	"req": {
-		"id": 3,
+		"id": "req-1",
 		"method": "GET",
 		"url": "/redirect?patient=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fnhs-number%7C9449304513&birthdate=1934-10-23&location=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fods-organization-code%7CRA4&practitioner=https%3A%2F%2Fsider.nhs.uk%2Fauth%7Cfrazer.smith%40ydh.nhs.uk",
 		"headers": {
-			"host": "0.0.0.0:8204",
-			"user-agent": "insomnia/2020.4.2",
-			"accept": "*/*"
+			"host": "localhost:8204",
+			"user-agent": "insomnia/2021.4.1",
+			"accept": "text/html",
+			"accept-encoding": "br, gzip, deflate"
 		},
-		"remoteAddress": "0.0.0.0",
-		"remotePort": 63213
+		"remoteAddress": "127.0.0.1",
+		"remotePort": 52790
 	},
 	"msg": "incoming request"
 }
@@ -89,28 +90,37 @@ In stdout, or the log file, you will see something similar to the following retu
 ```json
 {
 	"level": "info",
-	"time": "2020-12-01T10:37:32.135Z",
-	"pid": 30700,
+	"time": "2021-08-11T10:49:15.628Z",
+	"pid": 3572,
 	"hostname": "MYCOMPUTER",
-	"reqId": 3,
+	"reqId": "req-1",
 	"res": {
 		"statusCode": 302,
 		"headers": {
-			"content-security-policy": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+			"content-security-policy": "default-src 'self';base-uri 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
 			"x-dns-prefetch-control": "off",
 			"expect-ct": "max-age=0",
 			"x-frame-options": "SAMEORIGIN",
-			"strict-transport-security": "max-age=15552000; includeSubDomains",
+			"strict-transport-security": "max-age=31536000; includeSubDomains",
 			"x-download-options": "noopen",
 			"x-content-type-options": "nosniff",
 			"x-permitted-cross-domain-policies": "none",
 			"referrer-policy": "no-referrer",
 			"x-xss-protection": "0",
+			"surrogate-control": "no-store",
+			"cache-control": "no-store, max-age=0, must-revalidate",
+			"pragma": "no-cache",
+			"expires": "0",
+			"permissions-policy": "interest-cohort=()",
+			"vary": "Origin",
+			"x-ratelimit-limit": 2500,
+			"x-ratelimit-remaining": 2499,
+			"x-ratelimit-reset": 60,
 			"location": "https://pyrusapps.blackpear.com/esp/#!/launch?location=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fods-organization-code%7CRA4&practitioner=https%3A%2F%2Fsider.nhs.uk%2Fauth%7Cfrazer.smith%40ydh.nhs.uk&enc=k01%7Ca6c12e7c5969ab5829a3f91ba02c302a0b4f598ad6c03709fbeeb52686a007c99f8b13add1472176b06f1471a0343f2d904d6f41c5776fa6d340834c8ebef92d41dcc164c6c8273854f404fd24b1ec8d4e6829c4a9b76aa08d8a5b63d806fb01",
 			"content-length": "0"
 		}
 	},
-	"responseTime": 1.764799952507019,
+	"responseTime": 19.167999982833862,
 	"msg": "request completed"
 }
 ```
