@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+### [5.0.1](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v5.0.0...v5.0.1) (2021-08-11)
+
+
+### Bug Fixes
+
+* **app:** logging grammar fixes ([a15ca14](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/a15ca148de38662ca1c8718bbb24eb514670663e))
+
+
+### Documentation
+
+* **readme:** update example requests ([9cc672a](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/9cc672a5ff585bded6a2ff5ce8002072badc5d68))
+
 ## [5.0.0](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v4.1.0...v5.0.0) (2021-08-02)
 
 
