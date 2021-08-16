@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file.
 
+### [6.0.1](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v6.0.0...v6.0.1) (2021-08-16)
+
+
+### Bug Fixes
+
+* **config:** allow for empty kc_enabled variable ([ee5bfa8](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/ee5bfa84b9078870dbb2774e38356ba6da9e7bdf))
+* **config:** allow for empty logger env variables ([a20d263](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/a20d263cd3bc029ffbc47794a3e0301098c930ca))
+* **config:** defaults for undeclared variables ([084977a](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/084977a588b87685fc1a61b148800f0fa6736e8c))
+* **routes/redirect:** spelling in 500 error thrown ([57afafd](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/57afafdc18f99d4c40cf376566db905c35ad35f5))
+
+
+### Improvements
+
+* **config:** consolidate logger pretty print conditional ([7b04129](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/7b0412927563795892861fcf35bcad8a48c0a310))
+* replace `http-errors` with `fastify-sensible` plugin ([3c50139](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/3c5013985bcf0331c20cb039da05b2503366c6bd))
+* **routes/redirect/schema:** consolidate `required` keywords ([1d5dc9b](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/1d5dc9bcd25865f3e3abf41898e02c3b60accdd9))
+
+
+### Miscellaneous
+
+* **env:** document default logger values ([3c3bd69](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/3c3bd691083b3055d676997beee8d6133d849407))
+* **env:** standardise, sort, and group env variables ([401e072](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/401e07244cdca6070ec824f953c01581efc0f2c8))
+
+
+### Dependencies
+
+* **deps:** bump env-schema from 3.2.0 to 3.3.0 ([fca1584](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/fca158403cf08fadf5133ecc14931d5d1b776480))
+* **deps:** bump fastify from 3.20.1 to 3.20.2 ([66ad91a](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/66ad91a10a6ef6f990226a9ecf7ae4aa978d91f5))
+
 ## [6.0.0](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v5.0.0...v6.0.0) (2021-08-11)
 
 
