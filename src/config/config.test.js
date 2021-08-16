@@ -40,7 +40,9 @@ describe("Configuration", () => {
 			"warn",
 			"silent",
 		]);
+		const LOG_ROTATION_DATE_FORMAT = "YYYY-MM";
 		const LOG_ROTATION_FILENAME = "./test_resources/test_log";
+		const LOG_ROTATION_FREQUENCY = "custom";
 		const PROC_LOAD_MAX_EVENT_LOOP_DELAY = 1000;
 		const PROC_LOAD_MAX_HEAP_USED_BYTES = 100000000;
 		const PROC_LOAD_MAX_RSS_BYTES = 100000000;
@@ -63,7 +65,9 @@ describe("Configuration", () => {
 			HTTPS_SSL_CERT_PATH,
 			HTTPS_SSL_KEY_PATH,
 			LOG_LEVEL,
+			LOG_ROTATION_DATE_FORMAT,
 			LOG_ROTATION_FILENAME,
+			LOG_ROTATION_FREQUENCY,
 			PROC_LOAD_MAX_EVENT_LOOP_DELAY,
 			PROC_LOAD_MAX_HEAP_USED_BYTES,
 			PROC_LOAD_MAX_RSS_BYTES,
@@ -152,7 +156,9 @@ describe("Configuration", () => {
 			"./test_resources/test_ssl_cert/server.cert";
 		const HTTPS_SSL_KEY_PATH = "./test_resources/test_ssl_cert/server.key";
 		const LOG_LEVEL = "";
+		const LOG_ROTATION_DATE_FORMAT = "";
 		const LOG_ROTATION_FILENAME = "./test_resources/test_log";
+		const LOG_ROTATION_FREQUENCY = "";
 		const PROC_LOAD_MAX_EVENT_LOOP_DELAY = "";
 		const PROC_LOAD_MAX_HEAP_USED_BYTES = "";
 		const PROC_LOAD_MAX_RSS_BYTES = "";
@@ -175,7 +181,9 @@ describe("Configuration", () => {
 			HTTPS_SSL_CERT_PATH,
 			HTTPS_SSL_KEY_PATH,
 			LOG_LEVEL,
+			LOG_ROTATION_DATE_FORMAT,
 			LOG_ROTATION_FILENAME,
+			LOG_ROTATION_FREQUENCY,
 			PROC_LOAD_MAX_EVENT_LOOP_DELAY,
 			PROC_LOAD_MAX_EVENT_LOOP_UTILIZATION,
 			PROC_LOAD_MAX_HEAP_USED_BYTES,

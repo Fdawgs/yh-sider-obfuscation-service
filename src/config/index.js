@@ -85,11 +85,17 @@ async function getConfig() {
 					S.null(),
 				]).default("info")
 			)
-			.prop("LOG_ROTATION_DATE_FORMAT", S.string().default("YYYY-MM-DD"))
+			.prop(
+				"LOG_ROTATION_DATE_FORMAT",
+				S.anyOf([S.string(), S.null()]).default("YYYY-MM-DD")
+			)
 			.prop("LOG_ROTATION_FILENAME", S.anyOf([S.string(), S.null()]))
 			.prop(
 				"LOG_ROTATION_FREQUENCY",
-				S.string().enum(["custom", "daily", "test"]).default("daily")
+				S.anyOf([
+					S.string().enum(["custom", "daily", "test"]),
+					S.null(),
+				]).default("daily")
 			)
 			.prop("LOG_ROTATION_MAX_LOGS", S.anyOf([S.string(), S.null()]))
 			.prop("LOG_ROTATION_MAX_SIZE", S.anyOf([S.string(), S.null()]))
