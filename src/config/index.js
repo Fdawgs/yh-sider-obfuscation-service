@@ -126,7 +126,7 @@ async function getConfig() {
 			)
 
 			// Keycloak
-			.prop("KC_ENABLED", S.boolean().default(false))
+			.prop("KC_ENABLED", S.anyOf([S.boolean().default(false), S.null()]))
 			.prop("KC_REQUESTTOKEN_URL", S.anyOf([S.string(), S.null()]))
 			.prop("KC_REQUESTTOKEN_AUDIENCE", S.anyOf([S.string(), S.null()]))
 			.prop("KC_REQUESTTOKEN_CLIENT_ID", S.anyOf([S.string(), S.null()]))
@@ -247,7 +247,7 @@ async function getConfig() {
 		redirectUrl: env.SERVICE_REDIRECT_URL,
 		// Values used by keycloak-access-token plugin in wildcard service
 		keycloak: {
-			enabled: env.KC_ENABLED,
+			enabled: env.KC_ENABLED || false,
 			// Request access token for user
 			requestToken: {
 				form: {
