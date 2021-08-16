@@ -38,7 +38,7 @@ async function route(server, options) {
 		schema: redirectGetSchema,
 		async handler(req, res) {
 			if (!options.redirectUrl) {
-				res.internalServerError("Recieving endpoint missing");
+				res.internalServerError("Receiving endpoint missing");
 			}
 
 			const espUrl =
