@@ -1,6 +1,5 @@
 /* eslint-disable jsdoc/require-param-description */
 const fp = require("fastify-plugin");
-const createError = require("http-errors");
 const request = require("axios");
 const queryString = require("querystring");
 
@@ -58,15 +57,16 @@ async function plugin(server, options) {
 				return;
 			} catch (err) {
 				server.log.error(err);
-				res.send(
-					createError(
-						500,
-						"Unable to retrieve Keycloak access token(s)"
-					)
+				res.internalServerError(
+					"Unable to retrieve Keycloak access token(s)"
 				);
 			}
 		});
 	}
 }
 
-module.exports = fp(plugin, { fastify: "3.x", name: "keycloak-access-token" });
+module.exports = fp(plugin, {
+	fastify: "3.x",
+	name: "keycloak-access-token",
+	dependencies: ["fastify-sensible"],
+});

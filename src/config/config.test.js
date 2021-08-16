@@ -29,24 +29,26 @@ describe("Configuration", () => {
 		const SERVICE_PORT = faker.datatype.number();
 		const SERVICE_REDIRECT_URL =
 			"https://pyrusapps.blackpear.com/esp/#!/launch?";
-		const HTTPS_SSL_CERT_PATH =
-			"./test_resources/test_ssl_cert/server.cert";
-		const HTTPS_SSL_KEY_PATH = "./test_resources/test_ssl_cert/server.key";
 		const CORS_ORIGIN = false;
 		const CORS_ALLOWED_HEADERS = "";
 		const CORS_ALLOW_CREDENTIALS = "";
+		const HTTPS_SSL_CERT_PATH =
+			"./test_resources/test_ssl_cert/server.cert";
+		const HTTPS_SSL_KEY_PATH = "./test_resources/test_ssl_cert/server.key";
+		const LOG_LEVEL = faker.random.arrayElement([
+			"debug",
+			"warn",
+			"silent",
+		]);
+		const LOG_ROTATION_DATE_FORMAT = "YYYY-MM";
+		const LOG_ROTATION_FILENAME = "./test_resources/test_log";
+		const LOG_ROTATION_FREQUENCY = "custom";
 		const PROC_LOAD_MAX_EVENT_LOOP_DELAY = 1000;
 		const PROC_LOAD_MAX_HEAP_USED_BYTES = 100000000;
 		const PROC_LOAD_MAX_RSS_BYTES = 100000000;
 		const PROC_LOAD_MAX_EVENT_LOOP_UTILIZATION = 0.98;
 		const RATE_LIMIT_MAX_CONNECTIONS_PER_MIN = 2000;
 		const RATE_LIMIT_EXCLUDED_ARRAY = '["127.0.0.1"]';
-		const LOG_LEVEL = faker.random.arrayElement([
-			"debug",
-			"warn",
-			"silent",
-		]);
-		const LOG_ROTATION_FILENAME = "./test_resources/test_log";
 		const KC_ENABLED = false;
 		const OBFUSCATION_KEY_NAME = "k01";
 		const OBFUSCATION_KEY_VALUE = "0123456789";
@@ -57,19 +59,21 @@ describe("Configuration", () => {
 			SERVICE_HOST,
 			SERVICE_PORT,
 			SERVICE_REDIRECT_URL,
-			HTTPS_SSL_CERT_PATH,
-			HTTPS_SSL_KEY_PATH,
 			CORS_ORIGIN,
 			CORS_ALLOWED_HEADERS,
 			CORS_ALLOW_CREDENTIALS,
+			HTTPS_SSL_CERT_PATH,
+			HTTPS_SSL_KEY_PATH,
+			LOG_LEVEL,
+			LOG_ROTATION_DATE_FORMAT,
+			LOG_ROTATION_FILENAME,
+			LOG_ROTATION_FREQUENCY,
 			PROC_LOAD_MAX_EVENT_LOOP_DELAY,
 			PROC_LOAD_MAX_HEAP_USED_BYTES,
 			PROC_LOAD_MAX_RSS_BYTES,
 			PROC_LOAD_MAX_EVENT_LOOP_UTILIZATION,
 			RATE_LIMIT_MAX_CONNECTIONS_PER_MIN,
 			RATE_LIMIT_EXCLUDED_ARRAY,
-			LOG_LEVEL,
-			LOG_ROTATION_FILENAME,
 			KC_ENABLED,
 			OBFUSCATION_KEY_NAME,
 			OBFUSCATION_KEY_VALUE,
@@ -139,27 +143,29 @@ describe("Configuration", () => {
 		});
 	});
 
-	test("Should return values according to environment variables and use defaults if values missing", async () => {
+	test("Should use defaults if values missing and return values according to environment variables", async () => {
 		const NODE_ENV = "development";
 		const SERVICE_HOST = faker.internet.ip();
 		const SERVICE_PORT = faker.datatype.number();
 		const SERVICE_REDIRECT_URL =
 			"https://pyrusapps.blackpear.com/esp/#!/launch?";
+		const CORS_ORIGIN = "";
+		const CORS_ALLOWED_HEADERS = "";
+		const CORS_ALLOW_CREDENTIALS = "";
 		const HTTPS_SSL_CERT_PATH =
 			"./test_resources/test_ssl_cert/server.cert";
 		const HTTPS_SSL_KEY_PATH = "./test_resources/test_ssl_cert/server.key";
-		const CORS_ORIGIN = false;
-		const CORS_ALLOWED_HEADERS = "";
-		const CORS_ALLOW_CREDENTIALS = "";
+		const LOG_LEVEL = "";
+		const LOG_ROTATION_DATE_FORMAT = "";
+		const LOG_ROTATION_FILENAME = "./test_resources/test_log";
+		const LOG_ROTATION_FREQUENCY = "";
 		const PROC_LOAD_MAX_EVENT_LOOP_DELAY = "";
 		const PROC_LOAD_MAX_HEAP_USED_BYTES = "";
 		const PROC_LOAD_MAX_RSS_BYTES = "";
 		const PROC_LOAD_MAX_EVENT_LOOP_UTILIZATION = "";
 		const RATE_LIMIT_MAX_CONNECTIONS_PER_MIN = "";
 		const RATE_LIMIT_EXCLUDED_ARRAY = '["127.0.0.1"]';
-		const LOG_LEVEL = "";
-		const LOG_ROTATION_FILENAME = "./test_resources/test_log";
-		const KC_ENABLED = false;
+		const KC_ENABLED = "";
 		const OBFUSCATION_KEY_NAME = "k01";
 		const OBFUSCATION_KEY_VALUE = "0123456789";
 		const OBFUSCATION_QUERYSTRING_KEY_ARRAY = '["birthdate", "patient"]';
@@ -169,19 +175,21 @@ describe("Configuration", () => {
 			SERVICE_HOST,
 			SERVICE_PORT,
 			SERVICE_REDIRECT_URL,
-			HTTPS_SSL_CERT_PATH,
-			HTTPS_SSL_KEY_PATH,
 			CORS_ORIGIN,
 			CORS_ALLOWED_HEADERS,
 			CORS_ALLOW_CREDENTIALS,
+			HTTPS_SSL_CERT_PATH,
+			HTTPS_SSL_KEY_PATH,
+			LOG_LEVEL,
+			LOG_ROTATION_DATE_FORMAT,
+			LOG_ROTATION_FILENAME,
+			LOG_ROTATION_FREQUENCY,
 			PROC_LOAD_MAX_EVENT_LOOP_DELAY,
+			PROC_LOAD_MAX_EVENT_LOOP_UTILIZATION,
 			PROC_LOAD_MAX_HEAP_USED_BYTES,
 			PROC_LOAD_MAX_RSS_BYTES,
-			PROC_LOAD_MAX_EVENT_LOOP_UTILIZATION,
 			RATE_LIMIT_MAX_CONNECTIONS_PER_MIN,
 			RATE_LIMIT_EXCLUDED_ARRAY,
-			LOG_LEVEL,
-			LOG_ROTATION_FILENAME,
 			KC_ENABLED,
 			OBFUSCATION_KEY_NAME,
 			OBFUSCATION_KEY_VALUE,
@@ -220,7 +228,7 @@ describe("Configuration", () => {
 		});
 
 		expect(config.cors).toEqual({
-			origin: CORS_ORIGIN,
+			origin: false,
 		});
 
 		expect(config.processLoad).toEqual({
@@ -254,12 +262,12 @@ describe("Configuration", () => {
 		const SERVICE_PORT = faker.datatype.number();
 		const SERVICE_REDIRECT_URL =
 			"https://pyrusapps.blackpear.com/esp/#!/launch?";
-		const HTTPS_PFX_FILE_PATH =
-			"./test_resources/test_ssl_cert/server.cert"; // I know it's not an actual PFX file
-		const HTTPS_PFX_PASSPHRASE = faker.lorem.word();
 		const CORS_ORIGIN = true;
 		const CORS_ALLOWED_HEADERS = "";
 		const CORS_ALLOW_CREDENTIALS = true;
+		const HTTPS_PFX_FILE_PATH =
+			"./test_resources/test_ssl_cert/server.cert"; // I know it's not an actual PFX file
+		const HTTPS_PFX_PASSPHRASE = faker.lorem.word();
 		const LOG_LEVEL = faker.random.arrayElement([
 			"debug",
 			"warn",
@@ -274,11 +282,11 @@ describe("Configuration", () => {
 			SERVICE_HOST,
 			SERVICE_PORT,
 			SERVICE_REDIRECT_URL,
-			HTTPS_PFX_FILE_PATH,
-			HTTPS_PFX_PASSPHRASE,
 			CORS_ORIGIN,
 			CORS_ALLOWED_HEADERS,
 			CORS_ALLOW_CREDENTIALS,
+			HTTPS_PFX_FILE_PATH,
+			HTTPS_PFX_PASSPHRASE,
 			LOG_LEVEL,
 			KC_ENABLED,
 			OBFUSCATION_KEY_NAME,
@@ -411,11 +419,11 @@ describe("Configuration", () => {
 		const SERVICE_PORT = faker.datatype.number();
 		const SERVICE_REDIRECT_URL =
 			"https://pyrusapps.blackpear.com/esp/#!/launch?";
-		const HTTPS_PFX_FILE_PATH = "./test_resources/test_ssl_cert/error.pfx";
-		const HTTPS_PFX_PASSPHRASE = faker.lorem.word();
 		const CORS_ORIGIN = true;
 		const CORS_ALLOWED_HEADERS = "";
 		const CORS_ALLOW_CREDENTIALS = "";
+		const HTTPS_PFX_FILE_PATH = "./test_resources/test_ssl_cert/error.pfx";
+		const HTTPS_PFX_PASSPHRASE = faker.lorem.word();
 		const LOG_LEVEL = faker.random.arrayElement([
 			"debug",
 			"warn",
@@ -430,11 +438,11 @@ describe("Configuration", () => {
 			SERVICE_HOST,
 			SERVICE_PORT,
 			SERVICE_REDIRECT_URL,
-			HTTPS_PFX_FILE_PATH,
-			HTTPS_PFX_PASSPHRASE,
 			CORS_ORIGIN,
 			CORS_ALLOWED_HEADERS,
 			CORS_ALLOW_CREDENTIALS,
+			HTTPS_PFX_FILE_PATH,
+			HTTPS_PFX_PASSPHRASE,
 			LOG_LEVEL,
 			KC_ENABLED,
 			OBFUSCATION_KEY_NAME,
@@ -450,11 +458,11 @@ describe("Configuration", () => {
 		const SERVICE_PORT = faker.datatype.number();
 		const SERVICE_REDIRECT_URL =
 			"https://pyrusapps.blackpear.com/esp/#!/launch?";
-		const HTTPS_SSL_CERT_PATH = "./test_resources/test_ssl_cert/error.cert";
-		const HTTPS_SSL_KEY_PATH = "./test_resources/test_ssl_cert/error.key";
 		const CORS_ORIGIN = true;
 		const CORS_ALLOWED_HEADERS = "";
 		const CORS_ALLOW_CREDENTIALS = "";
+		const HTTPS_SSL_CERT_PATH = "./test_resources/test_ssl_cert/error.cert";
+		const HTTPS_SSL_KEY_PATH = "./test_resources/test_ssl_cert/error.key";
 		const LOG_LEVEL = faker.random.arrayElement([
 			"debug",
 			"warn",
@@ -469,11 +477,11 @@ describe("Configuration", () => {
 			SERVICE_HOST,
 			SERVICE_PORT,
 			SERVICE_REDIRECT_URL,
-			HTTPS_SSL_CERT_PATH,
-			HTTPS_SSL_KEY_PATH,
 			CORS_ORIGIN,
 			CORS_ALLOWED_HEADERS,
 			CORS_ALLOW_CREDENTIALS,
+			HTTPS_SSL_CERT_PATH,
+			HTTPS_SSL_KEY_PATH,
 			LOG_LEVEL,
 			KC_ENABLED,
 			OBFUSCATION_KEY_NAME,

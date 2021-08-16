@@ -48,13 +48,13 @@ async function getConfig() {
 		dotenv: true,
 		schema: S.object()
 			.prop("NODE_ENV", S.string())
+
+			// Service
 			.prop("SERVICE_HOST", S.string())
 			.prop("SERVICE_PORT", S.number())
 			.prop("SERVICE_REDIRECT_URL", S.anyOf([S.string(), S.null()]))
-			.prop("HTTPS_PFX_PASSPHRASE", S.anyOf([S.string(), S.null()]))
-			.prop("HTTPS_PFX_FILE_PATH", S.anyOf([S.string(), S.null()]))
-			.prop("HTTPS_SSL_CERT_PATH", S.anyOf([S.string(), S.null()]))
-			.prop("HTTPS_SSL_KEY_PATH", S.anyOf([S.string(), S.null()]))
+
+			// CORS
 			.prop("CORS_ORIGIN", S.anyOf([S.string(), S.null()]))
 			.prop("CORS_ALLOWED_HEADERS", S.anyOf([S.string(), S.null()]))
 			.prop(
@@ -62,51 +62,75 @@ async function getConfig() {
 				S.anyOf([S.string().enum(["true"]), S.null()])
 			)
 			.prop("CORS_EXPOSED_HEADERS", S.anyOf([S.string(), S.null()]))
-			.prop(
-				"PROC_LOAD_MAX_EVENT_LOOP_DELAY",
-				S.anyOf([S.number(), S.null()]).default(0)
-			)
-			.prop(
-				"PROC_LOAD_MAX_HEAP_USED_BYTES",
-				S.anyOf([S.number(), S.null()]).default(0)
-			)
-			.prop(
-				"PROC_LOAD_MAX_RSS_BYTES",
-				S.anyOf([S.number(), S.null()]).default(0)
-			)
-			.prop(
-				"PROC_LOAD_MAX_EVENT_LOOP_UTILIZATION",
-				S.anyOf([S.number(), S.null()]).default(0)
-			)
-			.prop("RATE_LIMIT_EXCLUDED_ARRAY", S.anyOf([S.string(), S.null()]))
-			.prop(
-				"RATE_LIMIT_MAX_CONNECTIONS_PER_MIN",
-				S.anyOf([S.number(), S.null()]).default(1000)
-			)
+
+			// HTTPS
+			.prop("HTTPS_PFX_PASSPHRASE", S.anyOf([S.string(), S.null()]))
+			.prop("HTTPS_PFX_FILE_PATH", S.anyOf([S.string(), S.null()]))
+			.prop("HTTPS_SSL_CERT_PATH", S.anyOf([S.string(), S.null()]))
+			.prop("HTTPS_SSL_KEY_PATH", S.anyOf([S.string(), S.null()]))
+
+			// Logger
 			.prop(
 				"LOG_LEVEL",
 				S.anyOf([
-					S.string().enum([
-						"fatal",
-						"error",
-						"warn",
-						"info",
-						"debug",
-						"trace",
-						"silent",
-					]),
+					S.string()
+						.enum([
+							"fatal",
+							"error",
+							"warn",
+							"info",
+							"debug",
+							"trace",
+							"silent",
+						])
+						.default("info"),
 					S.null(),
-				]).default("info")
+				])
 			)
-			.prop("LOG_ROTATION_DATE_FORMAT", S.string().default("YYYY-MM-DD"))
+			.prop(
+				"LOG_ROTATION_DATE_FORMAT",
+				S.anyOf([S.string().default("YYYY-MM-DD"), S.null()])
+			)
 			.prop("LOG_ROTATION_FILENAME", S.anyOf([S.string(), S.null()]))
 			.prop(
 				"LOG_ROTATION_FREQUENCY",
-				S.string().enum(["custom", "daily", "test"]).default("daily")
+				S.anyOf([
+					S.string()
+						.enum(["custom", "daily", "test"])
+						.default("daily"),
+					S.null(),
+				])
 			)
 			.prop("LOG_ROTATION_MAX_LOGS", S.anyOf([S.string(), S.null()]))
 			.prop("LOG_ROTATION_MAX_SIZE", S.anyOf([S.string(), S.null()]))
-			.prop("KC_ENABLED", S.boolean().default(false))
+
+			// Process Load Handling
+			.prop(
+				"PROC_LOAD_MAX_EVENT_LOOP_DELAY",
+				S.anyOf([S.number().default(0), S.null()])
+			)
+			.prop(
+				"PROC_LOAD_MAX_EVENT_LOOP_UTILIZATION",
+				S.anyOf([S.number().default(0), S.null()])
+			)
+			.prop(
+				"PROC_LOAD_MAX_HEAP_USED_BYTES",
+				S.anyOf([S.number().default(0), S.null()])
+			)
+			.prop(
+				"PROC_LOAD_MAX_RSS_BYTES",
+				S.anyOf([S.number().default(0), S.null()])
+			)
+
+			// Rate Limiting
+			.prop("RATE_LIMIT_EXCLUDED_ARRAY", S.anyOf([S.string(), S.null()]))
+			.prop(
+				"RATE_LIMIT_MAX_CONNECTIONS_PER_MIN",
+				S.anyOf([S.number().default(1000), S.null()])
+			)
+
+			// Keycloak
+			.prop("KC_ENABLED", S.anyOf([S.boolean().default(false), S.null()]))
 			.prop("KC_REQUESTTOKEN_URL", S.anyOf([S.string(), S.null()]))
 			.prop("KC_REQUESTTOKEN_AUDIENCE", S.anyOf([S.string(), S.null()]))
 			.prop("KC_REQUESTTOKEN_CLIENT_ID", S.anyOf([S.string(), S.null()]))
@@ -128,6 +152,8 @@ async function getConfig() {
 			.prop("KC_SERVICEAUTH_GRANT_TYPE", S.anyOf([S.string(), S.null()]))
 			.prop("KC_SERVICEAUTH_PASSWORD", S.anyOf([S.string(), S.null()]))
 			.prop("KC_SERVICEAUTH_USERNAME", S.anyOf([S.string(), S.null()]))
+
+			// Obfuscation
 			.prop("OBFUSCATION_KEY_NAME", S.string())
 			.prop("OBFUSCATION_KEY_VALUE", S.string())
 			.prop("OBFUSCATION_QUERYSTRING_KEY_ARRAY", S.string())
@@ -154,10 +180,21 @@ async function getConfig() {
 					},
 				},
 				level: env.LOG_LEVEL || "info",
+				/**
+				 * Pretty output to stdout out if not in production.
+				 * Replaces using `pino-pretty` in scripts, as it does not play
+				 * well with Nodemon
+				 */
+				prettyPrint:
+					env.NODE_ENV.toLowerCase() !== "production" &&
+					(!env.LOG_ROTATION_FILENAME ||
+						env.LOG_ROTATION_FILENAME === ""),
 				serializers: {
+					/* istanbul ignore next */
 					req(req) {
 						return pino.stdSerializers.req(req);
 					},
+					/* istanbul ignore next */
 					res(res) {
 						return pino.stdSerializers.res(res);
 					},
@@ -214,7 +251,7 @@ async function getConfig() {
 		redirectUrl: env.SERVICE_REDIRECT_URL,
 		// Values used by keycloak-access-token plugin in wildcard service
 		keycloak: {
-			enabled: env.KC_ENABLED,
+			enabled: env.KC_ENABLED || false,
 			// Request access token for user
 			requestToken: {
 				form: {
@@ -260,18 +297,6 @@ async function getConfig() {
 			size: env.LOG_ROTATION_MAX_SIZE,
 			verbose: false,
 		});
-	}
-
-	/**
-	 * Pretty output to stdout out if not in production.
-	 * Replaces using `pino-pretty` in scripts, as it does not play
-	 * well with Nodemon
-	 */
-	if (
-		isProduction === false &&
-		(!env.LOG_ROTATION_FILENAME || env.LOG_ROTATION_FILENAME === "")
-	) {
-		config.fastifyInit.logger.prettyPrint = true;
 	}
 
 	if (env.RATE_LIMIT_EXCLUDED_ARRAY) {

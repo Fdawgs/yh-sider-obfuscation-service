@@ -22,7 +22,6 @@ const redirectGetSchema = {
 				)
 				.examples(["1900-01-01"])
 				.format("date")
-				.required()
 		)
 		.prop(
 			"patient",
@@ -32,7 +31,6 @@ const redirectGetSchema = {
 				.pattern(
 					"^https:\\/\\/fhir\\.nhs\\.uk\\/Id\\/nhs-number\\|\\d{10}$"
 				)
-				.required()
 		)
 		.prop(
 			"location",
@@ -45,7 +43,6 @@ const redirectGetSchema = {
 				.pattern(
 					"^https:\\/\\/fhir\\.nhs\\.uk\\/Id\\/ods-organization-code\\|\\w{1,9}$"
 				)
-				.required()
 		)
 		.prop(
 			"practitioner",
@@ -57,8 +54,8 @@ const redirectGetSchema = {
 				.pattern(
 					'^https:\\/\\/sider\\.nhs\\.uk\\/auth\\|(([^<>()\\[\\]\\.,;:\\s@"]+(\\.[^<>()\\[\\]\\.,;:\\s@"]+)*)|(".+"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$'
 				)
-				.required()
-		),
+		)
+		.required(["birthdate", "patient", "location", "practitioner"]),
 
 	response: {
 		304: S.string().raw({ nullable: true }),
