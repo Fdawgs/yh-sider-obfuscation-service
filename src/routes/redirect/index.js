@@ -1,4 +1,3 @@
-const { createError, NotAcceptable } = require("http-errors");
 const queryString = require("querystring");
 
 // Import plugins
@@ -29,7 +28,7 @@ async function route(server, options) {
 				req.accepts().type(redirectGetSchema.produces)
 			)
 		) {
-			res.send(NotAcceptable());
+			res.notAcceptable();
 		}
 	});
 
@@ -39,7 +38,7 @@ async function route(server, options) {
 		schema: redirectGetSchema,
 		async handler(req, res) {
 			if (!options.redirectUrl) {
-				res.send(createError(500, "Recieving endpoint missing"));
+				res.internalServerError("Recieving endpoint missing");
 			}
 
 			const espUrl =

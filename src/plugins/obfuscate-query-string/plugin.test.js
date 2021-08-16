@@ -1,6 +1,7 @@
 const cloneDeep = require("lodash").cloneDeep;
 const faker = require("faker/locale/en_GB");
 const Fastify = require("fastify");
+const sensible = require("fastify-sensible");
 const plugin = require(".");
 const getConfig = require("../../config");
 
@@ -26,6 +27,7 @@ describe("Query String Obfuscation plugin", () => {
 
 	beforeEach(() => {
 		server = Fastify();
+		server.register(sensible);
 
 		server.get("/", (req, res) => {
 			res.send(req.query);
