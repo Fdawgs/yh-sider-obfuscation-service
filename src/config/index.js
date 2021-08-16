@@ -186,9 +186,11 @@ async function getConfig() {
 					(!env.LOG_ROTATION_FILENAME ||
 						env.LOG_ROTATION_FILENAME === ""),
 				serializers: {
+					/* istanbul ignore next */
 					req(req) {
 						return pino.stdSerializers.req(req);
 					},
+					/* istanbul ignore next */
 					res(res) {
 						return pino.stdSerializers.res(res);
 					},
