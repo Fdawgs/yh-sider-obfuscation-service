@@ -67,7 +67,6 @@ async function plugin(server, config) {
 		server.register(swagger, config.swagger);
 	}
 
-	// Basic healthcheck route to ping
 	server
 		// Import and register admin routes
 		.register(autoLoad, {
