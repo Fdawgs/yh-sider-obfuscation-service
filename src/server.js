@@ -89,7 +89,7 @@ async function plugin(server, config) {
 				// Import and register service routes
 				.register(autoLoad, {
 					dir: path.join(__dirname, "routes"),
-					ignorePattern: /healthcheck/,
+					ignorePattern: /admin/,
 					options: config,
 				});
 		});
