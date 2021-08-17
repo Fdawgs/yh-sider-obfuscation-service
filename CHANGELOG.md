@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+### [6.0.2](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v6.0.1...v6.0.2) (2021-08-17)
+
+
+### Bug Fixes
+
+* **server:** ignore admin route in secured context ([dc5b2ce](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/dc5b2cee7cb13574bcbde0e6f39916a0824bd4dc))
+
+
+### Miscellaneous
+
+* **config:** sort process load variables alphabetically ascending ([354a54a](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/354a54ac581485e829cf2d2a02bc7d4202881866))
+* **server:** remove redundant inline comment ([978b5d1](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/978b5d1c3cb451bd6d8ad10a10beaa1aa94627ed))
+
 ### [6.0.1](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v6.0.0...v6.0.1) (2021-08-16)
 
 
