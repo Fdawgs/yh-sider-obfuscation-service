@@ -70,8 +70,8 @@ describe("Server Deployment", () => {
 					},
 				});
 
-				expect(response.statusCode).toEqual(200);
 				expect(response.payload).toEqual("ok");
+				expect(response.statusCode).toEqual(200);
 			});
 
 			test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
@@ -219,8 +219,8 @@ describe("Server Deployment", () => {
 					},
 				});
 
-				expect(response.statusCode).toEqual(200);
 				expect(response.payload).toEqual("ok");
+				expect(response.statusCode).toEqual(200);
 			});
 
 			test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
@@ -304,8 +304,8 @@ describe("Server Deployment", () => {
 					},
 				});
 
-				expect(response.statusCode).toEqual(200);
 				expect(response.payload).toEqual("ok");
+				expect(response.statusCode).toEqual(200);
 			});
 
 			test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
@@ -373,8 +373,8 @@ describe("Server Deployment", () => {
 					},
 				});
 
-				expect(response.statusCode).toEqual(200);
 				expect(response.payload).toEqual("ok");
+				expect(response.statusCode).toEqual(200);
 			});
 
 			test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
@@ -441,8 +441,8 @@ describe("Server Deployment", () => {
 					},
 				});
 
-				expect(response.statusCode).toEqual(200);
 				expect(response.payload).toEqual("ok");
+				expect(response.statusCode).toEqual(200);
 			});
 
 			test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
