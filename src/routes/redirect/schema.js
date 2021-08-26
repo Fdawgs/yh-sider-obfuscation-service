@@ -11,6 +11,8 @@ const tags = ["Redirects"];
 const redirectGetSchema = {
 	tags,
 	summary: "Redirect to SIDeR",
+	description:
+		"Redirects to the URL set with the `SERVICE_REDIRECT_URL` environment variable.",
 	operationId: "getRedirect",
 	produces: ["text/html"],
 	query: S.object()
