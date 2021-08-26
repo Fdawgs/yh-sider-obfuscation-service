@@ -11,6 +11,8 @@ const tags = ["Redirects"];
 const redirectGetSchema = {
 	tags,
 	summary: "Redirect to SIDeR",
+	description:
+		"Redirects to the URL set with the `SERVICE_REDIRECT_URL` environment variable.",
 	operationId: "getRedirect",
 	produces: ["text/html"],
 	query: S.object()
@@ -58,7 +60,19 @@ const redirectGetSchema = {
 		.required(["birthdate", "patient", "location", "practitioner"]),
 
 	response: {
-		304: S.string().raw({ nullable: true }),
+		302: S.ref("responses#/definitions/found").description("Found"),
+		406: S.ref("responses#/definitions/notAcceptable").description(
+			"Not Acceptable"
+		),
+		429: S.ref("responses#/definitions/tooManyRequests").description(
+			"Too Many Requests"
+		),
+		500: S.ref("responses#/definitions/internalServerError").description(
+			"Internal Server Error"
+		),
+		503: S.ref("responses#/definitions/serviceUnavailable").description(
+			"Service Unavailable"
+		),
 	},
 };
 

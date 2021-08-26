@@ -12,6 +12,7 @@ const rateLimit = require("fastify-rate-limit");
 const sensible = require("fastify-sensible");
 const swagger = require("fastify-swagger");
 const underPressure = require("under-pressure");
+const sharedSchemas = require("./plugins/shared-schemas");
 
 /**
  * @author Frazer Smith
@@ -60,6 +61,9 @@ async function plugin(server, config) {
 		// Utility functions and error handlers
 		.register(sensible)
 
+		// Re-usable schemas
+		.register(sharedSchemas)
+
 		// Process load and 503 response handling
 		.register(underPressure, config.processLoad);
 
@@ -84,6 +88,7 @@ async function plugin(server, config) {
 			securedContext
 				.register(autoLoad, {
 					dir: path.join(__dirname, "plugins"),
+					ignorePattern: /shared-schemas/,
 					options: config,
 				})
 				// Import and register service routes
