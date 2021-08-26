@@ -457,10 +457,6 @@ describe("Server Deployment", () => {
 					query: mockParams,
 				});
 
-				const body = JSON.parse(response.body);
-
-				expect(body.statusCode).toEqual(500);
-				expect(body.error).toEqual("Internal Server Error");
 				expect(response.headers).toEqual(
 					expect.objectContaining(expResHeadersJson)
 				);
@@ -534,10 +530,6 @@ describe("Server Deployment", () => {
 					query: mockParams,
 				});
 
-				const body = JSON.parse(response.body);
-
-				expect(body.statusCode).toEqual(500);
-				expect(body.error).toEqual("Internal Server Error");
 				expect(response.headers).toEqual(
 					expect.objectContaining(expResHeadersJson)
 				);
