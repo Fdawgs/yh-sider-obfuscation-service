@@ -21,7 +21,7 @@ async function route(server, options) {
 		hideOptionsRoute: true,
 	});
 
-	server.addHook("onRequest", async (req, res) => {
+	server.addHook("preValidation", async (req, res) => {
 		if (
 			// Catch unsupported Accept header media types
 			!redirectGetSchema.produces.includes(
