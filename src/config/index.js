@@ -221,6 +221,9 @@ async function getConfig() {
 			routePrefix: "/docs",
 			exposeRoute: true,
 			staticCSP: true,
+			uiConfig: {
+				layout: "BaseLayout",
+			},
 			openapi: {
 				info: {
 					title: name,
