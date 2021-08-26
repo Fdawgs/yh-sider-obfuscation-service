@@ -60,7 +60,7 @@ const redirectGetSchema = {
 		.required(["birthdate", "patient", "location", "practitioner"]),
 
 	response: {
-		304: S.string().raw({ nullable: true }),
+		302: S.ref("responses#/definitions/found").description("Found"),
 		406: S.ref("responses#/definitions/notAcceptable").description(
 			"Not Acceptable"
 		),

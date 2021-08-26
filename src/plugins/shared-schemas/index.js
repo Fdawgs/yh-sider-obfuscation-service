@@ -14,6 +14,13 @@ async function plugin(server) {
 			.title("Responses")
 			.description("Common response schemas")
 			.definition(
+				"found",
+				S.string()
+					.id("#found")
+					.title("302 Found")
+					.raw({ nullable: true })
+			)
+			.definition(
 				"notAcceptable",
 				S.object()
 					.id("#notAcceptable")
@@ -43,7 +50,10 @@ async function plugin(server) {
 					.title("500 Internal Server Error Response")
 					.prop("statusCode", S.number().const(500))
 					.prop("error", S.string().const("Internal Server Error"))
-					.prop("message", S.string())
+					.prop(
+						"message",
+						S.string().examples(["Receiving endpoint missing"])
+					)
 			)
 			.definition(
 				"serviceUnavailable",
