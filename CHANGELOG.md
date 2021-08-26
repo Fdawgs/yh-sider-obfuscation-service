@@ -2,6 +2,44 @@
 
 All notable changes to this project will be documented in this file.
 
+### [6.0.3](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v6.0.2...v6.0.3) (2021-08-26)
+
+
+### Bug Fixes
+
+* **routes/redirect:** use correct redirect code ([3b27dfa](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/3b27dfaf538aa3634bbbb36ffd0d9ab3850e9a5c))
+* **routes:** rate-limiting not affecting 406 responses ([#390](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/issues/390)) ([284aeee](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/284aeeeb3580bc69b7d7f2254794a188a48f4d81))
+
+
+### Documentation
+
+* **readme:** add note regarding log retention for nhs digital ([052a9b4](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/052a9b4295906f095690b3e3fa072d13cac8a30c))
+
+
+### Miscellaneous
+
+* **config:** remove excess word in inline comment ([f2aac91](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/f2aac91dfeb16a71a46d24d378c3cc7bd3c55d5c))
+
+
+### Improvements
+
+* add clearer summaries and descriptions for route schemas ([6c18585](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/6c18585f85c4de003d0025ccac075502511059ce))
+* **config:** remove swagger nav bar from doc route ([7ee81a3](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/7ee81a320993ac240788e96b353d9b3a12e120e6))
+* **plugins/shared-schemas:** move response schemas to plugin ([59ecf0a](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/59ecf0a53a1034be6fd1e336e980f82a040066b5))
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint-plugin-import from 2.24.0 to 2.24.2 ([a61305c](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/a61305c78ec59ecadf9a653ffad4ae3b38a17fb1))
+* **deps-dev:** bump eslint-plugin-jsdoc from 36.0.7 to 36.0.8 ([e5e7848](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/e5e784896483730f1115857304f7cc9b2401b920))
+* **deps-dev:** bump husky from 7.0.1 to 7.0.2 ([07f5b54](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/07f5b546a13a78dcb560907e2b5a50140c55c2b8))
+* **deps:** bump actions/github-script from 4.0.2 to 4.1 ([892748e](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/892748ebd9d1d87467da4b741336a4182c7072fb))
+* **deps:** bump fastify-autoload from 3.8.0 to 3.8.1 ([19a8192](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/19a819220ee2f71bdc50540511e00bc155af9517))
+* **deps:** bump fastify-rate-limit from 5.6.0 to 5.6.1 ([883143c](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/883143cd9cff0cba4344bc6cc6c717508da289ad))
+* **deps:** bump fastify-swagger from 4.8.4 to 4.9.0 ([8e7d271](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/8e7d271ed0d4191da26d268268e1355b67389d10))
+* **deps:** bump pino from 6.13.0 to 6.13.1 ([b3c1430](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/b3c14304cdeae388b1fd8fc712e442a406bbe445))
+* **deps:** bump pino-pretty from 5.1.3 to 6.0.0 ([cd15cd4](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/cd15cd4b56d251d4785ae9bd30419118cf3b793d))
+
 ### [6.0.2](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v6.0.1...v6.0.2) (2021-08-17)
 
 
