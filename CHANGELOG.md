@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+### [6.0.4](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v6.0.3...v6.0.4) (2021-09-01)
+
+
+### Dependencies
+
+* **deps-dev:** bump jest from 27.0.6 to 27.1.0 ([6379775](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/6379775dbebbb2931664697af83fc0bef969f9f5))
+* **deps:** bump fastify-rate-limit from 5.6.1 to 5.6.2 ([eeb1946](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/eeb19461cb4a78b2ff26374c42cb763c976c9bf4))
+* **deps:** bump fastify-swagger from 4.9.0 to 4.9.1 ([433313d](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/433313d86e9fc0691dd66d365cf874981e808cd1))
+
 ### [6.0.3](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v6.0.2...v6.0.3) (2021-08-26)
 
 
