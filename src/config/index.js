@@ -157,7 +157,12 @@ async function getConfig() {
 			.prop("OBFUSCATION_KEY_NAME", S.string())
 			.prop("OBFUSCATION_KEY_VALUE", S.string())
 			.prop("OBFUSCATION_QUERYSTRING_KEY_ARRAY", S.string())
-			.required(["NODE_ENV", "SERVICE_HOST", "SERVICE_PORT"]),
+			.required([
+				"NODE_ENV",
+				"SERVICE_HOST",
+				"SERVICE_PORT",
+				"SERVICE_REDIRECT_URL",
+			]),
 	});
 
 	const isProduction = env.NODE_ENV.toLowerCase() === "production";
