@@ -162,6 +162,9 @@ async function getConfig() {
 				"SERVICE_HOST",
 				"SERVICE_PORT",
 				"SERVICE_REDIRECT_URL",
+				"OBFUSCATION_KEY_NAME",
+				"OBFUSCATION_KEY_VALUE",
+				"OBFUSCATION_QUERYSTRING_KEY_ARRAY",
 			]),
 	});
 
