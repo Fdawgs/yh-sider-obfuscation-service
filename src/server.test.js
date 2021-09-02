@@ -76,8 +76,11 @@ describe("Server Deployment", () => {
 		let config;
 
 		beforeAll(async () => {
+			Object.assign(process.env, {
+				SERVICE_REDIRECT_URL: "http://127.0.0.1:3001/esp/#!/launch?",
+			});
+
 			config = await getConfig();
-			config.redirectUrl = "http://127.0.0.1:3001/esp/#!/launch?";
 			delete config.keycloak;
 		});
 
@@ -461,80 +464,6 @@ describe("Server Deployment", () => {
 					expect.objectContaining(expResHeadersJson)
 				);
 				expect(response.statusCode).toEqual(500);
-				expect(response.statusMessage).toEqual("Internal Server Error");
-
-				await server.close();
-			});
-		});
-	});
-
-	describe("End-To-End - Redirect URL Missing", () => {
-		let server;
-		let config;
-
-		beforeAll(async () => {
-			config = await getConfig();
-			config.redirectUrl = "http://127.0.0.1:3001/esp/#!/launch?";
-			delete config.redirectUrl;
-		});
-
-		beforeEach(async () => {
-			server = Fastify();
-			server.register(startServer, config);
-			await server.ready();
-		});
-
-		afterEach(async () => {
-			await server.close();
-		});
-
-		describe("/admin/healthcheck Route", () => {
-			test("Should return `ok`", async () => {
-				const response = await server.inject({
-					method: "GET",
-					url: "/admin/healthcheck",
-					headers: {
-						accept: "text/plain",
-					},
-				});
-
-				expect(response.payload).toEqual("ok");
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeaders)
-				);
-				expect(response.statusCode).toEqual(200);
-			});
-
-			test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
-				const response = await server.inject({
-					method: "GET",
-					url: "/admin/healthcheck",
-					headers: {
-						accept: "application/javascript",
-					},
-				});
-
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeadersJson)
-				);
-				expect(response.statusCode).toEqual(406);
-			});
-		});
-
-		describe("/redirect Route", () => {
-			test("Should return HTTP status code 500 if redirect URL missing", async () => {
-				const response = await server.inject({
-					method: "GET",
-					url: "/redirect",
-					headers,
-					query: mockParams,
-				});
-
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeadersJson)
-				);
-				expect(response.statusCode).toEqual(500);
-				expect(response.statusMessage).toEqual("Internal Server Error");
 
 				await server.close();
 			});
