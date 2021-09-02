@@ -237,9 +237,12 @@ describe("Server Deployment", () => {
 		let config;
 
 		beforeAll(async () => {
+			Object.assign(process.env, {
+				NODE_ENV: "production",
+				SERVICE_REDIRECT_URL: "http://127.0.0.1:3001/esp/#!/launch?",
+			});
+
 			config = await getConfig();
-			config.redirectUrl = "http://127.0.0.1:3001/esp/#!/launch?";
-			config.isProduction = true;
 		});
 
 		beforeEach(async () => {
@@ -325,8 +328,11 @@ describe("Server Deployment", () => {
 		let config;
 
 		beforeAll(async () => {
+			Object.assign(process.env, {
+				SERVICE_REDIRECT_URL: "http://127.0.0.1:3001/esp/#!/launch?",
+			});
+
 			config = await getConfig();
-			config.redirectUrl = "http://127.0.0.1:3001/esp/#!/launch?";
 			delete config.keycloak;
 			config.keycloak = {
 				enabled: false,
@@ -400,8 +406,11 @@ describe("Server Deployment", () => {
 		let config;
 
 		beforeAll(async () => {
+			Object.assign(process.env, {
+				SERVICE_REDIRECT_URL: "http://127.0.0.1:3001/esp/#!/launch?",
+			});
+
 			config = await getConfig();
-			config.redirectUrl = "http://127.0.0.1:3001/esp/#!/launch?";
 			delete config.keycloak;
 			config.keycloak = {
 				enabled: true,
