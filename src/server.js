@@ -22,7 +22,7 @@ const sharedSchemas = require("./plugins/shared-schemas");
  */
 async function plugin(server, config) {
 	// Register plugins
-	server
+	await server
 		// Accept header handler
 		.register(accepts)
 
@@ -72,6 +72,9 @@ async function plugin(server, config) {
 	}
 
 	server
+		// Ensure rate limit also applies to 4xx and 5xx responses
+		.addHook("onSend", server.rateLimit())
+
 		// Import and register admin routes
 		.register(autoLoad, {
 			dir: path.join(__dirname, "routes"),

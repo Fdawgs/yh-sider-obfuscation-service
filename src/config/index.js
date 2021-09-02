@@ -52,7 +52,7 @@ async function getConfig() {
 			// Service
 			.prop("SERVICE_HOST", S.string())
 			.prop("SERVICE_PORT", S.number())
-			.prop("SERVICE_REDIRECT_URL", S.anyOf([S.string(), S.null()]))
+			.prop("SERVICE_REDIRECT_URL", S.string())
 
 			// CORS
 			.prop("CORS_ORIGIN", S.anyOf([S.string(), S.null()]))
@@ -157,7 +157,12 @@ async function getConfig() {
 			.prop("OBFUSCATION_KEY_NAME", S.string())
 			.prop("OBFUSCATION_KEY_VALUE", S.string())
 			.prop("OBFUSCATION_QUERYSTRING_KEY_ARRAY", S.string())
-			.required(["NODE_ENV", "SERVICE_HOST", "SERVICE_PORT"]),
+			.required([
+				"NODE_ENV",
+				"SERVICE_HOST",
+				"SERVICE_PORT",
+				"SERVICE_REDIRECT_URL",
+			]),
 	});
 
 	const isProduction = env.NODE_ENV.toLowerCase() === "production";
