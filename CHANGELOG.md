@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+### [6.0.5](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v6.0.4...v6.0.5) (2021-09-03)
+
+
+### Bug Fixes
+
+* **config:** `SERVICE_REDIRECT_URL` env variable cannot be null ([fa73b06](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/fa73b063b4d07aba261d0d70f376b51750a850c2))
+* **config:** make `SERVICE_REDIRECT_URL` required ([cbe71e0](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/cbe71e0889cf7adc632cc33c9652776679f0bdf9))
+* **config:** make obfuscation env variables required ([fcf4126](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/fcf412681ab137abde485130b53b6bb008172fb5))
+* **server:** rate limit all 4xx and 5xx responses ([6f59210](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/6f59210273203333773cf5e487d73cb49d4db866))
+
+
+### Miscellaneous
+
+* **.env.template:** clarify on HTTPS usage ([3f71272](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/3f71272ced7e7a3477bce581df7f2ee60d5bf22d))
+* **.env.template:** clarify on required variables ([2b3c454](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/2b3c4549b9b0df5346e177efe21737faebf63d3e))
+* **.env.template:** remove log level value ([870677c](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/870677ceb6193c89f59276a78565f8cf0ad45077))
+* **.env.template:** remove rate limit value ([abd3004](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/abd300413bb112b9b11741be605b05a6ce2c3508))
+
 ### [6.0.4](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v6.0.3...v6.0.4) (2021-09-01)
 
 
