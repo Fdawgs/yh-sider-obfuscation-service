@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+### [6.1.1](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v6.1.0...v6.1.1) (2021-09-10)
+
+
+### Continuous Integration
+
+* **ci:** revert to workflow-run-clean-action from github concurrency ([2f47376](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/2f4737688ba9b61e492673e870c59f8864cd2608))
+* **link-check:** ignore link to `./docs/` directory ([#408](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/issues/408)) ([d918276](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/d9182764ae14b900d7dc1f876d750ee52bc9c1de))
+
+
+### Miscellaneous
+
+* **.dockerignore:** ignore development documentation ([fca5ae5](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/fca5ae5249ef7757011ba5e4173bee0f0c86022a))
+* **.husky/.gitignore:** remove now redundant file ([04a63dd](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/04a63dd5fca5ff3b2eda97f1e13e84783bb22256))
+* **.prettierrc:** override defaults for html, css, and scss files ([#409](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/issues/409)) ([89b317a](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/89b317a8c240b7424e9bfc1f09246f796ef362c5))
+* **.vscode:** add `mhutchie.git-graph` extension ([d1b5312](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/d1b53123ee96132907a69d55c3f87e36852956c2))
+
 ## [6.1.0](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v6.0.4...v6.1.0) (2021-09-06)
 
 
