@@ -37,6 +37,7 @@ describe("Configuration", () => {
 		const HTTPS_SSL_CERT_PATH =
 			"./test_resources/test_ssl_cert/server.cert";
 		const HTTPS_SSL_KEY_PATH = "./test_resources/test_ssl_cert/server.key";
+		const HTTPS_HTTP2_ENABLED = true;
 		const LOG_LEVEL = faker.random.arrayElement([
 			"debug",
 			"warn",
@@ -68,6 +69,7 @@ describe("Configuration", () => {
 			CORS_MAX_AGE,
 			HTTPS_SSL_CERT_PATH,
 			HTTPS_SSL_KEY_PATH,
+			HTTPS_HTTP2_ENABLED,
 			LOG_LEVEL,
 			LOG_ROTATION_DATE_FORMAT,
 			LOG_ROTATION_FILENAME,
@@ -113,9 +115,11 @@ describe("Configuration", () => {
 		);
 
 		expect(config.fastifyInit.https).toEqual({
+			allowHTTP1: true,
 			cert: expect.any(Buffer),
 			key: expect.any(Buffer),
 		});
+		expect(config.fastifyInit.http2).toEqual(true);
 
 		expect(config.cors).toEqual({
 			origin: CORS_ORIGIN,
@@ -158,9 +162,9 @@ describe("Configuration", () => {
 		const CORS_ALLOW_CREDENTIALS = "";
 		const CORS_EXPOSED_HEADERS = "";
 		const CORS_MAX_AGE = "";
-		const HTTPS_SSL_CERT_PATH =
-			"./test_resources/test_ssl_cert/server.cert";
-		const HTTPS_SSL_KEY_PATH = "./test_resources/test_ssl_cert/server.key";
+		const HTTPS_SSL_CERT_PATH = "";
+		const HTTPS_SSL_KEY_PATH = "";
+		const HTTPS_HTTP2_ENABLED = "";
 		const LOG_LEVEL = "";
 		const LOG_ROTATION_DATE_FORMAT = "";
 		const LOG_ROTATION_FILENAME = "./test_resources/test_log";
@@ -188,6 +192,7 @@ describe("Configuration", () => {
 			CORS_MAX_AGE,
 			HTTPS_SSL_CERT_PATH,
 			HTTPS_SSL_KEY_PATH,
+			HTTPS_HTTP2_ENABLED,
 			LOG_LEVEL,
 			LOG_ROTATION_DATE_FORMAT,
 			LOG_ROTATION_FILENAME,
@@ -230,10 +235,8 @@ describe("Configuration", () => {
 			',"time"'
 		);
 
-		expect(config.fastifyInit.https).toEqual({
-			cert: expect.any(Buffer),
-			key: expect.any(Buffer),
-		});
+		expect(config.fastifyInit.https).toBeUndefined();
+		expect(config.fastifyInit.http2).toBeUndefined();
 
 		expect(config.cors).toEqual({
 			origin: false,
@@ -278,6 +281,7 @@ describe("Configuration", () => {
 		const HTTPS_PFX_FILE_PATH =
 			"./test_resources/test_ssl_cert/server.cert"; // I know it's not an actual PFX file
 		const HTTPS_PFX_PASSPHRASE = faker.lorem.word();
+		const HTTPS_HTTP2_ENABLED = true;
 		const LOG_LEVEL = faker.random.arrayElement([
 			"debug",
 			"warn",
@@ -299,6 +303,7 @@ describe("Configuration", () => {
 			CORS_MAX_AGE,
 			HTTPS_PFX_FILE_PATH,
 			HTTPS_PFX_PASSPHRASE,
+			HTTPS_HTTP2_ENABLED,
 			LOG_LEVEL,
 			KC_ENABLED,
 			OBFUSCATION_KEY_NAME,
@@ -314,9 +319,11 @@ describe("Configuration", () => {
 		});
 
 		expect(config.fastifyInit.https).toEqual({
+			allowHTTP1: true,
 			passphrase: HTTPS_PFX_PASSPHRASE,
 			pfx: expect.any(Buffer),
 		});
+		expect(config.fastifyInit.http2).toEqual(true);
 
 		expect(config.cors).toEqual({
 			credentials: CORS_ALLOW_CREDENTIALS,
