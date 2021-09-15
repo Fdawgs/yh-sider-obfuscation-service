@@ -22,7 +22,7 @@ const sharedSchemas = require("./plugins/shared-schemas");
  */
 async function plugin(server, config) {
 	// Register plugins
-	await server
+	server
 		// Accept header handler
 		.register(accepts)
 
@@ -53,11 +53,13 @@ async function plugin(server, config) {
 			hsts: {
 				maxAge: 31536000,
 			},
-		}))
+		}));
 
+	await server
 		// Rate limiting and 429 response handling
-		.register(rateLimit, config.rateLimit)
+		.register(rateLimit, config.rateLimit);
 
+	server
 		// Utility functions and error handlers
 		.register(sensible)
 
