@@ -11,6 +11,9 @@ describe("Healthcheck Route", () => {
 		let server;
 
 		beforeAll(async () => {
+			Object.assign(process.env, {
+				SERVICE_REDIRECT_URL: "http://127.0.0.1:3001/esp/#!/launch?",
+			});
 			config = await getConfig();
 
 			server = Fastify();
