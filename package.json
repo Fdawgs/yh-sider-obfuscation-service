@@ -75,7 +75,7 @@
     "fastify-formbody": "^5.1.0",
     "glob": "^7.1.7",
     "husky": "^7.0.2",
-    "jest": "^27.1.0",
+    "jest": "^27.2.0",
     "license-checker": "^25.0.1",
     "lodash": "^4.17.21",
     "nodemon": "^2.0.12",
