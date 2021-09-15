@@ -36,7 +36,7 @@ async function route(server, options) {
 		method: "GET",
 		url: "/",
 		schema: redirectGetSchema,
-		async handler(req, res) {
+		handler(req, res) {
 			const espUrl =
 				options.redirectUrl + queryString.stringify(req.query);
 			server.log.debug(espUrl);
