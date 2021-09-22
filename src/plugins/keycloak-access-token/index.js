@@ -9,7 +9,7 @@ const { URLSearchParams } = require("url");
  * @param {Function} server - Fastify instance.
  * @param {object} options - Plugin config values.
  * @param {object} options.keycloak - Keycloak endpoint access options values.
- * @param {boolean} options.keycloak.enabled - Toggle to enable or disable use of Keycloak.
+ * @param {boolean=} options.keycloak.enabled - Toggle to enable or disable use of Keycloak.
  * @param {object} options.keycloak.serviceAuthorisation
  * @param {object} options.keycloak.serviceAuthorisation.form
  * @param {string} options.keycloak.serviceAuthorisation.form.client_id
@@ -30,7 +30,7 @@ const { URLSearchParams } = require("url");
  */
 async function plugin(server, options) {
 	// Do not add preHandler hook and attempt to retrieve access tokens if Keycloak not enabled
-	if (options && options.keycloak && options.keycloak.enabled === true) {
+	if (options?.keycloak?.enabled === true) {
 		server.addHook("preHandler", async (req, res) => {
 			try {
 				const { requestToken, serviceAuthorisation } = options.keycloak;
