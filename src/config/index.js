@@ -189,10 +189,7 @@ async function getConfig() {
 			]),
 	});
 
-	const isProduction = env.NODE_ENV.toLowerCase() === "production";
-
 	const config = {
-		isProduction,
 		fastify: {
 			host: env.SERVICE_HOST,
 			port: env.SERVICE_PORT,
@@ -248,7 +245,8 @@ async function getConfig() {
 		},
 		swagger: {
 			routePrefix: "/docs",
-			exposeRoute: true,
+			// Only expose for test/development environments
+			exposeRoute: env.NODE_ENV.toLowerCase() !== "production",
 			staticCSP: true,
 			uiConfig: {
 				layout: "BaseLayout",

@@ -88,8 +88,6 @@ describe("Configuration", () => {
 
 		const config = await getConfig();
 
-		expect(config.isProduction).toEqual(false);
-
 		expect(config.fastify).toEqual({
 			host: SERVICE_HOST,
 			port: SERVICE_PORT,
