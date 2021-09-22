@@ -1,6 +1,6 @@
 const fp = require("fastify-plugin");
 const { obfuscate } = require("obfuscated-querystring/lib");
-const queryString = require("querystring");
+const { URLSearchParams } = require("url");
 
 /**
  * @author Frazer Smith
@@ -16,9 +16,19 @@ const queryString = require("querystring");
 async function plugin(server, options) {
 	server.addHook("preHandler", (req, res, next) => {
 		try {
-			req.query = queryString.parse(
-				obfuscate(queryString.stringify(req.query), options.obfuscation)
+			const obfuscatedParams = new URLSearchParams(
+				obfuscate(
+					new URLSearchParams(req.query).toString(),
+					options.obfuscation
+				)
 			);
+
+			const result = {};
+			Array.from(obfuscatedParams.entries()).forEach((element) => {
+				result[element[0]] = element[1];
+			});
+
+			req.query = result;
 		} catch (err) {
 			server.log.error(err);
 			res.internalServerError(err);

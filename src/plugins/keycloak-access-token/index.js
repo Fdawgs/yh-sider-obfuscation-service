@@ -1,7 +1,7 @@
 /* eslint-disable jsdoc/require-param-description */
 const fp = require("fastify-plugin");
 const request = require("axios");
-const queryString = require("querystring");
+const { URLSearchParams } = require("url");
 
 /**
  * @author Frazer Smith
@@ -38,7 +38,7 @@ async function plugin(server, options) {
 				// Service authorisation to retrieve subject access token
 				const serviceAuthResponse = await request.post(
 					serviceAuthorisation.url,
-					queryString.stringify(serviceAuthorisation.form)
+					new URLSearchParams(serviceAuthorisation.form).toString()
 				);
 
 				requestToken.form.subject_token =
@@ -51,7 +51,7 @@ async function plugin(server, options) {
 				// Request access token for user
 				const userAccessResponse = await request.post(
 					requestToken.url,
-					queryString.stringify(requestToken.form)
+					new URLSearchParams(requestToken.form).toString()
 				);
 				req.query.access_token = userAccessResponse.data.access_token;
 				return;
