@@ -1,4 +1,4 @@
-const queryString = require("querystring");
+const { URLSearchParams } = require("url");
 
 // Import plugins
 const cors = require("fastify-cors");
@@ -38,7 +38,7 @@ async function route(server, options) {
 		schema: redirectGetSchema,
 		handler(req, res) {
 			const espUrl =
-				options.redirectUrl + queryString.stringify(req.query);
+				options.redirectUrl + new URLSearchParams(req.query).toString();
 			server.log.debug(espUrl);
 			res.redirect(espUrl);
 		},
