@@ -2,7 +2,6 @@
 const cloneDeep = require("lodash").cloneDeep;
 const faker = require("faker/locale/en_GB");
 const Fastify = require("fastify");
-const queryString = require("querystring");
 const mockServer = require("../test_resources/mocks/sider-server.mock");
 const startServer = require("./server");
 const getConfig = require("./config");
@@ -136,12 +135,17 @@ describe("Server Deployment", () => {
 					query: mockParams,
 				});
 
-				const resQueryString = queryString.parse(
-					response.headers.location.substring(
-						response.headers.location.indexOf("?") + 1,
-						response.headers.location.length
-					)
-				);
+				const resQueryString = {};
+				Array.from(
+					new URLSearchParams(
+						response.headers.location.substring(
+							response.headers.location.indexOf("?") + 1,
+							response.headers.location.length
+						)
+					).entries()
+				).forEach((element) => {
+					resQueryString[element[0]] = element[1];
+				});
 
 				expect(response.headers.location).toMatch(
 					"http://127.0.0.1:3001/esp/#!/launch?"
@@ -297,12 +301,17 @@ describe("Server Deployment", () => {
 					query: mockParams,
 				});
 
-				const resQueryString = queryString.parse(
-					response.headers.location.substring(
-						response.headers.location.indexOf("?") + 1,
-						response.headers.location.length
-					)
-				);
+				const resQueryString = {};
+				Array.from(
+					new URLSearchParams(
+						response.headers.location.substring(
+							response.headers.location.indexOf("?") + 1,
+							response.headers.location.length
+						)
+					).entries()
+				).forEach((element) => {
+					resQueryString[element[0]] = element[1];
+				});
 
 				expect(response.headers.location).toMatch(
 					"http://127.0.0.1:3001/esp/#!/launch?"
