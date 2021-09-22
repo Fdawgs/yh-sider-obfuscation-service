@@ -22,7 +22,7 @@ const ajv = new Ajv({
 });
 addFormats(ajv);
 
-const { name, description, license, version } = require("../../package.json");
+const { license, version } = require("../../package.json");
 
 /**
  * @author Frazer Smith
@@ -253,8 +253,9 @@ async function getConfig() {
 			},
 			openapi: {
 				info: {
-					title: name,
-					description,
+					title: "YDH SIDeR Obfuscation Service",
+					description:
+						'<a href="https://yeovilhospital.co.uk/">Yeovil District Hospital NHSFT</a>\'s contextual link obfuscation service, a Node.js application using the <a href="https://www.fastify.io/">Fastify web framework</a> and Black Pear\'s <a href="https://github.com/BlackPearSw/obfuscated-querystring/">obfuscated-querystring</a>.',
 					contact: {
 						name: "Solutions Development Team",
 						email: "servicedesk@ydh.nhs.uk",
