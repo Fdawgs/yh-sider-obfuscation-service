@@ -67,11 +67,10 @@ async function plugin(server, config) {
 		.register(sharedSchemas)
 
 		// Process load and 503 response handling
-		.register(underPressure, config.processLoad);
+		.register(underPressure, config.processLoad)
 
-	if (config.isProduction === false) {
-		server.register(swagger, config.swagger);
-	}
+		// Enable Swagger/OpenAPI routes
+		.register(swagger, config.swagger);
 
 	server
 		// Ensure rate limit also applies to 4xx and 5xx responses
