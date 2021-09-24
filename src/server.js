@@ -84,7 +84,7 @@ async function plugin(server, config) {
 		})
 
 		/**
-		 * Encapsulate plugins and routes into secured child context, so that swagger and healthcheck
+		 * Encapsulate plugins and routes into secured child context, so that admin and docs
 		 * routes do not inherit Keycloak or querystring obfuscation plugins.
 		 * See https://www.fastify.io/docs/latest/Encapsulation/ for more info
 		 */
