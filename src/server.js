@@ -36,24 +36,7 @@ async function plugin(server, config) {
 		.register(flocOff)
 
 		// Use Helmet to set response security headers: https://helmetjs.github.io/
-		.register(helmet, () => ({
-			contentSecurityPolicy: {
-				directives: {
-					"default-src": ["'self'"],
-					"base-uri": ["'self'"],
-					"img-src": ["'self'", "data:"],
-					"object-src": ["'none'"],
-					"child-src": ["'self'"],
-					"frame-ancestors": ["'none'"],
-					"form-action": ["'self'"],
-					"upgrade-insecure-requests": [],
-					"block-all-mixed-content": [],
-				},
-			},
-			hsts: {
-				maxAge: 31536000,
-			},
-		}));
+		.register(helmet, config.helmet);
 
 	await server
 		// Rate limiting and 429 response handling
