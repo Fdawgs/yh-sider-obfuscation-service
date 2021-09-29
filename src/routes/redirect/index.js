@@ -14,12 +14,14 @@ const { redirectGetSchema } = require("./schema");
  * @param {string} options.redirectUrl - URL and port the Mirth Connect FHIR/HTTP Listener channel is listening on.
  */
 async function route(server, options) {
-	// Use CORS: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
-	server.register(cors, {
-		...options.cors,
-		methods: ["GET"],
-		hideOptionsRoute: true,
-	});
+	// Register plugins
+	server
+		// Use CORS: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+		.register(cors, {
+			...options.cors,
+			methods: ["GET"],
+			hideOptionsRoute: true,
+		});
 
 	server.addHook("preValidation", async (req, res) => {
 		if (
