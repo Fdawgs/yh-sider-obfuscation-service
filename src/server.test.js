@@ -7,8 +7,7 @@ const startServer = require("./server");
 const getConfig = require("./config");
 
 const expResHeaders = {
-	"content-security-policy":
-		"default-src 'self';base-uri 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
+	"content-security-policy": "default-src 'self';frame-ancestors 'none'",
 	"x-dns-prefetch-control": "off",
 	"expect-ct": "max-age=0",
 	"x-frame-options": "SAMEORIGIN",
@@ -17,7 +16,6 @@ const expResHeaders = {
 	"x-content-type-options": "nosniff",
 	"x-permitted-cross-domain-policies": "none",
 	"referrer-policy": "no-referrer",
-	"x-xss-protection": "0",
 	"surrogate-control": "no-store",
 	"cache-control": "no-store, max-age=0, must-revalidate",
 	pragma: "no-cache",
@@ -32,6 +30,20 @@ const expResHeaders = {
 	date: expect.any(String),
 	connection: "keep-alive",
 };
+
+const expResHeadersRedirect = {
+	...expResHeaders,
+	...{
+		"content-security-policy":
+			"default-src 'self';base-uri 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
+		location: expect.stringContaining(
+			"http://127.0.0.1:3001/esp/#!/launch?"
+		),
+		vary: "Origin",
+		"x-xss-protection": "0",
+	},
+};
+delete expResHeadersRedirect["content-type"];
 
 const expResHeadersJson = {
 	...expResHeaders,
@@ -147,10 +159,8 @@ describe("Server Deployment", () => {
 					resQueryString[element[0]] = element[1];
 				});
 
-				expect(response.headers.location).toEqual(
-					expect.stringContaining(
-						"http://127.0.0.1:3001/esp/#!/launch?"
-					)
+				expect(response.headers).toEqual(
+					expect.objectContaining(expResHeadersRedirect)
 				);
 
 				expect(resQueryString).toEqual(
@@ -317,10 +327,8 @@ describe("Server Deployment", () => {
 					resQueryString[element[0]] = element[1];
 				});
 
-				expect(response.headers.location).toEqual(
-					expect.stringContaining(
-						"http://127.0.0.1:3001/esp/#!/launch?"
-					)
+				expect(response.headers).toEqual(
+					expect.objectContaining(expResHeadersRedirect)
 				);
 
 				expect(resQueryString).toEqual(
@@ -408,10 +416,8 @@ describe("Server Deployment", () => {
 					query: mockParams,
 				});
 
-				expect(response.headers.location).toEqual(
-					expect.stringContaining(
-						"http://127.0.0.1:3001/esp/#!/launch?"
-					)
+				expect(response.headers).toEqual(
+					expect.objectContaining(expResHeadersRedirect)
 				);
 				expect(response.statusCode).toEqual(302);
 
