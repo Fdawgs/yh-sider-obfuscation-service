@@ -61,9 +61,8 @@ async function plugin(server, config) {
 
 		// Import and register admin routes
 		.register(autoLoad, {
-			dir: path.join(__dirname, "routes"),
-			ignorePattern: /redirect/,
-			options: config,
+			dir: path.join(__dirname, "routes", "admin"),
+			options: { ...config, prefix: "admin" },
 		})
 
 		/**
@@ -80,9 +79,8 @@ async function plugin(server, config) {
 				})
 				// Import and register service routes
 				.register(autoLoad, {
-					dir: path.join(__dirname, "routes"),
-					ignorePattern: /admin/,
-					options: config,
+					dir: path.join(__dirname, "routes", "redirect"),
+					options: { ...config, prefix: "redirect" },
 				});
 		});
 }
