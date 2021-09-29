@@ -147,17 +147,21 @@ describe("Server Deployment", () => {
 					resQueryString[element[0]] = element[1];
 				});
 
-				expect(response.headers.location).toMatch(
-					"http://127.0.0.1:3001/esp/#!/launch?"
+				expect(response.headers.location).toEqual(
+					expect.stringContaining(
+						"http://127.0.0.1:3001/esp/#!/launch?"
+					)
 				);
 
-				expect(resQueryString).toMatchObject({
-					location:
-						"https://fhir.nhs.uk/Id/ods-organization-code|RA4",
-					practitioner:
-						"https://sider.nhs.uk/auth|obsservice.test@ydh.nhs.uk",
-					enc: expect.any(String),
-				});
+				expect(resQueryString).toEqual(
+					expect.objectContaining({
+						location:
+							"https://fhir.nhs.uk/Id/ods-organization-code|RA4",
+						practitioner:
+							"https://sider.nhs.uk/auth|obsservice.test@ydh.nhs.uk",
+						enc: expect.any(String),
+					})
+				);
 
 				expect(response.statusCode).toEqual(302);
 			});
@@ -313,17 +317,21 @@ describe("Server Deployment", () => {
 					resQueryString[element[0]] = element[1];
 				});
 
-				expect(response.headers.location).toMatch(
-					"http://127.0.0.1:3001/esp/#!/launch?"
+				expect(response.headers.location).toEqual(
+					expect.stringContaining(
+						"http://127.0.0.1:3001/esp/#!/launch?"
+					)
 				);
 
-				expect(resQueryString).toMatchObject({
-					location:
-						"https://fhir.nhs.uk/Id/ods-organization-code|RA4",
-					practitioner:
-						"https://sider.nhs.uk/auth|obsservice.test@ydh.nhs.uk",
-					enc: expect.any(String),
-				});
+				expect(resQueryString).toEqual(
+					expect.objectContaining({
+						location:
+							"https://fhir.nhs.uk/Id/ods-organization-code|RA4",
+						practitioner:
+							"https://sider.nhs.uk/auth|obsservice.test@ydh.nhs.uk",
+						enc: expect.any(String),
+					})
+				);
 
 				expect(response.statusCode).toEqual(302);
 
@@ -400,8 +408,10 @@ describe("Server Deployment", () => {
 					query: mockParams,
 				});
 
-				expect(response.headers.location).toMatch(
-					"http://127.0.0.1:3001/esp/#!/launch?"
+				expect(response.headers.location).toEqual(
+					expect.stringContaining(
+						"http://127.0.0.1:3001/esp/#!/launch?"
+					)
 				);
 				expect(response.statusCode).toEqual(302);
 
