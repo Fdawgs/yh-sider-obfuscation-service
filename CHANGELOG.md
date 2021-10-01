@@ -2,6 +2,42 @@
 
 All notable changes to this project will be documented in this file.
 
+### [6.2.2](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v6.2.1...v6.2.2) (2021-10-01)
+
+
+### Improvements
+
+* **routes:** move cors options route config to config file ([e5496aa](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/e5496aaa4a18d8ec2f9a91548ecc5a7be392711e))
+* **server:** move helmet config to config file ([9bbc637](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/9bbc637ec778dd6c867f4dfea0d85679830be9bb))
+* **server:** reduce globbing use when registering routes ([ce83920](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/ce83920ac900c0b89c936c617c050ea635587a17))
+* **server:** reduce response header size ([45a6f22](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/45a6f220cb99e110b0c7c56aa25d44e56942ed22))
+
+
+### Dependencies
+
+* **deps-dev:** bump @commitlint/cli from 13.1.0 to 13.2.0 ([3145a6b](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/3145a6b826f4821784dc5c3adec6c56e13528da1))
+* **deps-dev:** bump @commitlint/config-conventional ([e108a22](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/e108a222c5327d9f150b04f91595a2fe0a7f4930))
+* **deps-dev:** bump eslint-plugin-jest from 24.4.2 to 24.5.0 ([3345877](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/334587732ec4f00b4230b3c435416d5fe20e9fbb))
+* **deps-dev:** bump jest from 27.2.1 to 27.2.4 ([acf78da](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/acf78da8440f0d594aeefb386c887011aac3d5d0))
+* **deps:** bump actions/github-script from 4.1 to 5 ([fcc45fb](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/fcc45fb3f41569173b6e62d667cc2d563740f5ca))
+* **deps:** bump actions/setup-node from 2.4.0 to 2.4.1 ([ec4bde3](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/ec4bde3d8ec550027c3d07bc3f731a74eb7706b1))
+* **deps:** bump fastify from 3.21.6 to 3.22.0 ([79405ae](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/79405ae2a299ce325a9f6fd715a0fa9517549be2))
+* **deps:** bump fastify-swagger from 4.12.0 to 4.12.3 ([675659c](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/675659c5fc86d0886ff1eb460bb76bb41bb23eb8))
+* **docker:** remove package versioning ([3c6fe9b](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/3c6fe9b09097c8ed446c313b553a7f75e7af6368))
+
+
+### Continuous Integration
+
+* **automerge:** update location of octokit rest methods ([8ea2619](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/8ea261915fe164400920cd1a37795f1ffda9f369))
+* ignore hadolint rule DL3018 ([187aa64](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/187aa64ef4a912f575549a054f9f938e77c7d394))
+* update hadolint-action namespace ([14e169a](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/14e169a931ba8fb123b9fb44f06a43b12cc78d8e))
+
+
+### Miscellaneous
+
+* **.prettierrc:** enable `bracketsameline` option ([#458](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/issues/458)) ([ef96c1b](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/ef96c1b18864de7e03d1b7dd7451f51f4d8cf488))
+* tidy inline comments re plugins ([2dfb100](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/2dfb100691babd338ad38e5d99c67769586b731c))
+
 ### [6.2.1](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v6.2.0...v6.2.1) (2021-09-24)
 
 
