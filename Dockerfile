@@ -7,7 +7,7 @@ WORKDIR /usr/app
 COPY . .
 # Git is needed to install node modules from GitHub
 # Curl needed for healthcheck command
-RUN apk add --no-cache curl=7.79.1-r0 git=2.24.4-r0 && \
+RUN apk add --no-cache curl git && \
     npm ci --ignore-scripts && npm cache clean --force
 
 # Node images provide 'node' unprivileged user to run apps and prevent
