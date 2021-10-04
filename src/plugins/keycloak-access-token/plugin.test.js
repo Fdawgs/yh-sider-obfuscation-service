@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+/* eslint-disable security-node/detect-crlf */
 const cloneDeep = require("lodash").cloneDeep;
 const faker = require("faker/locale/en_GB");
 const Fastify = require("fastify");
@@ -65,7 +66,8 @@ describe("Keycloak Access Token Retrieval Plugin", () => {
 			query: mockParams,
 		});
 
-		expect(response.statusCode).toEqual(200);
+		expect(JSON.parse(response.payload)).toEqual(mockParams);
+		expect(response.statusCode).toBe(200);
 	});
 
 	test("Should return Keycloak access_token from mock server", async () => {
@@ -78,15 +80,11 @@ describe("Keycloak Access Token Retrieval Plugin", () => {
 			query: mockParams,
 		});
 
-		const body = JSON.parse(response.body);
-
-		expect(response.statusCode).toEqual(200);
-		expect(body.access_token).not.toBeUndefined();
-		expect(typeof body.access_token).toEqual("string");
-		expect(body.birthdate).not.toBeUndefined();
-		expect(body.location).not.toBeUndefined();
-		expect(body.patient).not.toBeUndefined();
-		expect(body.practitioner).not.toBeUndefined();
+		expect(JSON.parse(response.payload)).toEqual({
+			...mockParams,
+			access_token: "mock-access-token-authorised",
+		});
+		expect(response.statusCode).toBe(200);
 	});
 
 	test("Should return HTTP status code 500 if Keycloak endpoint config enabled but other options undefined", async () => {
@@ -105,12 +103,12 @@ describe("Keycloak Access Token Retrieval Plugin", () => {
 			query: mockParams,
 		});
 
-		const body = JSON.parse(response.body);
-
-		expect(response.statusCode).toEqual(500);
-		expect(response.statusMessage).toEqual("Internal Server Error");
-		expect(body.statusCode).toEqual(500);
-		expect(body.error).toEqual("Internal Server Error");
+		expect(JSON.parse(response.payload)).toEqual({
+			statusCode: 500,
+			error: "Internal Server Error",
+			message: "Unable to retrieve Keycloak access token(s)",
+		});
+		expect(response.statusCode).toBe(500);
 
 		await server.close();
 	});

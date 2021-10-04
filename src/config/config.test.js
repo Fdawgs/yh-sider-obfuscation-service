@@ -93,22 +93,21 @@ describe("Configuration", () => {
 			port: SERVICE_PORT,
 		});
 
-		expect(config.fastifyInit.logger).toEqual(
-			expect.objectContaining({
-				formatters: { level: expect.any(Function) },
-				level: LOG_LEVEL,
-				serializers: {
-					req: expect.any(Function),
-					res: expect.any(Function),
-				},
-				timestamp: expect.any(Function),
-				stream: expect.any(Object),
-			})
-		);
+		expect(config.fastifyInit.logger).toEqual({
+			formatters: { level: expect.any(Function) },
+			level: LOG_LEVEL,
+			prettyPrint: false,
+			serializers: {
+				req: expect.any(Function),
+				res: expect.any(Function),
+			},
+			timestamp: expect.any(Function),
+			stream: expect.any(Object),
+		});
 		expect(config.fastifyInit.logger.formatters.level()).toEqual({
 			level: undefined,
 		});
-		expect(config.fastifyInit.logger.timestamp().substring(0, 7)).toEqual(
+		expect(config.fastifyInit.logger.timestamp().substring(0, 7)).toBe(
 			',"time"'
 		);
 
@@ -117,7 +116,7 @@ describe("Configuration", () => {
 			cert: expect.any(Buffer),
 			key: expect.any(Buffer),
 		});
-		expect(config.fastifyInit.http2).toEqual(true);
+		expect(config.fastifyInit.http2).toBe(true);
 
 		expect(config.cors).toEqual({
 			origin: CORS_ORIGIN,
@@ -137,9 +136,9 @@ describe("Configuration", () => {
 			timeWindow: 60000,
 		});
 
-		expect(config.redirectUrl).toEqual(SERVICE_REDIRECT_URL);
+		expect(config.redirectUrl).toBe(SERVICE_REDIRECT_URL);
 
-		expect(config.keycloak.enabled).toEqual(false);
+		expect(config.keycloak.enabled).toBe(false);
 
 		expect(config.obfuscation).toEqual({
 			encryptionKey: {
@@ -215,22 +214,21 @@ describe("Configuration", () => {
 			port: SERVICE_PORT,
 		});
 
-		expect(config.fastifyInit.logger).toEqual(
-			expect.objectContaining({
-				formatters: { level: expect.any(Function) },
-				level: "info",
-				serializers: {
-					req: expect.any(Function),
-					res: expect.any(Function),
-				},
-				timestamp: expect.any(Function),
-				stream: expect.any(Object),
-			})
-		);
+		expect(config.fastifyInit.logger).toEqual({
+			formatters: { level: expect.any(Function) },
+			level: "info",
+			prettyPrint: false,
+			serializers: {
+				req: expect.any(Function),
+				res: expect.any(Function),
+			},
+			timestamp: expect.any(Function),
+			stream: expect.any(Object),
+		});
 		expect(config.fastifyInit.logger.formatters.level()).toEqual({
 			level: undefined,
 		});
-		expect(config.fastifyInit.logger.timestamp().substring(0, 7)).toEqual(
+		expect(config.fastifyInit.logger.timestamp().substring(0, 7)).toBe(
 			',"time"'
 		);
 
@@ -255,9 +253,9 @@ describe("Configuration", () => {
 			timeWindow: 60000,
 		});
 
-		expect(config.redirectUrl).toEqual(SERVICE_REDIRECT_URL);
+		expect(config.redirectUrl).toBe(SERVICE_REDIRECT_URL);
 
-		expect(config.keycloak.enabled).toEqual(false);
+		expect(config.keycloak.enabled).toBe(false);
 
 		expect(config.obfuscation).toEqual({
 			encryptionKey: {
@@ -323,7 +321,7 @@ describe("Configuration", () => {
 			passphrase: HTTPS_PFX_PASSPHRASE,
 			pfx: expect.any(Buffer),
 		});
-		expect(config.fastifyInit.http2).toEqual(true);
+		expect(config.fastifyInit.http2).toBe(true);
 
 		expect(config.cors).toEqual({
 			origin: CORS_ORIGIN,

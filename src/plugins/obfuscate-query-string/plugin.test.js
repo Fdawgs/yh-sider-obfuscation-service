@@ -50,21 +50,19 @@ describe("Query String Obfuscation plugin", () => {
 
 		server.register(plugin, altConfig);
 
-		const { body } = await server.inject({
+		const response = await server.inject({
 			method: "GET",
 			url: "/",
 			headers,
 			query: mockParams,
 		});
 
-		const response = JSON.parse(body);
-
-		expect(response.birthdate).toBeUndefined();
-		expect(response.enc).not.toBeUndefined();
-		expect(typeof response.enc).toEqual("string");
-		expect(response.location).not.toBeUndefined();
-		expect(response.patient).toBeUndefined();
-		expect(response.practitioner).not.toBeUndefined();
+		expect(JSON.parse(response.payload)).toEqual({
+			location: mockParams.location,
+			practitioner: mockParams.practitioner,
+			enc: expect.any(String),
+		});
+		expect(response.statusCode).toBe(200);
 	});
 
 	test("Should return HTTP status code 500 if options are not passed to plugin", async () => {
@@ -77,11 +75,11 @@ describe("Query String Obfuscation plugin", () => {
 			query: mockParams,
 		});
 
-		const body = JSON.parse(response.body);
-
-		expect(response.statusCode).toEqual(500);
-		expect(response.statusMessage).toEqual("Internal Server Error");
-		expect(body.statusCode).toEqual(500);
-		expect(body.error).toEqual("Internal Server Error");
+		expect(JSON.parse(response.payload)).toEqual({
+			statusCode: 500,
+			error: "Internal Server Error",
+			message: "Error: options undefined",
+		});
+		expect(response.statusCode).toBe(500);
 	});
 });

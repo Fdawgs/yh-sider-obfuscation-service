@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+/* eslint-disable security-node/detect-crlf */
 const cloneDeep = require("lodash").cloneDeep;
 const faker = require("faker/locale/en_GB");
 const Fastify = require("fastify");
@@ -48,10 +49,6 @@ delete expResHeadersRedirect["content-type"];
 const expResHeadersJson = {
 	...expResHeaders,
 	...{ "content-type": expect.stringContaining("application/json") },
-};
-
-const headers = {
-	accept: "text/html",
 };
 
 const mockParams = {
@@ -115,11 +112,9 @@ describe("Server Deployment", () => {
 					},
 				});
 
-				expect(response.payload).toEqual("ok");
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeaders)
-				);
-				expect(response.statusCode).toEqual(200);
+				expect(response.payload).toBe("ok");
+				expect(response.headers).toEqual(expResHeaders);
+				expect(response.statusCode).toBe(200);
 			});
 
 			test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
@@ -131,10 +126,13 @@ describe("Server Deployment", () => {
 					},
 				});
 
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeadersJson)
-				);
-				expect(response.statusCode).toEqual(406);
+				expect(JSON.parse(response.payload)).toEqual({
+					statusCode: 406,
+					error: "Not Acceptable",
+					message: "Not Acceptable",
+				});
+				expect(response.headers).toEqual(expResHeadersJson);
+				expect(response.statusCode).toBe(406);
 			});
 		});
 
@@ -143,7 +141,7 @@ describe("Server Deployment", () => {
 				const response = await server.inject({
 					method: "GET",
 					url: "/redirect",
-					headers,
+					headers: { accept: "text/html" },
 					query: mockParams,
 				});
 
@@ -159,10 +157,6 @@ describe("Server Deployment", () => {
 					resQueryString[element[0]] = element[1];
 				});
 
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeadersRedirect)
-				);
-
 				expect(resQueryString).toEqual(
 					expect.objectContaining({
 						location:
@@ -172,8 +166,8 @@ describe("Server Deployment", () => {
 						enc: expect.any(String),
 					})
 				);
-
-				expect(response.statusCode).toEqual(302);
+				expect(response.headers).toEqual(expResHeadersRedirect);
+				expect(response.statusCode).toBe(302);
 			});
 
 			test("Should return HTTP status code 400 if any required query string parameter is missing", async () => {
@@ -191,7 +185,7 @@ describe("Server Deployment", () => {
 						const response = await server.inject({
 							method: "GET",
 							url: "/redirect",
-							headers,
+							headers: { accept: "text/html" },
 							query: scrubbedParams,
 						});
 
@@ -219,7 +213,7 @@ describe("Server Deployment", () => {
 						const response = await server.inject({
 							method: "GET",
 							url: "/redirect",
-							headers,
+							headers: { accept: "text/html" },
 							query: scrubbedParams,
 						});
 
@@ -242,10 +236,13 @@ describe("Server Deployment", () => {
 					query: mockParams,
 				});
 
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeadersJson)
-				);
-				expect(response.statusCode).toEqual(406);
+				expect(JSON.parse(response.payload)).toEqual({
+					statusCode: 406,
+					error: "Not Acceptable",
+					message: "Not Acceptable",
+				});
+				expect(response.headers).toEqual(expResHeadersJson);
+				expect(response.statusCode).toBe(406);
 			});
 		});
 	});
@@ -283,11 +280,9 @@ describe("Server Deployment", () => {
 					},
 				});
 
-				expect(response.payload).toEqual("ok");
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeaders)
-				);
-				expect(response.statusCode).toEqual(200);
+				expect(response.payload).toBe("ok");
+				expect(response.headers).toEqual(expResHeaders);
+				expect(response.statusCode).toBe(200);
 			});
 
 			test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
@@ -299,10 +294,13 @@ describe("Server Deployment", () => {
 					},
 				});
 
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeadersJson)
-				);
-				expect(response.statusCode).toEqual(406);
+				expect(JSON.parse(response.payload)).toEqual({
+					statusCode: 406,
+					error: "Not Acceptable",
+					message: "Not Acceptable",
+				});
+				expect(response.headers).toEqual(expResHeadersJson);
+				expect(response.statusCode).toBe(406);
 			});
 		});
 
@@ -311,7 +309,7 @@ describe("Server Deployment", () => {
 				const response = await server.inject({
 					method: "GET",
 					url: "/redirect",
-					headers,
+					headers: { accept: "text/html" },
 					query: mockParams,
 				});
 
@@ -340,8 +338,8 @@ describe("Server Deployment", () => {
 						enc: expect.any(String),
 					})
 				);
-
-				expect(response.statusCode).toEqual(302);
+				expect(response.headers).toEqual(expResHeadersRedirect);
+				expect(response.statusCode).toBe(302);
 
 				await server.close();
 			});
@@ -384,11 +382,9 @@ describe("Server Deployment", () => {
 					},
 				});
 
-				expect(response.payload).toEqual("ok");
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeaders)
-				);
-				expect(response.statusCode).toEqual(200);
+				expect(response.payload).toBe("ok");
+				expect(response.headers).toEqual(expResHeaders);
+				expect(response.statusCode).toBe(200);
 			});
 
 			test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
@@ -400,10 +396,13 @@ describe("Server Deployment", () => {
 					},
 				});
 
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeadersJson)
-				);
-				expect(response.statusCode).toEqual(406);
+				expect(JSON.parse(response.payload)).toEqual({
+					statusCode: 406,
+					error: "Not Acceptable",
+					message: "Not Acceptable",
+				});
+				expect(response.headers).toEqual(expResHeadersJson);
+				expect(response.statusCode).toBe(406);
 			});
 		});
 
@@ -412,14 +411,14 @@ describe("Server Deployment", () => {
 				const response = await server.inject({
 					method: "GET",
 					url: "/redirect",
-					headers,
+					headers: { accept: "text/html" },
 					query: mockParams,
 				});
 
 				expect(response.headers).toEqual(
 					expect.objectContaining(expResHeadersRedirect)
 				);
-				expect(response.statusCode).toEqual(302);
+				expect(response.statusCode).toBe(302);
 
 				await server.close();
 			});
@@ -462,11 +461,9 @@ describe("Server Deployment", () => {
 					},
 				});
 
-				expect(response.payload).toEqual("ok");
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeaders)
-				);
-				expect(response.statusCode).toEqual(200);
+				expect(response.payload).toBe("ok");
+				expect(response.headers).toEqual(expResHeaders);
+				expect(response.statusCode).toBe(200);
 			});
 
 			test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
@@ -478,10 +475,13 @@ describe("Server Deployment", () => {
 					},
 				});
 
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeadersJson)
-				);
-				expect(response.statusCode).toEqual(406);
+				expect(JSON.parse(response.payload)).toEqual({
+					statusCode: 406,
+					error: "Not Acceptable",
+					message: "Not Acceptable",
+				});
+				expect(response.headers).toEqual(expResHeadersJson);
+				expect(response.statusCode).toBe(406);
 			});
 		});
 
@@ -490,14 +490,17 @@ describe("Server Deployment", () => {
 				const response = await server.inject({
 					method: "GET",
 					url: "/redirect",
-					headers,
+					headers: { accept: "text/html" },
 					query: mockParams,
 				});
 
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeadersJson)
-				);
-				expect(response.statusCode).toEqual(500);
+				expect(JSON.parse(response.payload)).toEqual({
+					statusCode: 500,
+					error: "Internal Server Error",
+					message: "Unable to retrieve Keycloak access token(s)",
+				});
+				expect(response.headers).toEqual(expResHeadersJson);
+				expect(response.statusCode).toBe(500);
 
 				await server.close();
 			});
