@@ -76,9 +76,9 @@ describe("Query String Obfuscation plugin", () => {
 		});
 
 		expect(JSON.parse(response.payload)).toEqual({
-			statusCode: 500,
 			error: "Internal Server Error",
 			message: "Error: options undefined",
+			statusCode: 500,
 		});
 		expect(response.statusCode).toBe(500);
 	});

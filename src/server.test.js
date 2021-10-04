@@ -130,9 +130,9 @@ describe("Server Deployment", () => {
 					});
 
 					expect(JSON.parse(response.payload)).toEqual({
-						statusCode: 406,
 						error: "Not Acceptable",
 						message: "Not Acceptable",
+						statusCode: 406,
 					});
 					expect(response.headers).toEqual(expResHeadersJson);
 					expect(response.statusCode).toBe(406);
@@ -240,9 +240,9 @@ describe("Server Deployment", () => {
 					});
 
 					expect(JSON.parse(response.payload)).toEqual({
-						statusCode: 406,
 						error: "Not Acceptable",
 						message: "Not Acceptable",
+						statusCode: 406,
 					});
 					expect(response.headers).toEqual(expResHeadersJson);
 					expect(response.statusCode).toBe(406);
@@ -302,9 +302,9 @@ describe("Server Deployment", () => {
 				});
 
 				expect(JSON.parse(response.payload)).toEqual({
-					statusCode: 406,
 					error: "Not Acceptable",
 					message: "Not Acceptable",
+					statusCode: 406,
 				});
 				expect(response.headers).toEqual(expResHeadersJson);
 				expect(response.statusCode).toBe(406);
@@ -381,9 +381,9 @@ describe("Server Deployment", () => {
 				});
 
 				expect(JSON.parse(response.payload)).toEqual({
-					statusCode: 406,
 					error: "Not Acceptable",
 					message: "Not Acceptable",
+					statusCode: 406,
 				});
 				expect(response.headers).toEqual(expResHeadersJson);
 				expect(response.statusCode).toBe(406);
@@ -400,9 +400,9 @@ describe("Server Deployment", () => {
 				});
 
 				expect(JSON.parse(response.payload)).toEqual({
-					statusCode: 500,
 					error: "Internal Server Error",
 					message: "Unable to retrieve Keycloak access token(s)",
+					statusCode: 500,
 				});
 				expect(response.headers).toEqual(expResHeadersJson);
 				expect(response.statusCode).toBe(500);
