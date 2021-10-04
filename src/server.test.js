@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+/* eslint-disable security-node/detect-crlf */
 const cloneDeep = require("lodash").cloneDeep;
 const faker = require("faker/locale/en_GB");
 const Fastify = require("fastify");
@@ -7,28 +8,28 @@ const startServer = require("./server");
 const getConfig = require("./config");
 
 const expResHeaders = {
-	"content-security-policy": "default-src 'self';frame-ancestors 'none'",
-	"x-dns-prefetch-control": "off",
-	"expect-ct": "max-age=0",
-	"x-frame-options": "SAMEORIGIN",
-	"strict-transport-security": "max-age=31536000; includeSubDomains",
-	"x-download-options": "noopen",
-	"x-content-type-options": "nosniff",
-	"x-permitted-cross-domain-policies": "none",
-	"referrer-policy": "no-referrer",
-	"surrogate-control": "no-store",
 	"cache-control": "no-store, max-age=0, must-revalidate",
-	pragma: "no-cache",
+	connection: "keep-alive",
+	"content-length": expect.any(String),
+	"content-security-policy": "default-src 'self';frame-ancestors 'none'",
+	"content-type": expect.stringContaining("text/plain"),
+	date: expect.any(String),
+	"expect-ct": "max-age=0",
 	expires: "0",
 	"permissions-policy": "interest-cohort=()",
+	pragma: "no-cache",
+	"referrer-policy": "no-referrer",
+	"strict-transport-security": "max-age=31536000; includeSubDomains",
+	"surrogate-control": "no-store",
 	vary: "Origin, accept-encoding",
+	"x-content-type-options": "nosniff",
+	"x-dns-prefetch-control": "off",
+	"x-download-options": "noopen",
+	"x-frame-options": "SAMEORIGIN",
+	"x-permitted-cross-domain-policies": "none",
 	"x-ratelimit-limit": expect.any(Number),
 	"x-ratelimit-remaining": expect.any(Number),
 	"x-ratelimit-reset": expect.any(Number),
-	"content-type": expect.stringContaining("text/plain"),
-	"content-length": expect.any(String),
-	date: expect.any(String),
-	connection: "keep-alive",
 };
 
 const expResHeadersRedirect = {
@@ -48,10 +49,6 @@ delete expResHeadersRedirect["content-type"];
 const expResHeadersJson = {
 	...expResHeaders,
 	...{ "content-type": expect.stringContaining("application/json") },
-};
-
-const headers = {
-	accept: "text/html",
 };
 
 const mockParams = {
@@ -86,264 +83,170 @@ describe("Server Deployment", () => {
 		let server;
 		let config;
 
-		beforeAll(async () => {
-			Object.assign(process.env, {
-				SERVICE_REDIRECT_URL: "http://127.0.0.1:3001/esp/#!/launch?",
-			});
-
-			config = await getConfig();
-			delete config.keycloak;
-		});
-
-		beforeEach(async () => {
-			server = Fastify();
-			server.register(startServer, config);
-			await server.ready();
-		});
-
-		afterEach(async () => {
-			await server.close();
-		});
-
-		describe("/admin/healthcheck Route", () => {
-			test("Should return `ok`", async () => {
-				const response = await server.inject({
-					method: "GET",
-					url: "/admin/healthcheck",
-					headers: {
-						accept: "text/plain",
-					},
+		["development", "production"].forEach((environment) => {
+			beforeAll(async () => {
+				Object.assign(process.env, {
+					NODE_ENV: environment,
+					SERVICE_REDIRECT_URL:
+						"http://127.0.0.1:3001/esp/#!/launch?",
 				});
 
-				expect(response.payload).toEqual("ok");
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeaders)
-				);
-				expect(response.statusCode).toEqual(200);
+				config = await getConfig();
+				delete config.keycloak;
 			});
 
-			test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
-				const response = await server.inject({
-					method: "GET",
-					url: "/admin/healthcheck",
-					headers: {
-						accept: "application/javascript",
-					},
-				});
-
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeadersJson)
-				);
-				expect(response.statusCode).toEqual(406);
-			});
-		});
-
-		describe("/redirect Route", () => {
-			test("Should redirect to 'redirectUrl' with required params present", async () => {
-				const response = await server.inject({
-					method: "GET",
-					url: "/redirect",
-					headers,
-					query: mockParams,
-				});
-
-				const resQueryString = {};
-				Array.from(
-					new URLSearchParams(
-						response.headers.location.substring(
-							response.headers.location.indexOf("?") + 1,
-							response.headers.location.length
-						)
-					).entries()
-				).forEach((element) => {
-					resQueryString[element[0]] = element[1];
-				});
-
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeadersRedirect)
-				);
-
-				expect(resQueryString).toEqual(
-					expect.objectContaining({
-						location:
-							"https://fhir.nhs.uk/Id/ods-organization-code|RA4",
-						practitioner:
-							"https://sider.nhs.uk/auth|obsservice.test@ydh.nhs.uk",
-						enc: expect.any(String),
-					})
-				);
-
-				expect(response.statusCode).toEqual(302);
+			beforeEach(async () => {
+				server = Fastify();
+				server.register(startServer, config);
+				await server.ready();
 			});
 
-			test("Should return HTTP status code 400 if any required query string parameter is missing", async () => {
-				const altMockParams = cloneDeep(mockParams);
-				delete altMockParams.FromIconProfile;
-				delete altMockParams.NOUNLOCK;
-				delete altMockParams.TPAGID;
-
-				const results = await Promise.all(
-					Object.keys(altMockParams).map(async (key) => {
-						const scrubbedParams = { ...altMockParams };
-						// eslint-disable-next-line security/detect-object-injection
-						delete scrubbedParams[key];
-
-						const response = await server.inject({
-							method: "GET",
-							url: "/redirect",
-							headers,
-							query: scrubbedParams,
-						});
-
-						return response.statusCode;
-					})
-				);
-
-				expect(results).toEqual(
-					expect.arrayContaining([400, 400, 400, 400])
-				);
-			});
-
-			test("Should return HTTP status code 400 if any required query string parameter does not match expected pattern", async () => {
-				const altMockParams = cloneDeep(mockParams);
-				delete altMockParams.FromIconProfile;
-				delete altMockParams.NOUNLOCK;
-				delete altMockParams.TPAGID;
-
-				const results = await Promise.all(
-					Object.keys(altMockParams).map(async (key) => {
-						const scrubbedParams = { ...altMockParams };
-						// eslint-disable-next-line security/detect-object-injection
-						scrubbedParams[key] = "test";
-
-						const response = await server.inject({
-							method: "GET",
-							url: "/redirect",
-							headers,
-							query: scrubbedParams,
-						});
-
-						return response.statusCode;
-					})
-				);
-
-				expect(results).toEqual(
-					expect.arrayContaining([400, 400, 400, 400])
-				);
-			});
-
-			test("Should return HTTP status code 406 if content-type in `Accept` request header unsupported", async () => {
-				const response = await server.inject({
-					method: "GET",
-					url: "/redirect",
-					headers: {
-						accept: "application/javascript",
-					},
-					query: mockParams,
-				});
-
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeadersJson)
-				);
-				expect(response.statusCode).toEqual(406);
-			});
-		});
-	});
-
-	describe("End-To-End - Production Server", () => {
-		let server;
-		let config;
-
-		beforeAll(async () => {
-			Object.assign(process.env, {
-				NODE_ENV: "production",
-				SERVICE_REDIRECT_URL: "http://127.0.0.1:3001/esp/#!/launch?",
-			});
-
-			config = await getConfig();
-		});
-
-		beforeEach(async () => {
-			server = Fastify();
-			server.register(startServer, config);
-			await server.ready();
-		});
-
-		afterEach(async () => {
-			await server.close();
-		});
-
-		describe("/admin/healthcheck Route", () => {
-			test("Should return `ok`", async () => {
-				const response = await server.inject({
-					method: "GET",
-					url: "/admin/healthcheck",
-					headers: {
-						accept: "text/plain",
-					},
-				});
-
-				expect(response.payload).toEqual("ok");
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeaders)
-				);
-				expect(response.statusCode).toEqual(200);
-			});
-
-			test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
-				const response = await server.inject({
-					method: "GET",
-					url: "/admin/healthcheck",
-					headers: {
-						accept: "application/javascript",
-					},
-				});
-
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeadersJson)
-				);
-				expect(response.statusCode).toEqual(406);
-			});
-		});
-
-		describe("/redirect Route", () => {
-			test("Should redirect to 'redirectUrl' with required params present as production server", async () => {
-				const response = await server.inject({
-					method: "GET",
-					url: "/redirect",
-					headers,
-					query: mockParams,
-				});
-
-				const resQueryString = {};
-				Array.from(
-					new URLSearchParams(
-						response.headers.location.substring(
-							response.headers.location.indexOf("?") + 1,
-							response.headers.location.length
-						)
-					).entries()
-				).forEach((element) => {
-					resQueryString[element[0]] = element[1];
-				});
-
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeadersRedirect)
-				);
-
-				expect(resQueryString).toEqual(
-					expect.objectContaining({
-						location:
-							"https://fhir.nhs.uk/Id/ods-organization-code|RA4",
-						practitioner:
-							"https://sider.nhs.uk/auth|obsservice.test@ydh.nhs.uk",
-						enc: expect.any(String),
-					})
-				);
-
-				expect(response.statusCode).toEqual(302);
-
+			afterEach(async () => {
 				await server.close();
+			});
+
+			describe("/admin/healthcheck Route", () => {
+				test("Should return `ok`", async () => {
+					const response = await server.inject({
+						method: "GET",
+						url: "/admin/healthcheck",
+						headers: {
+							accept: "text/plain",
+						},
+					});
+
+					expect(response.payload).toBe("ok");
+					expect(response.headers).toEqual(expResHeaders);
+					expect(response.statusCode).toBe(200);
+				});
+
+				test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
+					const response = await server.inject({
+						method: "GET",
+						url: "/admin/healthcheck",
+						headers: {
+							accept: "application/javascript",
+						},
+					});
+
+					expect(JSON.parse(response.payload)).toEqual({
+						error: "Not Acceptable",
+						message: "Not Acceptable",
+						statusCode: 406,
+					});
+					expect(response.headers).toEqual(expResHeadersJson);
+					expect(response.statusCode).toBe(406);
+				});
+			});
+
+			describe("/redirect Route", () => {
+				test("Should redirect to 'redirectUrl' with required params present", async () => {
+					const response = await server.inject({
+						method: "GET",
+						url: "/redirect",
+						headers: { accept: "text/html" },
+						query: mockParams,
+					});
+
+					const resQueryString = {};
+					Array.from(
+						new URLSearchParams(
+							response.headers.location.substring(
+								response.headers.location.indexOf("?") + 1,
+								response.headers.location.length
+							)
+						).entries()
+					).forEach((element) => {
+						resQueryString[element[0]] = element[1];
+					});
+
+					expect(resQueryString).toEqual(
+						expect.objectContaining({
+							location:
+								"https://fhir.nhs.uk/Id/ods-organization-code|RA4",
+							practitioner:
+								"https://sider.nhs.uk/auth|obsservice.test@ydh.nhs.uk",
+							enc: expect.any(String),
+						})
+					);
+					expect(response.headers).toEqual(expResHeadersRedirect);
+					expect(response.statusCode).toBe(302);
+				});
+
+				test("Should return HTTP status code 400 if any required query string parameter is missing", async () => {
+					const altMockParams = cloneDeep(mockParams);
+					delete altMockParams.FromIconProfile;
+					delete altMockParams.NOUNLOCK;
+					delete altMockParams.TPAGID;
+
+					const results = await Promise.all(
+						Object.keys(altMockParams).map(async (key) => {
+							const scrubbedParams = { ...altMockParams };
+							// eslint-disable-next-line security/detect-object-injection
+							delete scrubbedParams[key];
+
+							const response = await server.inject({
+								method: "GET",
+								url: "/redirect",
+								headers: { accept: "text/html" },
+								query: scrubbedParams,
+							});
+
+							return response.statusCode;
+						})
+					);
+
+					expect(results).toEqual(
+						expect.arrayContaining([400, 400, 400, 400])
+					);
+				});
+
+				test("Should return HTTP status code 400 if any required query string parameter does not match expected pattern", async () => {
+					const altMockParams = cloneDeep(mockParams);
+					delete altMockParams.FromIconProfile;
+					delete altMockParams.NOUNLOCK;
+					delete altMockParams.TPAGID;
+
+					const results = await Promise.all(
+						Object.keys(altMockParams).map(async (key) => {
+							const scrubbedParams = { ...altMockParams };
+							// eslint-disable-next-line security/detect-object-injection
+							scrubbedParams[key] = "test";
+
+							const response = await server.inject({
+								method: "GET",
+								url: "/redirect",
+								headers: { accept: "text/html" },
+								query: scrubbedParams,
+							});
+
+							return response.statusCode;
+						})
+					);
+
+					expect(results).toEqual(
+						expect.arrayContaining([400, 400, 400, 400])
+					);
+				});
+
+				test("Should return HTTP status code 406 if content-type in `Accept` request header unsupported", async () => {
+					const response = await server.inject({
+						method: "GET",
+						url: "/redirect",
+						headers: {
+							accept: "application/javascript",
+						},
+						query: mockParams,
+					});
+
+					expect(JSON.parse(response.payload)).toEqual({
+						error: "Not Acceptable",
+						message: "Not Acceptable",
+						statusCode: 406,
+					});
+					expect(response.headers).toEqual(expResHeadersJson);
+					expect(response.statusCode).toBe(406);
+				});
 			});
 		});
 	});
@@ -384,11 +287,9 @@ describe("Server Deployment", () => {
 					},
 				});
 
-				expect(response.payload).toEqual("ok");
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeaders)
-				);
-				expect(response.statusCode).toEqual(200);
+				expect(response.payload).toBe("ok");
+				expect(response.headers).toEqual(expResHeaders);
+				expect(response.statusCode).toBe(200);
 			});
 
 			test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
@@ -400,10 +301,13 @@ describe("Server Deployment", () => {
 					},
 				});
 
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeadersJson)
-				);
-				expect(response.statusCode).toEqual(406);
+				expect(JSON.parse(response.payload)).toEqual({
+					error: "Not Acceptable",
+					message: "Not Acceptable",
+					statusCode: 406,
+				});
+				expect(response.headers).toEqual(expResHeadersJson);
+				expect(response.statusCode).toBe(406);
 			});
 		});
 
@@ -412,14 +316,14 @@ describe("Server Deployment", () => {
 				const response = await server.inject({
 					method: "GET",
 					url: "/redirect",
-					headers,
+					headers: { accept: "text/html" },
 					query: mockParams,
 				});
 
 				expect(response.headers).toEqual(
 					expect.objectContaining(expResHeadersRedirect)
 				);
-				expect(response.statusCode).toEqual(302);
+				expect(response.statusCode).toBe(302);
 
 				await server.close();
 			});
@@ -462,11 +366,9 @@ describe("Server Deployment", () => {
 					},
 				});
 
-				expect(response.payload).toEqual("ok");
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeaders)
-				);
-				expect(response.statusCode).toEqual(200);
+				expect(response.payload).toBe("ok");
+				expect(response.headers).toEqual(expResHeaders);
+				expect(response.statusCode).toBe(200);
 			});
 
 			test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
@@ -478,10 +380,13 @@ describe("Server Deployment", () => {
 					},
 				});
 
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeadersJson)
-				);
-				expect(response.statusCode).toEqual(406);
+				expect(JSON.parse(response.payload)).toEqual({
+					error: "Not Acceptable",
+					message: "Not Acceptable",
+					statusCode: 406,
+				});
+				expect(response.headers).toEqual(expResHeadersJson);
+				expect(response.statusCode).toBe(406);
 			});
 		});
 
@@ -490,14 +395,17 @@ describe("Server Deployment", () => {
 				const response = await server.inject({
 					method: "GET",
 					url: "/redirect",
-					headers,
+					headers: { accept: "text/html" },
 					query: mockParams,
 				});
 
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeadersJson)
-				);
-				expect(response.statusCode).toEqual(500);
+				expect(JSON.parse(response.payload)).toEqual({
+					error: "Internal Server Error",
+					message: "Unable to retrieve Keycloak access token(s)",
+					statusCode: 500,
+				});
+				expect(response.headers).toEqual(expResHeadersJson);
+				expect(response.statusCode).toBe(500);
 
 				await server.close();
 			});
