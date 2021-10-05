@@ -54,10 +54,10 @@ The service should now be up and running on the port set in the config. You shou
 ```json
 {
 	"level": "info",
-	"time": "2021-08-11T10:48:36.471Z",
-	"pid": 3572,
+	"time": "2021-10-05T08:12:51.571Z",
+	"pid": 63372,
 	"hostname": "MYCOMPUTER",
-	"msg": "Server listening at http://0.0.0.0:8204"
+	"msg": "Server listening at http://[::]:8204"
 }
 ```
 
@@ -74,8 +74,8 @@ In stdout, or the log file, you will see something similar to the following retu
 ```json
 {
 	"level": "info",
-	"time": "2021-08-11T10:49:15.608Z",
-	"pid": 3572,
+	"time": "2021-10-05T08:14:13.556Z",
+	"pid": 63372,
 	"hostname": "MYCOMPUTER",
 	"reqId": "req-1",
 	"req": {
@@ -84,12 +84,12 @@ In stdout, or the log file, you will see something similar to the following retu
 		"url": "/redirect?patient=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fnhs-number%7C9449304513&birthdate=1934-10-23&location=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fods-organization-code%7CRA4&practitioner=https%3A%2F%2Fsider.nhs.uk%2Fauth%7Cfrazer.smith%40ydh.nhs.uk",
 		"headers": {
 			"host": "localhost:8204",
-			"user-agent": "insomnia/2021.4.1",
+			"user-agent": "insomnia/2021.5.3",
 			"accept": "text/html",
 			"accept-encoding": "br, gzip, deflate"
 		},
-		"remoteAddress": "127.0.0.1",
-		"remotePort": 52790
+		"remoteAddress": "::1",
+		"remotePort": 59239
 	},
 	"msg": "incoming request"
 }
@@ -98,8 +98,8 @@ In stdout, or the log file, you will see something similar to the following retu
 ```json
 {
 	"level": "info",
-	"time": "2021-08-11T10:49:15.628Z",
-	"pid": 3572,
+	"time": "2021-10-05T08:14:13.586Z",
+	"pid": 63372,
 	"hostname": "MYCOMPUTER",
 	"reqId": "req-1",
 	"res": {
@@ -121,14 +121,14 @@ In stdout, or the log file, you will see something similar to the following retu
 			"expires": "0",
 			"permissions-policy": "interest-cohort=()",
 			"vary": "Origin",
-			"x-ratelimit-limit": 2500,
-			"x-ratelimit-remaining": 2499,
+			"x-ratelimit-limit": 1000,
+			"x-ratelimit-remaining": 999,
 			"x-ratelimit-reset": 60,
 			"location": "https://pyrusapps.blackpear.com/esp/#!/launch?location=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fods-organization-code%7CRA4&practitioner=https%3A%2F%2Fsider.nhs.uk%2Fauth%7Cfrazer.smith%40ydh.nhs.uk&enc=k01%7Ca6c12e7c5969ab5829a3f91ba02c302a0b4f598ad6c03709fbeeb52686a007c99f8b13add1472176b06f1471a0343f2d904d6f41c5776fa6d340834c8ebef92d41dcc164c6c8273854f404fd24b1ec8d4e6829c4a9b76aa08d8a5b63d806fb01",
 			"content-length": "0"
 		}
 	},
-	"responseTime": 19.167999982833862,
+	"responseTime": 27.195500135421753,
 	"msg": "request completed"
 }
 ```
