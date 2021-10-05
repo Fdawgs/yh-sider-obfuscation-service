@@ -34,21 +34,17 @@ const expResHeaders = {
 
 const expResHeadersRedirect = {
 	...expResHeaders,
-	...{
-		"content-security-policy":
-			"default-src 'self';base-uri 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
-		location: expect.stringContaining(
-			"http://127.0.0.1:3001/esp/#!/launch?"
-		),
-		vary: "Origin",
-		"x-xss-protection": "0",
-	},
+	"content-security-policy":
+		"default-src 'self';base-uri 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
+	location: expect.stringContaining("http://127.0.0.1:3001/esp/#!/launch?"),
+	vary: "Origin",
+	"x-xss-protection": "0",
 };
 delete expResHeadersRedirect["content-type"];
 
 const expResHeadersJson = {
 	...expResHeaders,
-	...{ "content-type": expect.stringContaining("application/json") },
+	"content-type": expect.stringContaining("application/json"),
 };
 
 const mockParams = {
@@ -160,15 +156,13 @@ describe("Server Deployment", () => {
 						resQueryString[element[0]] = element[1];
 					});
 
-					expect(resQueryString).toEqual(
-						expect.objectContaining({
-							location:
-								"https://fhir.nhs.uk/Id/ods-organization-code|RA4",
-							practitioner:
-								"https://sider.nhs.uk/auth|obsservice.test@ydh.nhs.uk",
-							enc: expect.any(String),
-						})
-					);
+					expect(resQueryString).toMatchObject({
+						location:
+							"https://fhir.nhs.uk/Id/ods-organization-code|RA4",
+						practitioner:
+							"https://sider.nhs.uk/auth|obsservice.test@ydh.nhs.uk",
+						enc: expect.any(String),
+					});
 					expect(response.headers).toEqual(expResHeadersRedirect);
 					expect(response.statusCode).toBe(302);
 				});
@@ -320,9 +314,7 @@ describe("Server Deployment", () => {
 					query: mockParams,
 				});
 
-				expect(response.headers).toEqual(
-					expect.objectContaining(expResHeadersRedirect)
-				);
+				expect(response.headers).toEqual(expResHeadersRedirect);
 				expect(response.statusCode).toBe(302);
 
 				await server.close();
