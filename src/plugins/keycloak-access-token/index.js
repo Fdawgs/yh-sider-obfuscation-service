@@ -1,6 +1,6 @@
 /* eslint-disable jsdoc/require-param-description */
 const fp = require("fastify-plugin");
-const request = require("axios");
+const request = require("axios").default;
 const { URLSearchParams } = require("url");
 
 /**
