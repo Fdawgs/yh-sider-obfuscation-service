@@ -2,6 +2,42 @@
 
 All notable changes to this project will be documented in this file.
 
+### [6.2.3](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v6.2.2...v6.2.3) (2021-10-13)
+
+
+### Documentation
+
+* **readme:** update example log messages ([73aa171](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/73aa171818e9b05d05aedda5e7e67f38ff73fa05))
+
+
+### Miscellaneous
+
+* **.eslintrc:** remove inaccurate sourcetype ([#467](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/issues/467)) ([64d955c](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/64d955c95343ef8c81d2d6311819177733729b5a))
+* **.vscode:** remove deprecated settings ([#468](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/issues/468)) ([5f0aa42](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/5f0aa42017c0c856805c7901d2572d0d4c78e978))
+* apply eslint rules per line, not file-wide ([95f8748](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/95f8748a301028cd403ec4a261c26401b660e428))
+* **plugins/keycloak-access-token:** enable axios type definitions ([1c92f21](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/1c92f21447039c699970eabf49356b37a99bd7b6))
+* **server:** update inline comment re clickjacking ([57c2b63](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/57c2b631824c43b556a7c3fb61c55fa7618c2334))
+
+
+### Dependencies
+
+* **deps-dev:** bump @commitlint/cli from 13.2.0 to 13.2.1 ([1e083b6](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/1e083b638714003870eca1bb3ba577d05c66e2dc))
+* **deps-dev:** bump eslint-plugin-import from 2.24.2 to 2.25.2 ([846180d](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/846180dd6b664cb1eb92cdbda5df8dee304ed27c))
+* **deps-dev:** bump eslint-plugin-jest from 24.5.0 to 25.0.5 ([9f007bf](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/9f007bf71e55427fbe5eb667a9f9e8bd54122375))
+* **deps-dev:** bump eslint-plugin-jsdoc from 36.1.0 to 36.1.1 ([f541d68](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/f541d686b4b88c186f9c2a376856a62d44543af6))
+* **deps-dev:** bump jest from 27.2.4 to 27.2.5 ([14392c1](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/14392c10ef19f17dd9211c882e011c3826fbb1b0))
+* **deps:** bump axios from 0.21.4 to 0.22.0 ([b1a11bf](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/b1a11bf848b0f85cbbcff51c4e3f2a44b5a08090))
+* **deps:** bump axios from 0.22.0 to 0.23.0 ([1e582aa](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/1e582aa870a1ff46a6632a85c078d7b46276acc6))
+* **deps:** bump fastify-static from 4.2.3 to 4.2.4 ([f114928](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/f114928545bcae5174828585bcab28e6f540884f))
+* **deps:** bump fastify-static from 4.2.4 to 4.4.1 ([25df5fe](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/25df5feb6c3355535b182b5348e71d7c37877c61))
+* **deps:** bump fastify-swagger from 4.12.3 to 4.12.4 ([3e274f1](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/3e274f1476a85d89fa19887b5dfdb69244e7df6f))
+* **deps:** bump GoogleCloudPlatform/release-please-action ([dd998a7](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/dd998a72355e99473ac2b7a684b310e7483b6817))
+* **deps:** bump hadolint/hadolint-action from 1.5.0 to 1.6.0 ([737dec3](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/737dec3ed57cfe732d1c84c8089187a42a520e61))
+* **deps:** bump obfuscated-querystring from `69d5602` to `5bb715a` ([6d53d9b](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/6d53d9b6755108cc824693648171184ba68cb7da))
+* **deps:** bump under-pressure from 5.7.0 to 5.8.0 ([fad760f](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/fad760fdcdd2270b51e11948be7b37384604909a))
+* **deps:** bump wagoid/commitlint-github-action from 4.1.4 to 4.1.5 ([f414455](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/f414455aa700854ff2a883451a55f5d17f46c607))
+* **deps:** bump wagoid/commitlint-github-action from 4.1.5 to 4.1.9 ([3c85f9b](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/3c85f9b103ce0565ec334ec1ed3d2085ef73112a))
+
 ### [6.2.2](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v6.2.1...v6.2.2) (2021-10-01)
 
 
