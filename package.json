@@ -105,6 +105,6 @@
     "obfuscated-querystring": "git+https://github.com/BlackPearSw/obfuscated-querystring.git",
     "pino": "^6.13.3",
     "pino-pretty": "^7.0.1",
-    "under-pressure": "^5.7.0"
+    "under-pressure": "^5.8.0"
   }
 }
