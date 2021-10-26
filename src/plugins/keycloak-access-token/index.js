@@ -24,8 +24,8 @@ const { URLSearchParams } = require("url");
  * @param {string} options.keycloak.requestToken.form.client_id
  * @param {string} options.keycloak.requestToken.form.client_secret
  * @param {string} options.keycloak.requestToken.form.grant_type
- * @param {string} options.keycloak.requestToken.form.request_subject
- * @param {string} options.keycloak.requestToken.form.request_token_type
+ * @param {string} options.keycloak.requestToken.form.requested_subject
+ * @param {string} options.keycloak.requestToken.form.requested_token_type
  * @param {string} options.keycloak.requestToken.url
  */
 async function plugin(server, options) {
