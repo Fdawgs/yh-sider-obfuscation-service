@@ -37,7 +37,6 @@ const redirectGetSchema = {
 		.prop(
 			"location",
 			S.string()
-				.default("https://fhir.nhs.uk/Id/ods-organization-code|RA4")
 				.description(
 					"The Identifier of the organisation or site of the practitioner launching the app"
 				)
