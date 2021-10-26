@@ -7,6 +7,7 @@ const S = require("fluent-json-schema");
 const fsp = require("fs").promises;
 const pino = require("pino");
 const rotatingLogStream = require("file-stream-rotator");
+const secJSON = require("secure-json-parse");
 
 /**
  * Use own AJV instance rather than included one in `env-schema`,
@@ -332,7 +333,7 @@ async function getConfig() {
 				name: env.OBFUSCATION_KEY_NAME,
 				value: env.OBFUSCATION_KEY_VALUE,
 			},
-			obfuscate: JSON.parse(env.OBFUSCATION_QUERYSTRING_KEY_ARRAY),
+			obfuscate: secJSON.parse(env.OBFUSCATION_QUERYSTRING_KEY_ARRAY),
 		},
 	};
 
@@ -349,7 +350,9 @@ async function getConfig() {
 	}
 
 	if (env.RATE_LIMIT_EXCLUDED_ARRAY) {
-		config.rateLimit.allowList = JSON.parse(env.RATE_LIMIT_EXCLUDED_ARRAY);
+		config.rateLimit.allowList = secJSON.parse(
+			env.RATE_LIMIT_EXCLUDED_ARRAY
+		);
 	}
 
 	if (String(env.CORS_ALLOW_CREDENTIALS) === "true") {
