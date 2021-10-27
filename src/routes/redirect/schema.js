@@ -16,6 +16,7 @@ const redirectGetSchema = {
 	operationId: "getRedirect",
 	produces: ["text/html"],
 	query: S.object()
+		.additionalProperties(false)
 		.prop(
 			"birthdate",
 			S.string()
