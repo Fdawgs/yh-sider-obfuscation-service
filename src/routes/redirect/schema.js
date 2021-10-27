@@ -30,9 +30,7 @@ const redirectGetSchema = {
 			S.string()
 				.description("The Identifier for the patient")
 				.examples(["https://fhir.nhs.uk/Id/nhs-number|9999999999"])
-				.pattern(
-					"^https:\\/\\/fhir\\.nhs\\.uk\\/Id\\/nhs-number\\|\\d{10}$"
-				)
+				.pattern(/^https:\/\/fhir\.nhs\.uk\/Id\/nhs-number\|\d{10}$/m)
 		)
 		.prop(
 			"location",
@@ -42,7 +40,7 @@ const redirectGetSchema = {
 				)
 				.examples(["https://fhir.nhs.uk/Id/ods-organization-code|RA4"])
 				.pattern(
-					"^https:\\/\\/fhir\\.nhs\\.uk\\/Id\\/ods-organization-code\\|\\w{1,9}$"
+					/^https:\/\/fhir\.nhs\.uk\/Id\/ods-organization-code\|\w{1,9}$/m
 				)
 		)
 		.prop(
