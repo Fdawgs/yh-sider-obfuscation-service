@@ -51,8 +51,9 @@ const redirectGetSchema = {
 					"The Identifier of the practitioner launching the app"
 				)
 				.examples(["https://sider.nhs.uk/auth|frazer.smith@ydh.nhs.uk"])
+				// See https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address
 				.pattern(
-					'^https:\\/\\/sider\\.nhs\\.uk\\/auth\\|(([^<>()\\[\\]\\.,;:\\s@"]+(\\.[^<>()\\[\\]\\.,;:\\s@"]+)*)|(".+"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$'
+					/^https:\/\/sider\.nhs\.uk\/auth\|[\w.!#$%&'*+/=?^`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/m
 				)
 		)
 		.required(["birthdate", "patient", "location", "practitioner"]),
