@@ -2,6 +2,40 @@
 
 All notable changes to this project will be documented in this file.
 
+### [6.2.4](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v6.2.3...v6.2.4) (2021-10-27)
+
+
+### Bug Fixes
+
+* **config:** remove additional env variables ([#490](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/issues/490)) ([a31df81](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/a31df812f5f787305b4ee3ff2197275037de846c))
+* **routes/redirect:** disallow underscores in `location` param pattern ([ff7d7fc](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/ff7d7fc9ce3e06b6cd7e33d157c65b8f718167b5))
+* **routes/redirect:** remove additional properties from req query ([#489](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/issues/489)) ([e6dab48](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/e6dab48678f86d69aa9a08457b301381b97134b0))
+* **routes/redirect:** remove default for `location` param ([#485](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/issues/485)) ([755a9fe](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/755a9fe5fd27c66802822d8ce01be58414a50b7e))
+
+
+### Dependencies
+
+* **deps:** add secure-json-parse ([2040863](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/204086352070cda46fa148dbd5f463350eac858d))
+
+
+### Documentation
+
+* bump coc from v2.0.0 to v2.1.0 ([#486](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/issues/486)) ([db9bab1](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/db9bab175a21d472e6816daee09864a7fc64efc2))
+
+
+### Miscellaneous
+
+* **.eslintrc:** remove redundant `impliedStrict` option ([#481](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/issues/481)) ([b71332c](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/b71332cc00b7683c1382f4fad742e4a38b950e19))
+* **plugins/keycloak-access-token:** correct jsdoc tag param name ([9bafcef](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/9bafcefe019c5caa01994145f5b2e0d197fc63e1))
+* **routes/redirect:** use raw regex over string for pattern ([bcd2cef](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/bcd2cefca0ac22af3bad39c3f896752f317ea4f7))
+* **routes:** update inline comment re injection attacks ([1162bfc](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/1162bfc7cd3bfe0f9b9bdc148bdb4c59e9dfef2f))
+
+
+### Improvements
+
+* **config:** use secure-json-parse for json parsing ([167a172](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/167a172c02487a303ea2f7473d0a31ac8fcd38e4))
+* **routes/redirect:** use whatwg email validation regex ([#491](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/issues/491)) ([1319bd0](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/1319bd09780ef31c2e4355e23990b725bfcd1836))
+
 ### [6.2.3](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v6.2.2...v6.2.3) (2021-10-13)
 
 
