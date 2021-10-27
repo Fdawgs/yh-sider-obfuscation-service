@@ -63,6 +63,7 @@ async function getConfig() {
 		ajv,
 		dotenv: true,
 		schema: S.object()
+			.additionalProperties(false)
 			.prop("NODE_ENV", S.string())
 
 			// Service
