@@ -40,7 +40,7 @@ const redirectGetSchema = {
 				)
 				.examples(["https://fhir.nhs.uk/Id/ods-organization-code|RA4"])
 				.pattern(
-					/^https:\/\/fhir\.nhs\.uk\/Id\/ods-organization-code\|\w{1,9}$/m
+					/^https:\/\/fhir\.nhs\.uk\/Id\/ods-organization-code\|[a-zA-Z0-9]{1,9}$/m
 				)
 		)
 		.prop(
