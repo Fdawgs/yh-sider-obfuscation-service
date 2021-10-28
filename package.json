@@ -75,7 +75,7 @@
     "faker": "^5.5.3",
     "fastify-formbody": "^5.1.0",
     "glob": "^7.2.0",
-    "husky": "^7.0.2",
+    "husky": "^7.0.4",
     "jest": "^27.3.1",
     "license-checker": "^25.0.1",
     "lodash": "^4.17.21",
