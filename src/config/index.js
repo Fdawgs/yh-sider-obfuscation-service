@@ -264,13 +264,6 @@ async function getConfig() {
 			timeWindow: 60000,
 		},
 		swagger: {
-			routePrefix: "/docs",
-			// Only expose for test/development environments
-			exposeRoute: env.NODE_ENV.toLowerCase() !== "production",
-			staticCSP: true,
-			uiConfig: {
-				layout: "BaseLayout",
-			},
 			openapi: {
 				info: {
 					title: "YDH SIDeR Obfuscation Service",
