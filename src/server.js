@@ -86,6 +86,12 @@ async function plugin(server, config) {
 			options: { ...config, prefix: "admin" },
 		})
 
+		// Import and register docs routes
+		.register(autoLoad, {
+			dir: path.join(__dirname, "routes", "docs"),
+			options: { ...config, prefix: "docs" },
+		})
+
 		/**
 		 * Encapsulate plugins and routes into secured child context, so that admin and docs
 		 * routes do not inherit Keycloak or querystring obfuscation plugins.
