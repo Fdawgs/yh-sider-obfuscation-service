@@ -41,6 +41,7 @@ async function route(server, options) {
 			const espUrl =
 				options.redirectUrl + new URLSearchParams(req.query).toString();
 			server.log.debug(espUrl);
+			// eslint-disable-next-line security-node/detect-dangerous-redirects
 			res.redirect(espUrl);
 		},
 	});
