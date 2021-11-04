@@ -34,7 +34,7 @@ describe("Keycloak Access Token Retrieval Plugin", () => {
 			await mockKeycloakServer.listen(3000);
 			console.log("Mock Keycloak server listening on 3000");
 		} catch (err) {
-			console.log("Error starting Keycloak server:", err);
+			console.log("Error starting mock Keycloak server:", err);
 			process.exit(1);
 		}
 	});
