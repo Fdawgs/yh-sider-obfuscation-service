@@ -105,7 +105,7 @@ describe("Keycloak Access Token Retrieval Plugin", () => {
 
 		expect(JSON.parse(response.payload)).toEqual({
 			error: "Internal Server Error",
-			message: "Unable to retrieve Keycloak access token(s)",
+			message: "Internal Server Error",
 			statusCode: 500,
 		});
 		expect(response.statusCode).toBe(500);

@@ -57,9 +57,7 @@ async function plugin(server, options) {
 				return;
 			} catch (err) {
 				server.log.error(err);
-				res.internalServerError(
-					"Unable to retrieve Keycloak access token(s)"
-				);
+				res.internalServerError();
 			}
 		});
 	}
