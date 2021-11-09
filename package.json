@@ -103,7 +103,7 @@
     "file-stream-rotator": "^0.5.7",
     "fluent-json-schema": "^3.0.1",
     "obfuscated-querystring": "git+https://github.com/BlackPearSw/obfuscated-querystring.git",
-    "pino": "^7.0.5",
+    "pino": "^7.1.0",
     "pino-pretty": "^7.1.0",
     "secure-json-parse": "^2.4.0",
     "under-pressure": "^5.8.0",
