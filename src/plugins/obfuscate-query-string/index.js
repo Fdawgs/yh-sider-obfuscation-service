@@ -31,7 +31,7 @@ async function plugin(server, options) {
 			req.query = result;
 		} catch (err) {
 			server.log.error(err);
-			res.internalServerError();
+			throw res.internalServerError();
 		}
 
 		next();

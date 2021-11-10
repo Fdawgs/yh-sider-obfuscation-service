@@ -57,7 +57,7 @@ async function plugin(server, options) {
 				return;
 			} catch (err) {
 				server.log.error(err);
-				res.internalServerError();
+				throw res.internalServerError();
 			}
 		});
 	}
