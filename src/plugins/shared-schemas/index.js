@@ -50,10 +50,7 @@ async function plugin(server) {
 					.title("500 Internal Server Error Response")
 					.prop("statusCode", S.number().const(500))
 					.prop("error", S.string().const("Internal Server Error"))
-					.prop(
-						"message",
-						S.string().examples(["Receiving endpoint missing"])
-					)
+					.prop("message", S.string().const("Internal Server Error"))
 			)
 			.definition(
 				"serviceUnavailable",
