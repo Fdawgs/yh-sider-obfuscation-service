@@ -77,7 +77,7 @@ describe("Query String Obfuscation plugin", () => {
 
 		expect(JSON.parse(response.payload)).toEqual({
 			error: "Internal Server Error",
-			message: "Internal Server Error",
+			message: expect.any(String),
 			statusCode: 500,
 		});
 		expect(response.statusCode).toBe(500);
