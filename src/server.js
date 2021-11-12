@@ -111,16 +111,19 @@ async function plugin(server, config) {
 				});
 		})
 
-		// eslint-disable-next-line promise/prefer-await-to-callbacks
-		.setErrorHandler((err, req, res) => {
-			if (res.statusCode >= 500) {
-				req.log.error({ req, res, err }, err && err.message);
-				res.internalServerError();
-			} else {
-				req.log.info({ req, res, err }, err && err.message);
-				res.send(err);
+		// Errors thrown by routes and plugins are caught here
+		.setErrorHandler(
+			// eslint-disable-next-line promise/prefer-await-to-callbacks
+			(err, req, res) => {
+				if (res.statusCode >= 500) {
+					req.log.error({ req, res, err }, err && err.message);
+					res.internalServerError();
+				} else {
+					req.log.info({ req, res, err }, err && err.message);
+					res.send(err);
+				}
 			}
-		});
+		);
 }
 
 module.exports = fp(plugin, { fastify: "3.x", name: "server" });
