@@ -36,5 +36,4 @@ async function plugin(server, options) {
 module.exports = fp(plugin, {
 	fastify: "3.x",
 	name: "obfuscate-query-string",
-	dependencies: ["fastify-sensible"],
 });

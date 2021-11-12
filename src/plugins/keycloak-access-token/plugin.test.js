@@ -3,7 +3,6 @@
 const cloneDeep = require("lodash").cloneDeep;
 const faker = require("faker/locale/en_GB");
 const Fastify = require("fastify");
-const sensible = require("fastify-sensible");
 const plugin = require(".");
 
 const {
@@ -41,7 +40,6 @@ describe("Keycloak Access Token Retrieval Plugin", () => {
 
 	beforeEach(() => {
 		server = Fastify();
-		server.register(sensible);
 
 		server.get("/", (req, res) => {
 			res.send(req.query);
