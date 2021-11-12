@@ -31,34 +31,28 @@ const { URLSearchParams } = require("url");
 async function plugin(server, options) {
 	// Do not add preHandler hook and attempt to retrieve access tokens if Keycloak not enabled
 	if (options?.keycloak?.enabled === true) {
-		server.addHook("preHandler", async (req, res) => {
-			try {
-				const { requestToken, serviceAuthorisation } = options.keycloak;
+		server.addHook("preHandler", async (req) => {
+			const { requestToken, serviceAuthorisation } = options.keycloak;
 
-				// Service authorisation to retrieve subject access token
-				const serviceAuthResponse = await request.post(
-					serviceAuthorisation.url,
-					new URLSearchParams(serviceAuthorisation.form).toString()
-				);
+			// Service authorisation to retrieve subject access token
+			const serviceAuthResponse = await request.post(
+				serviceAuthorisation.url,
+				new URLSearchParams(serviceAuthorisation.form).toString()
+			);
 
-				requestToken.form.subject_token =
-					serviceAuthResponse.data.access_token;
+			requestToken.form.subject_token =
+				serviceAuthResponse.data.access_token;
 
-				// Expects the practitioner query to be in [system]|[code] format
-				requestToken.form.requested_subject =
-					req.query.practitioner.split("|")[1];
+			// Expects the practitioner query to be in [system]|[code] format
+			requestToken.form.requested_subject =
+				req.query.practitioner.split("|")[1];
 
-				// Request access token for user
-				const userAccessResponse = await request.post(
-					requestToken.url,
-					new URLSearchParams(requestToken.form).toString()
-				);
-				req.query.access_token = userAccessResponse.data.access_token;
-				return;
-			} catch (err) {
-				server.log.error(err);
-				throw res.internalServerError();
-			}
+			// Request access token for user
+			const userAccessResponse = await request.post(
+				requestToken.url,
+				new URLSearchParams(requestToken.form).toString()
+			);
+			req.query.access_token = userAccessResponse.data.access_token;
 		});
 	}
 }

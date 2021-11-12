@@ -15,24 +15,19 @@ const { URLSearchParams } = require("url");
  */
 async function plugin(server, options) {
 	server.addHook("preHandler", (req, res, next) => {
-		try {
-			const obfuscatedParams = new URLSearchParams(
-				obfuscate(
-					new URLSearchParams(req.query).toString(),
-					options.obfuscation
-				)
-			);
+		const obfuscatedParams = new URLSearchParams(
+			obfuscate(
+				new URLSearchParams(req.query).toString(),
+				options.obfuscation
+			)
+		);
 
-			const result = {};
-			Array.from(obfuscatedParams.entries()).forEach((element) => {
-				result[element[0]] = element[1];
-			});
+		const result = {};
+		Array.from(obfuscatedParams.entries()).forEach((element) => {
+			result[element[0]] = element[1];
+		});
 
-			req.query = result;
-		} catch (err) {
-			server.log.error(err);
-			throw res.internalServerError();
-		}
+		req.query = result;
 
 		next();
 	});
