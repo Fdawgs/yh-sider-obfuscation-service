@@ -1,6 +1,5 @@
 require("dotenv").config();
 
-const Ajv = require("ajv");
 const addFormats = require("ajv-formats");
 const envSchema = require("env-schema");
 const S = require("fluent-json-schema");
@@ -9,19 +8,6 @@ const path = require("upath");
 const pino = require("pino");
 const rotatingLogStream = require("file-stream-rotator");
 const secJSON = require("secure-json-parse");
-
-/**
- * Use own AJV instance rather than included one in `env-schema`,
- * to support custom formats and keywords
- */
-const ajv = new Ajv({
-	allErrors: true,
-	removeAdditional: true,
-	useDefaults: true,
-	coerceTypes: true,
-	allowUnionTypes: true,
-});
-addFormats(ajv);
 
 const { license, version } = require("../../package.json");
 
@@ -61,7 +47,14 @@ function parseCorsParameter(param) {
 async function getConfig() {
 	// Validate env variables
 	const env = envSchema({
-		ajv,
+		ajv: {
+			// Use customOptions to support custom formats and keywords
+			/* istanbul ignore next */
+			customOptions(ajvInstance) {
+				addFormats(ajvInstance);
+				return ajvInstance;
+			},
+		},
 		dotenv: true,
 		schema: S.object()
 			.additionalProperties(false)
