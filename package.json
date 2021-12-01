@@ -87,7 +87,7 @@
     "axios": "^0.24.0",
     "dotenv": "^10.0.0",
     "env-schema": "^3.5.0",
-    "fastify": "^3.24.0",
+    "fastify": "^3.24.1",
     "fastify-accepts": "^2.1.0",
     "fastify-autoload": "^3.9.0",
     "fastify-compress": "^3.7.0",
