@@ -24,18 +24,19 @@ Single sign-on for a user using access tokens from a Keycloak server instance ca
 
 ## Prerequisites
 
+These are only required if running the API outside of Docker:
+
 -   [Git](https://git-scm.com/) (to install non-registered dependencies)
--   [Node.js](https://nodejs.org/en/)
+-   [Node.js](https://nodejs.org/en/) >=14.0.0
 
 ## Setup
 
 Perform the following steps before deployment:
 
-1. Clone the repo
+1. Clone or download the repo
 2. Navigate to the project directory
-3. Run `npm install --ignore-scripts --production` to install dependencies
-4. Make a copy of `.env.template` in the root directory and rename it to `.env`
-5. Configure the application using the environment variables in `.env`
+3. Make a copy of `.env.template` in the root directory and rename it to `.env`
+4. Configure the application using the environment variables in `.env`
 
 **Note:** Set the following environment variables in `.env` to meet NHS Digital's recommendation to retain 6 months' worth of logs:
 
@@ -47,7 +48,8 @@ Perform the following steps before deployment:
 
 ### Standard Deployment
 
-1. Run `npm start`
+1. Run `npm install --ignore-scripts --production` to install dependencies
+2. Run `npm start`
 
 The service should now be up and running on the port set in the config. You should see the following output in stdout or the log file specified using the `LOG_ROTATION_FILENAME` environment variable:
 
@@ -163,7 +165,7 @@ The OpenAPI v3.x.x specification for this service is found at `/docs/json`.
 
 ### Deploying Using Docker
 
-This requires [Docker](https://www.docker.com/products) installed.
+This requires [Docker](https://www.docker.com) installed.
 
 1. Run `docker compose up` (or `docker compose up -d` to run in background)
 
@@ -171,9 +173,10 @@ This requires [Docker](https://www.docker.com/products) installed.
 
 If you are unable to deploy this into production using Docker, it is recommended that you use a process manager such as [PM2](https://pm2.keymetrics.io/).
 
-1. Run `npm install -g pm2` to install pm2 globally
-2. Launch application with `pm2 start .pm2.config.js`
-3. Check the application has been deployed using `pm2 list` or `pm2 monit`
+1. Run `npm install --ignore-scripts --production` to install dependencies
+2. Run `npm install -g pm2` to install pm2 globally
+3. Launch application with `pm2 start .pm2.config.js`
+4. Check the application has been deployed using `pm2 list` or `pm2 monit`
 
 #### To Install as a Windows Service:
 
