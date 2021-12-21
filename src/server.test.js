@@ -78,27 +78,37 @@ describe("Server Deployment", () => {
 	describe("End-To-End", () => {
 		let server;
 		let config;
+		let currentEnv;
+
+		beforeAll(async () => {
+			Object.assign(process.env, {
+				SERVICE_REDIRECT_URL: "http://127.0.0.1:3001/esp/#!/launch?",
+				KC_ENABLED: false,
+			});
+			currentEnv = { ...process.env };
+		});
+
+		afterEach(async () => {
+			// Reset the process.env to default after each test
+			jest.resetModules();
+			Object.assign(process.env, currentEnv);
+
+			await server.close();
+		});
 
 		["development", "production"].forEach((environment) => {
 			beforeAll(async () => {
 				Object.assign(process.env, {
 					NODE_ENV: environment,
-					SERVICE_REDIRECT_URL:
-						"http://127.0.0.1:3001/esp/#!/launch?",
 				});
 
 				config = await getConfig();
-				delete config.keycloak;
 			});
 
 			beforeEach(async () => {
 				server = Fastify();
 				server.register(startServer, config);
 				await server.ready();
-			});
-
-			afterEach(async () => {
-				await server.close();
 			});
 
 			describe("/admin/healthcheck Route", () => {
@@ -241,83 +251,6 @@ describe("Server Deployment", () => {
 					expect(response.headers).toEqual(expResHeadersJson);
 					expect(response.statusCode).toBe(406);
 				});
-			});
-		});
-	});
-
-	describe("End-To-End - Keycloak Token Retrieval Config Disabled", () => {
-		let server;
-		let config;
-
-		beforeAll(async () => {
-			Object.assign(process.env, {
-				SERVICE_REDIRECT_URL: "http://127.0.0.1:3001/esp/#!/launch?",
-			});
-
-			config = await getConfig();
-			delete config.keycloak;
-			config.keycloak = {
-				enabled: false,
-			};
-		});
-
-		beforeEach(async () => {
-			server = Fastify();
-			server.register(startServer, config);
-			await server.ready();
-		});
-
-		afterEach(async () => {
-			await server.close();
-		});
-
-		describe("/admin/healthcheck Route", () => {
-			test("Should return `ok`", async () => {
-				const response = await server.inject({
-					method: "GET",
-					url: "/admin/healthcheck",
-					headers: {
-						accept: "text/plain",
-					},
-				});
-
-				expect(response.payload).toBe("ok");
-				expect(response.headers).toEqual(expResHeaders);
-				expect(response.statusCode).toBe(200);
-			});
-
-			test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
-				const response = await server.inject({
-					method: "GET",
-					url: "/admin/healthcheck",
-					headers: {
-						accept: "application/javascript",
-					},
-				});
-
-				expect(JSON.parse(response.payload)).toEqual({
-					error: "Not Acceptable",
-					message: "Not Acceptable",
-					statusCode: 406,
-				});
-				expect(response.headers).toEqual(expResHeadersJson);
-				expect(response.statusCode).toBe(406);
-			});
-		});
-
-		describe("/redirect Route", () => {
-			test("Should continue if Keycloak endpoint config is disabled", async () => {
-				const response = await server.inject({
-					method: "GET",
-					url: "/redirect",
-					headers: { accept: "text/html" },
-					query: mockParams,
-				});
-
-				expect(response.headers).toEqual(expResHeadersRedirect);
-				expect(response.statusCode).toBe(302);
-
-				await server.close();
 			});
 		});
 	});
