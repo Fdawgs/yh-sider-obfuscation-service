@@ -22,17 +22,12 @@ describe("Configuration", () => {
 		Object.assign(process.env, currentEnv);
 	});
 
-	test("Should return values according to environment variables - SSL enabled and CORS disabled", async () => {
+	test("Should return values according to environment variables - HTTPS (SSL cert) enabled", async () => {
 		const NODE_ENV = "development";
 		const SERVICE_HOST = faker.internet.ip();
 		const SERVICE_PORT = faker.datatype.number();
 		const SERVICE_REDIRECT_URL =
 			"https://pyrusapps.blackpear.com/esp/#!/launch?";
-		const CORS_ORIGIN = false;
-		const CORS_ALLOWED_HEADERS = "";
-		const CORS_ALLOW_CREDENTIALS = "";
-		const CORS_EXPOSED_HEADERS = "";
-		const CORS_MAX_AGE = "";
 		const HTTPS_SSL_CERT_PATH =
 			"./test_resources/test_ssl_cert/server.cert";
 		const HTTPS_SSL_KEY_PATH = "./test_resources/test_ssl_cert/server.key";
@@ -61,11 +56,6 @@ describe("Configuration", () => {
 			SERVICE_HOST,
 			SERVICE_PORT,
 			SERVICE_REDIRECT_URL,
-			CORS_ORIGIN,
-			CORS_ALLOWED_HEADERS,
-			CORS_ALLOW_CREDENTIALS,
-			CORS_EXPOSED_HEADERS,
-			CORS_MAX_AGE,
 			HTTPS_SSL_CERT_PATH,
 			HTTPS_SSL_KEY_PATH,
 			HTTPS_HTTP2_ENABLED,
@@ -116,11 +106,6 @@ describe("Configuration", () => {
 			key: expect.any(Buffer),
 		});
 		expect(config.fastifyInit.http2).toBe(true);
-
-		expect(config.cors).toEqual({
-			origin: CORS_ORIGIN,
-			hideOptionsRoute: true,
-		});
 
 		expect(config.processLoad).toEqual({
 			maxEventLoopDelay: PROC_LOAD_MAX_EVENT_LOOP_DELAY,
@@ -265,18 +250,13 @@ describe("Configuration", () => {
 		});
 	});
 
-	test("Should return values according to environment variables - PFX enabled and CORS enabled", async () => {
+	test("Should return values according to environment variables - HTTPS (PFX cert) enabled and HTTP2 enabled", async () => {
 		const SERVICE_HOST = faker.internet.ip();
 		const SERVICE_PORT = faker.datatype.number();
 		const SERVICE_REDIRECT_URL =
 			"https://pyrusapps.blackpear.com/esp/#!/launch?";
-		const CORS_ORIGIN = true;
-		const CORS_ALLOWED_HEADERS = "";
-		const CORS_ALLOW_CREDENTIALS = true;
-		const CORS_EXPOSED_HEADERS = "";
-		const CORS_MAX_AGE = "";
 		const HTTPS_PFX_FILE_PATH =
-			"./test_resources/test_ssl_cert/server.cert"; // I know it's not an actual PFX file
+			"./test_resources/test_ssl_cert/server.cert"; // Not an actual PFX file
 		const HTTPS_PFX_PASSPHRASE = faker.lorem.word();
 		const HTTPS_HTTP2_ENABLED = true;
 		const LOG_LEVEL = faker.random.arrayElement([
@@ -293,11 +273,6 @@ describe("Configuration", () => {
 			SERVICE_HOST,
 			SERVICE_PORT,
 			SERVICE_REDIRECT_URL,
-			CORS_ORIGIN,
-			CORS_ALLOWED_HEADERS,
-			CORS_ALLOW_CREDENTIALS,
-			CORS_EXPOSED_HEADERS,
-			CORS_MAX_AGE,
 			HTTPS_PFX_FILE_PATH,
 			HTTPS_PFX_PASSPHRASE,
 			HTTPS_HTTP2_ENABLED,
@@ -321,123 +296,109 @@ describe("Configuration", () => {
 			pfx: expect.any(Buffer),
 		});
 		expect(config.fastifyInit.http2).toBe(true);
-
-		expect(config.cors).toEqual({
-			origin: CORS_ORIGIN,
-			credentials: CORS_ALLOW_CREDENTIALS,
-			hideOptionsRoute: true,
-		});
 	});
 
-	test("Should return values according to environment variables - HTTPS disabled and CORS set to string value", async () => {
-		const SERVICE_HOST = faker.internet.ip();
-		const SERVICE_PORT = faker.datatype.number();
-		const SERVICE_REDIRECT_URL =
-			"https://pyrusapps.blackpear.com/esp/#!/launch?";
-		const CORS_ORIGIN = "https://ydh.nhs.uk";
-		const CORS_ALLOWED_HEADERS =
-			"Accept, Authorization, Content-Type, Origin, X-Requested-With";
-		const CORS_ALLOW_CREDENTIALS = true;
-		const CORS_EXPOSED_HEADERS = "Location";
-		const CORS_MAX_AGE = 60;
-		const LOG_LEVEL = faker.random.arrayElement([
-			"debug",
-			"warn",
-			"silent",
-		]);
-		const KC_ENABLED = false;
-		const OBFUSCATION_KEY_NAME = "k01";
-		const OBFUSCATION_KEY_VALUE = "0123456789";
-		const OBFUSCATION_QUERYSTRING_KEY_ARRAY = '["birthdate", "patient"]';
+	// CORS env variables
+	test.each([
+		{
+			testName: "CORS origin set to true and credentials enabled",
+			envVariables: {
+				CORS_ORIGIN: true,
+				CORS_ALLOW_CREDENTIALS: true,
+			},
+			expected: {
+				origin: true,
+				credentials: true,
+			},
+		},
+		{
+			testName: "CORS origin set to false",
+			envVariables: {
+				CORS_ORIGIN: false,
+			},
+			expected: {
+				origin: false,
+			},
+		},
+		{
+			testName: "CORS origin set to comma-delimited string value",
+			envVariables: {
+				CORS_ORIGIN:
+					"https://test1.ydh.nhs.uk, https://test2.ydh.nhs.uk",
+			},
+			expected: {
+				origin: expect.arrayContaining([
+					"https://test1.ydh.nhs.uk",
+					"https://test2.ydh.nhs.uk",
+				]),
+			},
+		},
+		{
+			testName: "CORS origin set to string value",
+			envVariables: {
+				CORS_ORIGIN: "https://ydh.nhs.uk",
+			},
+			expected: {
+				origin: "https://ydh.nhs.uk",
+			},
+		},
+	])(
+		"Should return values according to environment variables - $testName",
+		async ({ envVariables, expected }) => {
+			const SERVICE_HOST = faker.internet.ip();
+			const SERVICE_PORT = faker.datatype.number();
+			const SERVICE_REDIRECT_URL = "https://www.nhs.uk";
+			const CORS_ORIGIN = envVariables.CORS_ORIGIN;
+			const CORS_ALLOWED_HEADERS =
+				"Accept, Authorization, Content-Type, Origin, X-Requested-With";
+			const CORS_ALLOW_CREDENTIALS =
+				envVariables?.CORS_ALLOW_CREDENTIALS || "";
+			const CORS_EXPOSED_HEADERS = "Location";
+			const CORS_MAX_AGE = 10;
+			const LOG_LEVEL = faker.random.arrayElement([
+				"debug",
+				"warn",
+				"silent",
+			]);
+			const KC_ENABLED = false;
+			const OBFUSCATION_KEY_NAME = "k01";
+			const OBFUSCATION_KEY_VALUE = "0123456789";
+			const OBFUSCATION_QUERYSTRING_KEY_ARRAY =
+				'["birthdate", "patient"]';
 
-		Object.assign(process.env, {
-			SERVICE_HOST,
-			SERVICE_PORT,
-			SERVICE_REDIRECT_URL,
-			CORS_ORIGIN,
-			CORS_ALLOWED_HEADERS,
-			CORS_ALLOW_CREDENTIALS,
-			CORS_EXPOSED_HEADERS,
-			CORS_MAX_AGE,
-			LOG_LEVEL,
-			KC_ENABLED,
-			OBFUSCATION_KEY_NAME,
-			OBFUSCATION_KEY_VALUE,
-			OBFUSCATION_QUERYSTRING_KEY_ARRAY,
-		});
+			Object.assign(process.env, {
+				SERVICE_HOST,
+				SERVICE_PORT,
+				SERVICE_REDIRECT_URL,
+				CORS_ORIGIN,
+				CORS_ALLOWED_HEADERS,
+				CORS_ALLOW_CREDENTIALS,
+				CORS_EXPOSED_HEADERS,
+				CORS_MAX_AGE,
+				LOG_LEVEL,
+				KC_ENABLED,
+				OBFUSCATION_KEY_NAME,
+				OBFUSCATION_KEY_VALUE,
+				OBFUSCATION_QUERYSTRING_KEY_ARRAY,
+			});
 
-		const config = await getConfig();
+			const config = await getConfig();
 
-		expect(config.fastify).toEqual({
-			host: SERVICE_HOST,
-			port: SERVICE_PORT,
-		});
+			expect(config.fastify).toEqual({
+				host: SERVICE_HOST,
+				port: SERVICE_PORT,
+			});
 
-		expect(config.cors).toEqual({
-			origin: CORS_ORIGIN,
-			allowedHeaders: CORS_ALLOWED_HEADERS,
-			credentials: CORS_ALLOW_CREDENTIALS,
-			exposedHeaders: CORS_EXPOSED_HEADERS,
-			hideOptionsRoute: true,
-			maxAge: CORS_MAX_AGE,
-		});
-	});
-
-	test("Should return values according to environment variables - HTTPS disabled and CORS set to comma-delimited string value", async () => {
-		const SERVICE_HOST = faker.internet.ip();
-		const SERVICE_PORT = faker.datatype.number();
-		const SERVICE_REDIRECT_URL =
-			"https://pyrusapps.blackpear.com/esp/#!/launch?";
-		const CORS_ORIGIN =
-			"https://test1.ydh.nhs.uk, https://test2.ydh.nhs.uk";
-		const CORS_ALLOWED_HEADERS =
-			"Accept, Authorization, Content-Type, Origin, X-Requested-With";
-		const CORS_ALLOW_CREDENTIALS = "";
-		const CORS_EXPOSED_HEADERS = "Location";
-		const CORS_MAX_AGE = "";
-		const LOG_LEVEL = faker.random.arrayElement([
-			"debug",
-			"warn",
-			"silent",
-		]);
-		const KC_ENABLED = false;
-		const OBFUSCATION_KEY_NAME = "k01";
-		const OBFUSCATION_KEY_VALUE = "0123456789";
-		const OBFUSCATION_QUERYSTRING_KEY_ARRAY = '["birthdate", "patient"]';
-
-		Object.assign(process.env, {
-			SERVICE_HOST,
-			SERVICE_PORT,
-			SERVICE_REDIRECT_URL,
-			CORS_ORIGIN,
-			CORS_ALLOWED_HEADERS,
-			CORS_ALLOW_CREDENTIALS,
-			CORS_EXPOSED_HEADERS,
-			CORS_MAX_AGE,
-			LOG_LEVEL,
-			KC_ENABLED,
-			OBFUSCATION_KEY_NAME,
-			OBFUSCATION_KEY_VALUE,
-			OBFUSCATION_QUERYSTRING_KEY_ARRAY,
-		});
-
-		const config = await getConfig();
-
-		expect(config.fastify).toEqual({
-			host: SERVICE_HOST,
-			port: SERVICE_PORT,
-		});
-
-		expect(config.cors).toEqual({
-			origin: expect.arrayContaining([
-				"https://test1.ydh.nhs.uk",
-				"https://test2.ydh.nhs.uk",
-			]),
-			allowedHeaders: CORS_ALLOWED_HEADERS,
-			exposedHeaders: CORS_EXPOSED_HEADERS,
-			hideOptionsRoute: true,
-		});
-	});
+			expect(config.cors).toEqual({
+				origin: expected.origin,
+				allowedHeaders: CORS_ALLOWED_HEADERS,
+				credentials: expected?.credentials,
+				exposedHeaders: CORS_EXPOSED_HEADERS,
+				hideOptionsRoute: true,
+				maxAge: CORS_MAX_AGE,
+			});
+		}
+	);
 
 	// HTTPS cert path env variables
 	test.each([
