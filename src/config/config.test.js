@@ -18,119 +18,9 @@ describe("Configuration", () => {
 	});
 
 	afterEach(() => {
+		// Reset the process.env to default after each test
 		jest.resetModules();
 		Object.assign(process.env, currentEnv);
-	});
-
-	test("Should return values according to environment variables - HTTPS (SSL cert) enabled", async () => {
-		const NODE_ENV = "development";
-		const SERVICE_HOST = faker.internet.ip();
-		const SERVICE_PORT = faker.datatype.number();
-		const SERVICE_REDIRECT_URL =
-			"https://pyrusapps.blackpear.com/esp/#!/launch?";
-		const HTTPS_SSL_CERT_PATH =
-			"./test_resources/test_ssl_cert/server.cert";
-		const HTTPS_SSL_KEY_PATH = "./test_resources/test_ssl_cert/server.key";
-		const HTTPS_HTTP2_ENABLED = true;
-		const LOG_LEVEL = faker.random.arrayElement([
-			"debug",
-			"warn",
-			"silent",
-		]);
-		const LOG_ROTATION_DATE_FORMAT = "YYYY-MM";
-		const LOG_ROTATION_FILENAME = "./test_resources/test_log";
-		const LOG_ROTATION_FREQUENCY = "custom";
-		const PROC_LOAD_MAX_EVENT_LOOP_DELAY = 1000;
-		const PROC_LOAD_MAX_HEAP_USED_BYTES = 100000000;
-		const PROC_LOAD_MAX_RSS_BYTES = 100000000;
-		const PROC_LOAD_MAX_EVENT_LOOP_UTILIZATION = 0.98;
-		const RATE_LIMIT_MAX_CONNECTIONS_PER_MIN = 2000;
-		const RATE_LIMIT_EXCLUDED_ARRAY = '["127.0.0.1"]';
-		const KC_ENABLED = false;
-		const OBFUSCATION_KEY_NAME = "k01";
-		const OBFUSCATION_KEY_VALUE = "0123456789";
-		const OBFUSCATION_QUERYSTRING_KEY_ARRAY = '["birthdate", "patient"]';
-
-		Object.assign(process.env, {
-			NODE_ENV,
-			SERVICE_HOST,
-			SERVICE_PORT,
-			SERVICE_REDIRECT_URL,
-			HTTPS_SSL_CERT_PATH,
-			HTTPS_SSL_KEY_PATH,
-			HTTPS_HTTP2_ENABLED,
-			LOG_LEVEL,
-			LOG_ROTATION_DATE_FORMAT,
-			LOG_ROTATION_FILENAME,
-			LOG_ROTATION_FREQUENCY,
-			PROC_LOAD_MAX_EVENT_LOOP_DELAY,
-			PROC_LOAD_MAX_HEAP_USED_BYTES,
-			PROC_LOAD_MAX_RSS_BYTES,
-			PROC_LOAD_MAX_EVENT_LOOP_UTILIZATION,
-			RATE_LIMIT_MAX_CONNECTIONS_PER_MIN,
-			RATE_LIMIT_EXCLUDED_ARRAY,
-			KC_ENABLED,
-			OBFUSCATION_KEY_NAME,
-			OBFUSCATION_KEY_VALUE,
-			OBFUSCATION_QUERYSTRING_KEY_ARRAY,
-		});
-
-		const config = await getConfig();
-
-		expect(config.fastify).toEqual({
-			host: SERVICE_HOST,
-			port: SERVICE_PORT,
-		});
-
-		expect(config.fastifyInit.logger).toEqual({
-			formatters: { level: expect.any(Function) },
-			level: LOG_LEVEL,
-			prettyPrint: false,
-			serializers: {
-				req: expect.any(Function),
-				res: expect.any(Function),
-			},
-			timestamp: expect.any(Function),
-			stream: expect.any(Object),
-		});
-		expect(config.fastifyInit.logger.formatters.level()).toEqual({
-			level: undefined,
-		});
-		expect(config.fastifyInit.logger.timestamp().substring(0, 7)).toBe(
-			',"time"'
-		);
-
-		expect(config.fastifyInit.https).toEqual({
-			allowHTTP1: true,
-			cert: expect.any(Buffer),
-			key: expect.any(Buffer),
-		});
-		expect(config.fastifyInit.http2).toBe(true);
-
-		expect(config.processLoad).toEqual({
-			maxEventLoopDelay: PROC_LOAD_MAX_EVENT_LOOP_DELAY,
-			maxEventLoopUtilization: PROC_LOAD_MAX_EVENT_LOOP_UTILIZATION,
-			maxHeapUsedBytes: PROC_LOAD_MAX_HEAP_USED_BYTES,
-			maxRssBytes: PROC_LOAD_MAX_RSS_BYTES,
-		});
-
-		expect(config.rateLimit).toEqual({
-			allowList: JSON.parse(RATE_LIMIT_EXCLUDED_ARRAY),
-			max: RATE_LIMIT_MAX_CONNECTIONS_PER_MIN,
-			timeWindow: 60000,
-		});
-
-		expect(config.redirectUrl).toBe(SERVICE_REDIRECT_URL);
-
-		expect(config.keycloak.enabled).toBe(false);
-
-		expect(config.obfuscation).toEqual({
-			encryptionKey: {
-				name: OBFUSCATION_KEY_NAME,
-				value: OBFUSCATION_KEY_VALUE,
-			},
-			obfuscate: JSON.parse(OBFUSCATION_QUERYSTRING_KEY_ARRAY),
-		});
 	});
 
 	test("Should use defaults if values missing and return values according to environment variables", async () => {
@@ -234,6 +124,117 @@ describe("Configuration", () => {
 		expect(config.rateLimit).toEqual({
 			allowList: JSON.parse(RATE_LIMIT_EXCLUDED_ARRAY),
 			max: 1000,
+			timeWindow: 60000,
+		});
+
+		expect(config.redirectUrl).toBe(SERVICE_REDIRECT_URL);
+
+		expect(config.keycloak.enabled).toBe(false);
+
+		expect(config.obfuscation).toEqual({
+			encryptionKey: {
+				name: OBFUSCATION_KEY_NAME,
+				value: OBFUSCATION_KEY_VALUE,
+			},
+			obfuscate: JSON.parse(OBFUSCATION_QUERYSTRING_KEY_ARRAY),
+		});
+	});
+
+	test("Should return values according to environment variables - HTTPS (SSL cert) enabled", async () => {
+		const NODE_ENV = "development";
+		const SERVICE_HOST = faker.internet.ip();
+		const SERVICE_PORT = faker.datatype.number();
+		const SERVICE_REDIRECT_URL =
+			"https://pyrusapps.blackpear.com/esp/#!/launch?";
+		const HTTPS_SSL_CERT_PATH =
+			"./test_resources/test_ssl_cert/server.cert";
+		const HTTPS_SSL_KEY_PATH = "./test_resources/test_ssl_cert/server.key";
+		const HTTPS_HTTP2_ENABLED = true;
+		const LOG_LEVEL = faker.random.arrayElement([
+			"debug",
+			"warn",
+			"silent",
+		]);
+		const LOG_ROTATION_DATE_FORMAT = "YYYY-MM";
+		const LOG_ROTATION_FILENAME = "./test_resources/test_log";
+		const LOG_ROTATION_FREQUENCY = "custom";
+		const PROC_LOAD_MAX_EVENT_LOOP_DELAY = 1000;
+		const PROC_LOAD_MAX_HEAP_USED_BYTES = 100000000;
+		const PROC_LOAD_MAX_RSS_BYTES = 100000000;
+		const PROC_LOAD_MAX_EVENT_LOOP_UTILIZATION = 0.98;
+		const RATE_LIMIT_MAX_CONNECTIONS_PER_MIN = 2000;
+		const RATE_LIMIT_EXCLUDED_ARRAY = '["127.0.0.1"]';
+		const KC_ENABLED = false;
+		const OBFUSCATION_KEY_NAME = "k01";
+		const OBFUSCATION_KEY_VALUE = "0123456789";
+		const OBFUSCATION_QUERYSTRING_KEY_ARRAY = '["birthdate", "patient"]';
+
+		Object.assign(process.env, {
+			NODE_ENV,
+			SERVICE_HOST,
+			SERVICE_PORT,
+			SERVICE_REDIRECT_URL,
+			HTTPS_SSL_CERT_PATH,
+			HTTPS_SSL_KEY_PATH,
+			HTTPS_HTTP2_ENABLED,
+			LOG_LEVEL,
+			LOG_ROTATION_DATE_FORMAT,
+			LOG_ROTATION_FILENAME,
+			LOG_ROTATION_FREQUENCY,
+			PROC_LOAD_MAX_EVENT_LOOP_DELAY,
+			PROC_LOAD_MAX_HEAP_USED_BYTES,
+			PROC_LOAD_MAX_RSS_BYTES,
+			PROC_LOAD_MAX_EVENT_LOOP_UTILIZATION,
+			RATE_LIMIT_MAX_CONNECTIONS_PER_MIN,
+			RATE_LIMIT_EXCLUDED_ARRAY,
+			KC_ENABLED,
+			OBFUSCATION_KEY_NAME,
+			OBFUSCATION_KEY_VALUE,
+			OBFUSCATION_QUERYSTRING_KEY_ARRAY,
+		});
+
+		const config = await getConfig();
+
+		expect(config.fastify).toEqual({
+			host: SERVICE_HOST,
+			port: SERVICE_PORT,
+		});
+
+		expect(config.fastifyInit.logger).toEqual({
+			formatters: { level: expect.any(Function) },
+			level: LOG_LEVEL,
+			prettyPrint: false,
+			serializers: {
+				req: expect.any(Function),
+				res: expect.any(Function),
+			},
+			timestamp: expect.any(Function),
+			stream: expect.any(Object),
+		});
+		expect(config.fastifyInit.logger.formatters.level()).toEqual({
+			level: undefined,
+		});
+		expect(config.fastifyInit.logger.timestamp().substring(0, 7)).toBe(
+			',"time"'
+		);
+
+		expect(config.fastifyInit.https).toEqual({
+			allowHTTP1: true,
+			cert: expect.any(Buffer),
+			key: expect.any(Buffer),
+		});
+		expect(config.fastifyInit.http2).toBe(true);
+
+		expect(config.processLoad).toEqual({
+			maxEventLoopDelay: PROC_LOAD_MAX_EVENT_LOOP_DELAY,
+			maxEventLoopUtilization: PROC_LOAD_MAX_EVENT_LOOP_UTILIZATION,
+			maxHeapUsedBytes: PROC_LOAD_MAX_HEAP_USED_BYTES,
+			maxRssBytes: PROC_LOAD_MAX_RSS_BYTES,
+		});
+
+		expect(config.rateLimit).toEqual({
+			allowList: JSON.parse(RATE_LIMIT_EXCLUDED_ARRAY),
+			max: RATE_LIMIT_MAX_CONNECTIONS_PER_MIN,
 			timeWindow: 60000,
 		});
 
