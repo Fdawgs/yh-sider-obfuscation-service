@@ -439,82 +439,50 @@ describe("Configuration", () => {
 		});
 	});
 
-	test("Should throw error if invalid PFX file path", async () => {
+	// HTTPS cert path env variables
+	test.each([
+		{
+			testName: "invalid PFX file path",
+			envVariables: {
+				HTTPS_PFX_FILE_PATH: "./test_resources/test_ssl_cert/error.pfx",
+				HTTPS_PFX_PASSPHRASE: faker.lorem.word(),
+			},
+		},
+		{
+			testName: "invalid SSL cert file path",
+			envVariables: {
+				HTTPS_SSL_CERT_PATH:
+					"./test_resources/test_ssl_cert/error.cert",
+				HTTPS_SSL_KEY_PATH: "./test_resources/test_ssl_cert/error.key",
+			},
+		},
+	])("Should throw error if $testName", async ({ envVariables }) => {
 		const SERVICE_HOST = faker.internet.ip();
 		const SERVICE_PORT = faker.datatype.number();
-		const SERVICE_REDIRECT_URL =
-			"https://pyrusapps.blackpear.com/esp/#!/launch?";
-		const CORS_ORIGIN = true;
-		const CORS_ALLOWED_HEADERS = "";
-		const CORS_ALLOW_CREDENTIALS = "";
-		const CORS_EXPOSED_HEADERS = "";
-		const CORS_MAX_AGE = "";
-		const HTTPS_PFX_FILE_PATH = "./test_resources/test_ssl_cert/error.pfx";
-		const HTTPS_PFX_PASSPHRASE = faker.lorem.word();
-		const LOG_LEVEL = faker.random.arrayElement([
-			"debug",
-			"warn",
-			"silent",
-		]);
+		const SERVICE_REDIRECT_URL = "https://www.nhs.uk";
+		const HTTPS_SSL_KEY_PATH = envVariables?.HTTPS_SSL_KEY_PATH || "";
+		const HTTPS_SSL_CERT_PATH = envVariables?.HTTPS_SSL_CERT_PATH || "";
+		const HTTPS_PFX_FILE_PATH = envVariables?.HTTPS_PFX_FILE_PATH || "";
+		const HTTPS_PFX_PASSPHRASE = envVariables?.HTTPS_PFX_PASSPHRASE || "";
 		const KC_ENABLED = false;
 		const OBFUSCATION_KEY_NAME = "k01";
 		const OBFUSCATION_KEY_VALUE = "0123456789";
 		const OBFUSCATION_QUERYSTRING_KEY_ARRAY = '["birthdate", "patient"]';
 
-		Object.assign(process.env, {
-			SERVICE_HOST,
-			SERVICE_PORT,
-			SERVICE_REDIRECT_URL,
-			CORS_ORIGIN,
-			CORS_ALLOWED_HEADERS,
-			CORS_ALLOW_CREDENTIALS,
-			CORS_EXPOSED_HEADERS,
-			CORS_MAX_AGE,
-			HTTPS_PFX_FILE_PATH,
-			HTTPS_PFX_PASSPHRASE,
-			LOG_LEVEL,
-			KC_ENABLED,
-			OBFUSCATION_KEY_NAME,
-			OBFUSCATION_KEY_VALUE,
-			OBFUSCATION_QUERYSTRING_KEY_ARRAY,
-		});
-
-		await expect(getConfig()).rejects.toThrow();
-	});
-
-	test("Should throw error if invalid SSL cert file path", async () => {
-		const SERVICE_HOST = faker.internet.ip();
-		const SERVICE_PORT = faker.datatype.number();
-		const SERVICE_REDIRECT_URL =
-			"https://pyrusapps.blackpear.com/esp/#!/launch?";
-		const CORS_ORIGIN = true;
-		const CORS_ALLOWED_HEADERS = "";
-		const CORS_ALLOW_CREDENTIALS = "";
-		const CORS_EXPOSED_HEADERS = "";
-		const CORS_MAX_AGE = "";
-		const HTTPS_SSL_CERT_PATH = "./test_resources/test_ssl_cert/error.cert";
-		const HTTPS_SSL_KEY_PATH = "./test_resources/test_ssl_cert/error.key";
 		const LOG_LEVEL = faker.random.arrayElement([
 			"debug",
 			"warn",
 			"silent",
 		]);
-		const KC_ENABLED = false;
-		const OBFUSCATION_KEY_NAME = "k01";
-		const OBFUSCATION_KEY_VALUE = "0123456789";
-		const OBFUSCATION_QUERYSTRING_KEY_ARRAY = '["birthdate", "patient"]';
 
 		Object.assign(process.env, {
 			SERVICE_HOST,
 			SERVICE_PORT,
 			SERVICE_REDIRECT_URL,
-			CORS_ORIGIN,
-			CORS_ALLOWED_HEADERS,
-			CORS_ALLOW_CREDENTIALS,
-			CORS_EXPOSED_HEADERS,
-			CORS_MAX_AGE,
 			HTTPS_SSL_CERT_PATH,
 			HTTPS_SSL_KEY_PATH,
+			HTTPS_PFX_FILE_PATH,
+			HTTPS_PFX_PASSPHRASE,
 			LOG_LEVEL,
 			KC_ENABLED,
 			OBFUSCATION_KEY_NAME,
