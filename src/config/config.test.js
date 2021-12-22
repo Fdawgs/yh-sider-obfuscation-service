@@ -140,7 +140,7 @@ describe("Configuration", () => {
 		});
 	});
 
-	test("Should return values according to environment variables - HTTPS (SSL cert) enabled", async () => {
+	test("Should return values according to environment variables - HTTPS (SSL cert) enabled and HTTP2 enabled", async () => {
 		const NODE_ENV = "development";
 		const SERVICE_HOST = faker.internet.ip();
 		const SERVICE_PORT = faker.datatype.number();
@@ -430,7 +430,6 @@ describe("Configuration", () => {
 		const OBFUSCATION_KEY_NAME = "k01";
 		const OBFUSCATION_KEY_VALUE = "0123456789";
 		const OBFUSCATION_QUERYSTRING_KEY_ARRAY = '["birthdate", "patient"]';
-
 		const LOG_LEVEL = faker.random.arrayElement([
 			"debug",
 			"warn",
