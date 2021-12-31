@@ -6,7 +6,7 @@ const { URLSearchParams } = require("url");
 /**
  * @author Frazer Smith
  * @description Pre-handler plugin that retrieves Keycloak access token for passed user.
- * @param {Function} server - Fastify instance.
+ * @param {object} server - Fastify instance.
  * @param {object} options - Plugin config values.
  * @param {object} options.keycloak - Keycloak endpoint access options values.
  * @param {boolean=} options.keycloak.enabled - Toggle to enable or disable use of Keycloak.
