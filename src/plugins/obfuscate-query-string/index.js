@@ -5,7 +5,7 @@ const { URLSearchParams } = require("url");
 /**
  * @author Frazer Smith
  * @description Pre-handler plugin that obfuscates request query string keys and values.
- * @param {Function} server - Fastify instance.
+ * @param {object} server - Fastify instance.
  * @param {object} options - Plugin config values.
  * @param {object} options.obfuscation - Obfuscation values.
  * @param {object} options.obfuscation.encryptionKey - Object containing encryption key values.
