@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+### [7.0.4](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v7.0.3...v7.0.4) (2021-12-31)
+
+
+### Documentation
+
+* **contributing:** add step for `lint:licenses` script ([1052ce9](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/1052ce9013e93d2a3f2831bcfd5e114797fb2d56))
+* **contributing:** update husky hook mention ([0b3c6fd](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/0b3c6fd0313830c296bae310b4f4adef99acfb35))
+
+
+### Miscellaneous
+
+* fix `server` jsdoc tag param type ([13d1551](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/13d1551db33e36750db424e8dbb7491921beb675))
+* **scripts:** remove invalid license identifier from `lint:licenses` ([f819fcb](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/f819fcb0fa9103d8139965b7af221de36d8a0b4e))
+* **scripts:** remove unused package from excluded list ([f8965e0](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/f8965e05699dd5d80ea5d0c329b1d10e96be55b3))
+* **server:** update inline comment re helmet defaults ([46f2108](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/commit/46f2108b7ae49cf5982a574aad701164f5ea309c))
+
 ### [7.0.3](https://www.github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v7.0.2...v7.0.3) (2021-12-21)
 
 
