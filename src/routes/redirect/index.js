@@ -11,7 +11,7 @@ const { redirectGetSchema } = require("./schema");
  * @param {object} server - Fastify instance.
  * @param {object} options - Route config values.
  * @param {object} options.cors - CORS settings.
- * @param {string} options.redirectUrl - URL and port the Mirth Connect FHIR/HTTP Listener channel is listening on.
+ * @param {string} options.redirectUrl - SIDeR service URL.
  */
 async function route(server, options) {
 	// Register plugins
