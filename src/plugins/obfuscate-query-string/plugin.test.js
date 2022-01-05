@@ -1,4 +1,3 @@
-const cloneDeep = require("lodash").cloneDeep;
 const faker = require("faker/locale/en_GB");
 const Fastify = require("fastify");
 const plugin = require(".");
@@ -17,12 +16,7 @@ const mockParams = {
 };
 
 describe("Query String Obfuscation plugin", () => {
-	let config;
 	let server;
-
-	beforeAll(async () => {
-		config = await getConfig();
-	});
 
 	beforeEach(() => {
 		server = Fastify();
@@ -37,8 +31,8 @@ describe("Query String Obfuscation plugin", () => {
 	});
 
 	test("Should obfuscate patient and birthdate parameters", async () => {
-		const altConfig = cloneDeep(config);
-		altConfig.obfuscation = {
+		const config = await getConfig();
+		config.obfuscation = {
 			encryptionKey: {
 				name: "k01",
 				value: "0123456789",
@@ -46,7 +40,7 @@ describe("Query String Obfuscation plugin", () => {
 			obfuscate: ["birthdate", "patient"],
 		};
 
-		server.register(plugin, altConfig);
+		server.register(plugin, config);
 
 		const response = await server.inject({
 			method: "GET",

@@ -1,6 +1,5 @@
 /* eslint-disable no-console */
 /* eslint-disable security-node/detect-crlf */
-const cloneDeep = require("lodash").cloneDeep;
 const faker = require("faker/locale/en_GB");
 const Fastify = require("fastify");
 const plugin = require(".");
@@ -25,10 +24,8 @@ const mockParams = {
 
 describe("Keycloak Access Token Retrieval Plugin", () => {
 	let server;
-	let config;
 
 	beforeAll(async () => {
-		config = await getConfig();
 		try {
 			await mockKeycloakServer.listen(3000);
 			console.log("Mock Keycloak server listening on 3000");
@@ -86,13 +83,13 @@ describe("Keycloak Access Token Retrieval Plugin", () => {
 	});
 
 	test("Should return HTTP status code 500 if Keycloak endpoint config enabled but other options undefined", async () => {
-		const altConfig = cloneDeep(config);
-		delete altConfig.keycloak;
-		altConfig.keycloak = {
+		const config = await getConfig();
+		delete config.keycloak;
+		config.keycloak = {
 			enabled: true,
 		};
 
-		server.register(plugin, altConfig);
+		server.register(plugin, config);
 
 		const response = await server.inject({
 			method: "GET",
