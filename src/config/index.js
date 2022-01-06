@@ -49,7 +49,7 @@ async function getConfig() {
 	const env = envSchema({
 		ajv: {
 			// Use customOptions to support custom formats and keywords
-			/* istanbul ignore next */
+			/* istanbul ignore next: env-schema functions not explicitly tested */
 			customOptions(ajvInstance) {
 				addFormats(ajvInstance);
 				return ajvInstance;
@@ -211,11 +211,11 @@ async function getConfig() {
 					(!env.LOG_ROTATION_FILENAME ||
 						env.LOG_ROTATION_FILENAME === ""),
 				serializers: {
-					/* istanbul ignore next */
+					/* istanbul ignore next: pino functions not explicitly tested */
 					req(req) {
 						return pino.stdSerializers.req(req);
 					},
-					/* istanbul ignore next */
+					/* istanbul ignore next: pino functions not explicitly tested */
 					res(res) {
 						return pino.stdSerializers.res(res);
 					},
