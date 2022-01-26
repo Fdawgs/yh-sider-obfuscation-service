@@ -103,7 +103,7 @@
     "fluent-json-schema": "^3.0.1",
     "obfuscated-querystring": "git+https://github.com/BlackPearSw/obfuscated-querystring.git",
     "pino": "^7.6.4",
-    "pino-pretty": "^7.3.0",
+    "pino-pretty": "^7.5.0",
     "secure-json-parse": "^2.4.0",
     "under-pressure": "^5.8.0",
     "upath": "^2.0.1"
