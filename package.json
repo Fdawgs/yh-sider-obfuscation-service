@@ -85,7 +85,7 @@
   "dependencies": {
     "ajv-formats": "^2.1.1",
     "axios": "^0.24.0",
-    "dotenv": "^10.0.0",
+    "dotenv": "^14.3.2",
     "env-schema": "^3.5.1",
     "fastify": "^3.27.0",
     "fastify-accepts": "^2.1.0",
