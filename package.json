@@ -98,7 +98,7 @@
     "fastify-plugin": "^3.0.1",
     "fastify-rate-limit": "^5.7.0",
     "fastify-sensible": "^3.1.2",
-    "fastify-swagger": "4.12.0",
+    "fastify-swagger": "4.13.1",
     "file-stream-rotator": "^0.5.7",
     "fluent-json-schema": "^3.0.1",
     "obfuscated-querystring": "git+https://github.com/BlackPearSw/obfuscated-querystring.git",
