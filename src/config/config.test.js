@@ -11,7 +11,7 @@ describe("Configuration", () => {
 	});
 
 	afterAll(async () => {
-		const files = glob.sync(`./test_resources/test_log*`);
+		const files = glob.sync(`./test_resources/test-log*`);
 
 		// eslint-disable-next-line security/detect-non-literal-fs-filename
 		await Promise.all(files.map((file) => fs.unlink(file)));
@@ -39,7 +39,7 @@ describe("Configuration", () => {
 		const HTTPS_HTTP2_ENABLED = "";
 		const LOG_LEVEL = "";
 		const LOG_ROTATION_DATE_FORMAT = "";
-		const LOG_ROTATION_FILENAME = "./test_resources/test_log";
+		const LOG_ROTATION_FILENAME = "./test_resources/test-log-%DATE%.log";
 		const LOG_ROTATION_FREQUENCY = "";
 		const PROC_LOAD_MAX_EVENT_LOOP_DELAY = "";
 		const PROC_LOAD_MAX_HEAP_USED_BYTES = "";
@@ -156,7 +156,7 @@ describe("Configuration", () => {
 			"silent",
 		]);
 		const LOG_ROTATION_DATE_FORMAT = "YYYY-MM";
-		const LOG_ROTATION_FILENAME = "./test_resources/test_log";
+		const LOG_ROTATION_FILENAME = "./test_resources/test-log-%DATE%.log";
 		const LOG_ROTATION_FREQUENCY = "custom";
 		const PROC_LOAD_MAX_EVENT_LOOP_DELAY = 1000;
 		const PROC_LOAD_MAX_HEAP_USED_BYTES = 100000000;
