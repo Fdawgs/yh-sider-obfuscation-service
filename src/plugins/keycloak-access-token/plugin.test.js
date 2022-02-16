@@ -15,7 +15,7 @@ const headers = {
 	"cache-control": "no-cache",
 };
 
-const mockParams = {
+const testParams = {
 	birthdate: faker.date.past().toISOString().split("T")[0],
 	location: "https://fhir.nhs.uk/Id/ods-organization-code|RA4",
 	patient: `https://fhir.nhs.uk/Id/nhs-number|${faker.datatype.number(10)}`,
@@ -58,10 +58,10 @@ describe("Keycloak Access Token Retrieval Plugin", () => {
 			method: "GET",
 			url: "/",
 			headers,
-			query: mockParams,
+			query: testParams,
 		});
 
-		expect(JSON.parse(response.payload)).toEqual(mockParams);
+		expect(JSON.parse(response.payload)).toEqual(testParams);
 		expect(response.statusCode).toBe(200);
 	});
 
@@ -72,11 +72,11 @@ describe("Keycloak Access Token Retrieval Plugin", () => {
 			method: "GET",
 			url: "/",
 			headers,
-			query: mockParams,
+			query: testParams,
 		});
 
 		expect(JSON.parse(response.payload)).toEqual({
-			...mockParams,
+			...testParams,
 			access_token: "mock-access-token-authorised",
 		});
 		expect(response.statusCode).toBe(200);
@@ -95,7 +95,7 @@ describe("Keycloak Access Token Retrieval Plugin", () => {
 			method: "GET",
 			url: "/",
 			headers,
-			query: mockParams,
+			query: testParams,
 		});
 
 		expect(JSON.parse(response.payload)).toEqual({
