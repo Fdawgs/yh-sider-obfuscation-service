@@ -8,7 +8,7 @@ const headers = {
 	"cache-control": "no-cache",
 };
 
-const mockParams = {
+const testParams = {
 	birthdate: faker.date.past().toISOString().split("T")[0],
 	location: "https://fhir.nhs.uk/Id/ods-organization-code|RA4",
 	patient: `https://fhir.nhs.uk/Id/nhs-number|${faker.datatype.number(10)}`,
@@ -46,12 +46,12 @@ describe("Query String Obfuscation plugin", () => {
 			method: "GET",
 			url: "/",
 			headers,
-			query: mockParams,
+			query: testParams,
 		});
 
 		expect(JSON.parse(response.payload)).toEqual({
-			location: mockParams.location,
-			practitioner: mockParams.practitioner,
+			location: testParams.location,
+			practitioner: testParams.practitioner,
 			enc: expect.any(String),
 		});
 		expect(response.statusCode).toBe(200);
@@ -64,7 +64,7 @@ describe("Query String Obfuscation plugin", () => {
 			method: "GET",
 			url: "/",
 			headers,
-			query: mockParams,
+			query: testParams,
 		});
 
 		expect(JSON.parse(response.payload)).toEqual({

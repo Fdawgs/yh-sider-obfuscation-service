@@ -47,7 +47,7 @@ const expResHeadersJson = {
 	"content-type": expect.stringContaining("application/json"),
 };
 
-const mockParams = {
+const testParams = {
 	birthdate: faker.date.past().toISOString().split("T")[0],
 	location: "https://fhir.nhs.uk/Id/ods-organization-code|RA4",
 	patient: `https://fhir.nhs.uk/Id/nhs-number|${faker.datatype.number({
@@ -151,7 +151,7 @@ describe("Server Deployment", () => {
 						method: "GET",
 						url: "/redirect",
 						headers: { accept: "text/html" },
-						query: mockParams,
+						query: testParams,
 					});
 
 					const resQueryString = {};
@@ -178,14 +178,14 @@ describe("Server Deployment", () => {
 				});
 
 				test("Should return HTTP status code 400 if any required query string parameter is missing", async () => {
-					const altMockParams = cloneDeep(mockParams);
-					delete altMockParams.FromIconProfile;
-					delete altMockParams.NOUNLOCK;
-					delete altMockParams.TPAGID;
+					const altTestParams = cloneDeep(testParams);
+					delete altTestParams.FromIconProfile;
+					delete altTestParams.NOUNLOCK;
+					delete altTestParams.TPAGID;
 
 					const results = await Promise.all(
-						Object.keys(altMockParams).map(async (key) => {
-							const scrubbedParams = { ...altMockParams };
+						Object.keys(altTestParams).map(async (key) => {
+							const scrubbedParams = { ...altTestParams };
 							// eslint-disable-next-line security/detect-object-injection
 							delete scrubbedParams[key];
 
@@ -206,14 +206,14 @@ describe("Server Deployment", () => {
 				});
 
 				test("Should return HTTP status code 400 if any required query string parameter does not match expected pattern", async () => {
-					const altMockParams = cloneDeep(mockParams);
-					delete altMockParams.FromIconProfile;
-					delete altMockParams.NOUNLOCK;
-					delete altMockParams.TPAGID;
+					const altTestParams = cloneDeep(testParams);
+					delete altTestParams.FromIconProfile;
+					delete altTestParams.NOUNLOCK;
+					delete altTestParams.TPAGID;
 
 					const results = await Promise.all(
-						Object.keys(altMockParams).map(async (key) => {
-							const scrubbedParams = { ...altMockParams };
+						Object.keys(altTestParams).map(async (key) => {
+							const scrubbedParams = { ...altTestParams };
 							// eslint-disable-next-line security/detect-object-injection
 							scrubbedParams[key] = "test";
 
@@ -240,7 +240,7 @@ describe("Server Deployment", () => {
 						headers: {
 							accept: "application/javascript",
 						},
-						query: mockParams,
+						query: testParams,
 					});
 
 					expect(JSON.parse(response.payload)).toEqual({
@@ -321,7 +321,7 @@ describe("Server Deployment", () => {
 					method: "GET",
 					url: "/redirect",
 					headers: { accept: "text/html" },
-					query: mockParams,
+					query: testParams,
 				});
 
 				expect(JSON.parse(response.payload)).toEqual({
