@@ -6,7 +6,7 @@ mockServer.get("/esp/#!/launch", (req, res) => {
 	res.headers({
 		"accept-ranges": "bytes",
 		"cache-control": "no-cache",
-		"content-length": "2", 
+		"content-length": "2",
 		"content-type": "text/html",
 		server: "Microsoft-IIS/10.0",
 		"x-powered-by": "ASP.NET",
