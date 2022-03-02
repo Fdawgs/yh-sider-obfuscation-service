@@ -22,22 +22,21 @@ async function route(server, options) {
 			methods: ["GET"],
 		});
 
-	server.addHook("preValidation", async (req, res) => {
-		if (
-			// Catch unsupported Accept header media types
-			!redirectGetSchema.produces.includes(
-				req.accepts().type(redirectGetSchema.produces)
-			)
-		) {
-			throw res.notAcceptable();
-		}
-	});
-
 	server.route({
 		method: "GET",
 		url: "/",
 		schema: redirectGetSchema,
-		handler(req, res) {
+		preValidation: async (req, res) => {
+			if (
+				// Catch unsupported Accept header media types
+				!redirectGetSchema.produces.includes(
+					req.accepts().type(redirectGetSchema.produces)
+				)
+			) {
+				throw res.notAcceptable();
+			}
+		},
+		handler: (req, res) => {
 			const espUrl =
 				options.redirectUrl + new URLSearchParams(req.query).toString();
 			server.log.debug(espUrl);
