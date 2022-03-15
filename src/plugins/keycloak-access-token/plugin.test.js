@@ -54,6 +54,8 @@ describe("Keycloak Access Token Retrieval Plugin", () => {
 	test("Should continue if Keycloak options are not defined", async () => {
 		server.register(plugin);
 
+		await server.ready();
+
 		const response = await server.inject({
 			method: "GET",
 			url: "/",
@@ -67,6 +69,8 @@ describe("Keycloak Access Token Retrieval Plugin", () => {
 
 	test("Should return Keycloak access_token from mock server", async () => {
 		server.register(plugin, keycloakRetrieveConfig);
+
+		await server.ready();
 
 		const response = await server.inject({
 			method: "GET",
@@ -90,6 +94,8 @@ describe("Keycloak Access Token Retrieval Plugin", () => {
 		};
 
 		server.register(plugin, config);
+
+		await server.ready();
 
 		const response = await server.inject({
 			method: "GET",
