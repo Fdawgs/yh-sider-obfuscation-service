@@ -42,6 +42,8 @@ describe("Query String Obfuscation plugin", () => {
 
 		server.register(plugin, config);
 
+		await server.ready();
+
 		const response = await server.inject({
 			method: "GET",
 			url: "/",
@@ -59,6 +61,8 @@ describe("Query String Obfuscation plugin", () => {
 
 	test("Should return HTTP status code 500 if options are not passed to plugin", async () => {
 		server.register(plugin);
+
+		await server.ready();
 
 		const response = await server.inject({
 			method: "GET",
