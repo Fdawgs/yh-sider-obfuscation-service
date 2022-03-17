@@ -1,13 +1,13 @@
 {
 	"_type": "export",
 	"__export_format": 4,
-	"__export_date": "2021-07-15T09:08:08.766Z",
-	"__export_source": "insomnia.desktop.app:v2021.4.1",
+	"__export_date": "2022-03-17T08:20:30.143Z",
+	"__export_source": "insomnia.desktop.app:v2022.1.1",
 	"resources": [
 		{
 			"_id": "req_d3b9c116dd394674a3ac2ebc0f6885cb",
 			"parentId": "fld_23dc4d413e554c46800bdcf52caf8239",
-			"modified": 1626339133177,
+			"modified": 1647505138764,
 			"created": 1626337919349,
 			"url": "http://localhost:8204/docs/json",
 			"name": "docs",
@@ -15,20 +15,7 @@
 			"method": "GET",
 			"body": {},
 			"parameters": [],
-			"headers": [
-				{
-					"id": "pair_3e836be6c1bc4310a2a351b76455491f",
-					"name": "Accept",
-					"value": "application/json",
-					"description": ""
-				},
-				{
-					"id": "pair_cc14239bf9b44f81ac8394f82293cee0",
-					"name": "Accept-Encoding",
-					"value": "br, gzip, deflate",
-					"description": ""
-				}
-			],
+			"headers": [],
 			"authentication": {},
 			"metaSortKey": -1572339188973,
 			"isPrivate": false,
@@ -65,7 +52,7 @@
 		{
 			"_id": "req_bf57a4d8c0424512af72b7ef58cf1c1d",
 			"parentId": "fld_23dc4d413e554c46800bdcf52caf8239",
-			"modified": 1626337974902,
+			"modified": 1647505141426,
 			"created": 1626337919353,
 			"url": "http://localhost:8204/admin/healthcheck",
 			"name": "admin/healthcheck",
@@ -73,20 +60,7 @@
 			"method": "GET",
 			"body": {},
 			"parameters": [],
-			"headers": [
-				{
-					"id": "pair_d96797f1e2934efba03140337471f26c",
-					"name": "Accept",
-					"value": "text/plain",
-					"description": ""
-				},
-				{
-					"id": "pair_0a92ba879d094124900608a8310bd0c9",
-					"name": "Accept-Encoding",
-					"value": "br, gzip, deflate",
-					"description": ""
-				}
-			],
+			"headers": [],
 			"authentication": {},
 			"metaSortKey": -1572339188923,
 			"isPrivate": false,
@@ -101,28 +75,40 @@
 		{
 			"_id": "req_290b13caacb2427f8e5d54a4902e8f38",
 			"parentId": "fld_23dc4d413e554c46800bdcf52caf8239",
-			"modified": 1626338143851,
+			"modified": 1647505209501,
 			"created": 1626337919345,
-			"url": "http://localhost:8204/redirect?patient=https://fhir.nhs.uk/Id/nhs-number|9449304513&birthdate=1934-10-23&location=https://fhir.nhs.uk/Id/ods-organization-code|RA4&practitioner=https://sider.nhs.uk/auth|frazer.smith@ydh.nhs.uk",
+			"url": "http://localhost:8204/redirect",
 			"name": "redirect",
 			"description": "",
 			"method": "GET",
 			"body": {},
-			"parameters": [],
-			"headers": [
+			"parameters": [
 				{
-					"id": "pair_d32176177de746afb8014266d5bb19be",
-					"name": "Accept",
-					"value": "text/html",
+					"id": "pair_af1cc849e9ca4ec58d5d2aee4d14a786",
+					"name": "patient",
+					"value": "https://fhir.nhs.uk/Id/nhs-number|9449304513",
 					"description": ""
 				},
 				{
-					"id": "pair_66a9e91c1a6c4e2a93cb33b06eaca8c8",
-					"name": "Accept-Encoding",
-					"value": "br, gzip, deflate",
+					"id": "pair_80dfda7474524fe3b8be96f876515351",
+					"name": "birthdate",
+					"value": "1934-10-23",
+					"description": ""
+				},
+				{
+					"id": "pair_a399834e42304c88a75c449bf1aa63f9",
+					"name": "location",
+					"value": "https://fhir.nhs.uk/Id/ods-organization-code|RA4",
+					"description": ""
+				},
+				{
+					"id": "pair_906172ce64764c98aca0f5b11082452a",
+					"name": "practitioner",
+					"value": "https://sider.nhs.uk/auth|frazer.smith@ydh.nhs.uk",
 					"description": ""
 				}
 			],
+			"headers": [],
 			"authentication": {},
 			"metaSortKey": -1572339188873,
 			"isPrivate": false,
