@@ -124,6 +124,7 @@ describe("Configuration", () => {
 		expect(config.rateLimit).toEqual({
 			allowList: JSON.parse(RATE_LIMIT_EXCLUDED_ARRAY),
 			continueExceeding: true,
+			hook: "onSend",
 			max: 1000,
 			timeWindow: 60000,
 		});
@@ -236,6 +237,7 @@ describe("Configuration", () => {
 		expect(config.rateLimit).toEqual({
 			allowList: JSON.parse(RATE_LIMIT_EXCLUDED_ARRAY),
 			continueExceeding: true,
+			hook: "onSend",
 			max: RATE_LIMIT_MAX_CONNECTIONS_PER_MIN,
 			timeWindow: 60000,
 		});
