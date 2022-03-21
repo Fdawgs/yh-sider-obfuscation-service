@@ -47,6 +47,12 @@ const expResHeadersJson = {
 	"content-type": expect.stringContaining("application/json"),
 };
 
+const expResHeaders4xxErrors = {
+	...expResHeadersJson,
+};
+delete expResHeaders4xxErrors.vary;
+delete expResHeaders4xxErrors["keep-alive"];
+
 const testParams = {
 	birthdate: faker.date.past().toISOString().split("T")[0],
 	location: "https://fhir.nhs.uk/Id/ods-organization-code|RA4",
@@ -142,6 +148,26 @@ describe("Server Deployment", () => {
 					});
 					expect(response.headers).toEqual(expResHeadersJson);
 					expect(response.statusCode).toBe(406);
+				});
+			});
+
+			describe("Undeclared Route", () => {
+				test("Should return HTTP status code 404 if route not found", async () => {
+					const response = await server.inject({
+						method: "GET",
+						url: "/invalid",
+						headers: {
+							accept: "application/json",
+						},
+					});
+
+					expect(JSON.parse(response.payload)).toEqual({
+						error: "Not Found",
+						message: "Route GET:/invalid not found",
+						statusCode: 404,
+					});
+					expect(response.headers).toEqual(expResHeaders4xxErrors);
+					expect(response.statusCode).toBe(404);
 				});
 			});
 
