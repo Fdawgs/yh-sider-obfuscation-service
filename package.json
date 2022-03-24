@@ -100,7 +100,7 @@
 		"fastify-sensible": "^3.1.2",
 		"fastify-swagger": "4.15.0",
 		"file-stream-rotator": "^0.6.1",
-		"fluent-json-schema": "^3.0.1",
+		"fluent-json-schema": "^3.1.0",
 		"obfuscated-querystring": "git+https://github.com/BlackPearSw/obfuscated-querystring.git",
 		"pino": "^7.8.0",
 		"pino-pretty": "^7.5.1",
