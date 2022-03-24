@@ -84,7 +84,7 @@
 	},
 	"dependencies": {
 		"ajv-formats": "^2.1.1",
-		"axios": "^0.26.0",
+		"axios": "^0.26.1",
 		"dotenv": "^16.0.0",
 		"env-schema": "^3.5.2",
 		"fastify": "^3.27.2",
