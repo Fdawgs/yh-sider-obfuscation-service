@@ -1,11 +1,13 @@
 /* eslint-disable no-console */
 /* eslint-disable security-node/detect-crlf */
 const cloneDeep = require("lodash").cloneDeep;
-const faker = require("faker/locale/en_GB");
+const { faker } = require("@faker-js/faker");
 const Fastify = require("fastify");
 const mockServer = require("../test_resources/mocks/sider-server.mock");
 const startServer = require("./server");
 const getConfig = require("./config");
+
+faker.locale = "en_GB";
 
 const expResHeaders = {
 	"cache-control": "no-store, max-age=0, must-revalidate",
