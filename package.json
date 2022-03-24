@@ -60,10 +60,10 @@
 		]
 	},
 	"devDependencies": {
-		"@commitlint/cli": "^16.2.1",
+		"@commitlint/cli": "^16.2.3",
 		"@commitlint/config-conventional": "^16.2.1",
 		"autocannon": "^7.7.0",
-		"eslint": "^8.10.0",
+		"eslint": "^8.11.0",
 		"eslint-config-airbnb-base": "^15.0.0",
 		"eslint-config-prettier": "^8.4.0",
 		"eslint-plugin-import": "^2.25.4",
@@ -84,7 +84,7 @@
 	},
 	"dependencies": {
 		"ajv-formats": "^2.1.1",
-		"axios": "^0.26.0",
+		"axios": "^0.26.1",
 		"dotenv": "^16.0.0",
 		"env-schema": "^3.5.2",
 		"fastify": "^3.27.2",
@@ -103,7 +103,7 @@
 		"fluent-json-schema": "^3.1.0",
 		"obfuscated-querystring": "git+https://github.com/BlackPearSw/obfuscated-querystring.git",
 		"pino": "^7.8.0",
-		"pino-pretty": "^7.5.1",
+		"pino-pretty": "^7.5.4",
 		"secure-json-parse": "^2.4.0",
 		"under-pressure": "^5.8.0",
 		"upath": "^2.0.1"
