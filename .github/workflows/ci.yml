@@ -37,7 +37,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Check out repo
-              uses: actions/checkout@v2
+              uses: actions/checkout@v3
 
             - name: Setup Node
               uses: actions/setup-node@v3
@@ -68,7 +68,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Check out repo
-              uses: actions/checkout@v2
+              uses: actions/checkout@v3
               with:
                   fetch-depth: 0
 
@@ -87,7 +87,7 @@ jobs:
         runs-on: ${{ matrix.os }}
         steps:
             - name: Check out repo
-              uses: actions/checkout@v2
+              uses: actions/checkout@v3
 
             - name: Setup Node ${{ matrix.node }} on ${{ matrix.os }}
               uses: actions/setup-node@v3
@@ -117,7 +117,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Check out repo
-              uses: actions/checkout@v2
+              uses: actions/checkout@v3
 
             - name: Run Hadolint
               uses: hadolint/hadolint-action@v1.6.0
@@ -132,7 +132,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Check out repo
-              uses: actions/checkout@v2
+              uses: actions/checkout@v3
 
             - name: Build and start app
               run: |
