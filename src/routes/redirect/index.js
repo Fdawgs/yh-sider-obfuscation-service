@@ -29,9 +29,7 @@ async function route(server, options) {
 		preValidation: async (req, res) => {
 			if (
 				// Catch unsupported Accept header media types
-				!redirectGetSchema.produces.includes(
-					req.accepts().type(redirectGetSchema.produces)
-				)
+				!req.accepts().type(redirectGetSchema.produces)
 			) {
 				throw res.notAcceptable();
 			}

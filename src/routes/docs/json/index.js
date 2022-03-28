@@ -26,16 +26,15 @@ async function route(server, options) {
 		preValidation: async (req, res) => {
 			if (
 				// Catch unsupported Accept header media types
-				!docsJsonGetSchema.produces.includes(
-					req.accepts().type(docsJsonGetSchema.produces)
-				)
+				!req.accepts().type(docsJsonGetSchema.produces)
 			) {
 				throw res.notAcceptable();
 			}
 		},
 		handler: (req, res) => {
-			res.header("cache-control", "public, max-age=3600");
-			res.send(server.swagger());
+			res.header("cache-control", "public, max-age=3600").send(
+				server.swagger()
+			);
 		},
 	});
 }
