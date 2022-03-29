@@ -161,7 +161,7 @@ As an example, providing `birthdate` in an invalid date format will return the f
 
 #### OpenAPI Specification
 
-The OpenAPI v3.x.x specification for this service is found at http://0.0.0.0:8204/docs/json.
+The OpenAPI v3.x.x specification for this service is found at `/docs/openapi`.
 
 ### Deploying Using Docker
 
