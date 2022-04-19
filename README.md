@@ -63,7 +63,7 @@ The service should now be up and running on the port set in the config. You shou
 }
 ```
 
-To quickly test it open a browser of your choice or, if using a request builder (i.e. [Insomnia](https://insomnia.rest/) or [Postman](https://www.postman.com/)) create a new GET request, and input the following URL:
+To quickly test it open a browser of your choice or, if using a request builder (i.e. [Insomnia](https://insomnia.rest/)) create a new GET request, and input the following URL:
 
 http://0.0.0.0:8204/redirect?patient=https://fhir.nhs.uk/Id/nhs-number|9449304513&birthdate=1934-10-23&location=https://fhir.nhs.uk/Id/ods-organization-code|RA4&practitioner=https://sider.nhs.uk/auth|frazer.smith@ydh.nhs.uk
 
