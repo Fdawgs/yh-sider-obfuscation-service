@@ -54,7 +54,7 @@ jobs:
               run: npm run lint:licenses
 
             - name: Run Lockfile Linter
-              run: npx lockfile-lint --path package-lock.json --type npm --allowed-hosts npm github.com --allowed-schemes 'https:' 'git+https:'
+              run: npx lockfile-lint -p package-lock.json -t npm -a npm github.com -o 'https:' 'git+https:'
 
     commit-lint:
         name: Lint Commit Messages
