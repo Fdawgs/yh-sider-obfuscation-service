@@ -1,5 +1,3 @@
-const { URLSearchParams } = require("url");
-
 // Import plugins
 const cors = require("fastify-cors");
 
@@ -35,6 +33,11 @@ async function route(server, options) {
 			}
 		},
 		handler: (req, res) => {
+			/**
+			 * Unable to use WHATWG URL API here to serialize URL,
+			 * as the API treats hashes in shebangs as the start
+			 * of a fragment
+			 */
 			const espUrl =
 				options.redirectUrl + new URLSearchParams(req.query).toString();
 			server.log.debug(espUrl);
