@@ -1,6 +1,5 @@
 const fp = require("fastify-plugin");
 const { obfuscate } = require("obfuscated-querystring/lib");
-const { URLSearchParams } = require("url");
 
 /**
  * @author Frazer Smith

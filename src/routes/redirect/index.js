@@ -1,5 +1,3 @@
-const { URLSearchParams } = require("url");
-
 // Import plugins
 const cors = require("fastify-cors");
 
