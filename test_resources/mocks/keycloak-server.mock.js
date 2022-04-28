@@ -1,6 +1,6 @@
 const Fastify = require("fastify");
 // eslint-disable-next-line import/no-extraneous-dependencies
-const fastifyFormBody = require("fastify-formbody");
+const fastifyFormBody = require("@fastify/formbody");
 
 const mockServer = Fastify();
 

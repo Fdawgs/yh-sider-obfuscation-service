@@ -1,16 +1,16 @@
-const autoLoad = require("fastify-autoload");
+const autoLoad = require("@fastify/autoload");
 const fp = require("fastify-plugin");
 const path = require("upath");
 
 // Import plugins
-const accepts = require("fastify-accepts");
-const compress = require("fastify-compress");
+const accepts = require("@fastify/accepts");
+const compress = require("@fastify/compress");
 const disableCache = require("fastify-disablecache");
 const flocOff = require("fastify-floc-off");
-const helmet = require("fastify-helmet");
-const rateLimit = require("fastify-rate-limit");
-const sensible = require("fastify-sensible");
-const swagger = require("fastify-swagger");
+const helmet = require("@fastify/helmet");
+const rateLimit = require("@fastify/rate-limit");
+const sensible = require("@fastify/sensible");
+const swagger = require("@fastify/swagger");
 const underPressure = require("under-pressure");
 const sharedSchemas = require("./plugins/shared-schemas");
 
