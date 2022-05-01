@@ -90,7 +90,7 @@
 		"@fastify/helmet": "^8.0.0",
 		"@fastify/rate-limit": "^6.0.0",
 		"@fastify/sensible": "^4.0.0",
-		"@fastify/swagger": "^6.0.0",
+		"@fastify/swagger": "^6.0.1",
 		"ajv-formats": "^2.1.1",
 		"axios": "^0.26.1",
 		"dotenv": "^16.0.0",
