@@ -92,7 +92,7 @@
 		"@fastify/sensible": "^4.0.0",
 		"@fastify/swagger": "^6.0.1",
 		"ajv-formats": "^2.1.1",
-		"axios": "^0.26.1",
+		"axios": "^0.27.2",
 		"dotenv": "^16.0.0",
 		"env-schema": "^4.0.0",
 		"fastify": "^3.28.0",
