@@ -60,7 +60,7 @@
 		]
 	},
 	"devDependencies": {
-		"@commitlint/cli": "^16.2.3",
+		"@commitlint/cli": "^16.2.4",
 		"@commitlint/config-conventional": "^16.2.4",
 		"@faker-js/faker": "^6.1.2",
 		"@fastify/formbody": "^6.0.0",
