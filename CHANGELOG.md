@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file.
 
+### [8.0.3](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v8.0.2...v8.0.3) (2022-05-16)
+
+
+### Bug Fixes
+
+* **server:** do not transform 503 http err into 500 http err response ([2a5121c](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/2a5121c49f9e09ea85dbf8d5dafef885bcd84342))
+
+
+### Documentation
+
+* update deployment steps to use `npm ci` ([a9db72a](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/a9db72af35bc830e91e7aa89a70bcf5303890321))
+
+
+### Miscellaneous
+
+* **.eslintrc:** enable `plugin:jest/style` rules ([#756](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/756)) ([ab1955d](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/ab1955de6f28b3c996fad09fcc10cc15f7296af6))
+* **.github/codeql-config:** remove quotation marks ([0c13b3b](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/0c13b3b77b85107bf40c8d9bc3c096847df8a4a3))
+* **server:** use optional chaining for error message logging ([79992ac](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/79992ac5f723409e7b8b86fc6f0d7d5c911bd111))
+
+
+### Continuous Integration
+
+* check `user.login` is dependabot instead of `actor` ([0880a1f](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/0880a1f1c51d6fc84b892383cb37f5d367e3ddc1))
+* **ci:** require `unit-tests` job to pass for `save-pr-number` job to run ([5f350f5](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/5f350f5d40c82e29a7ad5690a1dd5c2fce2d73e9))
+* **codeql:** only run on pr changes to `.html`, `.js`, and `.yml` files ([67966c6](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/67966c699461653911250b47a424b12d0f4cfc0d))
+* **codeql:** resolve missing analyses ([7aad59f](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/7aad59f1dcf42fac6c5894278583b4fb44085c30))
+* **codeql:** specify which files to scan during analysis ([0c3fc3b](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/0c3fc3b99835f121aeaaaf402a294673b56fdb9a))
+
 ### [8.0.2](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v8.0.1...v8.0.2) (2022-05-04)
 
 
