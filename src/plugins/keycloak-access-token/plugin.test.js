@@ -108,7 +108,7 @@ describe("Keycloak Access Token Retrieval Plugin", () => {
 
 		expect(JSON.parse(response.payload)).toEqual({
 			error: "Internal Server Error",
-			message: expect.any(String),
+			message: "Cannot read properties of undefined (reading 'url')",
 			statusCode: 500,
 		});
 		expect(response.statusCode).toBe(500);
