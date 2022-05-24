@@ -3,7 +3,7 @@
 const cloneDeep = require("lodash").cloneDeep;
 const { faker } = require("@faker-js/faker");
 const Fastify = require("fastify");
-const mockServer = require("../test_resources/mocks/sider-server.mock");
+const nock = require("nock");
 const startServer = require("./server");
 const getConfig = require("./config");
 
@@ -38,7 +38,9 @@ const expResHeadersRedirect = {
 	...expResHeaders,
 	"content-security-policy":
 		"default-src 'self';base-uri 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
-	location: expect.stringContaining("http://127.0.0.1:3001/esp/#!/launch?"),
+	location: expect.stringContaining(
+		"https://pyrusapps.blackpear.com/esp/#!/launch?"
+	),
 	vary: "Origin",
 	"x-xss-protection": "0",
 };
@@ -70,17 +72,24 @@ const testParams = {
 
 describe("Server Deployment", () => {
 	beforeAll(async () => {
-		try {
-			await mockServer.listen(3001);
-			console.log("Mock SIDeR server listening on http://127.0.0.1:3001");
-		} catch (err) {
-			console.log("Error starting SIDeR server:", err);
-			process.exit(1);
-		}
+		nock.disableNetConnect();
+
+		nock("https://pyrusapps.blackpear.com")
+			.replyContentLength()
+			.replyDate()
+			.get("/esp/#!/launch")
+			.reply(200, "Hi", {
+				"accept-ranges": "bytes",
+				"cache-control": "no-cache",
+				"content-type": "text/html",
+				server: "Microsoft-IIS/10.0",
+				"x-powered-by": "ASP.NET",
+			});
 	});
 
 	afterAll(async () => {
-		await mockServer.close();
+		nock.cleanAll();
+		nock.enableNetConnect();
 	});
 
 	describe("End-To-End", () => {
@@ -90,7 +99,8 @@ describe("Server Deployment", () => {
 
 		beforeAll(async () => {
 			Object.assign(process.env, {
-				SERVICE_REDIRECT_URL: "http://127.0.0.1:3001/esp/#!/launch?",
+				SERVICE_REDIRECT_URL:
+					"https://pyrusapps.blackpear.com/esp/#!/launch?",
 				KC_ENABLED: false,
 			});
 			currentEnv = { ...process.env };
@@ -289,7 +299,8 @@ describe("Server Deployment", () => {
 
 		beforeAll(async () => {
 			Object.assign(process.env, {
-				SERVICE_REDIRECT_URL: "http://127.0.0.1:3001/esp/#!/launch?",
+				SERVICE_REDIRECT_URL:
+					"https://pyrusapps.blackpear.com/esp/#!/launch?",
 			});
 
 			config = await getConfig();

@@ -2,15 +2,43 @@
 /* eslint-disable security-node/detect-crlf */
 const { faker } = require("@faker-js/faker");
 const Fastify = require("fastify");
+const nock = require("nock");
 const plugin = require(".");
 
 faker.locale = "en_GB";
 
-const {
-	keycloakRetrieveConfig,
-} = require("../../../test_resources/mocks/keycloak-config.mock");
-const mockKeycloakServer = require("../../../test_resources/mocks/keycloak-server.mock");
 const getConfig = require("../../config");
+
+/**
+ * Refer to option documentation here:
+ * https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/token-exchange/token-exchange.adoc
+ */
+const testKeycloakConfig = {
+	keycloak: {
+		enabled: true,
+		requestToken: {
+			form: {
+				audience: "mock-audience",
+				client_id: "mock-id",
+				client_secret: "mock-secret",
+				grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
+				requested_token_type:
+					"urn:ietf:params:oauth:token-type:access_token",
+			},
+			url: "https://sso.ydh.nhs.uk/token",
+		},
+		serviceAuthorisation: {
+			form: {
+				client_id: "mock-id",
+				client_secret: "mock-secret",
+				grant_type: "password",
+				password: "mock-password",
+				username: "mock-user@ydh.nhs.uk",
+			},
+			url: "https://sso.ydh.nhs.uk/service-auth",
+		},
+	},
+};
 
 const headers = {
 	"Content-Type": "application/json",
@@ -28,13 +56,43 @@ describe("Keycloak Access Token Retrieval Plugin", () => {
 	let server;
 
 	beforeAll(async () => {
-		try {
-			await mockKeycloakServer.listen(3000);
-			console.log("Mock Keycloak server listening on 3000");
-		} catch (err) {
-			console.log("Error starting mock Keycloak server:", err);
-			process.exit(1);
-		}
+		nock.disableNetConnect();
+
+		nock("https://sso.ydh.nhs.uk")
+			.defaultReplyHeaders({
+				"cache-control": "no-store",
+				"content-type": "application/json",
+				pragma: "no-cache",
+				"strict-transport-security":
+					"max-age=31536000; includeSubDomains",
+				"referrer-policy": "no-referrer",
+				"x-content-type": "nosniff",
+				"x-frame-options": "SAMEORIGIN",
+				"x-xss-protection": "1;mode=block",
+			})
+			.replyContentLength()
+			.replyDate()
+			.post("/service-auth")
+			.reply(200, {
+				access_token: "mock-access-token-authorised",
+				expires_in: 900,
+				refresh_expires_in: 1000,
+				refresh_token: "mock-refresh-token",
+				token_type: "bearer",
+				"not-before-policy": 0,
+				session_state: "mock-session-state",
+				scope: "profile email",
+			})
+			.post("/token", /subject_token=mock-access-token-authorised/)
+			.reply(200, {
+				access_token: "mock-access-token",
+				expires_in: 900,
+				refresh_expires_in: 0,
+				token_type: "bearer",
+				"not-before-policy": 0,
+				session_state: "mock-session-state",
+				scope: "profile email",
+			});
 	});
 
 	beforeEach(() => {
@@ -46,7 +104,8 @@ describe("Keycloak Access Token Retrieval Plugin", () => {
 	});
 
 	afterAll(async () => {
-		await mockKeycloakServer.close();
+		nock.cleanAll();
+		nock.enableNetConnect();
 	});
 
 	afterEach(async () => {
@@ -70,7 +129,7 @@ describe("Keycloak Access Token Retrieval Plugin", () => {
 	});
 
 	test("Should return Keycloak access_token from mock server", async () => {
-		server.register(plugin, keycloakRetrieveConfig);
+		server.register(plugin, testKeycloakConfig);
 
 		await server.ready();
 
@@ -83,7 +142,7 @@ describe("Keycloak Access Token Retrieval Plugin", () => {
 
 		expect(JSON.parse(response.payload)).toEqual({
 			...testParams,
-			access_token: "mock-access-token-authorised",
+			access_token: "mock-access-token",
 		});
 		expect(response.statusCode).toBe(200);
 	});
