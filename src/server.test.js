@@ -1,5 +1,4 @@
 /* eslint-disable no-console */
-/* eslint-disable security-node/detect-crlf */
 const cloneDeep = require("lodash").cloneDeep;
 const { faker } = require("@faker-js/faker");
 const Fastify = require("fastify");
