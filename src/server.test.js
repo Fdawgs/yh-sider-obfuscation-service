@@ -1,5 +1,4 @@
 /* eslint-disable no-console */
-const cloneDeep = require("lodash").cloneDeep;
 const { faker } = require("@faker-js/faker");
 const Fastify = require("fastify");
 const nock = require("nock");
@@ -68,6 +67,11 @@ const testParams = {
 	FromIconProfile: faker.datatype.number(),
 	NOUNLOCK: faker.datatype.number(),
 };
+
+const altTestParams = { ...testParams };
+delete altTestParams.FromIconProfile;
+delete altTestParams.NOUNLOCK;
+delete altTestParams.TPAGID;
 
 describe("Server Deployment", () => {
 	beforeAll(async () => {
@@ -216,11 +220,6 @@ describe("Server Deployment", () => {
 				});
 
 				test("Should return HTTP status code 400 if any required query string parameter is missing", async () => {
-					const altTestParams = cloneDeep(testParams);
-					delete altTestParams.FromIconProfile;
-					delete altTestParams.NOUNLOCK;
-					delete altTestParams.TPAGID;
-
 					const results = await Promise.all(
 						Object.keys(altTestParams).map(async (key) => {
 							const scrubbedParams = { ...altTestParams };
@@ -244,11 +243,6 @@ describe("Server Deployment", () => {
 				});
 
 				test("Should return HTTP status code 400 if any required query string parameter does not match expected pattern", async () => {
-					const altTestParams = cloneDeep(testParams);
-					delete altTestParams.FromIconProfile;
-					delete altTestParams.NOUNLOCK;
-					delete altTestParams.TPAGID;
-
 					const results = await Promise.all(
 						Object.keys(altTestParams).map(async (key) => {
 							const scrubbedParams = { ...altTestParams };
