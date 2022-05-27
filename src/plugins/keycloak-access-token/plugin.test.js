@@ -71,6 +71,7 @@ describe("Keycloak Access Token Retrieval Plugin", () => {
 			})
 			.replyContentLength()
 			.replyDate()
+			.persist()
 			.post("/service-auth")
 			.reply(200, {
 				access_token: "mock-access-token-authorised",

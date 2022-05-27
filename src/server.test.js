@@ -76,6 +76,7 @@ describe("Server Deployment", () => {
 		nock("https://pyrusapps.blackpear.com")
 			.replyContentLength()
 			.replyDate()
+			.persist()
 			.get("/esp/#!/launch")
 			.reply(200, "Hi", {
 				"accept-ranges": "bytes",
