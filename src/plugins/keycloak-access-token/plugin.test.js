@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 const { faker } = require("@faker-js/faker");
 const Fastify = require("fastify");
 const nock = require("nock");
