@@ -1,10 +1,7 @@
-/* eslint-disable no-console */
-const { faker } = require("@faker-js/faker");
+const { faker } = require("@faker-js/faker/locale/en_GB");
 const Fastify = require("fastify");
 const nock = require("nock");
 const plugin = require(".");
-
-faker.locale = "en_GB";
 
 const getConfig = require("../../config");
 
@@ -48,7 +45,7 @@ const testParams = {
 	birthdate: faker.date.past().toISOString().split("T")[0],
 	location: "https://fhir.nhs.uk/Id/ods-organization-code|RA4",
 	patient: `https://fhir.nhs.uk/Id/nhs-number|${faker.datatype.number(10)}`,
-	practitioner: `https://sider.nhs.uk/auth|obsservice.test@ydh.nhs.uk`,
+	practitioner: `https://sider.nhs.uk/auth|${faker.name.firstName()}.${faker.name.lastName()}@ydh.nhs.uk`,
 };
 
 describe("Keycloak Access Token Retrieval Plugin", () => {

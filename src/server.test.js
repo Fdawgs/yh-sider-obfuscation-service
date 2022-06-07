@@ -1,11 +1,8 @@
-/* eslint-disable no-console */
-const { faker } = require("@faker-js/faker");
+const { faker } = require("@faker-js/faker/locale/en_GB");
 const Fastify = require("fastify");
 const nock = require("nock");
 const startServer = require("./server");
 const getConfig = require("./config");
-
-faker.locale = "en_GB";
 
 const expResHeaders = {
 	"cache-control": "no-store, max-age=0, must-revalidate",
@@ -62,7 +59,7 @@ const testParams = {
 		min: 1000000000,
 		max: 9999999999,
 	})}`,
-	practitioner: `https://sider.nhs.uk/auth|obsservice.test@ydh.nhs.uk`,
+	practitioner: `https://sider.nhs.uk/auth|${faker.name.firstName()}.${faker.name.lastName()}@ydh.nhs.uk`,
 	TPAGID: faker.datatype.uuid(),
 	FromIconProfile: faker.datatype.number(),
 	NOUNLOCK: faker.datatype.number(),
@@ -211,8 +208,7 @@ describe("Server Deployment", () => {
 					expect(resQueryString).toMatchObject({
 						location:
 							"https://fhir.nhs.uk/Id/ods-organization-code|RA4",
-						practitioner:
-							"https://sider.nhs.uk/auth|obsservice.test@ydh.nhs.uk",
+						practitioner: testParams.practitioner,
 						enc: expect.any(String),
 					});
 					expect(response.headers).toEqual(expResHeadersRedirect);
