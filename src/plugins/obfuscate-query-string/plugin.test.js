@@ -1,9 +1,7 @@
-const { faker } = require("@faker-js/faker");
+const { faker } = require("@faker-js/faker/locale/en_GB");
 const Fastify = require("fastify");
 const plugin = require(".");
 const getConfig = require("../../config");
-
-faker.locale = "en_GB";
 
 const headers = {
 	"Content-Type": "application/json",

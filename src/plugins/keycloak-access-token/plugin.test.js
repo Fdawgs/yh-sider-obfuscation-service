@@ -1,9 +1,7 @@
-const { faker } = require("@faker-js/faker");
+const { faker } = require("@faker-js/faker/locale/en_GB");
 const Fastify = require("fastify");
 const nock = require("nock");
 const plugin = require(".");
-
-faker.locale = "en_GB";
 
 const getConfig = require("../../config");
 

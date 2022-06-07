@@ -1,10 +1,8 @@
-const { faker } = require("@faker-js/faker");
+const { faker } = require("@faker-js/faker/locale/en_GB");
 const Fastify = require("fastify");
 const nock = require("nock");
 const startServer = require("./server");
 const getConfig = require("./config");
-
-faker.locale = "en_GB";
 
 const expResHeaders = {
 	"cache-control": "no-store, max-age=0, must-revalidate",
