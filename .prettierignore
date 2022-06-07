@@ -127,4 +127,4 @@ package-lock.json
 yarn.lock
 
 # Test files
-test_resources/
+test_resources/test_log*
