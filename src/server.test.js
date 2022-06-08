@@ -93,7 +93,7 @@ describe("Server Deployment", () => {
 		nock.enableNetConnect();
 	});
 
-	describe("End-To-End", () => {
+	describe("Keycloak Token Retrieval Config Disabled", () => {
 		let server;
 		let config;
 		let currentEnv;
@@ -282,7 +282,7 @@ describe("Server Deployment", () => {
 		});
 	});
 
-	describe("End-To-End - Keycloak Token Retrieval Config Enabled But Keycloak Options Undefined", () => {
+	describe("Keycloak Token Retrieval Config Enabled But Keycloak Options Undefined", () => {
 		let server;
 		let config;
 
