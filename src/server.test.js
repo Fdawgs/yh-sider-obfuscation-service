@@ -221,14 +221,14 @@ describe("Server Deployment", () => {
 							// eslint-disable-next-line security/detect-object-injection
 							delete scrubbedParams[key];
 
-							const response = await server.inject({
-								method: "GET",
-								url: "/redirect",
-								headers: { accept: "text/html" },
-								query: scrubbedParams,
-							});
-
-							return response.statusCode;
+							return server
+								.inject({
+									method: "GET",
+									url: "/redirect",
+									headers: { accept: "text/html" },
+									query: scrubbedParams,
+								})
+								.then((response) => response.statusCode);
 						})
 					);
 
@@ -244,14 +244,14 @@ describe("Server Deployment", () => {
 							// eslint-disable-next-line security/detect-object-injection
 							scrubbedParams[key] = "test";
 
-							const response = await server.inject({
-								method: "GET",
-								url: "/redirect",
-								headers: { accept: "text/html" },
-								query: scrubbedParams,
-							});
-
-							return response.statusCode;
+							return server
+								.inject({
+									method: "GET",
+									url: "/redirect",
+									headers: { accept: "text/html" },
+									query: scrubbedParams,
+								})
+								.then((response) => response.statusCode);
 						})
 					);
 
