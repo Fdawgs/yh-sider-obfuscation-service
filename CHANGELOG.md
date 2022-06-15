@@ -2,6 +2,37 @@
 
 All notable changes to this project will be documented in this file.
 
+## [8.0.5](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v8.0.4...v8.0.5) (2022-06-15)
+
+
+### Documentation
+
+* **readme:** grammar fixes ([6a3d23a](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/6a3d23a3b7dad2e49ce0aef7cbd075bfd622bf4b))
+
+
+### Miscellaneous
+
+* **.github/funding:** remove comments ([bb697f6](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/bb697f67cba91c3c563aa5aa89094fea5d16c8bd))
+* **.github:** add `FUNDING.yml` ([9ab83c6](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/9ab83c6c23414c9ba90a34b664b5650a62c0698b))
+* **.github:** tidy files ([6d76b2d](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/6d76b2d05af366c78f6e6f54ef9bf9c125e98a01))
+* **.gitignore:** use latest github ignore template ([a7b7c38](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/a7b7c382e8f55723085c47dcd31bd2545c39d33f))
+* **.prettierignore:** add new paths from `.gitignore` ([a0996c4](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/a0996c46853581c5f0bc9c5f3a74480c663ff8b4))
+* **.prettierignore:** only ignore log files in test folder ([#796](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/796)) ([9c827f5](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/9c827f5c4e61659a553765919c94a43b4b472744))
+
+
+### Dependencies
+
+* **deps-dev:** bump @faker-js/faker from 7.1.0 to 7.2.0 ([#807](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/807)) ([bdcc144](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/bdcc144f4290a33ea292c986db6b4aa09aefbd55))
+* **deps-dev:** bump eslint from 8.16.0 to 8.17.0 ([#811](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/811)) ([e849945](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/e8499453e81cf3028cff2f8ddfbae65a44317085))
+* **deps-dev:** bump eslint-plugin-jest from 26.4.6 to 26.5.3 ([#812](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/812)) ([bc1664a](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/bc1664aa0864c7c3b819a419a0108b1fdc106441))
+* **deps-dev:** bump jest from 28.1.0 to 28.1.1 ([#803](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/803)) ([536dd77](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/536dd77117f336c90558a447c49a5b244d56e9f8))
+* **deps-dev:** bump nock from 13.2.4 to 13.2.6 ([#800](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/800)) ([df73434](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/df734349cb103aa3a5880132a8cb96c2e977cb0d))
+* **deps-dev:** bump prettier from 2.6.2 to 2.7.0 ([#804](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/804)) ([6c5ae84](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/6c5ae84050d7bda9e4dee23419da84d6f20df8c6))
+* **deps:** bump pino from 7.11.0 to 8.0.0 ([#793](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/793)) ([3d5abf1](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/3d5abf1912e262a29d694ad2fe692fd40fb8e2f4))
+* **deps:** bump pino-pretty from 7.6.1 to 8.0.0 ([#794](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/794)) ([fb8c064](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/fb8c06449f208572665c902d007026054dcfa3ce))
+* **deps:** bump sub-dependencies ([f797ce3](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/f797ce323492832d1036018b95f3ffc30953abcf))
+* **deps:** move pino-pretty to dev dependencies ([1f5d777](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/1f5d77708ffe898d6fb7f9dbed7929d319bc3569))
+
 ### [8.0.4](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v8.0.3...v8.0.4) (2022-06-01)
 
 
