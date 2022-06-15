@@ -77,9 +77,9 @@
 		"husky": "^8.0.1",
 		"jest": "^28.1.1",
 		"license-checker": "^25.0.1",
-		"nock": "^13.2.6",
+		"nock": "^13.2.7",
 		"nodemon": "^2.0.16",
-		"prettier": "2.7.0"
+		"prettier": "^2.7.0"
 	},
 	"dependencies": {
 		"@fastify/accepts": "^3.0.0",
