@@ -86,7 +86,6 @@ describe("Configuration", () => {
 		expect(config.fastifyInit.logger).toEqual({
 			formatters: { level: expect.any(Function) },
 			level: "info",
-			prettyPrint: false,
 			serializers: {
 				req: expect.any(Function),
 				res: expect.any(Function),
@@ -200,7 +199,6 @@ describe("Configuration", () => {
 		expect(config.fastifyInit.logger).toEqual({
 			formatters: { level: expect.any(Function) },
 			level: LOG_LEVEL,
-			prettyPrint: false,
 			serializers: {
 				req: expect.any(Function),
 				res: expect.any(Function),
