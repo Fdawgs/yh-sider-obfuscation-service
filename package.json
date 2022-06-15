@@ -23,7 +23,7 @@
 		"lint:prettier:ci": "prettier . -c -u",
 		"prepare": "husky install",
 		"start": "node .",
-		"start:dev": "nodemon",
+		"start:dev": "nodemon | pino-pretty",
 		"test": "npm run lint && npm run jest"
 	},
 	"commitlint": {
@@ -77,9 +77,10 @@
 		"husky": "^8.0.1",
 		"jest": "^28.1.1",
 		"license-checker": "^25.0.1",
-		"nock": "^13.2.6",
+		"nock": "^13.2.7",
 		"nodemon": "^2.0.16",
-		"prettier": "2.7.0"
+		"pino-pretty": "^8.0.0",
+		"prettier": "^2.7.0"
 	},
 	"dependencies": {
 		"@fastify/accepts": "^3.0.0",
@@ -102,7 +103,6 @@
 		"fluent-json-schema": "^3.1.0",
 		"obfuscated-querystring": "git+https://git@github.com/BlackPearSw/obfuscated-querystring.git",
 		"pino": "^8.0.0",
-		"pino-pretty": "^8.0.0",
 		"secure-json-parse": "^2.4.0",
 		"under-pressure": "^5.8.1",
 		"upath": "^2.0.1"
