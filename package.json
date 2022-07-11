@@ -80,7 +80,7 @@
 		"nock": "^13.2.8",
 		"nodemon": "^2.0.18",
 		"pino-pretty": "^8.0.0",
-		"prettier": "^2.7.0"
+		"prettier": "^2.7.1"
 	},
 	"dependencies": {
 		"@fastify/accepts": "^3.0.0",
