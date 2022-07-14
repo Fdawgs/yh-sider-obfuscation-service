@@ -51,7 +51,7 @@ const testParams = {
 describe("Keycloak Access Token Retrieval Plugin", () => {
 	let server;
 
-	beforeAll(async () => {
+	beforeAll(() => {
 		nock.disableNetConnect();
 
 		nock("https://sso.ydh.nhs.uk")
@@ -100,7 +100,7 @@ describe("Keycloak Access Token Retrieval Plugin", () => {
 		});
 	});
 
-	afterAll(async () => {
+	afterAll(() => {
 		nock.cleanAll();
 		nock.enableNetConnect();
 	});

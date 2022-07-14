@@ -71,7 +71,7 @@ delete altTestParams.NOUNLOCK;
 delete altTestParams.TPAGID;
 
 describe("Server Deployment", () => {
-	beforeAll(async () => {
+	beforeAll(() => {
 		nock.disableNetConnect();
 
 		nock("https://pyrusapps.blackpear.com")
@@ -88,7 +88,7 @@ describe("Server Deployment", () => {
 			});
 	});
 
-	afterAll(async () => {
+	afterAll(() => {
 		nock.cleanAll();
 		nock.enableNetConnect();
 	});
@@ -98,7 +98,7 @@ describe("Server Deployment", () => {
 		let config;
 		let currentEnv;
 
-		beforeAll(async () => {
+		beforeAll(() => {
 			Object.assign(process.env, {
 				SERVICE_REDIRECT_URL:
 					"https://pyrusapps.blackpear.com/esp/#!/launch?",
