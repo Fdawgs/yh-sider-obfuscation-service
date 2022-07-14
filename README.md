@@ -210,8 +210,8 @@ Please adhere to this project's [Code of Conduct](./CODE_OF_CONDUCT.md) when con
 
 ## Acknowledgements
 
--   Anthony Smith - Contextual link logo design
--   David Suckling - Contextual link implementation and testing
+-   Anthony Smith (Chief Clinical Information Officer) - Contextual link logo design
+-   David Suckling (Application Support Manager) - Contextual link implementation and testing
 -   [**Mark Hunt**](https://github.com/nhsbandit) - Keycloak single sign-on access tokens integration and testing
 -   [**Will Jehring**](https://github.com/wjehring) - Query string obfuscation, redirect testing, and Keycloak testing
 
