@@ -26,8 +26,9 @@ const request = require("axios").default;
  * @param {string} options.keycloak.requestToken.form.requested_subject
  * @param {string} options.keycloak.requestToken.form.requested_token_type
  * @param {string} options.keycloak.requestToken.url
+ * @param {Function} done - Fastify Plugin Callback.
  */
-async function plugin(server, options) {
+function plugin(server, options, done) {
 	// Do not add preHandler hook and attempt to retrieve access tokens if Keycloak not enabled
 	if (options?.keycloak?.enabled === true) {
 		server.addHook("preHandler", async (req) => {
@@ -54,6 +55,8 @@ async function plugin(server, options) {
 			req.query.access_token = userAccessResponse.data.access_token;
 		});
 	}
+
+	done();
 }
 
 module.exports = fp(plugin, {
