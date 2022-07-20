@@ -11,7 +11,7 @@ const helmet = require("@fastify/helmet");
 const rateLimit = require("@fastify/rate-limit");
 const sensible = require("@fastify/sensible");
 const swagger = require("@fastify/swagger");
-const underPressure = require("under-pressure");
+const underPressure = require("@fastify/under-pressure");
 const sharedSchemas = require("./plugins/shared-schemas");
 
 /**
@@ -22,7 +22,7 @@ const sharedSchemas = require("./plugins/shared-schemas");
  */
 async function plugin(server, config) {
 	// Register plugins
-	server
+	await server
 		// Accept header handler
 		.register(accepts)
 
@@ -48,14 +48,13 @@ async function plugin(server, config) {
 		.register(swagger, config.swagger)
 
 		// Process load and 503 response handling
-		.register(underPressure, config.processLoad);
+		.register(underPressure, config.processLoad)
 
-	await server
 		// Rate limiting and 429 response handling
 		.register(rateLimit, config.rateLimit);
 
 	// Register routes
-	server
+	await server
 		/**
 		 * `x-xss-protection` and `content-security-policy` is set by default by Helmet.
 		 * These are only useful for HTML/XML content; the only CSP directive that
@@ -96,7 +95,7 @@ async function plugin(server, config) {
 		 * See https://www.fastify.io/docs/latest/Encapsulation/ for more info
 		 */
 		.register(async (securedContext) => {
-			securedContext
+			await securedContext
 				.register(autoLoad, {
 					dir: path.joinSafe(__dirname, "plugins"),
 					ignorePattern: /shared-schemas/,
@@ -114,28 +113,28 @@ async function plugin(server, config) {
 			{
 				preHandler: server.rateLimit(),
 			},
-			(req, res) => {
-				res.notFound(`Route ${req.method}:${req.url} not found`);
-			}
+			async (req, res) =>
+				res.notFound(`Route ${req.method}:${req.url} not found`)
 		)
 
 		// Errors thrown by routes and plugins are caught here
-		.setErrorHandler(
-			// eslint-disable-next-line promise/prefer-await-to-callbacks
-			(err, req, res) => {
-				if (
-					res.statusCode >= 500 &&
+		.setErrorHandler(async (err, req, res) => {
+			if (
+				(err.statusCode >= 500 &&
 					/* istanbul ignore next: under-pressure plugin throws valid 503s */
-					res.statusCode !== 503
-				) {
-					req.log.error({ req, res, err }, err?.message);
-					res.internalServerError();
-				} else {
-					req.log.info({ req, res, err }, err?.message);
-					res.send(err);
-				}
+					err.statusCode !== 503) ||
+				/**
+				 * Uncaught errors will have a res.statusCode but not
+				 * an err.statusCode as @fastify/sensible sets that
+				 */
+				(res.statusCode === 200 && !err.statusCode)
+			) {
+				res.log.error(err);
+				throw server.httpErrors.internalServerError();
 			}
-		);
+
+			throw err;
+		});
 }
 
-module.exports = fp(plugin, { fastify: "3.x", name: "server" });
+module.exports = fp(plugin, { fastify: "4.x", name: "server" });

@@ -14,7 +14,7 @@ const { healthcheckGetSchema } = require("./schema");
  */
 async function route(server, options) {
 	// Register plugins
-	server
+	await server
 		// Enable CORS if options passed
 		.register(cors, {
 			...options.cors,
@@ -33,9 +33,7 @@ async function route(server, options) {
 				throw res.notAcceptable();
 			}
 		},
-		handler: (req, res) => {
-			res.send("ok");
-		},
+		handler: async () => "ok",
 	});
 }
 
