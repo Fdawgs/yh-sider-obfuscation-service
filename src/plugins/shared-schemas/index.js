@@ -5,10 +5,8 @@ const S = require("fluent-json-schema");
  * @author Frazer Smith
  * @description Plugin that adds collection of shared schemas for re-use throughout server.
  * @param {object} server - Fastify instance.
- * @param {object} options - Unused.
- * @param {Function} done - Fastify Plugin Callback.
  */
-function plugin(server, options, done) {
+async function plugin(server) {
 	// Response schemas
 	server.addSchema(
 		S.object()
@@ -65,8 +63,6 @@ function plugin(server, options, done) {
 					.prop("message", S.string().const("Service Unavailable"))
 			)
 	);
-
-	done();
 }
 
 module.exports = fp(plugin, {

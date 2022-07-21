@@ -11,9 +11,8 @@ const { obfuscate } = require("obfuscated-querystring/lib");
  * @param {string} options.obfuscation.encryptionKey.name - Encryption key name.
  * @param {string} options.obfuscation.encryptionKey.value - Encryption key value.
  * @param {Array} options.obfuscation.obfuscate - Query values that should be obfuscated.
- * @param {Function} done - Fastify Plugin Callback.
  */
-function plugin(server, options, done) {
+async function plugin(server, options) {
 	server.addHook("preHandler", (req, res, next) => {
 		const obfuscatedParams = new URLSearchParams(
 			obfuscate(
@@ -31,8 +30,6 @@ function plugin(server, options, done) {
 
 		next();
 	});
-
-	done();
 }
 
 module.exports = fp(plugin, {
