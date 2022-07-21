@@ -247,6 +247,7 @@ async function getConfig() {
 		},
 		rateLimit: {
 			continueExceeding: true,
+			hook: "onSend",
 			max: env.RATE_LIMIT_MAX_CONNECTIONS_PER_MIN || 1000,
 			timeWindow: 60000,
 		},

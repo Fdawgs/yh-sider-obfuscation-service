@@ -29,8 +29,10 @@ async function route(server, options) {
 				// Catch unsupported Accept header media types
 				!req.accepts().type(redirectGetSchema.produces)
 			) {
-				throw res.notAcceptable();
+				return res.notAcceptable();
 			}
+
+			return req;
 		},
 		handler: async (req, res) => {
 			/**
