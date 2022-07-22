@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [8.0.7](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v8.0.6...v8.0.7) (2022-07-22)
+
+
+### Improvements
+
+* migrate from fastify v3 to v4 ([#844](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/844)) ([df040aa](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/df040aaa714b5802a912cde2d135f3641f65599b))
+
 ## [8.0.6](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v8.0.5...v8.0.6) (2022-07-14)
 
 
