@@ -57,6 +57,6 @@ async function plugin(server, options) {
 }
 
 module.exports = fp(plugin, {
-	fastify: "3.x",
+	fastify: "4.x",
 	name: "keycloak-access-token",
 });

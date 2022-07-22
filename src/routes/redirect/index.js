@@ -13,7 +13,7 @@ const { redirectGetSchema } = require("./schema");
  */
 async function route(server, options) {
 	// Register plugins
-	server
+	await server
 		// Enable CORS if options passed
 		.register(cors, {
 			...options.cors,
@@ -29,10 +29,12 @@ async function route(server, options) {
 				// Catch unsupported Accept header media types
 				!req.accepts().type(redirectGetSchema.produces)
 			) {
-				throw res.notAcceptable();
+				return res.notAcceptable();
 			}
+
+			return req;
 		},
-		handler: (req, res) => {
+		handler: async (req, res) => {
 			/**
 			 * Unable to use WHATWG URL API here to serialize URL,
 			 * as the API treats hashes in shebangs as the start
@@ -42,7 +44,7 @@ async function route(server, options) {
 				options.redirectUrl + new URLSearchParams(req.query).toString();
 			server.log.debug(espUrl);
 			// eslint-disable-next-line security-node/detect-dangerous-redirects
-			res.redirect(espUrl);
+			return res.redirect(espUrl);
 		},
 	});
 }
