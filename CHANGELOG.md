@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file.
 
+## [8.0.8](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v8.0.7...v8.0.8) (2022-08-01)
+
+
+### Continuous Integration
+
+* **ci:** audit npm package signatures ([5f60b96](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/5f60b9694fa88337a0dea8e96adf3314a1112745))
+
+
+### Miscellaneous
+
+* **.*ignore:** add pnpm lockfile ([#851](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/851)) ([1959461](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/195946199f01adfa06bf7ddce1531b00a0b60c96))
+* replace `--production` npm arg with `--omit=dev` ([0e1b1d8](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/0e1b1d8b675993640cfe67bd1f373ad9075c7092))
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint from 8.20.0 to 8.21.0 ([#852](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/852)) ([216ce5e](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/216ce5ec83467481d132e0bb7e487e0d72422e27))
+* **deps-dev:** bump eslint-plugin-jest from 26.6.0 to 26.7.0 ([#855](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/855)) ([56e2d16](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/56e2d16dc7868edc030210710c43fed8d7181ca7))
+* **deps-dev:** bump eslint-plugin-jsdoc from 39.3.3 to 39.3.4 ([#853](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/853)) ([fb5bd4b](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/fb5bd4bfa64675e59f43d1e98e2b193983eed9b7))
+* **deps:** bump fastify-disablecache from 3.0.0 to 3.0.1 ([#848](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/848)) ([91393db](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/91393db7f5f5f4663515065df21a70e00d977d15))
+* **deps:** bump fastify-floc-off from 2.0.0 to 2.0.1 ([#850](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/850)) ([b549aaf](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/b549aaf998b1728e58ea21137734545ae73f9374))
+* **deps:** bump pino from 8.3.0 to 8.3.1 ([#849](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/849)) ([1f0badd](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/1f0badd488e8d3a9610cc9721bcc30b8dc622b01))
+* **deps:** bump secure-json-parse from 2.4.0 to 2.5.0 ([#854](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/854)) ([99ff190](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/99ff190117e9b129a46de1ece4cd4edd2b2caaae))
+* **deps:** bump sub-dependencies ([#856](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/856)) ([62d450d](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/62d450da81686b3eb109c3df5328cb90d5552522))
+
 ## [8.0.7](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v8.0.6...v8.0.7) (2022-07-22)
 
 
