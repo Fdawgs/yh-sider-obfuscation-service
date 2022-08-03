@@ -7,32 +7,33 @@ const S = require("fluent-json-schema");
  * @param {object} server - Fastify instance.
  */
 async function plugin(server) {
+	/**
+	 * NOTE: `.definition()` definitions have been replaced with `.prop()` properties, and
+	 * `.id()` ids removed due to definitions breaking in v4.12.1 of fastify-swagger.
+	 * See https://github.com/fastify/fastify-swagger/issues/524
+	 */
+
 	// Response schemas
 	server.addSchema(
 		S.object()
 			.id("responses")
 			.title("Responses")
 			.description("Common response schemas")
-			.definition(
+			.prop(
 				"found",
-				S.string()
-					.id("#found")
-					.title("302 Found")
-					.raw({ nullable: true })
+				S.string().title("302 Found").raw({ nullable: true })
 			)
-			.definition(
+			.prop(
 				"notAcceptable",
 				S.object()
-					.id("#notAcceptable")
 					.title("406 Not Acceptable Response")
 					.prop("statusCode", S.number().const(406))
 					.prop("error", S.string().const("Not Acceptable"))
 					.prop("message", S.string().const("Not Acceptable"))
 			)
-			.definition(
+			.prop(
 				"tooManyRequests",
 				S.object()
-					.id("#tooManyRequests")
 					.title("429 Too Many Requests Response")
 					.prop("statusCode", S.number().const(429))
 					.prop("error", S.string().const("Too Many Requests"))
@@ -43,19 +44,17 @@ async function plugin(server) {
 						])
 					)
 			)
-			.definition(
+			.prop(
 				"internalServerError",
 				S.object()
-					.id("#internalServerError")
 					.title("500 Internal Server Error Response")
 					.prop("statusCode", S.number().const(500))
 					.prop("error", S.string().const("Internal Server Error"))
 					.prop("message", S.string().const("Internal Server Error"))
 			)
-			.definition(
+			.prop(
 				"serviceUnavailable",
 				S.object()
-					.id("#serviceUnavailable")
 					.title("503 Service Unavailable")
 					.prop("statusCode", S.number().const(503))
 					.prop("code", S.string().const("FST_UNDER_PRESSURE"))

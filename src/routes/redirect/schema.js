@@ -59,17 +59,17 @@ const redirectGetSchema = {
 		.required(["birthdate", "patient", "location", "practitioner"]),
 
 	response: {
-		302: S.ref("responses#/definitions/found").description("Found"),
-		406: S.ref("responses#/definitions/notAcceptable").description(
+		302: S.ref("responses#/properties/found").description("Found"),
+		406: S.ref("responses#/properties/notAcceptable").description(
 			"Not Acceptable"
 		),
-		429: S.ref("responses#/definitions/tooManyRequests").description(
+		429: S.ref("responses#/properties/tooManyRequests").description(
 			"Too Many Requests"
 		),
-		500: S.ref("responses#/definitions/internalServerError").description(
+		500: S.ref("responses#/properties/internalServerError").description(
 			"Internal Server Error"
 		),
-		503: S.ref("responses#/definitions/serviceUnavailable").description(
+		503: S.ref("responses#/properties/serviceUnavailable").description(
 			"Service Unavailable"
 		),
 	},
