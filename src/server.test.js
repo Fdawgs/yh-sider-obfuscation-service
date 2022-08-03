@@ -31,13 +31,10 @@ const expResHeaders = {
 
 const expResHeadersRedirect = {
 	...expResHeaders,
-	"content-security-policy":
-		"default-src 'self';base-uri 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
 	location: expect.stringContaining(
 		"https://pyrusapps.blackpear.com/esp/#!/launch?"
 	),
 	vary: "Origin",
-	"x-xss-protection": "0",
 };
 delete expResHeadersRedirect["content-type"];
 
