@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [8.0.9](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v8.0.8...v8.0.9) (2022-08-04)
+
+
+### Bug Fixes
+
+* **routes:** invalid openapi shared schema definitions ([#857](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/857)) ([942c94e](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/942c94eb2538611d6762f0c23a596322d2218686))
+* **server:** reduce `content-security-policy` for options routes ([#859](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/859)) ([47785f0](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/47785f084ece7e979a2036ee733675e5b3f05c6d))
+
+
+### Dependencies
+
+* **deps:** bump @fastify/cors from 8.0.0 to 8.1.0 ([#860](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/860)) ([abdc03f](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/abdc03f9a76a270f7510b85a16014344f91209a4))
+
 ## [8.0.8](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v8.0.7...v8.0.8) (2022-08-01)
 
 
