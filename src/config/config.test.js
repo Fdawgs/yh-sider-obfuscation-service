@@ -7,7 +7,9 @@ describe("Configuration", () => {
 	const currentEnv = { ...process.env };
 
 	afterAll(async () => {
-		const files = glob.sync(`./test_resources/test-log*`);
+		const files = glob.sync("./test_resources/+(test-log*|.audit.json)", {
+			dot: true,
+		});
 
 		// eslint-disable-next-line security/detect-non-literal-fs-filename
 		await Promise.all(files.map((file) => fs.unlink(file)));
@@ -154,6 +156,8 @@ describe("Configuration", () => {
 		const LOG_ROTATION_DATE_FORMAT = "YYYY-MM";
 		const LOG_ROTATION_FILENAME = "./test_resources/test-log-%DATE%.log";
 		const LOG_ROTATION_FREQUENCY = "custom";
+		const LOG_ROTATION_MAX_LOGS = "1";
+		const LOG_ROTATION_MAX_SIZE = "1g";
 		const PROC_LOAD_MAX_EVENT_LOOP_DELAY = 1000;
 		const PROC_LOAD_MAX_HEAP_USED_BYTES = 100000000;
 		const PROC_LOAD_MAX_RSS_BYTES = 100000000;
@@ -177,6 +181,8 @@ describe("Configuration", () => {
 			LOG_ROTATION_DATE_FORMAT,
 			LOG_ROTATION_FILENAME,
 			LOG_ROTATION_FREQUENCY,
+			LOG_ROTATION_MAX_LOGS,
+			LOG_ROTATION_MAX_SIZE,
 			PROC_LOAD_MAX_EVENT_LOOP_DELAY,
 			PROC_LOAD_MAX_HEAP_USED_BYTES,
 			PROC_LOAD_MAX_RSS_BYTES,
