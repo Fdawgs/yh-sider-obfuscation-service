@@ -291,7 +291,6 @@ describe("Server Deployment", () => {
 			});
 
 			config = await getConfig();
-			delete config.keycloak;
 			config.keycloak = {
 				enabled: true,
 			};

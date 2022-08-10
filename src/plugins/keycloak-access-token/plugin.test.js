@@ -140,7 +140,6 @@ describe("Keycloak Access Token Retrieval Plugin", () => {
 
 	test("Should return HTTP status code 500 if Keycloak endpoint config enabled but other options undefined", async () => {
 		const config = await getConfig();
-		delete config.keycloak;
 		config.keycloak = {
 			enabled: true,
 		};
