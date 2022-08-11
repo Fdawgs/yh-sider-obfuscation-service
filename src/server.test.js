@@ -31,12 +31,12 @@ const expResHeaders = {
 
 const expResHeadersRedirect = {
 	...expResHeaders,
+	"content-type": undefined,
 	location: expect.stringContaining(
 		"https://pyrusapps.blackpear.com/esp/#!/launch?"
 	),
 	vary: "Origin",
 };
-delete expResHeadersRedirect["content-type"];
 
 const expResHeadersJson = {
 	...expResHeaders,
@@ -45,9 +45,9 @@ const expResHeadersJson = {
 
 const expResHeaders4xxErrors = {
 	...expResHeadersJson,
+	"keep-alive": undefined,
+	vary: undefined,
 };
-delete expResHeaders4xxErrors.vary;
-delete expResHeaders4xxErrors["keep-alive"];
 
 const testParams = {
 	birthdate: faker.date.past().toISOString().split("T")[0],
@@ -62,10 +62,12 @@ const testParams = {
 	NOUNLOCK: faker.datatype.number(),
 };
 
-const altTestParams = { ...testParams };
-delete altTestParams.FromIconProfile;
-delete altTestParams.NOUNLOCK;
-delete altTestParams.TPAGID;
+const altTestParams = {
+	...testParams,
+	FromIconProfile: undefined,
+	NOUNLOCK: undefined,
+	TPAGID: undefined,
+};
 
 describe("Server Deployment", () => {
 	beforeAll(() => {
@@ -289,7 +291,6 @@ describe("Server Deployment", () => {
 			});
 
 			config = await getConfig();
-			delete config.keycloak;
 			config.keycloak = {
 				enabled: true,
 			};
