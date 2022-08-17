@@ -23,19 +23,18 @@ async function route(server, options) {
 		method: "GET",
 		url: "/",
 		schema: docsOpenapiGetSchema,
-		preValidation: async (req, res) => {
+		onRequest: async (req) => {
 			if (
 				// Catch unsupported Accept header media types
 				!req.accepts().type(docsOpenapiGetSchema.produces)
 			) {
-				return res.notAcceptable();
+				throw server.httpErrors.notAcceptable();
 			}
-
-			return req;
 		},
-		handler: async (req, res) => {
-			res.header("cache-control", "public, max-age=3600");
-			return server.swagger();
+		handler: (req, res) => {
+			res.header("cache-control", "public, max-age=3600").send(
+				server.swagger()
+			);
 		},
 	});
 }
