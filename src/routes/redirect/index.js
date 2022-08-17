@@ -32,7 +32,7 @@ async function route(server, options) {
 				throw server.httpErrors.notAcceptable();
 			}
 		},
-		handler: async (req, res) => {
+		handler: (req, res) => {
 			/**
 			 * Unable to use WHATWG URL API here to serialize URL,
 			 * as the API treats hashes in shebangs as the start
@@ -42,7 +42,7 @@ async function route(server, options) {
 				options.redirectUrl + new URLSearchParams(req.query).toString();
 			server.log.debug(espUrl);
 			// eslint-disable-next-line security-node/detect-dangerous-redirects
-			return res.redirect(espUrl);
+			res.redirect(espUrl);
 		},
 	});
 }

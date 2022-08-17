@@ -31,9 +31,10 @@ async function route(server, options) {
 				throw server.httpErrors.notAcceptable();
 			}
 		},
-		handler: async (req, res) => {
-			res.header("cache-control", "public, max-age=3600");
-			return server.swagger();
+		handler: (req, res) => {
+			res.header("cache-control", "public, max-age=3600").send(
+				server.swagger()
+			);
 		},
 	});
 }
