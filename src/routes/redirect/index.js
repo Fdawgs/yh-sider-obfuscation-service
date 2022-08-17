@@ -24,15 +24,13 @@ async function route(server, options) {
 		method: "GET",
 		url: "/",
 		schema: redirectGetSchema,
-		onRequest: async (req, res) => {
+		onRequest: async (req) => {
 			if (
 				// Catch unsupported Accept header media types
 				!req.accepts().type(redirectGetSchema.produces)
 			) {
-				return res.notAcceptable();
+				throw server.httpErrors.notAcceptable();
 			}
-
-			return req;
 		},
 		handler: async (req, res) => {
 			/**
