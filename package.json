@@ -79,7 +79,7 @@
 		"license-checker": "^25.0.1",
 		"nock": "^13.2.9",
 		"nodemon": "^2.0.19",
-		"pino-pretty": "^8.1.0",
+		"pino-pretty": "^9.0.1",
 		"prettier": "^2.7.1"
 	},
 	"dependencies": {
