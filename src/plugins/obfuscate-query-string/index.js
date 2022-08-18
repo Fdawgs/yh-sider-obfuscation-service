@@ -13,7 +13,7 @@ const { obfuscate } = require("obfuscated-querystring/lib");
  * @param {Array} options.obfuscation.obfuscate - Query values that should be obfuscated.
  */
 async function plugin(server, options) {
-	server.addHook("preHandler", (req, res, next) => {
+	server.addHook("preHandler", async (req) => {
 		const obfuscatedParams = new URLSearchParams(
 			obfuscate(
 				new URLSearchParams(req.query).toString(),
@@ -27,8 +27,6 @@ async function plugin(server, options) {
 		});
 
 		req.query = result;
-
-		next();
 	});
 }
 
