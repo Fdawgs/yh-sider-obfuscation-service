@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file.
 
+## [8.0.11](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v8.0.10...v8.0.11) (2022-08-19)
+
+
+### Improvements
+
+* **plugins/obfuscate-query-string:** convert callback hook to async ([#877](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/877)) ([e5d4a2d](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/e5d4a2d664dea20595652b5e4c5e95ebb09b8211))
+* **routes:** check accept header is supported before parsing req body ([c51dcd0](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/c51dcd0fb3ff487d00889d2586de74c499125f12))
+* **routes:** convert sync async handlers to sync only ([9d05d7b](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/9d05d7b910d5329e95a503300237ea679e0517fb))
+* **routes:** remove redundant returns ([acc52c9](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/acc52c9222e5f453fb505f3cc2c7d815a6e2a08b))
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint from 8.21.0 to 8.22.0 ([#878](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/878)) ([f0f9e0a](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/f0f9e0a7a98d15c4cc5de8f6726522448f48a9ea))
+* **deps-dev:** bump eslint-plugin-jest from 26.8.2 to 26.8.3 ([#879](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/879)) ([55f3f7f](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/55f3f7f0644862d8903a848d97ab29e4cda0dd91))
+* **deps-dev:** bump pino-pretty from 8.1.0 to 9.0.1 ([#883](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/883)) ([8bf6f29](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/8bf6f29a6d605897a9217297397fccc666a86be0))
+* **deps:** bump @fastify/under-pressure from 7.0.0 to 8.0.0 ([#881](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/881)) ([1bbe9e8](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/1bbe9e8248652d4de10856f3dd9a8bc4bfdc9a87))
+* **deps:** bump fastify from 4.4.0 to 4.5.0 ([#882](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/882)) ([55d0005](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/55d000591c5c23c6c0bccbf48705bf8b81caef92))
+* **deps:** bump fastify from 4.5.0 to 4.5.2 ([#885](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/885)) ([591ddfa](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/591ddfa83796de7e433063dd2f447428a6ba277a))
+* **deps:** bump fastify-plugin from 4.1.0 to 4.2.0 ([#880](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/880)) ([df789b7](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/df789b7dd4e7853ae786ad5499cc073417792cd0))
+* **deps:** bump pino from 8.4.0 to 8.4.1 ([#884](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/884)) ([ec6926f](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/ec6926fc1168d3558eef1d3ce5a5f35ebf05d70f))
+* **deps:** bump sub-dependencies ([#886](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/886)) ([bef8c27](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/bef8c27dc08ac8e4f928d6f77ff4b1f7e86c0802))
+
+
+### Miscellaneous
+
+* **docs:** compress images and videos ([#887](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/887)) ([6ebd332](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/6ebd332dd2056cdcd0d74754720c858fde3302af))
+* ignore false positive eslint warning ([0f12adb](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/0f12adb7cd9e42c3d0f22596a6b98ecfbdfef603))
+
 ## [8.0.10](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v8.0.9...v8.0.10) (2022-08-09)
 
 
