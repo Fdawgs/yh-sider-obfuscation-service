@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [8.0.12](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v8.0.11...v8.0.12) (2022-08-23)
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint-plugin-jest from 26.8.3 to 26.8.7 ([#888](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/888)) ([8dcdcb2](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/8dcdcb26ae23de482c8fe6e9d48a54999b0e1ced))
+* **deps:** bump obfuscated-querystring from `7dbcb86` to `7d978f1` ([#890](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/890)) ([2f77362](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/2f7736260f41d776466a47c73437c2b630565b2e))
+* **deps:** bump pino from 8.4.1 to 8.4.2 ([#889](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/889)) ([64d15e1](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/64d15e1ac87e58ec5cb98cefbe16ccd0bdb4341b))
+
+
+### Miscellaneous
+
+* **.husky:** shell path and arg updates ([#891](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/891)) ([2bfc003](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/2bfc003eb33a5e3b40e364f4ac7a396210e681b6))
+
 ## [8.0.11](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v8.0.10...v8.0.11) (2022-08-19)
 
 
