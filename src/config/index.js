@@ -78,31 +78,24 @@ async function getConfig() {
 			.prop(
 				"LOG_LEVEL",
 				S.anyOf([
-					S.string()
-						.enum([
-							"fatal",
-							"error",
-							"warn",
-							"info",
-							"debug",
-							"trace",
-							"silent",
-						])
-						.default("info"),
+					S.string().enum([
+						"fatal",
+						"error",
+						"warn",
+						"info",
+						"debug",
+						"trace",
+						"silent",
+					]),
 					S.null(),
 				])
 			)
-			.prop(
-				"LOG_ROTATION_DATE_FORMAT",
-				S.anyOf([S.string().default("YYYY-MM-DD"), S.null()])
-			)
+			.prop("LOG_ROTATION_DATE_FORMAT", S.anyOf([S.string(), S.null()]))
 			.prop("LOG_ROTATION_FILENAME", S.anyOf([S.string(), S.null()]))
 			.prop(
 				"LOG_ROTATION_FREQUENCY",
 				S.anyOf([
-					S.string()
-						.enum(["custom", "daily", "test"])
-						.default("daily"),
+					S.string().enum(["custom", "daily", "test"]),
 					S.null(),
 				])
 			)
@@ -112,30 +105,27 @@ async function getConfig() {
 			// Process Load Handling
 			.prop(
 				"PROC_LOAD_MAX_EVENT_LOOP_DELAY",
-				S.anyOf([S.number().default(0), S.null()])
+				S.anyOf([S.number(), S.null()])
 			)
 			.prop(
 				"PROC_LOAD_MAX_EVENT_LOOP_UTILIZATION",
-				S.anyOf([S.number().default(0), S.null()])
+				S.anyOf([S.number(), S.null()])
 			)
 			.prop(
 				"PROC_LOAD_MAX_HEAP_USED_BYTES",
-				S.anyOf([S.number().default(0), S.null()])
+				S.anyOf([S.number(), S.null()])
 			)
-			.prop(
-				"PROC_LOAD_MAX_RSS_BYTES",
-				S.anyOf([S.number().default(0), S.null()])
-			)
+			.prop("PROC_LOAD_MAX_RSS_BYTES", S.anyOf([S.number(), S.null()]))
 
 			// Rate Limiting
 			.prop("RATE_LIMIT_EXCLUDED_ARRAY", S.anyOf([S.string(), S.null()]))
 			.prop(
 				"RATE_LIMIT_MAX_CONNECTIONS_PER_MIN",
-				S.anyOf([S.number().default(1000), S.null()])
+				S.anyOf([S.number(), S.null()])
 			)
 
 			// Keycloak
-			.prop("KC_ENABLED", S.anyOf([S.boolean().default(false), S.null()]))
+			.prop("KC_ENABLED", S.anyOf([S.boolean(), S.null()]))
 			.prop("KC_REQUESTTOKEN_URL", S.anyOf([S.string(), S.null()]))
 			.prop("KC_REQUESTTOKEN_AUDIENCE", S.anyOf([S.string(), S.null()]))
 			.prop("KC_REQUESTTOKEN_CLIENT_ID", S.anyOf([S.string(), S.null()]))
