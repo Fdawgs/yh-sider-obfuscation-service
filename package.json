@@ -87,7 +87,7 @@
 		"@fastify/autoload": "^5.3.0",
 		"@fastify/compress": "^6.1.0",
 		"@fastify/cors": "^8.1.0",
-		"@fastify/helmet": "^9.1.0",
+		"@fastify/helmet": "^10.0.0",
 		"@fastify/rate-limit": "^7.4.0",
 		"@fastify/sensible": "^5.1.0",
 		"@fastify/swagger": "^7.4.1",
