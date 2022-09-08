@@ -58,7 +58,7 @@ async function getConfig() {
 			// Service
 			.prop("HOST", S.string())
 			.prop("PORT", S.number())
-			.prop("SERVICE_REDIRECT_URL", S.string().format("uri"))
+			.prop("REDIRECT_URL", S.string().format("uri"))
 
 			// CORS
 			.prop("CORS_ORIGIN", S.anyOf([S.string(), S.null()]))
@@ -156,7 +156,7 @@ async function getConfig() {
 				"NODE_ENV",
 				"HOST",
 				"PORT",
-				"SERVICE_REDIRECT_URL",
+				"REDIRECT_URL",
 				"OBFUSCATION_KEY_NAME",
 				"OBFUSCATION_KEY_VALUE",
 				"OBFUSCATION_QUERYSTRING_KEY_ARRAY",
@@ -269,7 +269,7 @@ async function getConfig() {
 				],
 			},
 		},
-		redirectUrl: env.SERVICE_REDIRECT_URL,
+		redirectUrl: env.REDIRECT_URL,
 		// Values used by keycloak-access-token plugin in wildcard service
 		keycloak: {
 			enabled: env.KC_ENABLED || false,
