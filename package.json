@@ -102,6 +102,7 @@
 		"fastify-plugin": "^4.2.1",
 		"file-stream-rotator": "^0.6.1",
 		"fluent-json-schema": "^3.1.0",
+		"js2xmlparser": "^4.0.2",
 		"obfuscated-querystring": "git+https://git@github.com/BlackPearSw/obfuscated-querystring.git",
 		"pino": "^8.4.2",
 		"secure-json-parse": "^2.5.0",
