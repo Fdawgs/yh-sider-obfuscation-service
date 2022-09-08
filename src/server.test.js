@@ -98,8 +98,7 @@ describe("Server Deployment", () => {
 
 		beforeAll(() => {
 			Object.assign(process.env, {
-				SERVICE_REDIRECT_URL:
-					"https://pyrusapps.blackpear.com/esp/#!/launch?",
+				REDIRECT_URL: "https://pyrusapps.blackpear.com/esp/#!/launch?",
 				KC_ENABLED: false,
 			});
 			currentEnv = { ...process.env };
@@ -286,8 +285,7 @@ describe("Server Deployment", () => {
 
 		beforeAll(async () => {
 			Object.assign(process.env, {
-				SERVICE_REDIRECT_URL:
-					"https://pyrusapps.blackpear.com/esp/#!/launch?",
+				REDIRECT_URL: "https://pyrusapps.blackpear.com/esp/#!/launch?",
 			});
 
 			config = await getConfig();

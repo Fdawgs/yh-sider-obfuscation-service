@@ -12,7 +12,7 @@ describe("Healthcheck Route", () => {
 
 		beforeAll(async () => {
 			Object.assign(process.env, {
-				SERVICE_REDIRECT_URL: "http://127.0.0.1:3001/esp/#!/launch?",
+				REDIRECT_URL: "http://127.0.0.1:3001/esp/#!/launch?",
 			});
 			config = await getConfig();
 

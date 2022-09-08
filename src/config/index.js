@@ -56,9 +56,9 @@ async function getConfig() {
 			.prop("NODE_ENV", S.string())
 
 			// Service
-			.prop("SERVICE_HOST", S.string())
-			.prop("SERVICE_PORT", S.number())
-			.prop("SERVICE_REDIRECT_URL", S.string().format("uri"))
+			.prop("HOST", S.string())
+			.prop("PORT", S.number())
+			.prop("REDIRECT_URL", S.string().format("uri"))
 
 			// CORS
 			.prop("CORS_ORIGIN", S.anyOf([S.string(), S.null()]))
@@ -154,9 +154,9 @@ async function getConfig() {
 			.prop("OBFUSCATION_QUERYSTRING_KEY_ARRAY", S.string())
 			.required([
 				"NODE_ENV",
-				"SERVICE_HOST",
-				"SERVICE_PORT",
-				"SERVICE_REDIRECT_URL",
+				"HOST",
+				"PORT",
+				"REDIRECT_URL",
 				"OBFUSCATION_KEY_NAME",
 				"OBFUSCATION_KEY_VALUE",
 				"OBFUSCATION_QUERYSTRING_KEY_ARRAY",
@@ -165,7 +165,7 @@ async function getConfig() {
 
 	const config = {
 		fastify: {
-			port: env.SERVICE_PORT,
+			port: env.PORT,
 		},
 		fastifyInit: {
 			/**
@@ -269,7 +269,7 @@ async function getConfig() {
 				],
 			},
 		},
-		redirectUrl: env.SERVICE_REDIRECT_URL,
+		redirectUrl: env.REDIRECT_URL,
 		// Values used by keycloak-access-token plugin in wildcard service
 		keycloak: {
 			enabled: env.KC_ENABLED || false,
@@ -309,8 +309,8 @@ async function getConfig() {
 	};
 
 	// Ensure API listens on both IPv4 and IPv6 addresses
-	if (env.SERVICE_HOST) {
-		config.fastify.host = env.SERVICE_HOST;
+	if (env.HOST) {
+		config.fastify.host = env.HOST;
 	}
 
 	if (env.LOG_ROTATION_FILENAME) {

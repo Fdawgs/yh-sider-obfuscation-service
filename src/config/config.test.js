@@ -22,10 +22,9 @@ describe("Configuration", () => {
 
 	test("Should use defaults if values missing and return values according to environment variables", async () => {
 		const NODE_ENV = "development";
-		const SERVICE_HOST = faker.internet.ip();
-		const SERVICE_PORT = faker.datatype.number();
-		const SERVICE_REDIRECT_URL =
-			"https://pyrusapps.blackpear.com/esp/#!/launch?";
+		const HOST = faker.internet.ip();
+		const PORT = faker.datatype.number();
+		const REDIRECT_URL = "https://pyrusapps.blackpear.com/esp/#!/launch?";
 		const CORS_ORIGIN = "";
 		const CORS_ALLOWED_HEADERS = "";
 		const CORS_ALLOW_CREDENTIALS = "";
@@ -51,9 +50,9 @@ describe("Configuration", () => {
 
 		Object.assign(process.env, {
 			NODE_ENV,
-			SERVICE_HOST,
-			SERVICE_PORT,
-			SERVICE_REDIRECT_URL,
+			HOST,
+			PORT,
+			REDIRECT_URL,
 			CORS_ORIGIN,
 			CORS_ALLOWED_HEADERS,
 			CORS_ALLOW_CREDENTIALS,
@@ -81,8 +80,8 @@ describe("Configuration", () => {
 		const config = await getConfig();
 
 		expect(config.fastify).toEqual({
-			host: SERVICE_HOST,
-			port: SERVICE_PORT,
+			host: HOST,
+			port: PORT,
 		});
 
 		expect(config.fastifyInit.logger).toEqual({
@@ -125,7 +124,7 @@ describe("Configuration", () => {
 			timeWindow: 60000,
 		});
 
-		expect(config.redirectUrl).toBe(SERVICE_REDIRECT_URL);
+		expect(config.redirectUrl).toBe(REDIRECT_URL);
 
 		expect(config.keycloak.enabled).toBe(false);
 
@@ -140,10 +139,9 @@ describe("Configuration", () => {
 
 	test("Should return values according to environment variables - HTTPS (SSL cert) enabled and HTTP2 enabled", async () => {
 		const NODE_ENV = "development";
-		const SERVICE_HOST = faker.internet.ip();
-		const SERVICE_PORT = faker.datatype.number();
-		const SERVICE_REDIRECT_URL =
-			"https://pyrusapps.blackpear.com/esp/#!/launch?";
+		const HOST = faker.internet.ip();
+		const PORT = faker.datatype.number();
+		const REDIRECT_URL = "https://pyrusapps.blackpear.com/esp/#!/launch?";
 		const HTTPS_SSL_CERT_PATH =
 			"./test_resources/test_ssl_cert/server.cert";
 		const HTTPS_SSL_KEY_PATH = "./test_resources/test_ssl_cert/server.key";
@@ -171,9 +169,9 @@ describe("Configuration", () => {
 
 		Object.assign(process.env, {
 			NODE_ENV,
-			SERVICE_HOST,
-			SERVICE_PORT,
-			SERVICE_REDIRECT_URL,
+			HOST,
+			PORT,
+			REDIRECT_URL,
 			HTTPS_SSL_CERT_PATH,
 			HTTPS_SSL_KEY_PATH,
 			HTTPS_HTTP2_ENABLED,
@@ -198,8 +196,8 @@ describe("Configuration", () => {
 		const config = await getConfig();
 
 		expect(config.fastify).toEqual({
-			host: SERVICE_HOST,
-			port: SERVICE_PORT,
+			host: HOST,
+			port: PORT,
 		});
 
 		expect(config.fastifyInit.logger).toEqual({
@@ -241,7 +239,7 @@ describe("Configuration", () => {
 			timeWindow: 60000,
 		});
 
-		expect(config.redirectUrl).toBe(SERVICE_REDIRECT_URL);
+		expect(config.redirectUrl).toBe(REDIRECT_URL);
 
 		expect(config.keycloak.enabled).toBe(false);
 
@@ -255,10 +253,9 @@ describe("Configuration", () => {
 	});
 
 	test("Should return values according to environment variables - HTTPS (PFX cert) enabled and HTTP2 enabled", async () => {
-		const SERVICE_HOST = faker.internet.ip();
-		const SERVICE_PORT = faker.datatype.number();
-		const SERVICE_REDIRECT_URL =
-			"https://pyrusapps.blackpear.com/esp/#!/launch?";
+		const HOST = faker.internet.ip();
+		const PORT = faker.datatype.number();
+		const REDIRECT_URL = "https://pyrusapps.blackpear.com/esp/#!/launch?";
 		const HTTPS_PFX_FILE_PATH =
 			"./test_resources/test_ssl_cert/server.cert"; // Not an actual PFX file
 		const HTTPS_PFX_PASSPHRASE = faker.lorem.word();
@@ -274,9 +271,9 @@ describe("Configuration", () => {
 		const OBFUSCATION_QUERYSTRING_KEY_ARRAY = '["birthdate", "patient"]';
 
 		Object.assign(process.env, {
-			SERVICE_HOST,
-			SERVICE_PORT,
-			SERVICE_REDIRECT_URL,
+			HOST,
+			PORT,
+			REDIRECT_URL,
 			HTTPS_PFX_FILE_PATH,
 			HTTPS_PFX_PASSPHRASE,
 			HTTPS_HTTP2_ENABLED,
@@ -290,8 +287,8 @@ describe("Configuration", () => {
 		const config = await getConfig();
 
 		expect(config.fastify).toEqual({
-			host: SERVICE_HOST,
-			port: SERVICE_PORT,
+			host: HOST,
+			port: PORT,
 		});
 
 		expect(config.fastifyInit.https).toEqual({
@@ -349,9 +346,9 @@ describe("Configuration", () => {
 	])(
 		"Should return values according to environment variables - $testName",
 		async ({ envVariables, expected }) => {
-			const SERVICE_HOST = faker.internet.ip();
-			const SERVICE_PORT = faker.datatype.number();
-			const SERVICE_REDIRECT_URL = "https://www.nhs.uk";
+			const HOST = faker.internet.ip();
+			const PORT = faker.datatype.number();
+			const REDIRECT_URL = "https://www.nhs.uk";
 			const CORS_ORIGIN = envVariables.CORS_ORIGIN;
 			const CORS_ALLOWED_HEADERS =
 				"Accept, Authorization, Content-Type, Origin, X-Requested-With";
@@ -371,9 +368,9 @@ describe("Configuration", () => {
 				'["birthdate", "patient"]';
 
 			Object.assign(process.env, {
-				SERVICE_HOST,
-				SERVICE_PORT,
-				SERVICE_REDIRECT_URL,
+				HOST,
+				PORT,
+				REDIRECT_URL,
 				CORS_ORIGIN,
 				CORS_ALLOWED_HEADERS,
 				CORS_ALLOW_CREDENTIALS,
@@ -389,8 +386,8 @@ describe("Configuration", () => {
 			const config = await getConfig();
 
 			expect(config.fastify).toEqual({
-				host: SERVICE_HOST,
-				port: SERVICE_PORT,
+				host: HOST,
+				port: PORT,
 			});
 
 			expect(config.cors).toEqual({
@@ -422,9 +419,9 @@ describe("Configuration", () => {
 			},
 		},
 	])("Should throw error if $testName", async ({ envVariables }) => {
-		const SERVICE_HOST = faker.internet.ip();
-		const SERVICE_PORT = faker.datatype.number();
-		const SERVICE_REDIRECT_URL = "https://www.nhs.uk";
+		const HOST = faker.internet.ip();
+		const PORT = faker.datatype.number();
+		const REDIRECT_URL = "https://www.nhs.uk";
 		const HTTPS_SSL_KEY_PATH = envVariables?.HTTPS_SSL_KEY_PATH || "";
 		const HTTPS_SSL_CERT_PATH = envVariables?.HTTPS_SSL_CERT_PATH || "";
 		const HTTPS_PFX_FILE_PATH = envVariables?.HTTPS_PFX_FILE_PATH || "";
@@ -440,9 +437,9 @@ describe("Configuration", () => {
 		]);
 
 		Object.assign(process.env, {
-			SERVICE_HOST,
-			SERVICE_PORT,
-			SERVICE_REDIRECT_URL,
+			HOST,
+			PORT,
+			REDIRECT_URL,
 			HTTPS_SSL_CERT_PATH,
 			HTTPS_SSL_KEY_PATH,
 			HTTPS_PFX_FILE_PATH,
