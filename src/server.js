@@ -12,6 +12,7 @@ const rateLimit = require("@fastify/rate-limit");
 const sensible = require("@fastify/sensible");
 const swagger = require("@fastify/swagger");
 const underPressure = require("@fastify/under-pressure");
+const serializeJsonToXml = require("./plugins/serialize-json-to-xml");
 const sharedSchemas = require("./plugins/shared-schemas");
 
 /**
@@ -40,6 +41,9 @@ async function plugin(server, config) {
 
 		// Utility functions and error handlers
 		.register(sensible, { errorHandler: false })
+
+		// Serialization support for XML responses
+		.register(serializeJsonToXml)
 
 		// Reusable schemas
 		.register(sharedSchemas)
