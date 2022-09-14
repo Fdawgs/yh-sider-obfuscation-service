@@ -1,5 +1,6 @@
 const { faker } = require("@faker-js/faker/locale/en_GB");
 const Fastify = require("fastify");
+const qs = require("fast-querystring");
 const nock = require("nock");
 const startServer = require("./server");
 const getConfig = require("./config");
@@ -188,17 +189,12 @@ describe("Server Deployment", () => {
 						query: testParams,
 					});
 
-					const resQueryString = {};
-					Array.from(
-						new URLSearchParams(
-							response.headers.location.substring(
-								response.headers.location.indexOf("?") + 1,
-								response.headers.location.length
-							)
-						).entries()
-					).forEach((element) => {
-						resQueryString[element[0]] = element[1];
-					});
+					const resQueryString = qs.parse(
+						response.headers.location.substring(
+							response.headers.location.indexOf("?") + 1,
+							response.headers.location.length
+						)
+					);
 
 					expect(resQueryString).toMatchObject({
 						location:
