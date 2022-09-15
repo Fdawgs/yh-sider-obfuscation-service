@@ -56,10 +56,10 @@ The service should now be up and running on the port set in the config. You shou
 ```json
 {
 	"level": "info",
-	"time": "2021-10-05T08:12:51.571Z",
-	"pid": 63372,
+	"time": "2022-09-15T10:17:42.430Z",
+	"pid": 18736,
 	"hostname": "MYCOMPUTER",
-	"msg": "Server listening at http://[::]:8204"
+	"msg": "Server listening at http://127.0.0.1:8204"
 }
 ```
 
@@ -74,22 +74,29 @@ In stdout, or the log file, you will see something similar to the following retu
 ```json
 {
 	"level": "info",
-	"time": "2021-10-05T08:14:13.556Z",
-	"pid": 63372,
+	"time": "2022-09-15T10:21:09.903Z",
+	"pid": 19240,
 	"hostname": "MYCOMPUTER",
 	"reqId": "req-1",
 	"req": {
 		"id": "req-1",
 		"method": "GET",
 		"url": "/redirect?patient=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fnhs-number%7C9449304513&birthdate=1934-10-23&location=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fods-organization-code%7CRA4&practitioner=https%3A%2F%2Fsider.nhs.uk%2Fauth%7Cfrazer.smith%40ydh.nhs.uk",
+		"query": {
+			"patient": "https://fhir.nhs.uk/Id/nhs-number|9449304513",
+			"birthdate": "1934-10-23",
+			"location": "https://fhir.nhs.uk/Id/ods-organization-code|RA4",
+			"practitioner": "https://sider.nhs.uk/auth|frazer.smith@ydh.nhs.uk"
+		},
+		"params": {},
 		"headers": {
 			"host": "localhost:8204",
-			"user-agent": "insomnia/2021.5.3",
-			"accept": "text/html",
-			"accept-encoding": "br, gzip, deflate"
+			"user-agent": "insomnia/2022.5.1",
+			"accept-encoding": "br, gzip, deflate",
+			"accept": "*/*"
 		},
-		"remoteAddress": "::1",
-		"remotePort": 59239
+		"remoteAddress": "127.0.0.1",
+		"remotePort": 60615
 	},
 	"msg": "incoming request"
 }
@@ -98,37 +105,35 @@ In stdout, or the log file, you will see something similar to the following retu
 ```json
 {
 	"level": "info",
-	"time": "2021-10-05T08:14:13.586Z",
-	"pid": 63372,
+	"time": "2022-09-15T10:21:09.923Z",
+	"pid": 19240,
 	"hostname": "MYCOMPUTER",
 	"reqId": "req-1",
 	"res": {
 		"statusCode": 302,
 		"headers": {
-			"content-security-policy": "default-src 'self';base-uri 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
+			"content-security-policy": "default-src 'self';frame-ancestors 'none'",
 			"x-dns-prefetch-control": "off",
-			"expect-ct": "max-age=0",
 			"x-frame-options": "SAMEORIGIN",
 			"strict-transport-security": "max-age=31536000; includeSubDomains",
 			"x-download-options": "noopen",
 			"x-content-type-options": "nosniff",
 			"x-permitted-cross-domain-policies": "none",
 			"referrer-policy": "no-referrer",
-			"x-xss-protection": "0",
-			"surrogate-control": "no-store",
 			"cache-control": "no-store, max-age=0, must-revalidate",
-			"pragma": "no-cache",
 			"expires": "0",
+			"pragma": "no-cache",
+			"surrogate-control": "no-store",
 			"permissions-policy": "interest-cohort=()",
 			"vary": "Origin",
+			"location": "https://pyrusapps.blackpear.com/esp/#!/launch?location=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fods-organization-code%7CRA4&practitioner=https%3A%2F%2Fsider.nhs.uk%2Fauth%7Cfrazer.smith%40ydh.nhs.uk&enc=k01%7Ca6c12e7c5969ab5829a3f91ba02c302a0b4f598ad6c03709fbeeb52686a007c99f8b13add1472176b06f1471a0343f2d904d6f41c5776fa6d340834c8ebef92d41dcc164c6c8273854f404fd24b1ec8d4e6829c4a9b76aa08d8a5b63d806fb01",
 			"x-ratelimit-limit": 1000,
 			"x-ratelimit-remaining": 999,
 			"x-ratelimit-reset": 60,
-			"location": "https://pyrusapps.blackpear.com/esp/#!/launch?location=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fods-organization-code%7CRA4&practitioner=https%3A%2F%2Fsider.nhs.uk%2Fauth%7Cfrazer.smith%40ydh.nhs.uk&enc=k01%7Ca6c12e7c5969ab5829a3f91ba02c302a0b4f598ad6c03709fbeeb52686a007c99f8b13add1472176b06f1471a0343f2d904d6f41c5776fa6d340834c8ebef92d41dcc164c6c8273854f404fd24b1ec8d4e6829c4a9b76aa08d8a5b63d806fb01",
 			"content-length": "0"
 		}
 	},
-	"responseTime": 27.195500135421753,
+	"responseTime": 19.52570000104606,
 	"msg": "request completed"
 }
 ```
