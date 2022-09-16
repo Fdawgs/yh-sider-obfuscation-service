@@ -1,4 +1,5 @@
 const fp = require("fastify-plugin");
+const qs = require("fast-querystring");
 const { obfuscate } = require("obfuscated-querystring/lib");
 
 /**
@@ -14,19 +15,10 @@ const { obfuscate } = require("obfuscated-querystring/lib");
  */
 async function plugin(server, options) {
 	server.addHook("preHandler", async (req) => {
-		const obfuscatedParams = new URLSearchParams(
-			obfuscate(
-				new URLSearchParams(req.query).toString(),
-				options.obfuscation
-			)
+		const obfuscatedParams = qs.parse(
+			obfuscate(qs.stringify(req.query), options.obfuscation)
 		);
-
-		const result = {};
-		Array.from(obfuscatedParams.entries()).forEach((element) => {
-			result[element[0]] = element[1];
-		});
-
-		req.query = result;
+		req.query = obfuscatedParams;
 	});
 }
 
