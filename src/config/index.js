@@ -269,7 +269,7 @@ async function getConfig() {
 				],
 			},
 		},
-		redirectUrl: env.REDIRECT_URL,
+		redirectUrl: new URL(env.REDIRECT_URL).href,
 		// Values used by keycloak-access-token plugin in wildcard service
 		keycloak: {
 			enabled: env.KC_ENABLED || false,
