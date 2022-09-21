@@ -348,7 +348,7 @@ describe("Configuration", () => {
 		async ({ envVariables, expected }) => {
 			const HOST = faker.internet.ip();
 			const PORT = faker.datatype.number();
-			const REDIRECT_URL = "https://www.nhs.uk";
+			const REDIRECT_URL = "https://nhs.uk";
 			const CORS_ORIGIN = envVariables.CORS_ORIGIN;
 			const CORS_ALLOWED_HEADERS =
 				"Accept, Authorization, Content-Type, Origin, X-Requested-With";
@@ -421,7 +421,7 @@ describe("Configuration", () => {
 	])("Should throw error if $testName", async ({ envVariables }) => {
 		const HOST = faker.internet.ip();
 		const PORT = faker.datatype.number();
-		const REDIRECT_URL = "https://www.nhs.uk";
+		const REDIRECT_URL = "https://nhs.uk";
 		const HTTPS_SSL_KEY_PATH = envVariables?.HTTPS_SSL_KEY_PATH || "";
 		const HTTPS_SSL_CERT_PATH = envVariables?.HTTPS_SSL_CERT_PATH || "";
 		const HTTPS_PFX_FILE_PATH = envVariables?.HTTPS_PFX_FILE_PATH || "";
