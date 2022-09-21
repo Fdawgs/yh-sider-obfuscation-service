@@ -169,7 +169,7 @@ async function getConfig() {
 		},
 		fastifyInit: {
 			/**
-			 * See https://www.fastify.io/docs/v3.8.x/Logging/
+			 * See https://fastify.io/docs/latest/Reference/Logging/
 			 * and https://getpino.io/#/docs/api for logger options
 			 */
 			logger: {
@@ -245,7 +245,7 @@ async function getConfig() {
 				info: {
 					title: "YDH SIDeR Obfuscation Service",
 					description:
-						'<a href="https://yeovilhospital.co.uk/">Yeovil District Hospital NHSFT</a>\'s contextual link obfuscation service, a Node.js application using the <a href="https://www.fastify.io/">Fastify web framework</a> and Black Pear\'s <a href="https://github.com/BlackPearSw/obfuscated-querystring/">obfuscated-querystring</a>.',
+						'<a href="https://yeovilhospital.co.uk/">Yeovil District Hospital NHSFT</a>\'s contextual link obfuscation service, a Node.js application using the <a href="https://fastify.io/">Fastify web framework</a> and Black Pear\'s <a href="https://github.com/BlackPearSw/obfuscated-querystring/">obfuscated-querystring</a>.',
 					contact: {
 						name: "Solutions Development Team",
 						email: "servicedesk@ydh.nhs.uk",
