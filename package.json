@@ -105,7 +105,7 @@
 		"fluent-json-schema": "^3.1.0",
 		"js2xmlparser": "^4.0.2",
 		"obfuscated-querystring": "git+https://git@github.com/BlackPearSw/obfuscated-querystring.git",
-		"pino": "^8.4.2",
+		"pino": "^8.6.1",
 		"secure-json-parse": "^2.5.0",
 		"upath": "^2.0.1"
 	}
