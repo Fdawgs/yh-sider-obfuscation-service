@@ -349,7 +349,7 @@ describe("Configuration", () => {
 			const HOST = faker.internet.ip();
 			const PORT = faker.datatype.number();
 			const REDIRECT_URL = "https://nhs.uk";
-			const CORS_ORIGIN = envVariables.CORS_ORIGIN;
+			const { CORS_ORIGIN } = envVariables;
 			const CORS_ALLOWED_HEADERS =
 				"Accept, Authorization, Content-Type, Origin, X-Requested-With";
 			const CORS_ALLOW_CREDENTIALS =
