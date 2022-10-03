@@ -2,6 +2,68 @@
 
 All notable changes to this project will be documented in this file.
 
+## [9.0.0](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v8.0.13...v9.0.0) (2022-10-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* **config:** `SERVICE_REDIRECT_URL` env variable renamed to `REDIRECT_URL`.
+* **config:** `SERVICE_HOST` and `SERVICE_PORT` env variables renamed to `HOST` and `PORT` respectively.
+
+### Features
+
+* add serialization support for xml error responses ([040307e](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/040307e545c25d60f0871d3bb3cdeb9c4f662e85))
+
+
+### Bug Fixes
+
+* **config:** use `HOST` and `PORT` env variables for cloud services ([0f21e40](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/0f21e409ce476790fed4725e89bfa12e41bab5f2))
+* **plugins/serialize-json-to-xml:** rep invalid xml chars with U+FFFD ([0a0d7cb](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/0a0d7cbab34f7bb5b9f3bd6c0927b3e00a08e996))
+
+
+### Improvements
+
+* **config:** rename `SERVICE_REDIRECT_URL` to `REDIRECT_URL` ([6bbf809](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/6bbf809d1e29155510add0692b383ecc6810d014))
+* **config:** serialize `REDIRECT_URL` env variable ([52c6d1c](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/52c6d1ca084cfec16c15206f52fd815e1ad8e40c))
+* **plugins/serialize-json-to-xml:** minify xml responses ([0bcb23b](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/0bcb23b6c890009c6920a494716ee67b0c24ba92))
+* replace calling `URLSearchParams` with fast-querystring ([9c55100](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/9c551003a6ab1fce6989f9f41313a1f554e6df84))
+
+
+### Documentation
+
+* **readme:** update example request ([76e9ca3](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/76e9ca3418d879c9c4de9968368c31ee52dc803a))
+* use shorter urls; fix fastify links ([7fcecfb](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/7fcecfbc0bd515b17df921c5f05c1ea8c410ecd5))
+
+
+### Miscellaneous
+
+* **.env.template:** add note regarding trailing "?" for `REDIRECT_URL` ([7d0e22b](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/7d0e22bc6ea7cec183aba34327fd45fe88b11da6))
+* **.env.template:** remove service section ([a9d55a3](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/a9d55a379627a07a7cf8c90ad002fe89cf09e372))
+* **.vscode:** add `redhat.vscode-xml` as default xml formatter ([86ee6af](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/86ee6af852769181a4894f6cfca0578f5258b396))
+* ***.ignore:** add clinicjs directory ([d0c45d5](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/d0c45d5607de930f1281466f3d1477da9c9b4ee3))
+* **LICENSE:** remove trailing whitespace ([4c8f8c1](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/4c8f8c14eeb54c64f7567c9176e2dbb51f14e7d9))
+* prefer object destructuring ([#936](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/936)) ([6ae92ef](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/6ae92efe225edc43ccc23ded41fef8b741dc647a))
+
+
+### Dependencies
+
+* **deps-dev:** bump autocannon from 7.9.0 to 7.10.0 ([#927](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/927)) ([5e9aedb](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/5e9aedb1866168b5cc21cadaee8f3b272a8ac295))
+* **deps-dev:** bump eslint from 8.23.0 to 8.24.0 ([#923](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/923)) ([d6233b6](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/d6233b66523e8298e0832ac0d7a10e94b8342912))
+* **deps-dev:** bump eslint-plugin-jest from 27.0.1 to 27.0.4 ([#934](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/934)) ([2cd899d](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/2cd899d2308aa52742b379c20dc6adf089181860))
+* **deps-dev:** bump jest from 29.0.2 to 29.1.2 ([#935](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/935)) ([c4a4ea8](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/c4a4ea8c384af342ff5d5b99e5efbb5c34eff217))
+* **deps-dev:** bump nodemon from 2.0.19 to 2.0.20 ([#931](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/931)) ([5df18b8](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/5df18b85603584a65261d90df7e936778698fcfd))
+* **deps:** bump @fastify/autoload from 5.3.1 to 5.4.0 ([#932](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/932)) ([4821178](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/482117855ffbfd2aa0b9e136f1a4793598a621cc))
+* **deps:** bump @fastify/helmet from 10.0.0 to 10.0.1 ([#926](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/926)) ([5821619](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/58216190f09e4d4578b4c8b99d55d630b0dbb39c))
+* **deps:** bump @fastify/swagger from 7.5.0 to 7.6.1 ([#933](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/933)) ([5bc07a0](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/5bc07a0c41560bf3fac1eae718b5dc1f72dbda7a))
+* **deps:** bump dotenv from 16.0.2 to 16.0.3 ([#930](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/930)) ([79da3ce](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/79da3ce84dc9258b65142985d19ded3f6d800f0c))
+* **deps:** bump env-schema from 5.0.0 to 5.1.0 ([#924](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/924)) ([43b9bc8](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/43b9bc8ed4593ff852eadd9d26374a0d98e8c229))
+* **deps:** bump fastify from 4.5.3 to 4.7.0 ([#928](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/928)) ([91a5cff](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/91a5cffcd17b87ca11b66fc7d4153db080f6079b))
+* **deps:** bump fastify-disablecache from 3.0.2 to 3.0.3 ([#938](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/938)) ([2f08f23](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/2f08f23c107005473c9cb11ae07d3c8c15406c77))
+* **deps:** bump fastify-floc-off from 2.0.2 to 2.0.3 ([#937](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/937)) ([33c3dd0](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/33c3dd0ba4e2ab55b8586ec71b8669d0942e81d5))
+* **deps:** bump js2xmlparser from 4.0.2 to 5.0.0 ([#929](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/929)) ([9b5c426](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/9b5c4263f1c0767572e5fcfa5198d0ec441428aa))
+* **deps:** bump pino from 8.5.0 to 8.6.1 ([#925](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/925)) ([ab173e1](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/ab173e1e5a7163285c5da1321bb466dc0660255d))
+* **deps:** bump transistive dependencies ([#939](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/939)) ([7a55154](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/7a55154f46d55d6e6f7db9563a1ab7feba9fdb99))
+
 ## [8.0.13](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v8.0.12...v8.0.13) (2022-09-05)
 
 ### Bug Fixes
