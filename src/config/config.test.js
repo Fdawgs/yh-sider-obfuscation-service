@@ -23,7 +23,7 @@ describe("Configuration", () => {
 	test("Should use defaults if values missing and return values according to environment variables", async () => {
 		const NODE_ENV = "development";
 		const HOST = faker.internet.ip();
-		const PORT = faker.datatype.number();
+		const PORT = "";
 		const REDIRECT_URL = "https://pyrusapps.blackpear.com/esp/#!/launch?";
 		const CORS_ORIGIN = "";
 		const CORS_ALLOWED_HEADERS = "";
@@ -81,7 +81,7 @@ describe("Configuration", () => {
 
 		expect(config.fastify).toEqual({
 			host: HOST,
-			port: PORT,
+			port: 0,
 		});
 
 		expect(config.fastifyInit.logger).toEqual({

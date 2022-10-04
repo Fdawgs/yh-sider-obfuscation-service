@@ -57,7 +57,7 @@ async function getConfig() {
 
 			// Service
 			.prop("HOST", S.string())
-			.prop("PORT", S.number())
+			.prop("PORT", S.anyOf([S.number(), S.null()]))
 			.prop("REDIRECT_URL", S.string().format("uri"))
 
 			// CORS
@@ -165,7 +165,8 @@ async function getConfig() {
 
 	const config = {
 		fastify: {
-			port: env.PORT,
+			// 0 picks the first available open port
+			port: env.PORT || 0,
 		},
 		fastifyInit: {
 			/**
@@ -308,7 +309,7 @@ async function getConfig() {
 		},
 	};
 
-	// Ensure API listens on both IPv4 and IPv6 addresses
+	// Ensure API listens on both IPv4 and IPv6 addresses if not explicitly set
 	if (env.HOST) {
 		config.fastify.host = env.HOST;
 	}
