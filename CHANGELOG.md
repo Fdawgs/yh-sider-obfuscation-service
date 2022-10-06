@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file.
 
+## [9.1.0](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v9.0.0...v9.1.0) (2022-10-06)
+
+
+### Features
+
+* **config:** use first available open port if `PORT` env variable unset ([#940](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/940)) ([867f9f9](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/867f9f97c57ad470fda6f2f48edcc397f967b389))
+
+
+### Continuous Integration
+
+* **cd:** create release asset ([#943](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/943)) ([c87b064](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/c87b0644e148f99d88b8818d389a589593389bc5))
+
+
+### Dependencies
+
+* **.dockerignore:** fix `CODE_OF_CONDUCT` entry ([#942](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/942)) ([e08380e](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/e08380e714936f3788f6b4eb1896f3d9df1ec366))
+* **deps-dev:** bump eslint-plugin-jest from 27.0.4 to 27.1.1 ([#944](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/944)) ([d42ba0e](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/d42ba0ea28809d803fa120b4d41ec151f27b4257))
+* **deps-dev:** bump pino-pretty from 9.1.0 to 9.1.1 ([#945](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/945)) ([0dd0b43](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/0dd0b43fa354065132f5b3ca326024a4cb04c08b))
+* **deps:** bump fluent-json-schema from 3.1.0 to 4.0.0 ([#946](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/946)) ([30c9f75](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/30c9f75f0644e4f0f13a119a152a8ff874b953c0))
+
 ## [9.0.0](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v8.0.13...v9.0.0) (2022-10-03)
 
 
