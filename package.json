@@ -2,7 +2,7 @@
 	"name": "ydh-sider-obfuscation-service",
 	"version": "9.1.0",
 	"description": "Yeovil District Hospital NHSFT's SIDeR Contextual Link Obfuscation Service",
-	"main": "src/app.js",
+	"main": "dist/app.js",
 	"repository": "git+https://github.com/Fdawgs/ydh-sider-obfuscation-service.git",
 	"homepage": "https://github.com/Fdawgs/ydh-sider-obfuscation-service",
 	"bugs": {
@@ -15,6 +15,7 @@
 	},
 	"scripts": {
 		"benchmark": "autocannon -a 1000 \"http://0.0.0.0:8204/redirect?patient=https://fhir.nhs.uk/Id/nhs-number|9449304513&birthdate=1934-10-23&location=https://fhir.nhs.uk/Id/ods-organization-code|RA4&practitioner=https://sider.nhs.uk/auth|frazer.smith@ydh.nhs.uk\"",
+		"build": "node .esbuild.js",
 		"jest": "jest",
 		"jest:coverage": "jest --coverage",
 		"lint": "eslint . --cache --ext js,jsx,ts,tsx --ignore-path .gitignore",
@@ -23,7 +24,7 @@
 		"lint:prettier:ci": "prettier . -c -u",
 		"prepare": "husky install",
 		"start": "node .",
-		"start:dev": "nodemon | pino-pretty",
+		"start:dev": "nodemon src/app.js | pino-pretty",
 		"test": "npm run lint && npm run jest"
 	},
 	"commitlint": {
@@ -64,6 +65,8 @@
 		"@commitlint/config-conventional": "^17.1.0",
 		"@faker-js/faker": "^7.5.0",
 		"autocannon": "^7.10.0",
+		"esbuild": "^0.15.11",
+		"esbuild-plugin-glob": "^2.1.2",
 		"eslint": "^8.24.0",
 		"eslint-config-airbnb-base": "^15.0.0",
 		"eslint-config-prettier": "^8.5.0",

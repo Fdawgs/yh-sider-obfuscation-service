@@ -24,10 +24,11 @@ Make a copy of `.env.template` in the root directory and rename it to `.env`, co
 
 After cloning the repository and installing all the dependencies, there are several commands available for local development:
 
--   `npm run lint` - Lints everything in src directory
+-   `npm run build` - Compile src directory into dist directory for production use
 -   `npm run jest` - Runs Jest over all tests in src directory
--   `npm test` - Runs `npm run lint` and `npm run jest` together
+-   `npm run lint` - Lints everything in src directory
 -   `npm run start:dev` - Starts a development server with live reload, available on `localhost:8204` unless you specify your own port
+-   `npm test` - Runs `npm run lint` and `npm run jest` together
 
 ### Production Workflow
 
