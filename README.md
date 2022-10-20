@@ -56,10 +56,10 @@ The service should now be up and running on the port set in the config. You shou
 ```json
 {
 	"level": "info",
-	"time": "2022-09-15T10:17:42.430Z",
-	"pid": 18736,
+	"time": "2022-10-20T08:45:48.844Z",
+	"pid": 37784,
 	"hostname": "MYCOMPUTER",
-	"msg": "Server listening at http://127.0.0.1:8204"
+	"msg": "Server listening at http://127.0.0.1:49470"
 }
 ```
 
@@ -74,8 +74,8 @@ In stdout, or the log file, you will see something similar to the following retu
 ```json
 {
 	"level": "info",
-	"time": "2022-09-15T10:21:09.903Z",
-	"pid": 19240,
+	"time": "2022-10-20T08:46:12.430Z",
+	"pid": 37784,
 	"hostname": "MYCOMPUTER",
 	"reqId": "req-1",
 	"req": {
@@ -90,13 +90,13 @@ In stdout, or the log file, you will see something similar to the following retu
 		},
 		"params": {},
 		"headers": {
-			"host": "localhost:8204",
-			"user-agent": "insomnia/2022.5.1",
+			"host": "localhost:49470",
+			"user-agent": "insomnia/2022.6.0",
 			"accept-encoding": "br, gzip, deflate",
 			"accept": "*/*"
 		},
 		"remoteAddress": "127.0.0.1",
-		"remotePort": 60615
+		"remotePort": 49492
 	},
 	"msg": "incoming request"
 }
@@ -105,8 +105,8 @@ In stdout, or the log file, you will see something similar to the following retu
 ```json
 {
 	"level": "info",
-	"time": "2022-09-15T10:21:09.923Z",
-	"pid": 19240,
+	"time": "2022-10-20T08:46:12.449Z",
+	"pid": 37784,
 	"hostname": "MYCOMPUTER",
 	"reqId": "req-1",
 	"res": {
@@ -133,7 +133,7 @@ In stdout, or the log file, you will see something similar to the following retu
 			"content-length": "0"
 		}
 	},
-	"responseTime": 19.52570000104606,
+	"responseTime": 18.3226999938488,
 	"msg": "request completed"
 }
 ```
