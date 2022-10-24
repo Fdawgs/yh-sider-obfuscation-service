@@ -38,7 +38,7 @@ Perform the following steps before deployment:
 4. Configure the application using the environment variables in `.env`
 
 > **Note**
-> Set the following environment variables in `.env` to meet NHS Digital's recommendation to retain 6 months' worth of logs:
+> Set the following environment variables in `.env` to meet NHS Digital's recommendation to retain six months' worth of logs:
 >
 > -   `LOG_ROTATION_DATE_FORMAT="YYYY-MM-DD"`
 > -   `LOG_ROTATION_FREQUENCY="daily"`
@@ -56,16 +56,16 @@ The service should now be up and running on the port set in the config. You shou
 ```json
 {
 	"level": "info",
-	"time": "2022-10-20T08:45:48.844Z",
-	"pid": 37784,
+	"time": "2022-10-24T09:07:09.513Z",
+	"pid": 25212,
 	"hostname": "MYCOMPUTER",
-	"msg": "Server listening at http://127.0.0.1:49470"
+	"msg": "Server listening at http://127.0.0.1:49217"
 }
 ```
 
 To quickly test it open a browser of your choice or, if using a request builder (i.e. [Insomnia](https://insomnia.rest/)) create a new GET request, and input the following URL:
 
-http://0.0.0.0:8204/redirect?patient=https://fhir.nhs.uk/Id/nhs-number|9449304513&birthdate=1934-10-23&location=https://fhir.nhs.uk/Id/ods-organization-code|RA4&practitioner=https://sider.nhs.uk/auth|frazer.smith@ydh.nhs.uk
+http://127.0.0.1:49217/redirect?patient=https://fhir.nhs.uk/Id/nhs-number|9449304513&birthdate=1934-10-23&location=https://fhir.nhs.uk/Id/ods-organization-code|RA4&practitioner=https://sider.nhs.uk/auth|frazer.smith@ydh.nhs.uk
 
 Replace the organization code and email address in the `location` and `practitioner` query string parameters respectively with your own if you have already been set up with an account in SIDeR.
 
@@ -74,8 +74,8 @@ In stdout, or the log file, you will see something similar to the following retu
 ```json
 {
 	"level": "info",
-	"time": "2022-10-20T08:46:12.430Z",
-	"pid": 37784,
+	"time": "2022-10-24T09:08:15.096Z",
+	"pid": 25212,
 	"hostname": "MYCOMPUTER",
 	"reqId": "req-1",
 	"req": {
@@ -90,13 +90,13 @@ In stdout, or the log file, you will see something similar to the following retu
 		},
 		"params": {},
 		"headers": {
-			"host": "localhost:49470",
+			"host": "127.0.0.1:49217",
 			"user-agent": "insomnia/2022.6.0",
 			"accept-encoding": "br, gzip, deflate",
 			"accept": "*/*"
 		},
 		"remoteAddress": "127.0.0.1",
-		"remotePort": 49492
+		"remotePort": 49272
 	},
 	"msg": "incoming request"
 }
@@ -105,8 +105,8 @@ In stdout, or the log file, you will see something similar to the following retu
 ```json
 {
 	"level": "info",
-	"time": "2022-10-20T08:46:12.449Z",
-	"pid": 37784,
+	"time": "2022-10-24T09:08:15.115Z",
+	"pid": 25212,
 	"hostname": "MYCOMPUTER",
 	"reqId": "req-1",
 	"res": {
@@ -133,14 +133,14 @@ In stdout, or the log file, you will see something similar to the following retu
 			"content-length": "0"
 		}
 	},
-	"responseTime": 18.3226999938488,
+	"responseTime": 18.770300030708313,
 	"msg": "request completed"
 }
 ```
 
-Both the `patient` and `birthdate` query string parameters of the URL have been obfuscated in the generated redirect URL in `res.headers.location`.
+Both of the URL's `patient` and `birthdate` query string parameters have been obfuscated in the generated redirect URL in `res.headers.location`.
 
-The web browser or request builder used should be redirected to Black Pear's ESP site, and once logged in will provide the patient notes for the test patient with NHS Number 9449304513, success!
+The web browser or request builder should be redirected to Black Pear's ESP site, and once logged in will provide the patient notes for the test patient with NHS Number 9449304513, success!
 
 If the `patient`, `birthdate`, `location` or `practitioner` query string parameters are removed from the original URL the obfuscation process and redirect will not occur, and a 400 HTTP status code will be returned with the message similar to the following:
 
@@ -160,7 +160,7 @@ As an example, providing `birthdate` in an invalid date format will return the f
 {
 	"statusCode": 400,
 	"error": "Bad Request",
-	"message": "querystring.birthdate should match format \"date\""
+	"message": "querystring/birthdate should match format \"date\""
 }
 ```
 
@@ -180,8 +180,8 @@ If you are unable to deploy this into production using Docker, it is recommended
 
 1. Run `npm ci --ignore-scripts --omit=dev` to install dependencies
 2. Run `npm i -g pm2` to install pm2 globally
-3. Launch application with `pm2 start .pm2.config.js`
-4. Check the application has been deployed using `pm2 list` or `pm2 monit`
+3. Launch the application with `pm2 start .pm2.config.js`
+4. Check that the application has been deployed using `pm2 list` or `pm2 monit`
 
 #### To Install as a Windows Service:
 
