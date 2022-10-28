@@ -14,7 +14,7 @@ const redirectGetSchema = {
 	description:
 		"Redirects to the URL set with the `REDIRECT_URL` environment variable.",
 	operationId: "getRedirect",
-	produces: ["text/html"],
+	produces: ["application/json", "application/xml"],
 	query: S.object()
 		.additionalProperties(false)
 		.prop(
@@ -60,7 +60,16 @@ const redirectGetSchema = {
 		.required(["birthdate", "patient", "location", "practitioner"]),
 
 	response: {
-		302: S.ref("responses#/properties/found").description("Found"),
+		302: {
+			description: "Found",
+			content: {
+				"text/html": {
+					schema: {
+						type: "string",
+					},
+				},
+			},
+		},
 		406: S.ref("responses#/properties/notAcceptable").description(
 			"Not Acceptable"
 		),

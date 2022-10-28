@@ -4,6 +4,8 @@ const qs = require("fast-querystring");
 
 const { redirectGetSchema } = require("./schema");
 
+const accepts = ["text/html"];
+
 /**
  * @author Frazer Smith
  * @description Sets routing options for server.
@@ -28,7 +30,7 @@ async function route(server, options) {
 		onRequest: async (req) => {
 			if (
 				// Catch unsupported Accept header media types
-				!req.accepts().type(redirectGetSchema.produces)
+				!req.accepts().type(accepts)
 			) {
 				throw server.httpErrors.notAcceptable();
 			}
