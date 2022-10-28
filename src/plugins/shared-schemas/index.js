@@ -20,10 +20,6 @@ async function plugin(server) {
 			.title("Responses")
 			.description("Common response schemas")
 			.prop(
-				"found",
-				S.string().title("302 Found").raw({ nullable: true })
-			)
-			.prop(
 				"notAcceptable",
 				S.object()
 					.title("406 Not Acceptable Response")
