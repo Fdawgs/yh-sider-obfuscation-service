@@ -153,9 +153,6 @@ async function getConfig() {
 			.prop("OBFUSCATION_KEY_VALUE", S.string())
 			.prop("OBFUSCATION_QUERYSTRING_KEY_ARRAY", S.string())
 			.required([
-				"NODE_ENV",
-				"HOST",
-				"PORT",
 				"REDIRECT_URL",
 				"OBFUSCATION_KEY_NAME",
 				"OBFUSCATION_KEY_VALUE",
