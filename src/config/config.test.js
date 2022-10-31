@@ -4,7 +4,7 @@ const glob = require("glob");
 const getConfig = require(".");
 
 describe("Configuration", () => {
-	const currentEnv = { ...process.env };
+	const currentEnv = { ...process.env, NODE_ENV: "development" };
 
 	afterAll(async () => {
 		const files = glob.sync("./test_resources/+(test-log*|.audit.json)", {
@@ -21,8 +21,7 @@ describe("Configuration", () => {
 	});
 
 	test("Should use defaults if values missing and return values according to environment variables", async () => {
-		const NODE_ENV = "development";
-		const HOST = faker.internet.ip();
+		const HOST = "";
 		const PORT = "";
 		const REDIRECT_URL = "https://pyrusapps.blackpear.com/esp/#!/launch?";
 		const CORS_ORIGIN = "";
@@ -49,7 +48,6 @@ describe("Configuration", () => {
 		const OBFUSCATION_QUERYSTRING_KEY_ARRAY = '["birthdate", "patient"]';
 
 		Object.assign(process.env, {
-			NODE_ENV,
 			HOST,
 			PORT,
 			REDIRECT_URL,
@@ -80,7 +78,6 @@ describe("Configuration", () => {
 		const config = await getConfig();
 
 		expect(config.fastify).toEqual({
-			host: HOST,
 			port: 0,
 		});
 
@@ -138,7 +135,6 @@ describe("Configuration", () => {
 	});
 
 	test("Should return values according to environment variables - HTTPS (SSL cert) enabled and HTTP2 enabled", async () => {
-		const NODE_ENV = "development";
 		const HOST = faker.internet.ip();
 		const PORT = faker.datatype.number();
 		const REDIRECT_URL = "https://pyrusapps.blackpear.com/esp/#!/launch?";
@@ -168,7 +164,6 @@ describe("Configuration", () => {
 		const OBFUSCATION_QUERYSTRING_KEY_ARRAY = '["birthdate", "patient"]';
 
 		Object.assign(process.env, {
-			NODE_ENV,
 			HOST,
 			PORT,
 			REDIRECT_URL,
