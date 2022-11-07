@@ -1,4 +1,4 @@
-const { faker } = require("@faker-js/faker/locale/en_GB");
+const { randomUUID } = require("crypto");
 const Fastify = require("fastify");
 const qs = require("fast-querystring");
 const nock = require("nock");
@@ -50,16 +50,13 @@ const expResHeaders4xxErrors = {
 };
 
 const testParams = {
-	birthdate: faker.date.past().toISOString().split("T")[0],
+	birthdate: "2018-08-01",
 	location: "https://fhir.nhs.uk/Id/ods-organization-code|RA4",
-	patient: `https://fhir.nhs.uk/Id/nhs-number|${faker.datatype.number({
-		min: 1000000000,
-		max: 9999999999,
-	})}`,
-	practitioner: `https://sider.nhs.uk/auth|${faker.name.firstName()}.${faker.name.lastName()}@ydh.nhs.uk`,
-	TPAGID: faker.datatype.uuid(),
-	FromIconProfile: faker.datatype.number(),
-	NOUNLOCK: faker.datatype.number(),
+	patient: `https://fhir.nhs.uk/Id/nhs-number|9999999999`,
+	practitioner: `https://sider.nhs.uk/auth|testFirstName.testLastName@ydh.nhs.uk`,
+	TPAGID: randomUUID(),
+	FromIconProfile: 1,
+	NOUNLOCK: 1,
 };
 
 const altTestParams = {
