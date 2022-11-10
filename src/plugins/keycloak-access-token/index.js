@@ -30,9 +30,9 @@ const request = require("axios").default;
 async function plugin(server, options) {
 	// Do not add preHandler hook and attempt to retrieve access tokens if Keycloak not enabled
 	if (options?.enabled === true) {
-		server.addHook("preHandler", async (req) => {
-			const { requestToken, serviceAuthorisation } = options;
+		const { requestToken, serviceAuthorisation } = options;
 
+		server.addHook("preHandler", async (req) => {
 			// Service authorisation to retrieve subject access token
 			const serviceAuthResponse = await request.post(
 				serviceAuthorisation.url,
