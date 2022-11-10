@@ -12,6 +12,8 @@ const rateLimit = require("@fastify/rate-limit");
 const sensible = require("@fastify/sensible");
 const swagger = require("@fastify/swagger");
 const underPressure = require("@fastify/under-pressure");
+const keycloakAccess = require("./plugins/keycloak-access-token");
+const obfuscateQueryString = require("./plugins/obfuscate-query-string");
 const serializeJsonToXml = require("./plugins/serialize-json-to-xml");
 const sharedSchemas = require("./plugins/shared-schemas");
 
@@ -100,11 +102,9 @@ async function plugin(server, config) {
 		 */
 		.register(async (securedContext) => {
 			await securedContext
-				.register(autoLoad, {
-					dir: path.joinSafe(__dirname, "plugins"),
-					ignorePattern: /shared-schemas/,
-					options: config,
-				})
+				.register(keycloakAccess, config.keycloak)
+				.register(obfuscateQueryString, config.obfuscation)
+
 				// Import and register service routes
 				.register(autoLoad, {
 					dir: path.joinSafe(__dirname, "routes", "redirect"),

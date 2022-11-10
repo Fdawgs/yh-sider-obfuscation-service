@@ -9,29 +9,27 @@ const getConfig = require("../../config");
  * https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/token-exchange/token-exchange.adoc
  */
 const testKeycloakConfig = {
-	keycloak: {
-		enabled: true,
-		requestToken: {
-			form: {
-				audience: "mock-audience",
-				client_id: "mock-id",
-				client_secret: "mock-secret",
-				grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
-				requested_token_type:
-					"urn:ietf:params:oauth:token-type:access_token",
-			},
-			url: "https://sso.ydh.nhs.uk/token",
+	enabled: true,
+	requestToken: {
+		form: {
+			audience: "mock-audience",
+			client_id: "mock-id",
+			client_secret: "mock-secret",
+			grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
+			requested_token_type:
+				"urn:ietf:params:oauth:token-type:access_token",
 		},
-		serviceAuthorisation: {
-			form: {
-				client_id: "mock-id",
-				client_secret: "mock-secret",
-				grant_type: "password",
-				password: "mock-password",
-				username: "mock-user@ydh.nhs.uk",
-			},
-			url: "https://sso.ydh.nhs.uk/service-auth",
+		url: "https://sso.ydh.nhs.uk/token",
+	},
+	serviceAuthorisation: {
+		form: {
+			client_id: "mock-id",
+			client_secret: "mock-secret",
+			grant_type: "password",
+			password: "mock-password",
+			username: "mock-user@ydh.nhs.uk",
 		},
+		url: "https://sso.ydh.nhs.uk/service-auth",
 	},
 };
 
@@ -143,7 +141,7 @@ describe("Keycloak Access Token Retrieval Plugin", () => {
 			enabled: true,
 		};
 
-		await server.register(plugin, config).ready();
+		await server.register(plugin, config.keycloak).ready();
 
 		const response = await server.inject({
 			method: "GET",
