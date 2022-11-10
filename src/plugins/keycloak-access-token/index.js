@@ -8,31 +8,30 @@ const request = require("axios").default;
  * @description Pre-handler plugin that retrieves Keycloak access token for passed user.
  * @param {object} server - Fastify instance.
  * @param {object} options - Plugin config values.
- * @param {object} options.keycloak - Keycloak endpoint access options values.
- * @param {boolean=} options.keycloak.enabled - Toggle to enable or disable use of Keycloak.
- * @param {object} options.keycloak.serviceAuthorisation
- * @param {object} options.keycloak.serviceAuthorisation.form
- * @param {string} options.keycloak.serviceAuthorisation.form.client_id
- * @param {string} options.keycloak.serviceAuthorisation.form.client_secret
- * @param {string} options.keycloak.serviceAuthorisation.form.grant_type
- * @param {string} options.keycloak.serviceAuthorisation.form.password
- * @param {string} options.keycloak.serviceAuthorisation.form.username
- * @param {string} options.keycloak.serviceAuthorisation.url
- * @param {object} options.keycloak.requestToken
- * @param {object} options.keycloak.requestToken.form
- * @param {string} options.keycloak.requestToken.form.audience
- * @param {string} options.keycloak.requestToken.form.client_id
- * @param {string} options.keycloak.requestToken.form.client_secret
- * @param {string} options.keycloak.requestToken.form.grant_type
- * @param {string} options.keycloak.requestToken.form.requested_subject
- * @param {string} options.keycloak.requestToken.form.requested_token_type
- * @param {string} options.keycloak.requestToken.url
+ * @param {boolean=} options.enabled - Toggle to enable or disable use of Keycloak.
+ * @param {object} options.serviceAuthorisation
+ * @param {object} options.serviceAuthorisation.form
+ * @param {string} options.serviceAuthorisation.form.client_id
+ * @param {string} options.serviceAuthorisation.form.client_secret
+ * @param {string} options.serviceAuthorisation.form.grant_type
+ * @param {string} options.serviceAuthorisation.form.password
+ * @param {string} options.serviceAuthorisation.form.username
+ * @param {string} options.serviceAuthorisation.url
+ * @param {object} options.requestToken
+ * @param {object} options.requestToken.form
+ * @param {string} options.requestToken.form.audience
+ * @param {string} options.requestToken.form.client_id
+ * @param {string} options.requestToken.form.client_secret
+ * @param {string} options.requestToken.form.grant_type
+ * @param {string} options.requestToken.form.requested_subject
+ * @param {string} options.requestToken.form.requested_token_type
+ * @param {string} options.requestToken.url
  */
 async function plugin(server, options) {
 	// Do not add preHandler hook and attempt to retrieve access tokens if Keycloak not enabled
-	if (options?.keycloak?.enabled === true) {
+	if (options?.enabled === true) {
 		server.addHook("preHandler", async (req) => {
-			const { requestToken, serviceAuthorisation } = options.keycloak;
+			const { requestToken, serviceAuthorisation } = options;
 
 			// Service authorisation to retrieve subject access token
 			const serviceAuthResponse = await request.post(

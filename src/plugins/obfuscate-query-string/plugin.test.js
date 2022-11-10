@@ -37,7 +37,7 @@ describe("Query String Obfuscation plugin", () => {
 			obfuscate: ["birthdate", "patient"],
 		};
 
-		server.register(plugin, config);
+		server.register(plugin, config.obfuscation);
 
 		await server.ready();
 
@@ -54,25 +54,5 @@ describe("Query String Obfuscation plugin", () => {
 			enc: expect.any(String),
 		});
 		expect(response.statusCode).toBe(200);
-	});
-
-	test("Should return HTTP status code 500 if options are not passed to plugin", async () => {
-		server.register(plugin);
-
-		await server.ready();
-
-		const response = await server.inject({
-			method: "GET",
-			url: "/",
-			headers,
-			query: testParams,
-		});
-
-		expect(JSON.parse(response.payload)).toEqual({
-			error: "Internal Server Error",
-			message: "options undefined",
-			statusCode: 500,
-		});
-		expect(response.statusCode).toBe(500);
 	});
 });
