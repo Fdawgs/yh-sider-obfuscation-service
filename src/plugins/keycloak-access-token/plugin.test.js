@@ -6,7 +6,7 @@ const getConfig = require("../../config");
 
 /**
  * Refer to option documentation here:
- * https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/token-exchange/token-exchange.adoc
+ * https://github.com/keycloak/keycloak-documentation/blob/main/securing_apps/topics/token-exchange/token-exchange.adoc
  */
 const testKeycloakConfig = {
 	enabled: true,

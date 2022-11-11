@@ -26,17 +26,25 @@ const request = require("axios").default;
  * @param {string} options.requestToken.form.requested_subject
  * @param {string} options.requestToken.form.requested_token_type
  * @param {string} options.requestToken.url
+ * @see https://github.com/keycloak/keycloak-documentation/blob/main/securing_apps/topics/token-exchange/token-exchange.adoc
  */
 async function plugin(server, options) {
 	// Do not add preHandler hook and attempt to retrieve access tokens if Keycloak not enabled
 	if (options?.enabled === true) {
-		server.addHook("preHandler", async (req) => {
-			const { requestToken, serviceAuthorisation } = options;
+		const { requestToken, serviceAuthorisation } = options;
 
+		// See https://github.com/axios/axios#request-config
+		const axiosOptions = {
+			headers: { accept: "application/json" },
+			responseType: "json",
+		};
+
+		server.addHook("preHandler", async (req) => {
 			// Service authorisation to retrieve subject access token
 			const serviceAuthResponse = await request.post(
 				serviceAuthorisation.url,
-				qs.stringify(serviceAuthorisation.form)
+				qs.stringify(serviceAuthorisation.form),
+				axiosOptions
 			);
 
 			requestToken.form.subject_token =
@@ -49,7 +57,8 @@ async function plugin(server, options) {
 			// Request access token for user
 			const userAccessResponse = await request.post(
 				requestToken.url,
-				qs.stringify(requestToken.form)
+				qs.stringify(requestToken.form),
+				axiosOptions
 			);
 			req.query.access_token = userAccessResponse.data.access_token;
 		});

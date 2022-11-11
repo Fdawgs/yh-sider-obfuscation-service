@@ -126,7 +126,10 @@ async function getConfig() {
 
 			// Keycloak
 			.prop("KC_ENABLED", S.anyOf([S.boolean(), S.null()]))
-			.prop("KC_REQUESTTOKEN_URL", S.anyOf([S.string(), S.null()]))
+			.prop(
+				"KC_REQUESTTOKEN_URL",
+				S.anyOf([S.string().format("uri"), S.null()])
+			)
 			.prop("KC_REQUESTTOKEN_AUDIENCE", S.anyOf([S.string(), S.null()]))
 			.prop("KC_REQUESTTOKEN_CLIENT_ID", S.anyOf([S.string(), S.null()]))
 			.prop(
@@ -138,7 +141,10 @@ async function getConfig() {
 				"KC_REQUESTTOKEN_REQUESTED_TOKEN_TYPE",
 				S.anyOf([S.string(), S.null()])
 			)
-			.prop("KC_SERVICEAUTH_URL", S.anyOf([S.string(), S.null()]))
+			.prop(
+				"KC_SERVICEAUTH_URL",
+				S.anyOf([S.string().format("uri"), S.null()])
+			)
 			.prop("KC_SERVICEAUTH_CLIENT_ID", S.anyOf([S.string(), S.null()]))
 			.prop(
 				"KC_SERVICEAUTH_CLIENT_SECRET",
@@ -185,7 +191,7 @@ async function getConfig() {
 					/* istanbul ignore next: pino functions not explicitly tested */
 					res(res) {
 						// Required for the statusCode to be logged
-						// https://github.com/pinojs/pino-std-serializers/blob/9da36144d43aabc7933f0504b02fef5a341583c2/lib/res.js#L37
+						// https://github.com/pinojs/pino-std-serializers/blob/901dae44c2b71497cdb0f76f6b5af62588107e3e/lib/res.js#L37
 						res.headersSent = true;
 						return pino.stdSerializers.res(res);
 					},
@@ -282,7 +288,9 @@ async function getConfig() {
 					requested_token_type:
 						env.KC_REQUESTTOKEN_REQUESTED_TOKEN_TYPE,
 				},
-				url: env.KC_REQUESTTOKEN_URL,
+				url: env?.KC_REQUESTTOKEN_URL
+					? new URL(env.KC_REQUESTTOKEN_URL).href
+					: undefined,
 			},
 			// Service authorisation to retrieve subject access token
 			serviceAuthorisation: {
@@ -293,7 +301,9 @@ async function getConfig() {
 					password: env.KC_SERVICEAUTH_PASSWORD,
 					username: env.KC_SERVICEAUTH_USERNAME,
 				},
-				url: env.KC_SERVICEAUTH_URL,
+				url: env?.KC_SERVICEAUTH_URL
+					? new URL(env.KC_SERVICEAUTH_URL).href
+					: undefined,
 			},
 		},
 		// Values used by obfuscate-query-string plugin
