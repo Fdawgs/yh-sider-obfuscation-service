@@ -26,6 +26,7 @@ const request = require("axios").default;
  * @param {string} options.requestToken.form.requested_subject
  * @param {string} options.requestToken.form.requested_token_type
  * @param {string} options.requestToken.url
+ * @see https://github.com/keycloak/keycloak-documentation/blob/main/securing_apps/topics/token-exchange/token-exchange.adoc
  */
 async function plugin(server, options) {
 	// Do not add preHandler hook and attempt to retrieve access tokens if Keycloak not enabled
