@@ -32,11 +32,18 @@ async function plugin(server, options) {
 	if (options?.enabled === true) {
 		const { requestToken, serviceAuthorisation } = options;
 
+		// See https://github.com/axios/axios#request-config
+		const axiosOptions = {
+			headers: { accept: "application/json" },
+			responseType: "json",
+		};
+
 		server.addHook("preHandler", async (req) => {
 			// Service authorisation to retrieve subject access token
 			const serviceAuthResponse = await request.post(
 				serviceAuthorisation.url,
-				qs.stringify(serviceAuthorisation.form)
+				qs.stringify(serviceAuthorisation.form),
+				axiosOptions
 			);
 
 			requestToken.form.subject_token =
@@ -49,7 +56,8 @@ async function plugin(server, options) {
 			// Request access token for user
 			const userAccessResponse = await request.post(
 				requestToken.url,
-				qs.stringify(requestToken.form)
+				qs.stringify(requestToken.form),
+				axiosOptions
 			);
 			req.query.access_token = userAccessResponse.data.access_token;
 		});
