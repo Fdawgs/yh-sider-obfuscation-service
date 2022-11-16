@@ -11,6 +11,7 @@ RUN apk add --no-cache curl git
 # Copy and install node dependencies
 COPY package.json package-lock.json ./
 RUN npm ci --ignore-scripts --omit=dev && \
+    npm pkg delete commitlint devDependencies jest nodemonConfig scripts && \
     npm cache clean --force
 
 # Copy source
