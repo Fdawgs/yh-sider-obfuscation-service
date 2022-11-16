@@ -33,7 +33,7 @@ describe("Configuration", () => {
 		const HTTPS_HTTP2_ENABLED = "";
 		const LOG_LEVEL = "";
 		const LOG_ROTATION_DATE_FORMAT = "";
-		const LOG_ROTATION_FILENAME = "./test_resources/test-log-%DATE%.log";
+		const LOG_ROTATION_FILENAME = "";
 		const LOG_ROTATION_FREQUENCY = "";
 		const PROC_LOAD_MAX_EVENT_LOOP_DELAY = "";
 		const PROC_LOAD_MAX_HEAP_USED_BYTES = "";
@@ -88,7 +88,6 @@ describe("Configuration", () => {
 				res: expect.any(Function),
 			},
 			timestamp: expect.any(Function),
-			stream: expect.any(Object),
 		});
 		expect(config.fastifyInit.logger.formatters.level()).toEqual({
 			level: undefined,
@@ -133,6 +132,54 @@ describe("Configuration", () => {
 		});
 	});
 
+	test("Should use defaults logging values if values missing", async () => {
+		const REDIRECT_URL = "https://pyrusapps.blackpear.com/esp/#!/launch?";
+		const LOG_LEVEL = "";
+		const LOG_ROTATION_DATE_FORMAT = "";
+		const LOG_ROTATION_FILENAME = "./test_resources/test-log-%DATE%.log";
+		const LOG_ROTATION_FREQUENCY = "";
+		const OBFUSCATION_KEY_NAME = "k01";
+		const OBFUSCATION_KEY_VALUE = "0123456789";
+		const OBFUSCATION_QUERYSTRING_KEY_ARRAY = '["birthdate", "patient"]';
+
+		Object.assign(process.env, {
+			REDIRECT_URL,
+			LOG_LEVEL,
+			LOG_ROTATION_DATE_FORMAT,
+			LOG_ROTATION_FILENAME,
+			LOG_ROTATION_FREQUENCY,
+			OBFUSCATION_KEY_NAME,
+			OBFUSCATION_KEY_VALUE,
+			OBFUSCATION_QUERYSTRING_KEY_ARRAY,
+		});
+
+		const config = await getConfig();
+
+		expect(config.fastifyInit.logger).toEqual({
+			formatters: { level: expect.any(Function) },
+			level: "info",
+			serializers: {
+				req: expect.any(Function),
+				res: expect.any(Function),
+			},
+			stream: expect.any(Object),
+			timestamp: expect.any(Function),
+		});
+		expect(config.fastifyInit.logger.formatters.level()).toEqual({
+			level: undefined,
+		});
+		expect(config.fastifyInit.logger.stream.config.options).toEqual(
+			expect.objectContaining({
+				filename: LOG_ROTATION_FILENAME,
+				date_format: "YYYY-MM-DD",
+				frequency: "daily",
+			})
+		);
+		expect(config.fastifyInit.logger.timestamp().substring(0, 7)).toBe(
+			',"time"'
+		);
+	});
+
 	test("Should return values according to environment variables - HTTPS (SSL cert) enabled and HTTP2 enabled", async () => {
 		const HOST = "0.0.0.0";
 		const PORT = 443;
@@ -144,7 +191,7 @@ describe("Configuration", () => {
 		const LOG_LEVEL = "trace";
 		const LOG_ROTATION_DATE_FORMAT = "YYYY-MM";
 		const LOG_ROTATION_FILENAME = "./test_resources/test-log-%DATE%.log";
-		const LOG_ROTATION_FREQUENCY = "custom";
+		const LOG_ROTATION_FREQUENCY = "date";
 		const LOG_ROTATION_MAX_LOGS = "1";
 		const LOG_ROTATION_MAX_SIZE = "1g";
 		const PROC_LOAD_MAX_EVENT_LOOP_DELAY = 1000;
@@ -197,12 +244,21 @@ describe("Configuration", () => {
 				req: expect.any(Function),
 				res: expect.any(Function),
 			},
-			timestamp: expect.any(Function),
 			stream: expect.any(Object),
+			timestamp: expect.any(Function),
 		});
 		expect(config.fastifyInit.logger.formatters.level()).toEqual({
 			level: undefined,
 		});
+		expect(config.fastifyInit.logger.stream.config.options).toEqual(
+			expect.objectContaining({
+				date_format: LOG_ROTATION_DATE_FORMAT,
+				filename: LOG_ROTATION_FILENAME,
+				frequency: LOG_ROTATION_FREQUENCY,
+				max_logs: LOG_ROTATION_MAX_LOGS,
+				size: LOG_ROTATION_MAX_SIZE,
+			})
+		);
 		expect(config.fastifyInit.logger.timestamp().substring(0, 7)).toBe(
 			',"time"'
 		);
