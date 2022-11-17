@@ -11,7 +11,7 @@
 	"license": "MIT",
 	"author": "Frazer Smith <frazer.smith@ydh.nhs.uk>",
 	"engines": {
-		"node": ">=14.17.0"
+		"node": ">=18.12.1"
 	},
 	"scripts": {
 		"benchmark": "autocannon -a 1000 \"http://0.0.0.0:3000/redirect?patient=https://fhir.nhs.uk/Id/nhs-number|9449304513&birthdate=1934-10-23&location=https://fhir.nhs.uk/Id/ods-organization-code|RA4&practitioner=https://sider.nhs.uk/auth|frazer.smith@ydh.nhs.uk\"",
