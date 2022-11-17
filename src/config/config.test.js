@@ -42,6 +42,8 @@ describe("Configuration", () => {
 		const RATE_LIMIT_MAX_CONNECTIONS_PER_MIN = "";
 		const RATE_LIMIT_EXCLUDED_ARRAY = '["127.0.0.1"]';
 		const KC_ENABLED = "";
+		const KC_REQUESTTOKEN_URL = "";
+		const KC_SERVICEAUTH_URL = "";
 		const OBFUSCATION_KEY_NAME = "k01";
 		const OBFUSCATION_KEY_VALUE = "0123456789";
 		const OBFUSCATION_QUERYSTRING_KEY_ARRAY = '["birthdate", "patient"]';
@@ -69,6 +71,8 @@ describe("Configuration", () => {
 			RATE_LIMIT_MAX_CONNECTIONS_PER_MIN,
 			RATE_LIMIT_EXCLUDED_ARRAY,
 			KC_ENABLED,
+			KC_REQUESTTOKEN_URL,
+			KC_SERVICEAUTH_URL,
 			OBFUSCATION_KEY_NAME,
 			OBFUSCATION_KEY_VALUE,
 			OBFUSCATION_QUERYSTRING_KEY_ARRAY,
@@ -122,6 +126,8 @@ describe("Configuration", () => {
 		expect(config.redirectUrl).toBe(REDIRECT_URL);
 
 		expect(config.keycloak.enabled).toBe(false);
+		expect(config.keycloak.requestToken.url).toBeUndefined();
+		expect(config.keycloak.serviceAuthorisation.url).toBeUndefined();
 
 		expect(config.obfuscation).toEqual({
 			encryptionKey: {
@@ -201,6 +207,8 @@ describe("Configuration", () => {
 		const RATE_LIMIT_MAX_CONNECTIONS_PER_MIN = 2000;
 		const RATE_LIMIT_EXCLUDED_ARRAY = '["127.0.0.1"]';
 		const KC_ENABLED = false;
+		const KC_REQUESTTOKEN_URL = "https://nhs.uk/request-token-url";
+		const KC_SERVICEAUTH_URL = "https://nhs.uk/service-auth-url";
 		const OBFUSCATION_KEY_NAME = "k01";
 		const OBFUSCATION_KEY_VALUE = "0123456789";
 		const OBFUSCATION_QUERYSTRING_KEY_ARRAY = '["birthdate", "patient"]';
@@ -225,6 +233,8 @@ describe("Configuration", () => {
 			RATE_LIMIT_MAX_CONNECTIONS_PER_MIN,
 			RATE_LIMIT_EXCLUDED_ARRAY,
 			KC_ENABLED,
+			KC_REQUESTTOKEN_URL,
+			KC_SERVICEAUTH_URL,
 			OBFUSCATION_KEY_NAME,
 			OBFUSCATION_KEY_VALUE,
 			OBFUSCATION_QUERYSTRING_KEY_ARRAY,
@@ -288,6 +298,10 @@ describe("Configuration", () => {
 		expect(config.redirectUrl).toBe(REDIRECT_URL);
 
 		expect(config.keycloak.enabled).toBe(false);
+		expect(config.keycloak.requestToken.url).toBe(KC_REQUESTTOKEN_URL);
+		expect(config.keycloak.serviceAuthorisation.url).toBe(
+			KC_SERVICEAUTH_URL
+		);
 
 		expect(config.obfuscation).toEqual({
 			encryptionKey: {
