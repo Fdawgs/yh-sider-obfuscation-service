@@ -156,7 +156,5 @@ describe("Keycloak Access Token Retrieval Plugin", () => {
 			statusCode: 500,
 		});
 		expect(response.statusCode).toBe(500);
-
-		await server.close();
 	});
 });
