@@ -92,7 +92,9 @@ describe("Keycloak Access Token Retrieval Plugin", () => {
 	beforeEach(() => {
 		server = Fastify();
 
-		server.get("/", async (req) => req.query);
+		server.get("/", (req, res) => {
+			res.send(req.query);
+		});
 	});
 
 	afterAll(() => {
