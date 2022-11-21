@@ -105,6 +105,7 @@ describe("Server Deployment", () => {
 					"Accept, Accept-Encoding, Accept-Language, Authorization, Content-Type, Origin, X-Forwarded-For, X-Requested-With",
 				CORS_MAX_AGE: 7200,
 				REDIRECT_URL: "https://pyrusapps.blackpear.com/esp/#!/launch?",
+				IP_SUBNET_ALLOWED_ARRAY: "",
 				KC_ENABLED: false,
 			});
 			currentEnv = { ...process.env };
@@ -357,6 +358,55 @@ describe("Server Deployment", () => {
 		});
 	});
 
+	describe("IP Address And Subnet Mask Limiting Enabled", () => {
+		let server;
+		let config;
+
+		beforeAll(async () => {
+			Object.assign(process.env, {
+				REDIRECT_URL: "https://pyrusapps.blackpear.com/esp/#!/launch?",
+				IP_SUBNET_ALLOWED_ARRAY:
+					'[{"ipAddress": "127.0.0.1", "subnetMask": "255.255.255.255"}]',
+				KC_ENABLED: false,
+			});
+			config = await getConfig();
+
+			server = Fastify();
+			await server.register(startServer, config).ready();
+		});
+
+		afterAll(async () => {
+			await server.close();
+		});
+
+		describe("/redirect Route", () => {
+			test("Should return HTTP status code 500", async () => {
+				const response = await server.inject({
+					method: "GET",
+					url: "/redirect",
+					headers: { accept: "text/html" },
+					query: testParams,
+				});
+
+				const resQueryString = qs.parse(
+					response.headers.location.substring(
+						response.headers.location.indexOf("?") + 1,
+						response.headers.location.length
+					)
+				);
+
+				expect(resQueryString).toMatchObject({
+					location:
+						"https://fhir.nhs.uk/Id/ods-organization-code|RA4",
+					practitioner: testParams.practitioner,
+					enc: expect.any(String),
+				});
+				expect(response.headers).toEqual(expResHeadersRedirect);
+				expect(response.statusCode).toBe(302);
+			});
+		});
+	});
+
 	describe("Keycloak Token Retrieval Config Disabled", () => {
 		let server;
 		let config;
@@ -364,6 +414,7 @@ describe("Server Deployment", () => {
 		beforeAll(async () => {
 			Object.assign(process.env, {
 				REDIRECT_URL: "https://pyrusapps.blackpear.com/esp/#!/launch?",
+				IP_SUBNET_ALLOWED_ARRAY: "",
 				KC_ENABLED: false,
 			});
 			config = await getConfig();
@@ -531,6 +582,7 @@ describe("Server Deployment", () => {
 		beforeAll(async () => {
 			Object.assign(process.env, {
 				REDIRECT_URL: "https://pyrusapps.blackpear.com/esp/#!/launch?",
+				IP_SUBNET_ALLOWED_ARRAY: "",
 			});
 
 			config = await getConfig();

@@ -12,6 +12,7 @@ const rateLimit = require("@fastify/rate-limit");
 const sensible = require("@fastify/sensible");
 const swagger = require("@fastify/swagger");
 const underPressure = require("@fastify/under-pressure");
+const allowedIps = require("./plugins/allowed-ips");
 const keycloakAccess = require("./plugins/keycloak-access-token");
 const obfuscateQueryString = require("./plugins/obfuscate-query-string");
 const serializeJsonToXml = require("./plugins/serialize-json-to-xml");
@@ -101,6 +102,12 @@ async function plugin(server, config) {
 		 * See https://fastify.io/docs/latest/Reference/Encapsulation/ for more info
 		 */
 		.register(async (securedContext) => {
+			if (config.allowedIps) {
+				await securedContext
+					// Check IP address and subnet mask of requester is allowed
+					.register(allowedIps, config.allowedIps);
+			}
+
 			await securedContext
 				.register(keycloakAccess, config.keycloak)
 				.register(obfuscateQueryString, config.obfuscation)

@@ -41,6 +41,7 @@ describe("Configuration", () => {
 		const PROC_LOAD_MAX_EVENT_LOOP_UTILIZATION = "";
 		const RATE_LIMIT_MAX_CONNECTIONS_PER_MIN = "";
 		const RATE_LIMIT_EXCLUDED_ARRAY = '["127.0.0.1"]';
+		const IP_SUBNET_ALLOWED_ARRAY = "";
 		const KC_ENABLED = "";
 		const KC_REQUESTTOKEN_URL = "";
 		const KC_SERVICEAUTH_URL = "";
@@ -70,6 +71,7 @@ describe("Configuration", () => {
 			PROC_LOAD_MAX_RSS_BYTES,
 			RATE_LIMIT_MAX_CONNECTIONS_PER_MIN,
 			RATE_LIMIT_EXCLUDED_ARRAY,
+			IP_SUBNET_ALLOWED_ARRAY,
 			KC_ENABLED,
 			KC_REQUESTTOKEN_URL,
 			KC_SERVICEAUTH_URL,
@@ -124,6 +126,8 @@ describe("Configuration", () => {
 		});
 
 		expect(config.redirectUrl).toBe(REDIRECT_URL);
+
+		expect(config.allowedIps).toBeUndefined();
 
 		expect(config.keycloak.enabled).toBe(false);
 		expect(config.keycloak.requestToken.url).toBeUndefined();
@@ -206,6 +210,7 @@ describe("Configuration", () => {
 		const PROC_LOAD_MAX_EVENT_LOOP_UTILIZATION = 0.98;
 		const RATE_LIMIT_MAX_CONNECTIONS_PER_MIN = 2000;
 		const RATE_LIMIT_EXCLUDED_ARRAY = '["127.0.0.1"]';
+		const IP_SUBNET_ALLOWED_ARRAY = '[{"ipAddress": "127.0.0.2"}]';
 		const KC_ENABLED = false;
 		const KC_REQUESTTOKEN_URL = "https://nhs.uk/request-token-url";
 		const KC_SERVICEAUTH_URL = "https://nhs.uk/service-auth-url";
@@ -232,6 +237,7 @@ describe("Configuration", () => {
 			PROC_LOAD_MAX_EVENT_LOOP_UTILIZATION,
 			RATE_LIMIT_MAX_CONNECTIONS_PER_MIN,
 			RATE_LIMIT_EXCLUDED_ARRAY,
+			IP_SUBNET_ALLOWED_ARRAY,
 			KC_ENABLED,
 			KC_REQUESTTOKEN_URL,
 			KC_SERVICEAUTH_URL,
@@ -296,6 +302,14 @@ describe("Configuration", () => {
 		});
 
 		expect(config.redirectUrl).toBe(REDIRECT_URL);
+
+		expect(Array.from(config.allowedIps)).toEqual(
+			expect.arrayContaining([
+				{
+					ipAddress: "127.0.0.2",
+				},
+			])
+		);
 
 		expect(config.keycloak.enabled).toBe(false);
 		expect(config.keycloak.requestToken.url).toBe(KC_REQUESTTOKEN_URL);
