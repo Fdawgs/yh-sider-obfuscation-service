@@ -648,8 +648,6 @@ describe("Server Deployment", () => {
 				});
 				expect(response.headers).toEqual(expResHeadersJson);
 				expect(response.statusCode).toBe(500);
-
-				await server.close();
 			});
 		});
 	});
