@@ -23,7 +23,6 @@ const request = require("axios").default;
  * @param {string} options.requestToken.form.client_id
  * @param {string} options.requestToken.form.client_secret
  * @param {string} options.requestToken.form.grant_type
- * @param {string} options.requestToken.form.requested_subject
  * @param {string} options.requestToken.form.requested_token_type
  * @param {string} options.requestToken.url
  * @see https://github.com/keycloak/keycloak-documentation/blob/main/securing_apps/topics/token-exchange/token-exchange.adoc
@@ -47,17 +46,15 @@ async function plugin(server, options) {
 				axiosOptions
 			);
 
-			requestToken.form.subject_token =
-				serviceAuthResponse.data.access_token;
-
-			// Expects the practitioner query to be in [system]|[code] format
-			requestToken.form.requested_subject =
-				req.query.practitioner.split("|")[1];
-
 			// Request access token for user
 			const userAccessResponse = await request.post(
 				requestToken.url,
-				qs.stringify(requestToken.form),
+				qs.stringify({
+					// Expects the practitioner query to be in [system]|[code] format
+					requested_subject: req.query.practitioner.split("|")[1],
+					subject_token: serviceAuthResponse.data.access_token,
+					...requestToken.form,
+				}),
 				axiosOptions
 			);
 			req.query.access_token = userAccessResponse.data.access_token;
