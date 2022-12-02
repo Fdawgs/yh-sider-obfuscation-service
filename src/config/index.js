@@ -206,8 +206,12 @@ async function getConfig() {
 			ignoreTrailingSlash: true,
 		},
 		cors: {
-			origin: parseCorsParameter(env.CORS_ORIGIN) || false,
+			allowedHeaders: env.CORS_ALLOWED_HEADERS || null,
+			credentials: env.CORS_ALLOW_CREDENTIALS === true,
+			exposedHeaders: env.CORS_EXPOSED_HEADERS || null,
 			hideOptionsRoute: true,
+			maxAge: env.CORS_MAX_AGE || null,
+			origin: parseCorsParameter(env.CORS_ORIGIN) || false,
 		},
 		helmet: {
 			contentSecurityPolicy: {
@@ -244,6 +248,9 @@ async function getConfig() {
 			maxRssBytes: env.PROC_LOAD_MAX_RSS_BYTES || 0,
 		},
 		rateLimit: {
+			allowList: env.RATE_LIMIT_EXCLUDED_ARRAY
+				? secJSON.parse(env.RATE_LIMIT_EXCLUDED_ARRAY)
+				: null,
 			continueExceeding: true,
 			hook: "onSend",
 			max: env.RATE_LIMIT_MAX_CONNECTIONS_PER_MIN || 1000,
@@ -343,25 +350,6 @@ async function getConfig() {
 			size: env.LOG_ROTATION_MAX_SIZE,
 			verbose: false,
 		});
-	}
-
-	if (env.RATE_LIMIT_EXCLUDED_ARRAY) {
-		config.rateLimit.allowList = secJSON.parse(
-			env.RATE_LIMIT_EXCLUDED_ARRAY
-		);
-	}
-
-	if (env.CORS_ALLOW_CREDENTIALS === true) {
-		config.cors.credentials = true;
-	}
-	if (env.CORS_ALLOWED_HEADERS) {
-		config.cors.allowedHeaders = env.CORS_ALLOWED_HEADERS;
-	}
-	if (env.CORS_EXPOSED_HEADERS) {
-		config.cors.exposedHeaders = env.CORS_EXPOSED_HEADERS;
-	}
-	if (env.CORS_MAX_AGE) {
-		config.cors.maxAge = env.CORS_MAX_AGE;
 	}
 
 	// Enable HTTPS using cert/key or passphrase/pfx combinations
