@@ -296,7 +296,6 @@ async function getConfig() {
 					client_id: env.KC_REQUESTTOKEN_CLIENT_ID,
 					client_secret: env.KC_REQUESTTOKEN_CLIENT_SECRET,
 					grant_type: env.KC_REQUESTTOKEN_GRANT_TYPE,
-					requested_subject: undefined,
 					requested_token_type:
 						env.KC_REQUESTTOKEN_REQUESTED_TOKEN_TYPE,
 				},
