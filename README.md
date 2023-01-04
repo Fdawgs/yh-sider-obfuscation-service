@@ -176,7 +176,7 @@ This requires [Docker](https://docker.com) installed.
 
 ### Deploying Using PM2
 
-If you are unable to deploy this into production using Docker, it is recommended that you use a process manager such as [PM2](https://pm2.keymetrics.io/).
+If you cannot deploy this into production using Docker, it is recommended that you use a process manager such as [PM2](https://pm2.keymetrics.io/).
 
 1. Run `npm ci --ignore-scripts --omit=dev` to install dependencies
 2. Run `npm i -g pm2` to install pm2 globally
