@@ -63,7 +63,7 @@ The service should now be up and running on the port set in the config. You shou
 }
 ```
 
-To quickly test it open a browser of your choice or, if using a request builder (i.e. [Insomnia](https://insomnia.rest/)) create a new GET request, and input the following URL:
+To test it open a browser of your choice or, if using a request builder (i.e. [Insomnia](https://insomnia.rest/)) create a new GET request, and input the following URL:
 
 http://127.0.0.1:49217/redirect?patient=https://fhir.nhs.uk/Id/nhs-number|9449304513&birthdate=1934-10-23&location=https://fhir.nhs.uk/Id/ods-organization-code|RA4&practitioner=https://sider.nhs.uk/auth|frazer.smith@ydh.nhs.uk
 
@@ -176,7 +176,7 @@ This requires [Docker](https://docker.com) installed.
 
 ### Deploying Using PM2
 
-If you are unable to deploy this into production using Docker, it is recommended that you use a process manager such as [PM2](https://pm2.keymetrics.io/).
+If you cannot deploy this into production using Docker, use a process manager such as [PM2](https://pm2.keymetrics.io/).
 
 1. Run `npm ci --ignore-scripts --omit=dev` to install dependencies
 2. Run `npm i -g pm2` to install pm2 globally
