@@ -2,6 +2,37 @@
 
 All notable changes to this project will be documented in this file.
 
+## [10.0.2](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v10.0.1...v10.0.2) (2023-01-05)
+
+
+### Documentation
+
+* grammar and clarity fixes ([2d79c92](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/2d79c922f69a239a789223d35012571dd0c53624))
+* **readme:** remove split infinitive and passive wording ([4c7bbe6](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/4c7bbe62dc19b304b5921adcbbd3727e727408e7))
+
+
+### Miscellaneous
+
+* **license:** update license year ([7ec5335](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/7ec5335c0b7b76dedccd36f9d6f726dfb0b9442d))
+* **plugins:** rename plugin to use british english spelling ([feeb3bc](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/feeb3bcbf2f7bf65b84101723edba650a52282f1))
+* update contact details ([cfc944a](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/cfc944abd4e42ade55e68da8ce53ef2ff7e9bb0d))
+
+
+### Dependencies
+
+* **deps-dev:** bump @commitlint/cli from 17.3.0 to 17.4.0 ([#1051](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1051)) ([7837cda](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/7837cdacc9f3a2257cd9451aaebd4d1db6ef40b5))
+* **deps-dev:** bump @commitlint/config-conventional ([#1052](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1052)) ([a4ee077](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/a4ee0770953c337868d52ab457071654554a958d))
+* **deps-dev:** bump eslint from 8.29.0 to 8.31.0 ([#1040](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1040)) ([e28748b](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/e28748b3081ff384367d479f4e31450b756cc5a6))
+* **deps-dev:** bump eslint-config-prettier from 8.5.0 to 8.6.0 ([#1049](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1049)) ([edb8f1b](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/edb8f1b95409133d178de9b4a3ffde2b1efc78f6))
+* **deps-dev:** bump eslint-plugin-jest from 27.1.6 to 27.2.0 ([#1043](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1043)) ([d9c2f80](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/d9c2f800a1efad9bef5a384cffea882f919df5c1))
+* **deps-dev:** bump husky from 8.0.2 to 8.0.3 ([#1046](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1046)) ([c565282](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/c56528266115ed7ddef9d58c69a42dee85827067))
+* **deps:** bump @fastify/autoload from 5.6.0 to 5.7.0 ([#1048](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1048)) ([64126b8](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/64126b82ea760b5545f11a247d6891badd7e93d8))
+* **deps:** bump axios from 1.2.1 to 1.2.2 ([#1041](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1041)) ([652a8e1](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/652a8e1426f48c6dc373fdd72291480592da60bd))
+* **deps:** bump fast-querystring from 1.0.0 to 1.1.0 ([#1047](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1047)) ([67f2799](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/67f2799c1e3df9a899752d43e5d0fbabebcb8e2d))
+* **deps:** bump fastify from 4.10.2 to 4.11.0 ([#1050](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1050)) ([b3e8db2](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/b3e8db2b4c10afc422f5cbadf7c3b021e70472fc))
+* **deps:** bump pino from 8.7.0 to 8.8.0 ([#1042](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1042)) ([a685c12](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/a685c123748fa18beb5db3dd28779251787980bb))
+* **deps:** bump transistive dependencies ([#1053](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1053)) ([01e59ed](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/01e59edc6823f1b024d60d88b134a5a95f14b2db))
+
 ## [10.0.1](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v10.0.0...v10.0.1) (2022-12-12)
 
 
