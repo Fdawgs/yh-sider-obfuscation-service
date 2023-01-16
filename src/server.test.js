@@ -1,5 +1,7 @@
+const { chromium, firefox } = require("playwright");
 const { randomUUID } = require("crypto");
 const Fastify = require("fastify");
+const isHtml = require("is-html");
 const qs = require("fast-querystring");
 const nock = require("nock");
 const startServer = require("./server");
@@ -38,6 +40,29 @@ const expResHeadersRedirect = {
 	vary: "Origin",
 };
 
+const expResHeadersHtml = {
+	...expResHeaders,
+	"content-security-policy":
+		"default-src 'self';base-uri 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content",
+	"content-type": expect.stringContaining("text/html"),
+	"x-xss-protection": "0",
+};
+
+const expResHeadersHtmlStatic = {
+	...expResHeadersHtml,
+	"accept-ranges": "bytes",
+	"cache-control": "private, max-age=180",
+	"content-length": expect.any(Number), // @fastify/static plugin returns content-length as number
+	"content-security-policy":
+		"default-src 'self';base-uri 'self';img-src 'self' data:;object-src 'none';child-src 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;block-all-mixed-content;script-src 'self' 'unsafe-inline';style-src 'self' 'unsafe-inline'",
+	etag: expect.any(String),
+	expires: undefined,
+	"last-modified": expect.any(String),
+	pragma: undefined,
+	"surrogate-control": undefined,
+	vary: "accept-encoding",
+};
+
 const expResHeadersJson = {
 	...expResHeaders,
 	"content-type": expect.stringContaining("application/json"),
@@ -51,7 +76,7 @@ const expResHeadersText = {
 const expResHeaders4xxErrors = {
 	...expResHeadersJson,
 	"keep-alive": undefined,
-	vary: undefined,
+	vary: "accept-encoding",
 };
 
 const testParams = {
@@ -648,6 +673,88 @@ describe("Server Deployment", () => {
 				});
 				expect(response.headers).toEqual(expResHeadersJson);
 				expect(response.statusCode).toBe(500);
+			});
+		});
+	});
+
+	describe("API Documentation", () => {
+		let config;
+		let server;
+
+		let browser;
+		let page;
+
+		beforeAll(async () => {
+			Object.assign(process.env, {
+				HOST: "localhost",
+				PORT: "3000",
+				HTTPS_PFX_PASSPHRASE: "",
+				HTTPS_PFX_FILE_PATH: "",
+				HTTPS_SSL_CERT_PATH: "",
+				HTTPS_SSL_KEY_PATH: "",
+				HTTPS_HTTP2_ENABLED: "",
+				DB_CLIENT: "postgresql",
+				DB_CONNECTION_STRING:
+					"postgresql://postgres:password@localhost:5432/community_contacts_api",
+			});
+			config = await getConfig();
+
+			// Turn off logging for test runs
+			config.fastifyInit.logger = undefined;
+			server = Fastify(config.fastifyInit);
+			await server.register(startServer, config).listen(config.fastify);
+		});
+
+		afterAll(async () => {
+			await server.close();
+		});
+
+		describe("Content", () => {
+			describe("/docs Route", () => {
+				test("Should return HTML", async () => {
+					const response = await server.inject({
+						method: "GET",
+						url: "/docs",
+						headers: {
+							accept: "text/html",
+						},
+					});
+
+					expect(isHtml(response.payload)).toBe(true);
+					expect(response.headers).toEqual(expResHeadersHtmlStatic);
+					expect(response.statusCode).toBe(200);
+				});
+			});
+		});
+
+		describe("Frontend", () => {
+			afterEach(async () => {
+				await page.close();
+				await browser.close();
+			});
+
+			// Webkit not tested as it is flakey in context of Playwright
+			const browsers = [chromium, firefox];
+			browsers.forEach((browserType) => {
+				test(`Should render docs page without error components - ${browserType.name()}`, async () => {
+					browser = await browserType.launch();
+					page = await browser.newPage();
+
+					await page.goto("http://localhost:3000/docs");
+					expect(await page.title()).toBe(
+						"SIDeR Obfuscation Service | Documentation"
+					);
+					/**
+					 * Checks redoc has not rendered an error component:
+					 * https://github.com/Redocly/redoc/blob/main/src/components/ErrorBoundary.tsx
+					 */
+					const heading = page.locator("h1 >> nth=0");
+					await heading.waitFor();
+
+					expect(await heading.textContent()).not.toEqual(
+						expect.stringMatching(/something\s*went\s*wrong/i)
+					);
+				});
 			});
 		});
 	});

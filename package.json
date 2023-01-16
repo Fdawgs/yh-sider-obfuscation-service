@@ -19,7 +19,7 @@
 		"jest": "jest",
 		"jest:coverage": "jest --coverage",
 		"lint": "eslint . --cache --ext js,jsx,ts,tsx --ignore-path .gitignore",
-		"lint:licenses": "license-checker --direct --excludePackages=\"obfuscated-querystring@0.0.2\" --onlyAllow=\"0BSD;Apache-2.0;BSD-2-Clause;BSD-3-Clause;ISC;MIT;Python-2.0;Unlicense\" --production --summary",
+		"lint:licenses": "license-checker --direct --excludePackages=\"obfuscated-querystring@0.0.2;caniuse-lite@1.0.30001442;url-template@2.0.8\" --onlyAllow=\"0BSD;Apache-2.0;BSD-2-Clause;BSD-3-Clause;ISC;MIT;Python-2.0;Unlicense\" --production --summary",
 		"lint:prettier": "prettier . -w -u",
 		"lint:prettier:ci": "prettier . -c -u",
 		"prepare": "husky install",
@@ -77,11 +77,13 @@
 		"eslint-plugin-security-node": "^1.1.1",
 		"glob": "^8.0.3",
 		"husky": "^8.0.3",
+		"is-html": "^2.0.0",
 		"jest": "^29.3.1",
 		"license-checker": "^25.0.1",
 		"nock": "^13.2.9",
 		"nodemon": "^2.0.20",
 		"pino-pretty": "^9.1.1",
+		"playwright": "^1.29.2",
 		"prettier": "^2.8.2"
 	},
 	"dependencies": {
@@ -92,6 +94,7 @@
 		"@fastify/helmet": "^10.1.0",
 		"@fastify/rate-limit": "^7.6.0",
 		"@fastify/sensible": "^5.2.0",
+		"@fastify/static": "^6.6.1",
 		"@fastify/swagger": "^8.2.1",
 		"@fastify/under-pressure": "^8.2.0",
 		"ajv-formats": "^2.1.1",
@@ -109,6 +112,7 @@
 		"netmask": "^2.0.2",
 		"obfuscated-querystring": "git+https://git@github.com/BlackPearSw/obfuscated-querystring.git",
 		"pino": "^8.8.0",
+		"redoc": "^2.0.0",
 		"secure-json-parse": "^2.6.0",
 		"upath": "^2.0.1"
 	}

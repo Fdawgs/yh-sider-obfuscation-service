@@ -1,6 +1,7 @@
 const autoLoad = require("@fastify/autoload");
 const fp = require("fastify-plugin");
 const path = require("upath");
+const secJSON = require("secure-json-parse");
 
 // Import plugins
 const accepts = require("@fastify/accepts");
@@ -10,6 +11,7 @@ const flocOff = require("fastify-floc-off");
 const helmet = require("@fastify/helmet");
 const rateLimit = require("@fastify/rate-limit");
 const sensible = require("@fastify/sensible");
+const staticPlugin = require("@fastify/static");
 const swagger = require("@fastify/swagger");
 const underPressure = require("@fastify/under-pressure");
 const allowedIps = require("./plugins/allowed-ips");
@@ -84,16 +86,10 @@ async function plugin(server, config) {
 			return payload;
 		})
 
-		// Import and register admin routes
+		// Import and register healthcheck route
 		.register(autoLoad, {
-			dir: path.joinSafe(__dirname, "routes", "admin"),
-			options: { ...config, prefix: "admin" },
-		})
-
-		// Import and register docs routes
-		.register(autoLoad, {
-			dir: path.joinSafe(__dirname, "routes", "docs"),
-			options: { ...config, prefix: "docs" },
+			dir: path.joinSafe(__dirname, "routes", "admin", "healthcheck"),
+			options: { ...config, prefix: "admin/healthcheck" },
 		})
 
 		/**
@@ -116,6 +112,40 @@ async function plugin(server, config) {
 				.register(autoLoad, {
 					dir: path.joinSafe(__dirname, "routes", "redirect"),
 					options: { ...config, prefix: "redirect" },
+				});
+		})
+
+		/**
+		 * Encapsulate the docs routes into a child context, so that the
+		 * CSP can be relaxed, and cache enabled, without affecting
+		 * security of other routes
+		 */
+		.register(async (publicContext) => {
+			const relaxedHelmetConfig = secJSON.parse(
+				JSON.stringify(config.helmet)
+			);
+			Object.assign(
+				relaxedHelmetConfig.contentSecurityPolicy.directives,
+				{
+					"script-src": ["'self'", "'unsafe-inline'"],
+					"style-src": ["'self'", "'unsafe-inline'"],
+					"child-src": ["'self'"],
+				}
+			);
+
+			await publicContext
+				// Set relaxed response headers
+				.register(helmet, relaxedHelmetConfig)
+
+				// Register static files in public
+				.register(staticPlugin, {
+					root: path.joinSafe(__dirname, "public"),
+					immutable: true,
+					maxAge: "365 days",
+				})
+				.register(autoLoad, {
+					dir: path.joinSafe(__dirname, "routes", "docs"),
+					options: { ...config, prefix: "docs" },
 				});
 		})
 

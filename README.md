@@ -164,10 +164,6 @@ As an example, providing `birthdate` in an invalid date format will return the f
 }
 ```
 
-#### OpenAPI Specification
-
-The OpenAPI v3.x.x specification for this service is found at `/docs/openapi`.
-
 ### Deploying Using Docker
 
 This requires [Docker](https://docker.com) installed.
@@ -189,6 +185,14 @@ If using a Microsoft Windows OS utilise [pm2-installer](https://github.com/jesse
 
 > **Note**
 > PM2 will automatically restart the application if `.env` is modified.
+
+## Usage
+
+### Accessing API Documentation
+
+API documentation can be found at `/docs`:
+
+<img alttext="Screenshot of YDH SIDeR Obfuscation Service documentation page" src="https://raw.githubusercontent.com/Fdawgs/ydh-sider-obfuscation-service/master/docs/images/api_documentation_screenshot.png" width="720">
 
 ### Contextual Link in PAS (TrakCare)
 
