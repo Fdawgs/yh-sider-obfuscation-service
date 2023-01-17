@@ -16,7 +16,6 @@ const swagger = require("@fastify/swagger");
 const underPressure = require("@fastify/under-pressure");
 const allowedIps = require("./plugins/allowed-ips");
 const keycloakAccess = require("./plugins/keycloak-access-token");
-const obfuscateQueryString = require("./plugins/obfuscate-query-string");
 const serialiseJsonToXml = require("./plugins/serialise-json-to-xml");
 const sharedSchemas = require("./plugins/shared-schemas");
 
@@ -94,7 +93,7 @@ async function plugin(server, config) {
 
 		/**
 		 * Encapsulate plugins and routes into secured child context, so that admin and docs
-		 * routes do not inherit Keycloak or querystring obfuscation plugins.
+		 * routes do not inherit IP limiting or Keycloak plugins.
 		 * See https://fastify.io/docs/latest/Reference/Encapsulation/ for more info
 		 */
 		.register(async (securedContext) => {
@@ -106,7 +105,6 @@ async function plugin(server, config) {
 
 			await securedContext
 				.register(keycloakAccess, config.keycloak)
-				.register(obfuscateQueryString, config.obfuscation)
 
 				// Import and register service routes
 				.register(autoLoad, {

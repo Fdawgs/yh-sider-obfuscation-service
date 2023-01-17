@@ -1,6 +1,7 @@
 // Import plugins
 const cors = require("@fastify/cors");
 const qs = require("fast-querystring");
+const obfuscateQueryString = require("../../plugins/obfuscate-query-string");
 
 const { redirectGetSchema } = require("./schema");
 
@@ -21,7 +22,8 @@ async function route(server, options) {
 		.register(cors, {
 			...options.cors,
 			methods: ["GET", "HEAD"],
-		});
+		})
+		.register(obfuscateQueryString, options.obfuscation);
 
 	server.route({
 		method: "GET",
