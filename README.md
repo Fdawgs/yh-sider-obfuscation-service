@@ -63,110 +63,7 @@ The service should now be up and running on the port set in the config. You shou
 }
 ```
 
-To test it open a browser of your choice or, if using a request builder (i.e. [Insomnia](https://insomnia.rest/)) create a new GET request, and input the following URL:
-
-http://127.0.0.1:49217/redirect?patient=https://fhir.nhs.uk/Id/nhs-number|9449304513&birthdate=1934-10-23&location=https://fhir.nhs.uk/Id/ods-organization-code|RA4&practitioner=https://sider.nhs.uk/auth|frazer.smith@ydh.nhs.uk
-
-Replace the organization code and email address in the `location` and `practitioner` query string parameters respectively with your own if you have already been set up with an account in SIDeR.
-
-In stdout, or the log file, you will see something similar to the following returned:
-
-```json
-{
-	"level": "info",
-	"time": "2022-10-24T09:08:15.096Z",
-	"pid": 25212,
-	"hostname": "MYCOMPUTER",
-	"reqId": "req-1",
-	"req": {
-		"id": "req-1",
-		"method": "GET",
-		"url": "/redirect?patient=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fnhs-number%7C9449304513&birthdate=1934-10-23&location=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fods-organization-code%7CRA4&practitioner=https%3A%2F%2Fsider.nhs.uk%2Fauth%7Cfrazer.smith%40ydh.nhs.uk",
-		"query": {
-			"patient": "https://fhir.nhs.uk/Id/nhs-number|9449304513",
-			"birthdate": "1934-10-23",
-			"location": "https://fhir.nhs.uk/Id/ods-organization-code|RA4",
-			"practitioner": "https://sider.nhs.uk/auth|frazer.smith@ydh.nhs.uk"
-		},
-		"params": {},
-		"headers": {
-			"host": "127.0.0.1:49217",
-			"user-agent": "insomnia/2022.6.0",
-			"accept-encoding": "br, gzip, deflate",
-			"accept": "*/*"
-		},
-		"remoteAddress": "127.0.0.1",
-		"remotePort": 49272
-	},
-	"msg": "incoming request"
-}
-```
-
-```json
-{
-	"level": "info",
-	"time": "2022-10-24T09:08:15.115Z",
-	"pid": 25212,
-	"hostname": "MYCOMPUTER",
-	"reqId": "req-1",
-	"res": {
-		"statusCode": 302,
-		"headers": {
-			"content-security-policy": "default-src 'self';frame-ancestors 'none'",
-			"x-dns-prefetch-control": "off",
-			"x-frame-options": "SAMEORIGIN",
-			"strict-transport-security": "max-age=31536000; includeSubDomains",
-			"x-download-options": "noopen",
-			"x-content-type-options": "nosniff",
-			"x-permitted-cross-domain-policies": "none",
-			"referrer-policy": "no-referrer",
-			"cache-control": "no-store, max-age=0, must-revalidate",
-			"expires": "0",
-			"pragma": "no-cache",
-			"surrogate-control": "no-store",
-			"permissions-policy": "interest-cohort=()",
-			"vary": "Origin",
-			"location": "https://pyrusapps.blackpear.com/esp/#!/launch?location=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fods-organization-code%7CRA4&practitioner=https%3A%2F%2Fsider.nhs.uk%2Fauth%7Cfrazer.smith%40ydh.nhs.uk&enc=k01%7Ca6c12e7c5969ab5829a3f91ba02c302a0b4f598ad6c03709fbeeb52686a007c99f8b13add1472176b06f1471a0343f2d904d6f41c5776fa6d340834c8ebef92d41dcc164c6c8273854f404fd24b1ec8d4e6829c4a9b76aa08d8a5b63d806fb01",
-			"x-ratelimit-limit": 1000,
-			"x-ratelimit-remaining": 999,
-			"x-ratelimit-reset": 60,
-			"content-length": "0"
-		}
-	},
-	"responseTime": 18.770300030708313,
-	"msg": "request completed"
-}
-```
-
-Both of the URL's `patient` and `birthdate` query string parameters have been obfuscated in the generated redirect URL in `res.headers.location`.
-
-The web browser or request builder should be redirected to Black Pear's ESP site, and once logged in will provide the patient notes for the test patient with NHS Number 9449304513, success!
-
-If the `patient`, `birthdate`, `location` or `practitioner` query string parameters are removed from the original URL the obfuscation process and redirect will not occur, and a 400 HTTP status code will be returned with the message similar to the following:
-
-```json
-{
-	"statusCode": 400,
-	"error": "Bad Request",
-	"message": "querystring should have required property 'practitioner'"
-}
-```
-
-Likewise, if the previously mentioned query string parameters do not adhere to the types expected, an error will also be returned.
-
-As an example, providing `birthdate` in an invalid date format will return the following:
-
-```json
-{
-	"statusCode": 400,
-	"error": "Bad Request",
-	"message": "querystring/birthdate should match format \"date\""
-}
-```
-
-#### OpenAPI Specification
-
-The OpenAPI v3.x.x specification for this service is found at `/docs/openapi`.
+To test it, use [Insomnia](https://insomnia.rest/) and import the example requests from `./test_resources/insomnia_test_requests.json`.
 
 ### Deploying Using Docker
 
@@ -189,6 +86,14 @@ If using a Microsoft Windows OS utilise [pm2-installer](https://github.com/jesse
 
 > **Note**
 > PM2 will automatically restart the application if `.env` is modified.
+
+## Usage
+
+### Accessing API Documentation
+
+API documentation can be found at `/docs`:
+
+<img alttext="Screenshot of YDH SIDeR Obfuscation Service documentation page" src="https://raw.githubusercontent.com/Fdawgs/ydh-sider-obfuscation-service/master/docs/images/api_documentation_screenshot.png" width="720">
 
 ### Contextual Link in PAS (TrakCare)
 
