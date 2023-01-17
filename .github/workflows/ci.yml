@@ -117,6 +117,9 @@ jobs:
             - name: Install
               run: npm ci --ignore-scripts
 
+            - name: Install Playwright
+              run: npx playwright install --with-deps chromium firefox
+
             - name: Run tests
               run: |
                   cp .env.template .env
