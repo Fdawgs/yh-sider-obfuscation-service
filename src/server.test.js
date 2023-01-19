@@ -63,6 +63,20 @@ const expResHeadersHtmlStatic = {
 	vary: "accept-encoding",
 };
 
+const expeResHeadersPublicImage = {
+	...expResHeaders,
+	"accept-ranges": "bytes",
+	"cache-control": "public, max-age=31536000, immutable",
+	"content-length": expect.any(Number), // @fastify/static plugin returns content-length as number
+	"content-type": expect.stringContaining("image/"),
+	etag: expect.any(String),
+	expires: undefined,
+	"last-modified": expect.any(String),
+	pragma: undefined,
+	"surrogate-control": undefined,
+	vary: "accept-encoding",
+};
+
 const expResHeadersJson = {
 	...expResHeaders,
 	"content-type": expect.stringContaining("application/json"),
@@ -73,10 +87,9 @@ const expResHeadersText = {
 	"content-type": expect.stringContaining("text/plain"),
 };
 
-const expResHeaders4xxErrors = {
+const expResHeaders404Errors = {
 	...expResHeadersJson,
-	"keep-alive": undefined,
-	vary: "accept-encoding",
+	vary: undefined,
 };
 
 const testParams = {
@@ -374,7 +387,7 @@ describe("Server Deployment", () => {
 							statusCode: 404,
 						});
 						expect(response.headers).toEqual(
-							expResHeaders4xxErrors
+							expResHeaders404Errors
 						);
 						expect(response.statusCode).toBe(404);
 					});
@@ -501,7 +514,7 @@ describe("Server Deployment", () => {
 					message: "Route GET:/invalid not found",
 					statusCode: 404,
 				});
-				expect(response.headers).toEqual(expResHeaders4xxErrors);
+				expect(response.headers).toEqual(expResHeaders404Errors);
 				expect(response.statusCode).toBe(404);
 			});
 		});
@@ -722,6 +735,21 @@ describe("Server Deployment", () => {
 
 					expect(isHtml(response.payload)).toBe(true);
 					expect(response.headers).toEqual(expResHeadersHtmlStatic);
+					expect(response.statusCode).toBe(200);
+				});
+			});
+
+			describe("/public Route", () => {
+				test("Should return image", async () => {
+					const response = await server.inject({
+						method: "GET",
+						url: "/public/images/icons/favicon.ico",
+						headers: {
+							accept: "*/*",
+						},
+					});
+
+					expect(response.headers).toEqual(expeResHeadersPublicImage);
 					expect(response.statusCode).toBe(200);
 				});
 			});
