@@ -34,7 +34,7 @@ async function route(server, options) {
 			}
 		},
 		handler: (req, res) => {
-			res.header("cache-control", "public, max-age=3600").send(
+			res.header("cache-control", "public, max-age=1800").send(
 				server.swagger()
 			);
 		},
