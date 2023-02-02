@@ -137,7 +137,7 @@ describe("Keycloak Access Token Retrieval Plugin", () => {
 		expect(response.statusCode).toBe(200);
 	});
 
-	test("Should return HTTP status code 500 if Keycloak endpoint config enabled but other options undefined", async () => {
+	test("Should continue if Keycloak endpoint config enabled but other options undefined", async () => {
 		const config = await getConfig();
 		config.keycloak = {
 			enabled: true,
@@ -152,11 +152,7 @@ describe("Keycloak Access Token Retrieval Plugin", () => {
 			query: testParams,
 		});
 
-		expect(JSON.parse(response.payload)).toEqual({
-			error: "Internal Server Error",
-			message: expect.stringMatching(/^Cannot read prop/i),
-			statusCode: 500,
-		});
-		expect(response.statusCode).toBe(500);
+		expect(JSON.parse(response.payload)).toEqual(testParams);
+		expect(response.statusCode).toBe(200);
 	});
 });
