@@ -39,25 +39,30 @@ async function plugin(server, options) {
 		};
 
 		server.addHook("preHandler", async (req) => {
-			// Service authorisation to retrieve subject access token
-			const serviceAuthResponse = await request.post(
-				serviceAuthorisation.url,
-				qs.stringify(serviceAuthorisation.form),
-				axiosOptions
-			);
+			try {
+				// Service authorisation to retrieve subject access token
+				const serviceAuthResponse = await request.post(
+					serviceAuthorisation.url,
+					qs.stringify(serviceAuthorisation.form),
+					axiosOptions
+				);
 
-			// Request access token for user
-			const userAccessResponse = await request.post(
-				requestToken.url,
-				qs.stringify({
-					// Expects the practitioner query to be in [system]|[code] format
-					requested_subject: req.query.practitioner.split("|")[1],
-					subject_token: serviceAuthResponse.data.access_token,
-					...requestToken.form,
-				}),
-				axiosOptions
-			);
-			req.query.access_token = userAccessResponse.data.access_token;
+				// Request access token for user
+				const userAccessResponse = await request.post(
+					requestToken.url,
+					qs.stringify({
+						// Expects the practitioner query to be in [system]|[code] format
+						requested_subject: req.query.practitioner.split("|")[1],
+						subject_token: serviceAuthResponse.data.access_token,
+						...requestToken.form,
+					}),
+					axiosOptions
+				);
+				req.query.access_token = userAccessResponse.data.access_token;
+			} catch (err) {
+				// Log Keycloak error and redirect without access_token, user will have to manually login
+				req.log.error({ req, err }, err?.message);
+			}
 		});
 	}
 }
