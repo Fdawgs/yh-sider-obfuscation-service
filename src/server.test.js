@@ -149,13 +149,6 @@ describe("Server Deployment", () => {
 			currentEnv = { ...process.env };
 		});
 
-		afterEach(async () => {
-			// Reset the process.env to default after each test
-			Object.assign(process.env, currentEnv);
-
-			await server.close();
-		});
-
 		const corsTests = [
 			{
 				testName: "CORS Disabled",
@@ -291,11 +284,16 @@ describe("Server Deployment", () => {
 				beforeAll(async () => {
 					Object.assign(process.env, testObject.envVariables);
 					config = await getConfig();
-				});
 
-				beforeEach(async () => {
 					server = Fastify();
 					await server.register(startServer, config).ready();
+				});
+
+				afterAll(async () => {
+					// Reset the process.env to default after each test
+					Object.assign(process.env, currentEnv);
+
+					await server.close();
 				});
 
 				describe("/admin/healthcheck Route", () => {
