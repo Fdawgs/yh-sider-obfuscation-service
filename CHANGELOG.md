@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [10.1.1](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v10.1.0...v10.1.1) (2023-02-06)
+
+
+### Bug Fixes
+
+* **plugins/keycloak-access-token:** redirect if keycloak auth fails ([37f93c7](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/37f93c7858294e23f6667fd151751802c8226c54))
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint-plugin-jsdoc from 39.7.5 to 39.8.0 ([#1094](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1094)) ([bd71f4a](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/bd71f4a3a1629ecc9fb6f9a4f801ed343a393acc))
+* **deps-dev:** bump eslint-plugin-security from 1.7.0 to 1.7.1 ([#1095](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1095)) ([1c009ba](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/1c009bab3224f399f2583928c6b4a30742907668))
+* **deps:** bump @fastify/swagger from 8.3.0 to 8.3.1 ([#1089](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1089)) ([c7bfb3a](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/c7bfb3ae0dc1e1971ccc665541ea245a5adfe9e3))
+* **deps:** bump axios from 1.3.0 to 1.3.2 ([#1093](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1093)) ([152058a](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/152058ace6e4603e85b01d5cb0098b1f25b60f8f))
+* **deps:** bump fast-querystring from 1.1.0 to 1.1.1 ([#1092](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1092)) ([b8ca870](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/b8ca870dc9f3b6232b451b11aa922235cd41ac19))
+
 ## [10.1.0](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v10.0.2...v10.1.0) (2023-02-01)
 
 
