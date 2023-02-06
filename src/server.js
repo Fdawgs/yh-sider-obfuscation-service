@@ -11,12 +11,12 @@ const flocOff = require("fastify-floc-off");
 const helmet = require("@fastify/helmet");
 const rateLimit = require("@fastify/rate-limit");
 const sensible = require("@fastify/sensible");
+const serialiseJsonToXml = require("fastify-json-to-xml");
 const staticPlugin = require("@fastify/static");
 const swagger = require("@fastify/swagger");
 const underPressure = require("@fastify/under-pressure");
 const allowedIps = require("./plugins/allowed-ips");
 const keycloakAccess = require("./plugins/keycloak-access-token");
-const serialiseJsonToXml = require("./plugins/serialise-json-to-xml");
 const sharedSchemas = require("./plugins/shared-schemas");
 
 /**
