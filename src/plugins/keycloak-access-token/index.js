@@ -51,7 +51,7 @@ async function plugin(server, options) {
 				const userAccessResponse = await request.post(
 					requestToken.url,
 					qs.stringify({
-						// Expects the practitioner query to be in [system]|[code] format
+						// Expects the query string practitioner value to be in [system]|[code] format
 						requested_subject: req.query.practitioner.split("|")[1],
 						subject_token: serviceAuthResponse.data.access_token,
 						...requestToken.form,
