@@ -5,19 +5,21 @@ const NetMask = require("netmask").Netmask;
  * @author Frazer Smith
  * @description On-Request plugin that checks IP address and subnet mask of request is in allowed list.
  * @param {object} server - Fastify instance.
- * @param {object[]} options - Plugin config values.
- * @param {string} options[].ipAddress - Allowed IP address.
- * @param {string=} options[].subnetMask - Allowed subnet mask.
+ * @param {object} options - Plugin config values.
+ * @param {object[]} options.ipAddresses - Array or Set of objects containing allowed IP addresses
+ * and/or subnet masks.
+ * @param {string} options.ipAddresses[].ipAddress - Allowed IP address.
+ * @param {string=} options.ipAddresses[].subnetMask - Allowed subnet mask.
  */
 async function plugin(server, options) {
 	server.addHook("onRequest", async (req) => {
 		const ipAddress = req.ip;
 		const subnetMask = new NetMask(ipAddress).mask;
 
-		let ips = options;
-		if (ips instanceof Set) {
-			ips = Array.from(options);
-		}
+		const ips =
+			options.ipAddresses instanceof Set
+				? Array.from(options.ipAddresses)
+				: options.ipAddresses;
 
 		const allowed = ips.some(
 			(allowedIpObj) =>

@@ -100,7 +100,7 @@ async function plugin(server, config) {
 			if (config.allowedIps) {
 				await securedContext
 					// Check requester's IP address and subnet mask is allowed
-					.register(allowedIps, config.allowedIps);
+					.register(allowedIps, { ipAddresses: config.allowedIps });
 			}
 
 			await securedContext
