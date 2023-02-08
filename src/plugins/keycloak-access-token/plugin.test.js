@@ -33,11 +33,6 @@ const testKeycloakConfig = {
 	},
 };
 
-const headers = {
-	"Content-Type": "application/json",
-	"cache-control": "no-cache",
-};
-
 const testParams = {
 	birthdate: "2018-08-01",
 	location: "https://fhir.nhs.uk/Id/ods-organization-code|RA4",
@@ -112,7 +107,6 @@ describe("Keycloak Access Token Retrieval Plugin", () => {
 		const response = await server.inject({
 			method: "GET",
 			url: "/",
-			headers,
 			query: testParams,
 		});
 
@@ -126,7 +120,6 @@ describe("Keycloak Access Token Retrieval Plugin", () => {
 		const response = await server.inject({
 			method: "GET",
 			url: "/",
-			headers,
 			query: testParams,
 		});
 
@@ -148,7 +141,6 @@ describe("Keycloak Access Token Retrieval Plugin", () => {
 		const response = await server.inject({
 			method: "GET",
 			url: "/",
-			headers,
 			query: testParams,
 		});
 
