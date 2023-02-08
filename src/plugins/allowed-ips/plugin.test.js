@@ -20,7 +20,9 @@ describe("IP Address Limiting Plugin", () => {
 	});
 
 	test("Should return `ok` if request IP address in allowed array", async () => {
-		server.register(plugin, new Set([{ ipAddress: "127.0.0.1" }]));
+		server.register(plugin, {
+			ipAddresses: new Set([{ ipAddress: "127.0.0.1" }]),
+		});
 
 		await server.ready();
 
@@ -34,9 +36,11 @@ describe("IP Address Limiting Plugin", () => {
 	});
 
 	test("Should return `ok` if request IP address and subnet mask in allowed array", async () => {
-		server.register(plugin, [
-			{ ipAddress: "127.0.0.1", subnetMask: "255.255.255.255" },
-		]);
+		server.register(plugin, {
+			ipAddresses: [
+				{ ipAddress: "127.0.0.1", subnetMask: "255.255.255.255" },
+			],
+		});
 
 		await server.ready();
 
@@ -50,7 +54,7 @@ describe("IP Address Limiting Plugin", () => {
 	});
 
 	test("Should return HTTP status code 403 if request IP address not in allowed array", async () => {
-		server.register(plugin, [{ ipAddress: "127.0.0.40" }]);
+		server.register(plugin, { ipAddresses: [{ ipAddress: "127.0.0.40" }] });
 
 		await server.ready();
 
@@ -68,9 +72,11 @@ describe("IP Address Limiting Plugin", () => {
 	});
 
 	test("Should return HTTP status code 403 if request IP address in allowed array but subnet mask is not", async () => {
-		server.register(plugin, [
-			{ ipAddress: "127.0.0.1", subnetMask: "255.255.255.40" },
-		]);
+		server.register(plugin, {
+			ipAddresses: [
+				{ ipAddress: "127.0.0.1", subnetMask: "255.255.255.40" },
+			],
+		});
 
 		await server.ready();
 
@@ -88,9 +94,11 @@ describe("IP Address Limiting Plugin", () => {
 	});
 
 	test("Should return HTTP status code 403 if request IP address not in allowed array but subnet mask is", async () => {
-		server.register(plugin, [
-			{ ipAddress: "127.0.0.40", subnetMask: "255.255.255.255" },
-		]);
+		server.register(plugin, {
+			ipAddresses: [
+				{ ipAddress: "127.0.0.40", subnetMask: "255.255.255.255" },
+			],
+		});
 
 		await server.ready();
 
