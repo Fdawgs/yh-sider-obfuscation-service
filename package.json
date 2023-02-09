@@ -109,7 +109,6 @@
 		"fastify-plugin": "^4.5.0",
 		"file-stream-rotator": "^1.0.0",
 		"fluent-json-schema": "^4.0.0",
-		"netmask": "^2.0.2",
 		"obfuscated-querystring": "git+https://git@github.com/BlackPearSw/obfuscated-querystring.git",
 		"pino": "^8.8.0",
 		"redoc": "^2.0.0",
