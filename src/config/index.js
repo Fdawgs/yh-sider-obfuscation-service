@@ -127,9 +127,6 @@ async function getConfig() {
 				S.anyOf([S.number(), S.null()])
 			)
 
-			// IP Address and Subnet Mask Limiting
-			.prop("IP_SUBNET_ALLOWED_ARRAY", S.anyOf([S.string(), S.null()]))
-
 			// Keycloak
 			.prop("KC_ENABLED", S.anyOf([S.boolean(), S.null()]))
 			.prop(
@@ -337,10 +334,6 @@ async function getConfig() {
 	// Ensure API listens on both IPv4 and IPv6 addresses if not explicitly set
 	if (env.HOST) {
 		config.fastify.host = env.HOST;
-	}
-
-	if (env.IP_SUBNET_ALLOWED_ARRAY) {
-		config.allowedIps = new Set(secJSON.parse(env.IP_SUBNET_ALLOWED_ARRAY));
 	}
 
 	if (env.LOG_ROTATION_FILENAME) {

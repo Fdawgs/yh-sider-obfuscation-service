@@ -2,8 +2,6 @@ const Fastify = require("fastify");
 const nock = require("nock");
 const plugin = require(".");
 
-const getConfig = require("../../config");
-
 /**
  * Refer to option documentation here:
  * https://github.com/keycloak/keycloak-documentation/blob/main/securing_apps/topics/token-exchange/token-exchange.adoc
@@ -31,11 +29,6 @@ const testKeycloakConfig = {
 		},
 		url: "https://sso.ydh.nhs.uk/service-auth",
 	},
-};
-
-const headers = {
-	"Content-Type": "application/json",
-	"cache-control": "no-cache",
 };
 
 const testParams = {
@@ -112,7 +105,6 @@ describe("Keycloak Access Token Retrieval Plugin", () => {
 		const response = await server.inject({
 			method: "GET",
 			url: "/",
-			headers,
 			query: testParams,
 		});
 
@@ -126,7 +118,6 @@ describe("Keycloak Access Token Retrieval Plugin", () => {
 		const response = await server.inject({
 			method: "GET",
 			url: "/",
-			headers,
 			query: testParams,
 		});
 
@@ -138,17 +129,11 @@ describe("Keycloak Access Token Retrieval Plugin", () => {
 	});
 
 	test("Should continue if Keycloak endpoint config enabled but other options undefined", async () => {
-		const config = await getConfig();
-		config.keycloak = {
-			enabled: true,
-		};
-
-		await server.register(plugin, config.keycloak).ready();
+		await server.register(plugin, { enabled: true }).ready();
 
 		const response = await server.inject({
 			method: "GET",
 			url: "/",
-			headers,
 			query: testParams,
 		});
 

@@ -15,7 +15,6 @@ const serialiseJsonToXml = require("fastify-json-to-xml");
 const staticPlugin = require("@fastify/static");
 const swagger = require("@fastify/swagger");
 const underPressure = require("@fastify/under-pressure");
-const allowedIps = require("./plugins/allowed-ips");
 const keycloakAccess = require("./plugins/keycloak-access-token");
 const sharedSchemas = require("./plugins/shared-schemas");
 
@@ -93,16 +92,10 @@ async function plugin(server, config) {
 
 		/**
 		 * Encapsulate plugins and routes into secured child context, so that admin and docs
-		 * routes do not inherit IP limiting or Keycloak plugins.
+		 * routes does not inherit Keycloak plugin.
 		 * See https://fastify.io/docs/latest/Reference/Encapsulation/ for more info
 		 */
 		.register(async (securedContext) => {
-			if (config.allowedIps) {
-				await securedContext
-					// Check requester's IP address and subnet mask is allowed
-					.register(allowedIps, { ipAddresses: config.allowedIps });
-			}
-
 			await securedContext
 				.register(keycloakAccess, config.keycloak)
 
