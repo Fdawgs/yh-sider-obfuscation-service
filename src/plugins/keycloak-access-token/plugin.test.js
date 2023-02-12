@@ -38,7 +38,7 @@ const testParams = {
 	practitioner: `https://sider.nhs.uk/auth|testFirstName.testLastName@ydh.nhs.uk`,
 };
 
-describe("Keycloak Access Token Retrieval Plugin", () => {
+describe("Keycloak access token retrieval plugin", () => {
 	let server;
 
 	beforeAll(() => {

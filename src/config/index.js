@@ -105,7 +105,7 @@ async function getConfig() {
 			.prop("LOG_ROTATION_MAX_LOGS", S.anyOf([S.string(), S.null()]))
 			.prop("LOG_ROTATION_MAX_SIZE", S.anyOf([S.string(), S.null()]))
 
-			// Process Load Handling
+			// Process load handling
 			.prop(
 				"PROC_LOAD_MAX_EVENT_LOOP_DELAY",
 				S.anyOf([S.number(), S.null()])
@@ -120,7 +120,7 @@ async function getConfig() {
 			)
 			.prop("PROC_LOAD_MAX_RSS_BYTES", S.anyOf([S.number(), S.null()]))
 
-			// Rate Limiting
+			// Rate limiting
 			.prop("RATE_LIMIT_EXCLUDED_ARRAY", S.anyOf([S.string(), S.null()]))
 			.prop(
 				"RATE_LIMIT_MAX_CONNECTIONS_PER_MIN",
@@ -256,7 +256,7 @@ async function getConfig() {
 		swagger: {
 			openapi: {
 				info: {
-					title: "YDH SIDeR Obfuscation Service",
+					title: "YDH SIDeR obfuscation service",
 					description:
 						'<a href="https://yeovilhospital.co.uk/">Yeovil District Hospital NHSFT</a>\'s contextual link obfuscation service, a Node.js application using the <a href="https://fastify.io/">Fastify web framework</a> and Black Pear\'s <a href="https://github.com/BlackPearSw/obfuscated-querystring/">obfuscated-querystring</a>.',
 					contact: {
@@ -273,7 +273,7 @@ async function getConfig() {
 						url: "/public/images/ydh-y-logo-transparent-background-wide-canvas.png",
 						backgroundColor: "#6D3176",
 						altText:
-							"Yeovil District Hospital NHS Foundation Trust Logo",
+							"Yeovil District Hospital NHS Foundation Trust logo",
 					},
 				},
 				tags: [
@@ -283,7 +283,7 @@ async function getConfig() {
 							"Endpoints relating to redirection to SIDeR",
 					},
 					{
-						name: "System Administration",
+						name: "System administration",
 						description: "",
 					},
 				],

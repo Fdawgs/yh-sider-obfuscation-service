@@ -8,7 +8,7 @@ const testParams = {
 	practitioner: `https://sider.nhs.uk/auth|testFirstName.testLastName@ydh.nhs.uk`,
 };
 
-describe("Query String Obfuscation Plugin", () => {
+describe("Query string obfuscation plugin", () => {
 	let server;
 
 	beforeEach(() => {
