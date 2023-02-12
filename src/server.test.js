@@ -684,7 +684,7 @@ describe("Server deployment", () => {
 
 					await page.goto("http://localhost:3000/docs");
 					expect(await page.title()).toBe(
-						"SIDeR Obfuscation Service | Documentation"
+						"SIDeR Contextual Link Obfuscation Service | Documentation"
 					);
 					/**
 					 * Checks redoc has not rendered an error component:
