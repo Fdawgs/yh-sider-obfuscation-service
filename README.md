@@ -5,8 +5,8 @@
 # Yeovil District Hospital NHS Foundation Trust - SIDeR Contextual Link Obfuscation Service
 
 [![GitHub Release](https://img.shields.io/github/release/Fdawgs/ydh-sider-obfuscation-service.svg)](https://github.com/Fdawgs/ydh-sider-obfuscation-service/releases/latest/)
-![Build Status](https://github.com/Fdawgs/ydh-sider-obfuscation-service/workflows/CI/badge.svg?branch=master)
-[![Coverage Status](https://coveralls.io/repos/github/Fdawgs/ydh-sider-obfuscation-service/badge.svg?branch=master)](https://coveralls.io/github/Fdawgs/ydh-sider-obfuscation-service?branch=master)
+![Build Status](https://github.com/Fdawgs/ydh-sider-obfuscation-service/workflows/CI/badge.svg?branch=main)
+[![Coverage Status](https://coveralls.io/repos/github/Fdawgs/ydh-sider-obfuscation-service/badge.svg?branch=main)](https://coveralls.io/github/Fdawgs/ydh-sider-obfuscation-service?branch=main)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat)](https://github.com/prettier/prettier)
 
 > Yeovil District Hospital NHSFT's SIDeR contextual link obfuscation service
@@ -93,11 +93,11 @@ If using a Microsoft Windows OS utilise [pm2-installer](https://github.com/jesse
 
 API documentation can be found at `/docs`:
 
-<img alttext="Screenshot of YDH SIDeR Obfuscation Service documentation page" src="https://raw.githubusercontent.com/Fdawgs/ydh-sider-obfuscation-service/master/docs/images/api_documentation_screenshot.png" width="720">
+<img alttext="Screenshot of YDH SIDeR Obfuscation Service documentation page" src="https://raw.githubusercontent.com/Fdawgs/ydh-sider-obfuscation-service/main/docs/images/api_documentation_screenshot.png" width="720">
 
 ### Contextual link in PAS (TrakCare)
 
-<img src="https://raw.githubusercontent.com/Fdawgs/ydh-sider-obfuscation-service/master/docs/images/ydh_trakcare_sider_contextual_link.png" width="474">
+<img src="https://raw.githubusercontent.com/Fdawgs/ydh-sider-obfuscation-service/main/docs/images/ydh_trakcare_sider_contextual_link.png" width="474">
 
 This section is for members of the Solutions Development and Application Support teams at Yeovil District Hospital NHSFT, or other NHS Trusts that use InterSystems TrakCare as their PAS.
 
@@ -107,7 +107,7 @@ Link URL: `<obfuscation service path>/redirect`
 
 Link expression: `"&"_##class(Custom.ENYH.Integration.ContextualLink.GenericPatientLink).BuildURLVars("patient=https://fhir.nhs.uk/Id/nhs-number|{NHSNumber}&birthdate={DateOfBirthISO8601}&location=https://fhir.nhs.uk/Id/ods-organization-code|RA4&practitioner=https://sider.nhs.uk/auth|{UserName}@ydh.nhs.uk")`
 
-<img src="https://raw.githubusercontent.com/Fdawgs/ydh-sider-obfuscation-service/master/docs/images/SIDeR_32.png">
+<img src="https://raw.githubusercontent.com/Fdawgs/ydh-sider-obfuscation-service/main/docs/images/SIDeR_32.png">
 
 The icon itself can be found in the root of [the images folder](./docs/images/).
 
