@@ -2,6 +2,42 @@
 
 All notable changes to this project will be documented in this file.
 
+## [11.0.0](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v10.1.1...v11.0.0) (2023-02-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* remove ip address limiting, better handled by reverse proxies
+
+### Improvements
+
+* **plugins/allowed-ips:** allow for other options to be passed ([#1098](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1098)) ([b124729](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/b12472912f4f8f6fec3c5d0462dd479d5f7a4dc2))
+* **plugins:** replace xml plugin with dedicated dependency ([#1096](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1096)) ([d030f60](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/d030f60864c0072ac365df0affbfb93e80d1f44b))
+* remove ip address limiting, better handled by reverse proxies ([15163bd](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/15163bd75c3223893c9301eda0d1c1d2733cb312))
+
+
+### Documentation
+
+* **readme:** use more inclusive language ([3f57e1d](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/3f57e1deb7468b58c0c3c917fd5f4a8023e1681c))
+
+
+### Miscellaneous
+
+* **config:** use consistent style across api repos ([7e6111e](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/7e6111e23a6c18525f1f12d259093a53eb1b6694))
+* **plugins:** fix inline comments terminology ([4a51480](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/4a51480df33f909befcb220a626b4bb92dc51ad2))
+* use sentence case over ap style for titles and headings ([c2b46c2](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/c2b46c2aff94b0855098c1dac9486a42fa11f479))
+
+
+### Bug fixes
+
+* **config:** openapi title ([4ea7597](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/4ea7597611979fa84bc0a3461c42b19148298661))
+* **routes/docs:** document title ([1f49ce4](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/1f49ce49c84f758e72c89d3e607a4f01ac96f3c5))
+
+
+### Continuous integration
+
+* **cd:** use sentence case for changelog headings ([482ce17](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/482ce17a9e69bb8b2dc82a3ba45c86882f4c0112))
+
 ## [10.1.1](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v10.1.0...v10.1.1) (2023-02-06)
 
 
