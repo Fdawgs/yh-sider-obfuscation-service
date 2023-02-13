@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 ## [10.1.1](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v10.1.0...v10.1.1) (2023-02-06)
 
 
-### Bug Fixes
+### Bug fixes
 
 * **plugins/keycloak-access-token:** redirect if keycloak auth fails ([37f93c7](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/37f93c7858294e23f6667fd151751802c8226c54))
 
@@ -26,7 +26,7 @@ All notable changes to this project will be documented in this file.
 * **docs:** add `/docs` route for openapi redoc ui ([981a629](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/981a6291a79551f8a2a7bd0eb4e76b50a4905894))
 
 
-### Bug Fixes
+### Bug fixes
 
 * **routes/redirect:** missing 400 response in openapi schema ([4044180](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/40441809d175aecd3d9410db956722f0805b013f))
 * **server:** response headers for static and 404 routes ([#1060](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1060)) ([6e17542](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/6e1754248168e5e83b5ca35d083c6040a75cc111))
@@ -82,7 +82,7 @@ All notable changes to this project will be documented in this file.
 * use esbuild to compile ([#1054](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1054)) ([d681658](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/d6816586931099e0e6f42d9951c7e2c964350c69))
 
 
-### Continuous Integration
+### Continuous integration
 
 * **cd:** add missing install step ([e8bb1d0](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/e8bb1d07499147ec62b629f42b66e7bb23d4096b))
 * **ci:** install playwright ([979171e](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/979171e2d539eff11742cd4df68b762d1aaeca38))
@@ -121,12 +121,12 @@ All notable changes to this project will be documented in this file.
 ## [10.0.1](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v10.0.0...v10.0.1) (2022-12-12)
 
 
-### Bug Fixes
+### Bug fixes
 
 * **plugins/keycloak-access-token:** request subject value retention ([#1029](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1029)) ([1d13f1e](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/1d13f1e35c6f4393bd345d23ed7dd916dc0d356a))
 
 
-### Continuous Integration
+### Continuous integration
 
 * **cd:** remove dev values from `package.json` ([#1025](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1025)) ([d547d18](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/d547d18e7f9750b63574291e846588dbd96f126e))
 
@@ -173,7 +173,7 @@ All notable changes to this project will be documented in this file.
 * restrict requests based on ip address and/or subnet mask ([#990](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/990)) ([01e1a9a](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/01e1a9a17a7b4cc652286f6138f23892efb7b6cb))
 
 
-### Bug Fixes
+### Bug fixes
 
 * **config:** use port 3000 if `PORT` env variable unset ([#994](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/994)) ([3a5fdf9](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/3a5fdf985e210f8f9895cc28dc2fdb24e73168a6))
 * **routes:** add `HEAD` to cors allowed methods ([#984](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/984)) ([a890c1b](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/a890c1be7b1fa30457fb0bf59eeb8548b2426494))
@@ -222,7 +222,7 @@ All notable changes to this project will be documented in this file.
 ## [9.1.2](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v9.1.1...v9.1.2) (2022-11-01)
 
 
-### Bug Fixes
+### Bug fixes
 
 * **routes:** accept header handling ([bf770ec](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/bf770ec7d6582533a2c97e90b795a7c1d78866a8))
 * **routes:** openapi schema content types ([550a5a7](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/550a5a7858a7454c95ecf7fa2d030cc5916994fb))
@@ -287,7 +287,7 @@ All notable changes to this project will be documented in this file.
 * **deps:** bump fastify-plugin from 4.2.1 to 4.3.0 ([#956](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/956)) ([86fd204](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/86fd204dad0da4087e585992c90551a1451af617))
 
 
-### Continuous Integration
+### Continuous integration
 
 * **cd:** remove test files from release asset ([#966](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/966)) ([bb1d507](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/bb1d507448784e1872cb81eea555cec49610641c))
 
@@ -299,7 +299,7 @@ All notable changes to this project will be documented in this file.
 * **config:** use first available open port if `PORT` env variable unset ([#940](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/940)) ([867f9f9](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/867f9f97c57ad470fda6f2f48edcc397f967b389))
 
 
-### Continuous Integration
+### Continuous integration
 
 * **cd:** create release asset ([#943](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/943)) ([c87b064](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/c87b0644e148f99d88b8818d389a589593389bc5))
 
@@ -324,7 +324,7 @@ All notable changes to this project will be documented in this file.
 * add serialization support for xml error responses ([040307e](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/040307e545c25d60f0871d3bb3cdeb9c4f662e85))
 
 
-### Bug Fixes
+### Bug fixes
 
 * **config:** use `HOST` and `PORT` env variables for cloud services ([0f21e40](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/0f21e409ce476790fed4725e89bfa12e41bab5f2))
 * **plugins/serialize-json-to-xml:** rep invalid xml chars with U+FFFD ([0a0d7cb](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/0a0d7cbab34f7bb5b9f3bd6c0927b3e00a08e996))
@@ -375,7 +375,7 @@ All notable changes to this project will be documented in this file.
 
 ## [8.0.13](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v8.0.12...v8.0.13) (2022-09-05)
 
-### Bug Fixes
+### Bug fixes
 
 * **config:** `default` throws exceptions when used in `anyOf` schemas ([05152bc](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/05152bc9714b7cb0f87ae59d66cdc34bd98d513e))
 
@@ -453,7 +453,7 @@ All notable changes to this project will be documented in this file.
 
 ## [8.0.10](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v8.0.9...v8.0.10) (2022-08-09)
 
-### Bug Fixes
+### Bug fixes
 
 * **config:** log rotation max files ([#861](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/861)) ([56545eb](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/56545ebbe1939dccaaad086671f14d5faf84141a))
 
@@ -471,7 +471,7 @@ All notable changes to this project will be documented in this file.
 
 ## [8.0.9](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v8.0.8...v8.0.9) (2022-08-04)
 
-### Bug Fixes
+### Bug fixes
 
 * **routes:** invalid openapi shared schema definitions ([#857](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/857)) ([942c94e](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/942c94eb2538611d6762f0c23a596322d2218686))
 * **server:** reduce `content-security-policy` for options routes ([#859](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/859)) ([47785f0](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/47785f084ece7e979a2036ee733675e5b3f05c6d))
@@ -482,7 +482,7 @@ All notable changes to this project will be documented in this file.
 
 ## [8.0.8](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v8.0.7...v8.0.8) (2022-08-01)
 
-### Continuous Integration
+### Continuous integration
 
 * **ci:** audit npm package signatures ([5f60b96](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/5f60b9694fa88337a0dea8e96adf3314a1112745))
 
@@ -576,7 +576,7 @@ All notable changes to this project will be documented in this file.
 
 * **config:** replace `forEach()` with `map()` ([#777](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/777)) ([6990e71](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/6990e71c48cffd4e05e09b12d6f6f55ca4df8cfe))
 
-### Continuous Integration
+### Continuous integration
 
 * **ci:** add node 18 to test matrix ([3bccc97](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/3bccc97e6188ddfe160bea266ca843fad82ad945))
 * remove git credentials after checkout ([#775](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/775)) ([23833e4](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/23833e408492a418d4eab4507ad6b9f77ba5f7ce))
@@ -603,7 +603,7 @@ All notable changes to this project will be documented in this file.
 
 ### [8.0.3](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v8.0.2...v8.0.3) (2022-05-18)
 
-### Bug Fixes
+### Bug fixes
 
 * **server:** do not transform 503 http err into 500 http err response ([2a5121c](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/2a5121c49f9e09ea85dbf8d5dafef885bcd84342))
 
@@ -618,7 +618,7 @@ All notable changes to this project will be documented in this file.
 * **bug_report:** use node 18 as placeholder for `node-version` ([5bcbec6](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/5bcbec676f18fd93d832276501a0144b5d38beb1))
 * **server:** use optional chaining for error message logging ([79992ac](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/79992ac5f723409e7b8b86fc6f0d7d5c911bd111))
 
-### Continuous Integration
+### Continuous integration
 
 * **automerge:** fix context ([915f987](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/915f9877d4bacee9e21b0db3aa62e205737d0edf))
 * check `user.login` is dependabot instead of `actor` ([0880a1f](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/0880a1f1c51d6fc84b892383cb37f5d367e3ddc1))
@@ -659,7 +659,7 @@ All notable changes to this project will be documented in this file.
 * **readme:** remove postman recommendation ([5aa5486](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/5aa54869e549f9475f9d46de54bcfb3a1a37610c))
 * **readme:** remove snyk badge ([450a254](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/450a2546f63817e75d629cba3d4ea7a976e4adc2))
 
-### Continuous Integration
+### Continuous integration
 
 * add dependency-review job ([583c64c](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/583c64c94773a772a101d75da33375bee3a6c15a))
 * **link-check:** replace `npx linkinator` call with github action ([1731c3e](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/1731c3eb3f653618121958ce5833ae435c79d212))
@@ -704,7 +704,7 @@ All notable changes to this project will be documented in this file.
 
 * **server:** call reply object over raw when overwriting header ([#710](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/710)) ([ac23d60](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/ac23d608e324951beeb20ed227034f757de9de8a))
 
-### Continuous Integration
+### Continuous integration
 
 * **automerge:** squash automerge prs ([4c59c0c](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/4c59c0c3f49b82c939c601b527c9e172d105587f))
 * **cd:** update org name for release-please-action ([afee9cf](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/afee9cfae15649bf578e4b07c7b377479aa99322))
@@ -758,7 +758,7 @@ All notable changes to this project will be documented in this file.
 
 ### [7.0.7](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v7.0.6...v7.0.7) (2022-03-24)
 
-### Bug Fixes
+### Bug fixes
 
 * **server:** rate-limit 404 responses ([#673](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/673)) ([aa3f549](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/aa3f549959efa56082debedda51f034a5006f91f))
 
@@ -777,7 +777,7 @@ All notable changes to this project will be documented in this file.
 * **routes:** add `preValidation` hooks directly into routes ([#666](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/666)) ([8475c51](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/8475c51739f97f9b88ad6dcbe057ab004167c27d))
 * **server:** use new hook config option for rate-limit plugin ([#672](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/672)) ([8c9cd71](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/8c9cd71c670ebb423d42a99cceaa99d1b11e631a))
 
-### Continuous Integration
+### Continuous integration
 
 * add job step names, workflow comments, and whitespace ([fb28b5e](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/fb28b5e04151c8a044b1f7a82827dadc05dfe58c))
 * **codeql-analysis:** remove unused autobuild step ([87b5f47](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/87b5f47de80ceeae6daeef1f37ab322662aa3e17))
@@ -810,7 +810,7 @@ All notable changes to this project will be documented in this file.
 
 ### [7.0.6](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v7.0.5...v7.0.6) (2022-02-28)
 
-### Bug Fixes
+### Bug fixes
 
 * **config:** renew rate-limit if user attempts req in limit time window ([#636](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/636)) ([9fb4b20](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/9fb4b20fae416878137571051a6006ce26364622))
 
@@ -852,7 +852,7 @@ All notable changes to this project will be documented in this file.
 
 ### [7.0.5](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v7.0.4...v7.0.5) (2022-02-01)
 
-### Bug Fixes
+### Bug fixes
 
 * **routes/docs/json:** resolve missing definitions ([#605](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/605)) ([1025cee](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/1025cee0cd08c244c3f706dc43175c3c6506ddcf))
 
@@ -902,7 +902,7 @@ All notable changes to this project will be documented in this file.
 * **contributing:** add step for `lint:licenses` script ([1052ce9](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/1052ce9013e93d2a3f2831bcfd5e114797fb2d56))
 * **contributing:** update husky hook mention ([0b3c6fd](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/0b3c6fd0313830c296bae310b4f4adef99acfb35))
 
-### Continuous Integration
+### Continuous integration
 
 * remove spellcheck workflow ([#593](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/593)) ([1dbd4b6](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/1dbd4b64376c067fd1e67d191f1216e326b2d6df))
 
@@ -980,7 +980,7 @@ All notable changes to this project will be documented in this file.
 
 ### [7.0.2](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v7.0.1...v7.0.2) (2021-11-16)
 
-### Continuous Integration
+### Continuous integration
 
 * **ci:** do not run clean-up on draft prs ([82bef26](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/82bef26e519bc51daeb99cfe4f164a1da20a9c8b))
 * **spell-check:** do not run on draft prs ([ec19d16](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/ec19d16fa11e01eac7eb994e39f18df3473322c2))
@@ -1008,7 +1008,7 @@ All notable changes to this project will be documented in this file.
 
 ### [7.0.1](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v7.0.0...v7.0.1) (2021-11-09)
 
-### Continuous Integration
+### Continuous integration
 
 * use actions/setup-node's cache option ([#519](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/519)) ([5d01d98](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/5d01d98d29faac591fe888154b8dcf583f857362))
 
@@ -1048,7 +1048,7 @@ All notable changes to this project will be documented in this file.
 
 * **routes/docs:** remove buggy swagger ui routes (#492)
 
-### Bug Fixes
+### Bug fixes
 
 * **config:** remove additional env variables ([#490](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/490)) ([a31df81](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/a31df812f5f787305b4ee3ff2197275037de846c))
 * **routes/docs:** remove buggy swagger ui routes ([#492](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/492)) ([14bddf5](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/14bddf5150032ce0f033d33188707290859eb538))
@@ -1147,7 +1147,7 @@ All notable changes to this project will be documented in this file.
 * **deps:** bump fastify-swagger from 4.12.0 to 4.12.3 ([675659c](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/675659c5fc86d0886ff1eb460bb76bb41bb23eb8))
 * **docker:** remove package versioning ([3c6fe9b](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/3c6fe9b09097c8ed446c313b553a7f75e7af6368))
 
-### Continuous Integration
+### Continuous integration
 
 * **automerge:** update location of octokit rest methods ([8ea2619](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/8ea261915fe164400920cd1a37795f1ffda9f369))
 * ignore hadolint rule DL3018 ([187aa64](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/187aa64ef4a912f575549a054f9f938e77c7d394))
@@ -1199,11 +1199,11 @@ All notable changes to this project will be documented in this file.
 
 * **config:** support HTTP/2 via `HTTPS_HTTP2_ENABLED` env variable ([#410](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/410)) ([8a7c9db](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/8a7c9dbea9d889dd32c3e0e64df2356190190ff6))
 
-### Bug Fixes
+### Bug fixes
 
 * **config:** check `SERVICE_REDIRECT_URL` is in URI format ([33d1525](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/33d15257a32cdb4d76923830ed7884ad4ae64bb5))
 
-### Continuous Integration
+### Continuous integration
 
 * **ci:** revert to workflow-run-clean-action from github concurrency ([2f47376](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/2f4737688ba9b61e492673e870c59f8864cd2608))
 * **link-check:** ignore link to `./docs/` directory ([#408](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/408)) ([d918276](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/d9182764ae14b900d7dc1f876d750ee52bc9c1de))
@@ -1243,7 +1243,7 @@ All notable changes to this project will be documented in this file.
 
 * **config:** add option to set `Access-Control-Max-Age` CORS header ([#400](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/400)) ([dc10380](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/dc103803d9cf3d6e5b35e0d4921faf93d9c1e040))
 
-### Bug Fixes
+### Bug fixes
 
 * **config:** `SERVICE_REDIRECT_URL` env variable cannot be null ([fa73b06](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/fa73b063b4d07aba261d0d70f376b51750a850c2))
 * **config:** make `SERVICE_REDIRECT_URL` required ([cbe71e0](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/cbe71e0889cf7adc632cc33c9652776679f0bdf9))
@@ -1258,7 +1258,7 @@ All notable changes to this project will be documented in this file.
 * **.env.template:** remove rate limit value ([abd3004](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/abd300413bb112b9b11741be605b05a6ce2c3508))
 * **.github:** use new YAML configured GitHub issue forms ([#402](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/402)) ([f3ec213](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/f3ec213088faa7d196fe18a80ae85ca929b40ac2))
 
-### Continuous Integration
+### Continuous integration
 
 * **ci:** replace workflow-run-cleanup-action with github concurrency ([#403](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/403)) ([50a2518](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/50a2518cabe6b766fc414baa428d0afb0f738d7b))
 
@@ -1278,7 +1278,7 @@ All notable changes to this project will be documented in this file.
 
 ### [6.0.3](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v6.0.2...v6.0.3) (2021-08-26)
 
-### Bug Fixes
+### Bug fixes
 
 * **routes/redirect:** use correct redirect code ([3b27dfa](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/3b27dfaf538aa3634bbbb36ffd0d9ab3850e9a5c))
 * **routes:** rate-limiting not affecting 406 responses ([#390](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/390)) ([284aeee](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/284aeeeb3580bc69b7d7f2254794a188a48f4d81))
@@ -1311,7 +1311,7 @@ All notable changes to this project will be documented in this file.
 
 ### [6.0.2](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v6.0.1...v6.0.2) (2021-08-17)
 
-### Bug Fixes
+### Bug fixes
 
 * **server:** ignore admin route in secured context ([dc5b2ce](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/dc5b2cee7cb13574bcbde0e6f39916a0824bd4dc))
 
@@ -1322,7 +1322,7 @@ All notable changes to this project will be documented in this file.
 
 ### [6.0.1](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v6.0.0...v6.0.1) (2021-08-16)
 
-### Bug Fixes
+### Bug fixes
 
 * **config:** allow for empty kc_enabled variable ([ee5bfa8](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/ee5bfa84b9078870dbb2774e38356ba6da9e7bdf))
 * **config:** allow for empty logger env variables ([a20d263](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/a20d263cd3bc029ffbc47794a3e0301098c930ca))
@@ -1355,7 +1355,7 @@ All notable changes to this project will be documented in this file.
 
 * **routes/admin/healthcheck:** add cors header support ([ba3646b](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/ba3646b4df62c51fc3cad1335b93a8732a7b385a))
 
-### Bug Fixes
+### Bug fixes
 
 * **app:** logging grammar fixes ([a15ca14](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/a15ca148de38662ca1c8718bbb24eb514670663e))
 
@@ -1388,7 +1388,7 @@ All notable changes to this project will be documented in this file.
 
 * minimum required version of node increased from 12 to 14 to allow for new ECMAScript syntax to be used
 
-### Bug Fixes
+### Bug fixes
 
 * **docker-compose:** wrap variables in quotes ([#344](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/344)) ([c7313b4](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/c7313b45c46604d56af0c3ab3f85eddb5030fbf6))
 
@@ -1411,7 +1411,7 @@ All notable changes to this project will be documented in this file.
 
 * **server:** add content-encoding support ([c51cfad](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/c51cfad5eff2c2344872f372b6b55e1c279a5a12))
 
-### Bug Fixes
+### Bug fixes
 
 * **package:** move `pino-pretty` to production dependency list ([#335](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/335)) ([17c80db](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/17c80dbad37b4bce6a1ea87fa89ceb6f1d116ee0))
 * **server:** ensure doc route also inherits plugins ([a8fabb5](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/a8fabb59681eff8d92c40a6e03f9a01fa7d0093e))
@@ -1444,7 +1444,7 @@ All notable changes to this project will be documented in this file.
 
 ### [4.0.13](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v4.0.12...v4.0.13) (2021-07-12)
 
-### Bug Fixes
+### Bug fixes
 
 * **routes:** `Accept` header handling encapsulation ([#319](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/319)) ([656c0bf](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/656c0bf6a93e9ba4187633b732aa38ab6534ba84))
 
@@ -1463,7 +1463,7 @@ All notable changes to this project will be documented in this file.
 
 ### [4.0.12](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v4.0.11...v4.0.12) (2021-07-09)
 
-### Bug Fixes
+### Bug fixes
 
 * **routes/healthcheck:** add `Accept` request header handling ([#317](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/317)) ([d2f1e8d](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/d2f1e8d74043a952b41f969a6f3e1578008381b2))
 
@@ -1495,13 +1495,13 @@ All notable changes to this project will be documented in this file.
 
 ### [4.0.11](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v4.0.10...v4.0.11) (2021-06-22)
 
-### Bug Fixes
+### Bug fixes
 
 * **server:** increase `Strict-Transport-Security` max age to 365 days ([6c191d6](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/6c191d61284cc6c7fa3f365d2c0cde0c8b174570))
 * **server:** move hsts value to correct object ([#290](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/290)) ([610b295](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/610b295fa1a08aa3d026d6acf7a6c4fc6c9c1bd3))
 * **server:** use stricter `Content-Security-Policy` values ([47b616b](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/47b616bdc503bd351f0bf36baa0e493abdb27fa9))
 
-### Continuous Integration
+### Continuous integration
 
 * **link-check:** reduce frequency from weekly to monthly ([#287](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/287)) ([24063b1](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/24063b12838bacb4f680386f4b75a1c0bf5b0d67))
 
@@ -1528,7 +1528,7 @@ All notable changes to this project will be documented in this file.
 
 ### [4.0.9](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v4.0.8...v4.0.9) (2021-06-16)
 
-### Bug Fixes
+### Bug fixes
 
 * **config:** `isProduction` and `prettyPrint` conditionals ([e95ead3](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/e95ead387c3ddb722b047eaf4596fff7497ec20f))
 
@@ -1545,7 +1545,7 @@ All notable changes to this project will be documented in this file.
 
 ### [4.0.7](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v4.0.6...v4.0.7) (2021-06-09)
 
-### Bug Fixes
+### Bug fixes
 
 * **server:** remove swagger from csp for all routes apart from doc route ([cdefa1c](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/cdefa1c662d9c54d4a3b3aaa995a374c3181ce24))
 * **server:** set `frame-ancestors` csp to `'none'`; add `child-src` csp ([1db1753](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/1db17534e89c77cace607b1852355a5cdc5e3fd2))
@@ -1563,7 +1563,7 @@ All notable changes to this project will be documented in this file.
 
 ### [4.0.6](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v4.0.5...v4.0.6) (2021-06-02)
 
-### Bug Fixes
+### Bug fixes
 
 * **env:** missing comment `#` ([3197583](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/3197583376422377288f419f73493f221cd6759f))
 
@@ -1587,7 +1587,7 @@ All notable changes to this project will be documented in this file.
 
 * **dockerfile:** consolidate consecutive `run` instructions ([98bdbc4](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/98bdbc4c9d1ddc6e9d231b91bef0646d3e387d46))
 
-### Continuous Integration
+### Continuous integration
 
 * remove redundant docker build job ([2a54c46](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/2a54c4622829a9acf0e624e06fe98331f0da8c83))
 
@@ -1599,7 +1599,7 @@ All notable changes to this project will be documented in this file.
 
 ### [4.0.4](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v4.0.3...v4.0.4) (2021-06-01)
 
-### Continuous Integration
+### Continuous integration
 
 * add nodejs v16 to test matrix ([4ee0c16](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/4ee0c168b8a018c4259bc82a81a782158abefabf))
 
@@ -1637,7 +1637,7 @@ All notable changes to this project will be documented in this file.
 * **env:** remove pre-filled process load env values in template ([#238](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/238)) ([f28ed3a](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/f28ed3ace018d1624429b50d425a086b0a5b65fb))
 * **workflows:** remove `stale.yml` ([e7843d6](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/e7843d678be7c81a1ca237aad88788f94a119970))
 
-### Continuous Integration
+### Continuous integration
 
 * **cd:** move perf optimizations and refactoring into same section ([3b59b05](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/3b59b05d589ead8346f46067cf87b2f8799deb9e))
 * fix key usage in `action/setup-node` ([ce0d87d](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/ce0d87dd380457437b79c50743ae4dce7152f4d8))
@@ -1657,11 +1657,11 @@ All notable changes to this project will be documented in this file.
 
 ### [4.0.2](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v4.0.1...v4.0.2) (2021-05-11)
 
-### Bug Fixes
+### Bug fixes
 
 * **config:** `LOG_LEVEL` env variable validation ([9ae173c](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/9ae173cc37643059ffa397e120e7a8d37b69b56d))
 
-### Continuous Integration
+### Continuous integration
 
 * **link-check:** run once a week on monday ([713fc7d](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/713fc7d1da29b68b192526b76543e17a948dd479))
 
@@ -1705,7 +1705,7 @@ All notable changes to this project will be documented in this file.
 * **server:** add rate limiter ([5f80fa8](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/5f80fa8c4f53f6fe328d7ccb19b5079f90cae66c))
 * **server:** disable google floc support ([2e2f0a9](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/2e2f0a9477c91beb2f395819474d24cc86dfd9e6))
 
-### Bug Fixes
+### Bug fixes
 
 * **routes:** hide options routes from swagger docs ([542c3ca](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/542c3ca4d69ca0ad68e4ded1afc0b87c31666a1d))
 
@@ -1735,7 +1735,7 @@ All notable changes to this project will be documented in this file.
 * **deps:** bump pino from 6.11.2 to 6.11.3 ([3b41c70](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/3b41c7008a6c17ae300be0f5551e37680d60a313))
 * **deps:** bump typoci/spellcheck-action from v0.4.0 to v1.1.0 ([b511be8](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/b511be870b39e66e5f0f70e23c9df780a4a3b49d))
 
-### Continuous Integration
+### Continuous integration
 
 * do not run coveralls steps/jobs on forks ([6aa0be2](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/6aa0be27d27041d2032e97f4ac3896ca7ea9035f))
 * **link-check:** fix skip regex ([33bbbf8](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/33bbbf88f441de3ce049d1bbe94bef00637475a0))
@@ -1757,7 +1757,7 @@ All notable changes to this project will be documented in this file.
 * add support for cors preflight requests ([107f776](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/107f776479ee299b8d6239781f3cc8ba918bbad2))
 * **config:** support `access-control-allow-credentials` cors header ([41d6ba0](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/41d6ba087fb80425ef156c3a220443e5b3cbafe5))
 
-### Bug Fixes
+### Bug fixes
 
 * **config:** comma-delimited string support for cors origin value ([a5a3bf4](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/a5a3bf4e9bfc199cbf039297688ee662e394399d))
 
@@ -1767,7 +1767,7 @@ All notable changes to this project will be documented in this file.
 * **env.template:** remove bad example ([ba21860](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/ba218607c16d9162632299c8e7fba6170ddcdedf))
 * **tests:** standardise test file names ([4733bff](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/4733bffb803c4987ffb6a8e796bdd537e2a8971a))
 
-### Continuous Integration
+### Continuous integration
 
 * add cleanup-run job ([0623dae](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/0623dae8935936506a3c70dffc79ddf221d614af))
 
@@ -1791,7 +1791,7 @@ All notable changes to this project will be documented in this file.
 
 * **readme:** tweak contextual link in pas section ([fdb8002](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/fdb800282238a480652098c0e13b99541c2a959d))
 
-### Continuous Integration
+### Continuous integration
 
 * **automerge:** move automerge job into new workflow ([7c08ec3](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/7c08ec3af5b8d85bbe1f7401d83eb10a382e9de1))
 * **ci:** ignore dependabot prs for commit message linting ([90c78e0](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/90c78e09fbcebb26db85f1b9f8303b436888a7f1))
