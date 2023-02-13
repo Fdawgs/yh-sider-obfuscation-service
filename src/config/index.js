@@ -105,7 +105,7 @@ async function getConfig() {
 			.prop("LOG_ROTATION_MAX_LOGS", S.anyOf([S.string(), S.null()]))
 			.prop("LOG_ROTATION_MAX_SIZE", S.anyOf([S.string(), S.null()]))
 
-			// Process Load Handling
+			// Process load handling
 			.prop(
 				"PROC_LOAD_MAX_EVENT_LOOP_DELAY",
 				S.anyOf([S.number(), S.null()])
@@ -120,7 +120,7 @@ async function getConfig() {
 			)
 			.prop("PROC_LOAD_MAX_RSS_BYTES", S.anyOf([S.number(), S.null()]))
 
-			// Rate Limiting
+			// Rate limiting
 			.prop("RATE_LIMIT_EXCLUDED_ARRAY", S.anyOf([S.string(), S.null()]))
 			.prop(
 				"RATE_LIMIT_MAX_CONNECTIONS_PER_MIN",
@@ -192,8 +192,10 @@ async function getConfig() {
 					},
 					/* istanbul ignore next: pino functions not explicitly tested */
 					res(res) {
-						// Required for the statusCode to be logged
-						// https://github.com/pinojs/pino-std-serializers/blob/901dae44c2b71497cdb0f76f6b5af62588107e3e/lib/res.js#L37
+						/**
+						 * Required for the statusCode to be logged:
+						 * https://github.com/pinojs/pino-std-serializers/blob/901dae44c2b71497cdb0f76f6b5af62588107e3e/lib/res.js#L37
+						 */
 						res.headersSent = true;
 						return pino.stdSerializers.res(res);
 					},
@@ -209,6 +211,22 @@ async function getConfig() {
 			hideOptionsRoute: true,
 			maxAge: env.CORS_MAX_AGE || null,
 			origin: parseCorsParameter(env.CORS_ORIGIN) || false,
+		},
+		processLoad: {
+			maxEventLoopDelay: env.PROC_LOAD_MAX_EVENT_LOOP_DELAY || 0,
+			maxEventLoopUtilization:
+				env.PROC_LOAD_MAX_EVENT_LOOP_UTILIZATION || 0,
+			maxHeapUsedBytes: env.PROC_LOAD_MAX_HEAP_USED_BYTES || 0,
+			maxRssBytes: env.PROC_LOAD_MAX_RSS_BYTES || 0,
+		},
+		rateLimit: {
+			allowList: env.RATE_LIMIT_EXCLUDED_ARRAY
+				? secJSON.parse(env.RATE_LIMIT_EXCLUDED_ARRAY)
+				: null,
+			continueExceeding: true,
+			hook: "onSend",
+			max: env.RATE_LIMIT_MAX_CONNECTIONS_PER_MIN || 1000,
+			timeWindow: 60000,
 		},
 		helmet: {
 			contentSecurityPolicy: {
@@ -237,28 +255,12 @@ async function getConfig() {
 			// Only supported by Chrome at time of writing
 			originAgentCluster: false,
 		},
-		processLoad: {
-			maxEventLoopDelay: env.PROC_LOAD_MAX_EVENT_LOOP_DELAY || 0,
-			maxEventLoopUtilization:
-				env.PROC_LOAD_MAX_EVENT_LOOP_UTILIZATION || 0,
-			maxHeapUsedBytes: env.PROC_LOAD_MAX_HEAP_USED_BYTES || 0,
-			maxRssBytes: env.PROC_LOAD_MAX_RSS_BYTES || 0,
-		},
-		rateLimit: {
-			allowList: env.RATE_LIMIT_EXCLUDED_ARRAY
-				? secJSON.parse(env.RATE_LIMIT_EXCLUDED_ARRAY)
-				: null,
-			continueExceeding: true,
-			hook: "onSend",
-			max: env.RATE_LIMIT_MAX_CONNECTIONS_PER_MIN || 1000,
-			timeWindow: 60000,
-		},
 		swagger: {
 			openapi: {
 				info: {
-					title: "YDH SIDeR Obfuscation Service",
+					title: "SIDeR Contextual Link Obfuscation Service",
 					description:
-						'<a href="https://yeovilhospital.co.uk/">Yeovil District Hospital NHSFT</a>\'s contextual link obfuscation service, a Node.js application using the <a href="https://fastify.io/">Fastify web framework</a> and Black Pear\'s <a href="https://github.com/BlackPearSw/obfuscated-querystring/">obfuscated-querystring</a>.',
+						'<a href="https://yeovilhospital.co.uk/">Yeovil District Hospital NHSFT</a>\'s SIDeR contextual link obfuscation service, a Node.js application using the <a href="https://fastify.io/">Fastify web framework</a> and Black Pear\'s <a href="https://github.com/BlackPearSw/obfuscated-querystring/">obfuscated-querystring</a>.',
 					contact: {
 						name: "Author",
 						email: "frazer.smith@ydh.nhs.uk",
@@ -273,7 +275,7 @@ async function getConfig() {
 						url: "/public/images/ydh-y-logo-transparent-background-wide-canvas.png",
 						backgroundColor: "#6D3176",
 						altText:
-							"Yeovil District Hospital NHS Foundation Trust Logo",
+							"Yeovil District Hospital NHS Foundation Trust logo",
 					},
 				},
 				tags: [
@@ -283,13 +285,12 @@ async function getConfig() {
 							"Endpoints relating to redirection to SIDeR",
 					},
 					{
-						name: "System Administration",
+						name: "System administration",
 						description: "",
 					},
 				],
 			},
 		},
-		redirectUrl: new URL(env.REDIRECT_URL).href,
 		// Values used by keycloak-access-token plugin in wildcard service
 		keycloak: {
 			enabled: env.KC_ENABLED || false,
@@ -329,26 +330,12 @@ async function getConfig() {
 			},
 			obfuscate: secJSON.parse(env.OBFUSCATION_QUERYSTRING_KEY_ARRAY),
 		},
+		redirectUrl: new URL(env.REDIRECT_URL).href,
 	};
 
 	// Ensure API listens on both IPv4 and IPv6 addresses if not explicitly set
 	if (env.HOST) {
 		config.fastify.host = env.HOST;
-	}
-
-	if (env.LOG_ROTATION_FILENAME) {
-		const logFile = path.normalizeTrim(env.LOG_ROTATION_FILENAME);
-
-		// Rotation options: https://github.com/rogerc/file-stream-rotator/#options
-		config.fastifyInit.logger.stream = rotatingLogStream.getStream({
-			audit_file: path.joinSafe(path.dirname(logFile), ".audit.json"),
-			date_format: env.LOG_ROTATION_DATE_FORMAT || "YYYY-MM-DD",
-			filename: logFile,
-			frequency: env.LOG_ROTATION_FREQUENCY || "daily",
-			max_logs: env.LOG_ROTATION_MAX_LOGS,
-			size: env.LOG_ROTATION_MAX_SIZE,
-			verbose: false,
-		});
 	}
 
 	// Enable HTTPS using cert/key or passphrase/pfx combinations
@@ -390,6 +377,22 @@ async function getConfig() {
 	if (config.fastifyInit.https && env.HTTPS_HTTP2_ENABLED === true) {
 		config.fastifyInit.https.allowHTTP1 = true;
 		config.fastifyInit.http2 = true;
+	}
+
+	// Set Pino transport
+	if (env.LOG_ROTATION_FILENAME) {
+		const logFile = path.normalizeTrim(env.LOG_ROTATION_FILENAME);
+
+		// Rotation options: https://github.com/rogerc/file-stream-rotator/#options
+		config.fastifyInit.logger.stream = rotatingLogStream.getStream({
+			audit_file: path.joinSafe(path.dirname(logFile), ".audit.json"),
+			date_format: env.LOG_ROTATION_DATE_FORMAT || "YYYY-MM-DD",
+			filename: logFile,
+			frequency: env.LOG_ROTATION_FREQUENCY || "daily",
+			max_logs: env.LOG_ROTATION_MAX_LOGS,
+			size: env.LOG_ROTATION_MAX_SIZE,
+			verbose: false,
+		});
 	}
 
 	return config;

@@ -114,7 +114,7 @@ const altTestParams = {
 	TPAGID: undefined,
 };
 
-describe("Server Deployment", () => {
+describe("Server deployment", () => {
 	beforeAll(() => {
 		nock.disableNetConnect();
 
@@ -300,7 +300,7 @@ describe("Server Deployment", () => {
 					await server.close();
 				});
 
-				describe("/admin/healthcheck Route", () => {
+				describe("/admin/healthcheck route", () => {
 					test("Should return `ok`", async () => {
 						const response = await server.inject({
 							method: "GET",
@@ -372,7 +372,7 @@ describe("Server Deployment", () => {
 					});
 				});
 
-				describe("Undeclared Route", () => {
+				describe("Undeclared route", () => {
 					test("Should return HTTP status code 404 if route not found", async () => {
 						const response = await server.inject({
 							method: "GET",
@@ -398,7 +398,7 @@ describe("Server Deployment", () => {
 		});
 	});
 
-	describe("Keycloak Token Retrieval Config", () => {
+	describe("Keycloak token tetrieval config", () => {
 		let config;
 		let server;
 		let currentEnv;
@@ -454,7 +454,7 @@ describe("Server Deployment", () => {
 					await server.close();
 				});
 
-				describe("/admin/healthcheck Route", () => {
+				describe("/admin/healthcheck route", () => {
 					test("Should return `ok`", async () => {
 						const response = await server.inject({
 							method: "GET",
@@ -488,7 +488,7 @@ describe("Server Deployment", () => {
 					});
 				});
 
-				describe("Undeclared Route", () => {
+				describe("Undeclared route", () => {
 					test("Should return HTTP status code 404 if route not found", async () => {
 						const response = await server.inject({
 							method: "GET",
@@ -510,7 +510,7 @@ describe("Server Deployment", () => {
 					});
 				});
 
-				describe("/redirect Route", () => {
+				describe("/redirect route", () => {
 					test("Should redirect to 'redirectUrl' with required params present", async () => {
 						const response = await server.inject({
 							method: "GET",
@@ -606,7 +606,7 @@ describe("Server Deployment", () => {
 		});
 	});
 
-	describe("API Documentation", () => {
+	describe("API documentation", () => {
 		let config;
 		let server;
 
@@ -637,7 +637,7 @@ describe("Server Deployment", () => {
 		});
 
 		describe("Content", () => {
-			describe("/docs Route", () => {
+			describe("/docs route", () => {
 				test("Should return HTML", async () => {
 					const response = await server.inject({
 						method: "GET",
@@ -653,7 +653,7 @@ describe("Server Deployment", () => {
 				});
 			});
 
-			describe("/public Route", () => {
+			describe("/public route", () => {
 				test("Should return image", async () => {
 					const response = await server.inject({
 						method: "GET",
@@ -684,7 +684,7 @@ describe("Server Deployment", () => {
 
 					await page.goto("http://localhost:3000/docs");
 					expect(await page.title()).toBe(
-						"SIDeR Obfuscation Service | Documentation"
+						"SIDeR Contextual Link Obfuscation Service | Documentation"
 					);
 					/**
 					 * Checks redoc has not rendered an error component:
@@ -701,7 +701,7 @@ describe("Server Deployment", () => {
 		});
 	});
 
-	describe("Error Handling", () => {
+	describe("Error handling", () => {
 		let config;
 		let server;
 
@@ -725,7 +725,7 @@ describe("Server Deployment", () => {
 			await server.close();
 		});
 
-		describe("/error Route", () => {
+		describe("/error route", () => {
 			test("Should return HTTP status code 500", async () => {
 				const response = await server.inject({
 					method: "GET",
