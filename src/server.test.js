@@ -155,7 +155,7 @@ describe("Server deployment", () => {
 
 		const corsTests = [
 			{
-				testName: "CORS Disabled",
+				testName: "CORS disabled",
 				envVariables: {
 					CORS_ORIGIN: "",
 				},
@@ -174,7 +174,7 @@ describe("Server deployment", () => {
 				},
 			},
 			{
-				testName: "CORS Enabled",
+				testName: "CORS enabled",
 				envVariables: {
 					CORS_ORIGIN: true,
 				},
@@ -201,7 +201,7 @@ describe("Server deployment", () => {
 				},
 			},
 			{
-				testName: "Cors Enabled and Set to String",
+				testName: "CORS enabled and set to string",
 				envVariables: {
 					CORS_ORIGIN: "https://notreal.ydh.nhs.uk",
 				},
@@ -228,7 +228,7 @@ describe("Server deployment", () => {
 				},
 			},
 			{
-				testName: "Cors Enabled and Set to Array of Strings",
+				testName: "Cors enabled and set to array of strings",
 				envVariables: {
 					CORS_ORIGIN: [
 						"https://notreal.ydh.nhs.uk",
@@ -258,7 +258,7 @@ describe("Server deployment", () => {
 				},
 			},
 			{
-				testName: "Cors Enabled and Set to Wildcard",
+				testName: "CORS enabled and set to wildcard",
 				envVariables: {
 					CORS_ORIGIN: "*",
 				},
@@ -412,13 +412,13 @@ describe("Server deployment", () => {
 
 		const keycloakTests = [
 			{
-				testName: "Keycloak Disabled",
+				testName: "Keycloak disabled",
 				envVariables: {
 					KC_ENABLED: false,
 				},
 			},
 			{
-				testName: "Keycloak Enabled But Keycloak Options Undefined",
+				testName: "Keycloak enabled but Keycloak options undefined",
 				envVariables: {
 					KC_ENABLED: true,
 					KC_REQUESTTOKEN_URL: "",
