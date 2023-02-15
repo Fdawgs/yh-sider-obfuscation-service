@@ -16,6 +16,7 @@ const staticPlugin = require("@fastify/static");
 const swagger = require("@fastify/swagger");
 const underPressure = require("@fastify/under-pressure");
 const keycloakAccess = require("./plugins/keycloak-access-token");
+const queryStringAuth = require("./plugins/query-string-auth");
 const sharedSchemas = require("./plugins/shared-schemas");
 
 /**
@@ -92,10 +93,16 @@ async function plugin(server, config) {
 
 		/**
 		 * Encapsulate plugins and routes into secured child context, so that admin and docs
-		 * routes does not inherit Keycloak plugin.
+		 * routes does not inherit Keycloak and query string API key auth plugins.
 		 * See https://fastify.io/docs/latest/Reference/Encapsulation/ for more info
 		 */
 		.register(async (securedContext) => {
+			if (config.queryStringApiKeys) {
+				await securedContext
+					// Check query string contains API key
+					.register(queryStringAuth, config.queryStringApiKeys);
+			}
+
 			await securedContext
 				.register(keycloakAccess, config.keycloak)
 

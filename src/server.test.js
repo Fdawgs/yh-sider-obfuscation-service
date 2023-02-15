@@ -149,6 +149,7 @@ describe("Server deployment", () => {
 				CORS_MAX_AGE: 7200,
 				REDIRECT_URL: "https://pyrusapps.blackpear.com/esp/#!/launch?",
 				KC_ENABLED: false,
+				QUERY_STRING_API_KEY_ARRAY: "",
 			});
 			currentEnv = { ...process.env };
 		});
@@ -398,13 +399,14 @@ describe("Server deployment", () => {
 		});
 	});
 
-	describe("Keycloak token tetrieval config", () => {
+	describe("Keycloak token retrieval config", () => {
 		let config;
 		let server;
 		let currentEnv;
 
 		beforeAll(() => {
 			Object.assign(process.env, {
+				QUERY_STRING_API_KEY_ARRAY: "",
 				REDIRECT_URL: "https://pyrusapps.blackpear.com/esp/#!/launch?",
 			});
 			currentEnv = { ...process.env };
@@ -622,6 +624,7 @@ describe("Server deployment", () => {
 				HTTPS_SSL_CERT_PATH: "",
 				HTTPS_SSL_KEY_PATH: "",
 				HTTPS_HTTP2_ENABLED: "",
+				QUERY_STRING_API_KEY_ARRAY: "",
 				REDIRECT_URL: "https://pyrusapps.blackpear.com/esp/#!/launch?",
 			});
 			config = await getConfig();
@@ -697,6 +700,80 @@ describe("Server deployment", () => {
 						expect.stringMatching(/something\s*went\s*wrong/i)
 					);
 				});
+			});
+		});
+	});
+
+	// TODO: fix this impacting the API documentation `describe` block, and move it back to running before it
+	describe("Query string API key auth enabled", () => {
+		let server;
+		let config;
+
+		beforeAll(async () => {
+			Object.assign(process.env, {
+				REDIRECT_URL: "https://pyrusapps.blackpear.com/esp/#!/launch?",
+				QUERY_STRING_API_KEY_ARRAY:
+					'[{"name": "test", "value": "testKey"}]',
+				KC_ENABLED: false,
+			});
+			config = await getConfig();
+
+			server = Fastify();
+			await server.register(startServer, config).ready();
+		});
+
+		afterAll(async () => {
+			Object.assign(process.env, {
+				QUERY_STRING_API_KEY_ARRAY: "",
+			});
+			await server.close();
+		});
+
+		describe("/redirect route", () => {
+			// eslint-disable-next-line jest/no-disabled-tests
+			test("Should return HTTP status code 401 if api_key query string param missing", async () => {
+				const response = await server.inject({
+					method: "GET",
+					url: "/redirect",
+					headers: { accept: "text/html" },
+					query: testParams,
+				});
+
+				expect(JSON.parse(response.payload)).toEqual({
+					error: "Unauthorized",
+					message: "Unauthorized",
+					statusCode: 401,
+				});
+				expect(response.headers).toEqual({
+					...expResHeadersJson,
+					vary: "accept-encoding",
+				});
+				expect(response.statusCode).toBe(401);
+			});
+
+			test("Should redirect to 'redirectUrl' with api_key query string param", async () => {
+				const response = await server.inject({
+					method: "GET",
+					url: "/redirect",
+					headers: { accept: "text/html" },
+					query: { ...testParams, api_key: "testKey" },
+				});
+
+				const resQueryString = qs.parse(
+					response.headers.location.substring(
+						response.headers.location.indexOf("?") + 1,
+						response.headers.location.length
+					)
+				);
+
+				expect(resQueryString).toMatchObject({
+					location:
+						"https://fhir.nhs.uk/Id/ods-organization-code|RA4",
+					practitioner: testParams.practitioner,
+					enc: expect.any(String),
+				});
+				expect(response.headers).toEqual(expResHeadersRedirect);
+				expect(response.statusCode).toBe(302);
 			});
 		});
 	});

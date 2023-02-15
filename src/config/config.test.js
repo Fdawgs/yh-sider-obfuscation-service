@@ -47,6 +47,7 @@ describe("Configuration", () => {
 		const OBFUSCATION_KEY_NAME = "k01";
 		const OBFUSCATION_KEY_VALUE = "0123456789";
 		const OBFUSCATION_QUERYSTRING_KEY_ARRAY = '["birthdate", "patient"]';
+		const QUERY_STRING_API_KEY_ARRAY = "";
 
 		Object.assign(process.env, {
 			HOST,
@@ -76,6 +77,7 @@ describe("Configuration", () => {
 			OBFUSCATION_KEY_NAME,
 			OBFUSCATION_KEY_VALUE,
 			OBFUSCATION_QUERYSTRING_KEY_ARRAY,
+			QUERY_STRING_API_KEY_ARRAY,
 		});
 
 		const config = await getConfig();
@@ -140,6 +142,8 @@ describe("Configuration", () => {
 			},
 			obfuscate: JSON.parse(OBFUSCATION_QUERYSTRING_KEY_ARRAY),
 		});
+
+		expect(config.queryStringApiKeys).toBeUndefined();
 	});
 
 	test("Should use defaults logging values if values missing", async () => {
@@ -216,6 +220,8 @@ describe("Configuration", () => {
 		const OBFUSCATION_KEY_NAME = "k01";
 		const OBFUSCATION_KEY_VALUE = "0123456789";
 		const OBFUSCATION_QUERYSTRING_KEY_ARRAY = '["birthdate", "patient"]';
+		const QUERY_STRING_API_KEY_ARRAY =
+			'[{"name": "test", "value": "testKey"}]';
 
 		Object.assign(process.env, {
 			HOST,
@@ -242,6 +248,7 @@ describe("Configuration", () => {
 			OBFUSCATION_KEY_NAME,
 			OBFUSCATION_KEY_VALUE,
 			OBFUSCATION_QUERYSTRING_KEY_ARRAY,
+			QUERY_STRING_API_KEY_ARRAY,
 		});
 
 		const config = await getConfig();
@@ -314,6 +321,12 @@ describe("Configuration", () => {
 			},
 			obfuscate: JSON.parse(OBFUSCATION_QUERYSTRING_KEY_ARRAY),
 		});
+
+		expect(config.queryStringApiKeys).toEqual({
+			apiKeys: expect.any(Set),
+			queryStringKey: "api_key",
+		});
+		expect(config.queryStringApiKeys.apiKeys).toContain("testKey");
 	});
 
 	test("Should return values according to environment variables - HTTPS (PFX cert) enabled and HTTP2 enabled", async () => {

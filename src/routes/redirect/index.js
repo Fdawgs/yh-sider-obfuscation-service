@@ -14,8 +14,17 @@ const accepts = ["text/html"];
  * @param {object} options - Route config values.
  * @param {object} options.cors - CORS settings.
  * @param {string} options.redirectUrl - SIDeR service URL.
+ * @param {*=} options.queryStringApiKeys - Apply `apiKey` security scheme to route if defined.
  */
 async function route(server, options) {
+	if (options.queryStringApiKeys) {
+		redirectGetSchema.security = [{ apiKey: [] }];
+		redirectGetSchema.response[401] = {
+			$ref: "responses#/properties/unauthorized",
+			description: "Unauthorized",
+		};
+	}
+
 	// Register plugins
 	await server
 		// Enable CORS if options passed
