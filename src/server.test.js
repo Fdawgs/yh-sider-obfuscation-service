@@ -713,7 +713,7 @@ describe("Server deployment", () => {
 			Object.assign(process.env, {
 				REDIRECT_URL: "https://pyrusapps.blackpear.com/esp/#!/launch?",
 				QUERY_STRING_API_KEY_ARRAY:
-					'[{"name": "test", "value": "testKey"}]',
+					'[{"clientName": "test", "value": "testKey"}]',
 				KC_ENABLED: false,
 			});
 			config = await getConfig();

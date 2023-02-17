@@ -89,6 +89,7 @@ describe("Configuration", () => {
 		expect(config.fastifyInit.logger).toEqual({
 			formatters: { level: expect.any(Function) },
 			level: "info",
+			redact: ["req.headers.authorization"],
 			serializers: {
 				req: expect.any(Function),
 				res: expect.any(Function),
@@ -172,6 +173,7 @@ describe("Configuration", () => {
 		expect(config.fastifyInit.logger).toEqual({
 			formatters: { level: expect.any(Function) },
 			level: "info",
+			redact: ["req.headers.authorization"],
 			serializers: {
 				req: expect.any(Function),
 				res: expect.any(Function),
@@ -221,7 +223,7 @@ describe("Configuration", () => {
 		const OBFUSCATION_KEY_VALUE = "0123456789";
 		const OBFUSCATION_QUERYSTRING_KEY_ARRAY = '["birthdate", "patient"]';
 		const QUERY_STRING_API_KEY_ARRAY =
-			'[{"name": "test", "value": "testKey"}]';
+			'[{"clientName": "test", "value": "testKey"}]';
 
 		Object.assign(process.env, {
 			HOST,
@@ -261,6 +263,7 @@ describe("Configuration", () => {
 		expect(config.fastifyInit.logger).toEqual({
 			formatters: { level: expect.any(Function) },
 			level: LOG_LEVEL,
+			redact: ["req.headers.authorization"],
 			serializers: {
 				req: expect.any(Function),
 				res: expect.any(Function),
@@ -326,7 +329,14 @@ describe("Configuration", () => {
 			apiKeys: expect.any(Set),
 			queryStringKey: "api_key",
 		});
-		expect(config.queryStringApiKeys.apiKeys).toContain("testKey");
+		expect(Array.from(config.queryStringApiKeys.apiKeys)).toEqual(
+			expect.arrayContaining([
+				{
+					clientName: "test",
+					value: "testKey",
+				},
+			])
+		);
 	});
 
 	test("Should return values according to environment variables - HTTPS (PFX cert) enabled and HTTP2 enabled", async () => {

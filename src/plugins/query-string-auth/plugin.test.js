@@ -25,7 +25,7 @@ describe("Query string auth plugin", () => {
 
 	test("Should return response, and remove API key param, if query string API key param in `apiKeys` array", async () => {
 		server.register(plugin, {
-			apiKeys: ["testKey"],
+			apiKeys: [{ clientName: "test", value: "testKey" }],
 			queryStringKey: "auth",
 		});
 
@@ -43,7 +43,7 @@ describe("Query string auth plugin", () => {
 
 	test("Should return response, and retain API key param, if query string API key param in `apiKeys` array", async () => {
 		server.register(plugin, {
-			apiKeys: ["testKey"],
+			apiKeys: [{ clientName: "test", value: "testKey" }],
 			removeParam: false,
 			queryStringKey: "auth",
 		});
@@ -62,7 +62,7 @@ describe("Query string auth plugin", () => {
 
 	test("Should return response, and remove API key param, if query string API key param in `apiKeys` set", async () => {
 		server.register(plugin, {
-			apiKeys: new Set(["testKey"]),
+			apiKeys: new Set([{ clientName: "test", value: "testKey" }]),
 			queryStringKey: "auth",
 		});
 
@@ -81,7 +81,7 @@ describe("Query string auth plugin", () => {
 	test("Should return HTTP status code 401 if query string API key param not in `apiKeys` array", async () => {
 		server.register(plugin, {
 			queryStringKey: "auth",
-			apiKeys: ["testKeyDeny"],
+			apiKeys: [{ clientName: "test", value: "testKeyDeny" }],
 		});
 
 		await server.ready();

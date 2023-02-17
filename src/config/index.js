@@ -189,6 +189,7 @@ async function getConfig() {
 					},
 				},
 				level: env.LOG_LEVEL || "info",
+				redact: ["req.headers.authorization"],
 				serializers: {
 					/* istanbul ignore next: pino functions not explicitly tested */
 					req(req) {
@@ -409,7 +410,7 @@ async function getConfig() {
 	if (env.QUERY_STRING_API_KEY_ARRAY) {
 		const keys = new Set();
 		secJSON.parse(env.QUERY_STRING_API_KEY_ARRAY).forEach((element) => {
-			keys.add(element.value);
+			keys.add(element);
 		});
 		config.queryStringApiKeys = {
 			apiKeys: keys,
