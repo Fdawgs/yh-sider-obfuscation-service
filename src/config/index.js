@@ -161,6 +161,10 @@ async function getConfig() {
 			.prop("OBFUSCATION_KEY_NAME", S.string())
 			.prop("OBFUSCATION_KEY_VALUE", S.string())
 			.prop("OBFUSCATION_QUERYSTRING_KEY_ARRAY", S.string())
+
+			// Query string API key auth
+			.prop("QUERY_STRING_API_KEY_ARRAY", S.anyOf([S.string(), S.null()]))
+
 			.required([
 				"REDIRECT_URL",
 				"OBFUSCATION_KEY_NAME",
@@ -185,6 +189,7 @@ async function getConfig() {
 					},
 				},
 				level: env.LOG_LEVEL || "info",
+				redact: ["req.headers.authorization"],
 				serializers: {
 					/* istanbul ignore next: pino functions not explicitly tested */
 					req(req) {
@@ -277,6 +282,12 @@ async function getConfig() {
 						altText:
 							"Yeovil District Hospital NHS Foundation Trust logo",
 					},
+				},
+				// Components object populated by shared schemas at launch
+				components: {
+					securitySchemes: env.QUERY_STRING_API_KEY_ARRAY
+						? {}
+						: undefined,
 				},
 				tags: [
 					{
@@ -393,6 +404,25 @@ async function getConfig() {
 			size: env.LOG_ROTATION_MAX_SIZE,
 			verbose: false,
 		});
+	}
+
+	// Query string API key auth
+	if (env.QUERY_STRING_API_KEY_ARRAY) {
+		const keys = new Set();
+		secJSON.parse(env.QUERY_STRING_API_KEY_ARRAY).forEach((element) => {
+			keys.add(element);
+		});
+		config.queryStringApiKeys = {
+			apiKeys: keys,
+			queryStringKey: "api_key",
+		};
+
+		config.swagger.openapi.components.securitySchemes.apiKey = {
+			type: "apiKey",
+			description: `Expects the request to contain an \`${config.queryStringApiKeys.queryStringKey}\` query string param with an API key.`,
+			name: config.queryStringApiKeys.queryStringKey,
+			in: "query",
+		};
 	}
 
 	return config;

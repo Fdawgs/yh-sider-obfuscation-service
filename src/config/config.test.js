@@ -47,6 +47,7 @@ describe("Configuration", () => {
 		const OBFUSCATION_KEY_NAME = "k01";
 		const OBFUSCATION_KEY_VALUE = "0123456789";
 		const OBFUSCATION_QUERYSTRING_KEY_ARRAY = '["birthdate", "patient"]';
+		const QUERY_STRING_API_KEY_ARRAY = "";
 
 		Object.assign(process.env, {
 			HOST,
@@ -76,6 +77,7 @@ describe("Configuration", () => {
 			OBFUSCATION_KEY_NAME,
 			OBFUSCATION_KEY_VALUE,
 			OBFUSCATION_QUERYSTRING_KEY_ARRAY,
+			QUERY_STRING_API_KEY_ARRAY,
 		});
 
 		const config = await getConfig();
@@ -87,6 +89,7 @@ describe("Configuration", () => {
 		expect(config.fastifyInit.logger).toEqual({
 			formatters: { level: expect.any(Function) },
 			level: "info",
+			redact: ["req.headers.authorization"],
 			serializers: {
 				req: expect.any(Function),
 				res: expect.any(Function),
@@ -140,6 +143,8 @@ describe("Configuration", () => {
 			},
 			obfuscate: JSON.parse(OBFUSCATION_QUERYSTRING_KEY_ARRAY),
 		});
+
+		expect(config.queryStringApiKeys).toBeUndefined();
 	});
 
 	test("Should use defaults logging values if values missing", async () => {
@@ -168,6 +173,7 @@ describe("Configuration", () => {
 		expect(config.fastifyInit.logger).toEqual({
 			formatters: { level: expect.any(Function) },
 			level: "info",
+			redact: ["req.headers.authorization"],
 			serializers: {
 				req: expect.any(Function),
 				res: expect.any(Function),
@@ -216,6 +222,8 @@ describe("Configuration", () => {
 		const OBFUSCATION_KEY_NAME = "k01";
 		const OBFUSCATION_KEY_VALUE = "0123456789";
 		const OBFUSCATION_QUERYSTRING_KEY_ARRAY = '["birthdate", "patient"]';
+		const QUERY_STRING_API_KEY_ARRAY =
+			'[{"clientName": "test", "value": "testKey"}]';
 
 		Object.assign(process.env, {
 			HOST,
@@ -242,6 +250,7 @@ describe("Configuration", () => {
 			OBFUSCATION_KEY_NAME,
 			OBFUSCATION_KEY_VALUE,
 			OBFUSCATION_QUERYSTRING_KEY_ARRAY,
+			QUERY_STRING_API_KEY_ARRAY,
 		});
 
 		const config = await getConfig();
@@ -254,6 +263,7 @@ describe("Configuration", () => {
 		expect(config.fastifyInit.logger).toEqual({
 			formatters: { level: expect.any(Function) },
 			level: LOG_LEVEL,
+			redact: ["req.headers.authorization"],
 			serializers: {
 				req: expect.any(Function),
 				res: expect.any(Function),
@@ -314,6 +324,19 @@ describe("Configuration", () => {
 			},
 			obfuscate: JSON.parse(OBFUSCATION_QUERYSTRING_KEY_ARRAY),
 		});
+
+		expect(config.queryStringApiKeys).toEqual({
+			apiKeys: expect.any(Set),
+			queryStringKey: "api_key",
+		});
+		expect(Array.from(config.queryStringApiKeys.apiKeys)).toEqual(
+			expect.arrayContaining([
+				{
+					clientName: "test",
+					value: "testKey",
+				},
+			])
+		);
 	});
 
 	test("Should return values according to environment variables - HTTPS (PFX cert) enabled and HTTP2 enabled", async () => {

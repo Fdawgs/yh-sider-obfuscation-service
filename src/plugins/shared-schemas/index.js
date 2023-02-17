@@ -33,6 +33,14 @@ async function plugin(server) {
 					)
 			)
 			.prop(
+				"unauthorized",
+				S.object()
+					.title("401 Unauthorized")
+					.prop("statusCode", S.number().const(401))
+					.prop("error", S.string().const("Unauthorized"))
+					.prop("message", S.string())
+			)
+			.prop(
 				"notAcceptable",
 				S.object()
 					.title("406 Not Acceptable Response")

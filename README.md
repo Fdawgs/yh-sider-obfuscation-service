@@ -19,7 +19,7 @@ This service was created out of a need for query string parameters containing pe
 
 A video demonstrating the contextual link in action can be found [here](./docs/videos/).
 
-Single sign-on for a user using access tokens from a Keycloak server instance can be enabled using environment variables found in `.env.template`.
+Single sign-on for a user using access tokens from a Keycloak server instance, and query string API key auth, can be enabled using environment variables found in `.env.template`.
 
 ## Prerequisites
 
@@ -106,6 +106,8 @@ The SIDeR contextual link's icon profile values in TrakCare should be set to the
 Link URL: `<obfuscation service path>/redirect`
 
 Link expression: `"&"_##class(Custom.ENYH.Integration.ContextualLink.GenericPatientLink).BuildURLVars("patient=https://fhir.nhs.uk/Id/nhs-number|{NHSNumber}&birthdate={DateOfBirthISO8601}&location=https://fhir.nhs.uk/Id/ods-organization-code|RA4&practitioner=https://sider.nhs.uk/auth|{UserName}@ydh.nhs.uk")`
+
+If query string auth is enabled using the `QUERY_STRING_API_KEY_ARRAY` environment variable, the link expression will need to include the `api_key` query string param with a valid API key.
 
 <img src="https://raw.githubusercontent.com/Fdawgs/ydh-sider-obfuscation-service/main/docs/images/SIDeR_32.png">
 
