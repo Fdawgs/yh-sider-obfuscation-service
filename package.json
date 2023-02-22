@@ -108,7 +108,7 @@
 		"fastify-json-to-xml": "^1.1.0",
 		"fastify-plugin": "^4.5.0",
 		"file-stream-rotator": "^1.0.0",
-		"fluent-json-schema": "^4.0.0",
+		"fluent-json-schema": "^4.1.0",
 		"obfuscated-querystring": "git+https://git@github.com/BlackPearSw/obfuscated-querystring.git",
 		"pino": "^8.10.0",
 		"redoc": "^2.0.0",
