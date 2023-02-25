@@ -93,7 +93,7 @@ If using a Microsoft Windows OS utilise [pm2-installer](https://github.com/jesse
 
 API documentation can be found at `/docs`:
 
-<img alttext="Screenshot of YDH SIDeR Obfuscation Service documentation page" src="https://raw.githubusercontent.com/Fdawgs/ydh-sider-obfuscation-service/main/docs/images/api_documentation_screenshot.png" width="720">
+<img alttext="Screenshot of SIDeR Contextual Link Obfuscation Service documentation page" src="https://raw.githubusercontent.com/Fdawgs/ydh-sider-obfuscation-service/main/docs/images/api_documentation_screenshot.png" width="720">
 
 ### Contextual link in PAS (TrakCare)
 
