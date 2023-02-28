@@ -95,6 +95,8 @@ API documentation can be found at `/docs`:
 
 <img alttext="Screenshot of SIDeR Contextual Link Obfuscation Service documentation page" src="https://raw.githubusercontent.com/Fdawgs/ydh-sider-obfuscation-service/main/docs/images/api_documentation_screenshot.png" width="720">
 
+The underlying OpenAPI definitions are found at `/docs/openapi`.
+
 ### Contextual link in PAS (TrakCare)
 
 <img src="https://raw.githubusercontent.com/Fdawgs/ydh-sider-obfuscation-service/main/docs/images/ydh_trakcare_sider_contextual_link.png" width="474">
