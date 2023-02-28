@@ -103,13 +103,15 @@ The underlying OpenAPI definitions are found at `/docs/openapi`.
 
 This section is for members of the Solutions Development and Application Support teams at Yeovil District Hospital NHSFT, or other NHS Trusts that use InterSystems TrakCare as their PAS.
 
-The SIDeR contextual link's icon profile values in TrakCare should be set to the following:
+To adhere to Black Pear/NHS Somerset ICB's [contextual launch specification](https://github.com/Somerset-SIDeR-Programme/SIDeR-interop-patterns/wiki/contextual-launch), the SIDeR contextual link's icon profile values in TrakCare must be set to the following:
 
 Link URL: `<obfuscation service path>/redirect`
 
 Link expression: `"&"_##class(Custom.ENYH.Integration.ContextualLink.GenericPatientLink).BuildURLVars("patient=https://fhir.nhs.uk/Id/nhs-number|{NHSNumber}&birthdate={DateOfBirthISO8601}&location=https://fhir.nhs.uk/Id/ods-organization-code|RA4&practitioner=https://sider.nhs.uk/auth|{UserName}@ydh.nhs.uk")`
 
 If query string auth is enabled using the `QUERY_STRING_API_KEY_ARRAY` environment variable, the link expression will need to include the `api_key` query string param with a valid API key.
+
+#### Contextual link icon
 
 <img src="https://raw.githubusercontent.com/Fdawgs/ydh-sider-obfuscation-service/main/docs/images/SIDeR_32.png">
 
