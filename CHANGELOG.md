@@ -2,6 +2,43 @@
 
 All notable changes to this project will be documented in this file.
 
+## [11.1.1](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v11.1.0...v11.1.1) (2023-03-01)
+
+
+### Continuous integration
+
+* **optimise-images:** fix repository name in build job conditional ([#1131](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1131)) ([34cd0bc](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/34cd0bc42295c8d6f0d5445cf84b2d7351645742))
+
+
+### Improvements
+
+* **routes/docs:** defer non-critical css ([#1134](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1134)) ([6c13c56](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/6c13c56a53dd72250d2e7910471ecc21ac8e5395))
+
+
+### Miscellaneous
+
+* **routes/docs:** use correct terminology for openapi definitions ([#1136](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1136)) ([61206f1](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/61206f1f9ec16af1bf0e16e5ab8aca0f2ce7f18d))
+
+
+### Documentation
+
+* **readme:** add link to sider contextual launch specification ([#1137](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1137)) ([81d1a10](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/81d1a104526beae444cff38617c437adb69833c1))
+* **readme:** correct alttext for api doc image ([#1133](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1133)) ([304e47f](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/304e47f0b748fe844419d1e03cfb0d83e72fb444))
+* **readme:** update sider link from somerset ccg to icb ([#1138](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1138)) ([119ebdd](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/119ebddd27bd5f10b7fe162b94948ca50eb238f3))
+
+
+### Dependencies
+
+* **deps-dev:** bump esbuild from 0.17.5 to 0.17.10 ([#1146](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1146)) ([ee22d4e](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/ee22d4e8765aaf79dc3855df39e14af68c1eca1b))
+* **deps-dev:** bump eslint from 8.34.0 to 8.35.0 ([#1142](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1142)) ([306b755](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/306b755541f1e730d88ea9e352c2aa65aa95dc3c))
+* **deps-dev:** bump glob from 8.1.0 to 9.1.0 ([bb7f1ee](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/bb7f1ee12b52c95fd6329ecb9e854a4d5669e098))
+* **deps-dev:** bump pino-pretty from 9.3.0 to 9.4.0 ([#1140](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1140)) ([a0b1ce6](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/a0b1ce664487399c3a4d8207fdebd4467f286d38))
+* **deps-dev:** bump playwright from 1.31.0 to 1.31.1 ([#1145](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1145)) ([68b735e](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/68b735ee23bfdba922bba99f04a13045faa9b82a))
+* **deps:** bump axios from 1.3.3 to 1.3.4 ([#1144](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1144)) ([b252569](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/b25256970b5523527acf33799e26762cbbd80a5b))
+* **deps:** bump coverallsapp/github-action from 1.1.3 to 1.2.3 ([#1139](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1139)) ([960834f](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/960834f28eb9dd7f71020ef5d84c836708bfd17e))
+* **deps:** bump pino from 8.10.0 to 8.11.0 ([#1143](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1143)) ([78986f2](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/78986f25331b83c5d36740ff7ad83b78b91ade63))
+* **deps:** bump transistive dependencies ([#1147](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1147)) ([ca87948](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/ca8794867e151616422ed79a7eb6fe380354b54e))
+
 ## [11.1.0](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v11.0.0...v11.1.0) (2023-02-22)
 
 
