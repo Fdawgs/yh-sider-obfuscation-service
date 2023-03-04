@@ -14,6 +14,8 @@ RUN npm ci --ignore-scripts --omit=dev && \
     npm pkg delete commitlint devDependencies jest nodemonConfig scripts && \
     npm cache clean --force
 
+RUN apk del git
+
 # Copy source
 COPY . .
 
