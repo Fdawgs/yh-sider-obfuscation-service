@@ -38,7 +38,7 @@ Perform the following steps before deployment:
 4. Configure the application using the environment variables in `.env`
 
 > **Note**
-> Set the following environment variables in `.env` to meet NHS Digital's recommendation to retain six months' worth of logs:
+> Set the following environment variables in `.env` to meet NHS England's recommendation to retain six months' worth of logs:
 >
 > -   `LOG_ROTATION_DATE_FORMAT="YYYY-MM-DD"`
 > -   `LOG_ROTATION_FREQUENCY="daily"`
