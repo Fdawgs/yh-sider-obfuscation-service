@@ -1,6 +1,6 @@
 const fp = require("fastify-plugin");
 const qs = require("fast-querystring");
-const { obfuscate } = require("obfuscated-querystring/lib");
+const { obfuscate } = require("@blackpear/obfuscated-querystring/lib");
 
 /**
  * @author Frazer Smith
