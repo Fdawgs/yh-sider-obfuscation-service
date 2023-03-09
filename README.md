@@ -25,7 +25,6 @@ Single sign-on for a user using access tokens from a Keycloak server instance, a
 
 These are only required if running the API outside of Docker:
 
--   [Git](https://git-scm.com/) (to install unregistered dependencies)
 -   [Node.js](https://nodejs.org/en/) >=18.12.1
 
 ## Setup

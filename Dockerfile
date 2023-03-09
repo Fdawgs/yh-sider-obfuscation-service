@@ -5,16 +5,13 @@ WORKDIR /usr/app
 
 # Install OS dependencies
 # Curl needed for healthcheck command
-# Git is needed to install node modules from GitHub
-RUN apk add --no-cache curl git
+RUN apk add --no-cache curl
 
 # Copy and install node dependencies
 COPY package.json package-lock.json ./
 RUN npm ci --ignore-scripts --omit=dev && \
     npm pkg delete commitlint devDependencies jest nodemonConfig scripts && \
     npm cache clean --force
-
-RUN apk del git
 
 # Copy source
 COPY . .
