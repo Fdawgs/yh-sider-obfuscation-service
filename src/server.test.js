@@ -284,10 +284,12 @@ describe("Server deployment", () => {
 				},
 			},
 		];
-		corsTests.forEach((testObject) => {
-			describe(`${testObject.testName}`, () => {
+
+		describe.each(corsTests)(
+			"$testName",
+			({ envVariables, expected, request }) => {
 				beforeAll(async () => {
-					Object.assign(process.env, testObject.envVariables);
+					Object.assign(process.env, envVariables);
 					config = await getConfig();
 
 					server = Fastify();
@@ -308,26 +310,26 @@ describe("Server deployment", () => {
 							url: "/admin/healthcheck",
 							headers: {
 								accept: "text/plain",
-								origin: testObject.request.headers.origin,
+								origin: request.headers.origin,
 							},
 						});
 
 						expect(response.payload).toBe("ok");
 						expect(response.headers).toEqual(
-							testObject.expected.response.headers.text
+							expected.response.headers.text
 						);
 						expect(response.statusCode).toBe(200);
 					});
 
 					// Only applicable if CORS enabled
-					if (testObject.envVariables.CORS_ORIGIN) {
+					if (envVariables.CORS_ORIGIN) {
 						test("Should return response to CORS preflight request", async () => {
 							const response = await server.inject({
 								method: "OPTIONS",
 								url: "/admin/healthcheck",
 								headers: {
 									"access-control-request-method": "GET",
-									origin: testObject.request.headers.origin,
+									origin: request.headers.origin,
 								},
 							});
 
@@ -338,9 +340,9 @@ describe("Server deployment", () => {
 									process.env.CORS_ALLOWED_HEADERS,
 								"access-control-allow-methods": "GET, HEAD",
 								"access-control-allow-origin":
-									testObject.envVariables.CORS_ORIGIN === "*"
+									envVariables.CORS_ORIGIN === "*"
 										? "*"
-										: testObject.request.headers.origin,
+										: request.headers.origin,
 								"access-control-max-age": String(
 									process.env.CORS_MAX_AGE
 								),
@@ -357,7 +359,7 @@ describe("Server deployment", () => {
 							url: "/admin/healthcheck",
 							headers: {
 								accept: "application/javascript",
-								origin: testObject.request.headers.origin,
+								origin: request.headers.origin,
 							},
 						});
 
@@ -367,7 +369,7 @@ describe("Server deployment", () => {
 							statusCode: 406,
 						});
 						expect(response.headers).toEqual(
-							testObject.expected.response.headers.json
+							expected.response.headers.json
 						);
 						expect(response.statusCode).toBe(406);
 					});
@@ -380,7 +382,7 @@ describe("Server deployment", () => {
 							url: "/invalid",
 							headers: {
 								accept: "application/json",
-								origin: testObject.request.headers.origin,
+								origin: request.headers.origin,
 							},
 						});
 
@@ -395,8 +397,8 @@ describe("Server deployment", () => {
 						expect(response.statusCode).toBe(404);
 					});
 				});
-			});
-		});
+			}
+		);
 	});
 
 	describe("Keycloak token retrieval config", () => {
@@ -439,170 +441,166 @@ describe("Server deployment", () => {
 			},
 		];
 
-		keycloakTests.forEach((testObject) => {
-			describe(`${testObject.testName}`, () => {
-				beforeAll(async () => {
-					Object.assign(process.env, testObject.envVariables);
-					config = await getConfig();
+		describe.each(keycloakTests)("$testName", ({ envVariables }) => {
+			beforeAll(async () => {
+				Object.assign(process.env, envVariables);
+				config = await getConfig();
 
-					server = Fastify();
-					await server.register(startServer, config).ready();
+				server = Fastify();
+				await server.register(startServer, config).ready();
+			});
+
+			afterAll(async () => {
+				// Reset the process.env to default after all tests in describe block
+				Object.assign(process.env, currentEnv);
+
+				await server.close();
+			});
+
+			describe("/admin/healthcheck route", () => {
+				test("Should return `ok`", async () => {
+					const response = await server.inject({
+						method: "GET",
+						url: "/admin/healthcheck",
+						headers: {
+							accept: "text/plain",
+						},
+					});
+
+					expect(response.payload).toBe("ok");
+					expect(response.headers).toEqual(expResHeaders);
+					expect(response.statusCode).toBe(200);
 				});
 
-				afterAll(async () => {
-					// Reset the process.env to default after all tests in describe block
-					Object.assign(process.env, currentEnv);
+				test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
+					const response = await server.inject({
+						method: "GET",
+						url: "/admin/healthcheck",
+						headers: {
+							accept: "application/javascript",
+						},
+					});
 
-					await server.close();
+					expect(JSON.parse(response.payload)).toEqual({
+						error: "Not Acceptable",
+						message: "Not Acceptable",
+						statusCode: 406,
+					});
+					expect(response.headers).toEqual(expResHeadersJson);
+					expect(response.statusCode).toBe(406);
+				});
+			});
+
+			describe("Undeclared route", () => {
+				test("Should return HTTP status code 404 if route not found", async () => {
+					const response = await server.inject({
+						method: "GET",
+						url: "/invalid",
+						headers: {
+							accept: "application/json",
+						},
+					});
+
+					expect(JSON.parse(response.payload)).toEqual({
+						error: "Not Found",
+						message: "Route GET:/invalid not found",
+						statusCode: 404,
+					});
+					expect(response.headers).toEqual(expResHeaders404Errors);
+					expect(response.statusCode).toBe(404);
+				});
+			});
+
+			describe("/redirect route", () => {
+				test("Should redirect to 'redirectUrl' with required params present", async () => {
+					const response = await server.inject({
+						method: "GET",
+						url: "/redirect",
+						headers: { accept: "text/html" },
+						query: testParams,
+					});
+
+					const resQueryString = qs.parse(
+						response.headers.location.substring(
+							response.headers.location.indexOf("?") + 1,
+							response.headers.location.length
+						)
+					);
+
+					expect(resQueryString).toMatchObject({
+						location:
+							"https://fhir.nhs.uk/Id/ods-organization-code|RA4",
+						practitioner: testParams.practitioner,
+						enc: expect.any(String),
+					});
+					expect(response.headers).toEqual(expResHeadersRedirect);
+					expect(response.statusCode).toBe(302);
 				});
 
-				describe("/admin/healthcheck route", () => {
-					test("Should return `ok`", async () => {
-						const response = await server.inject({
-							method: "GET",
-							url: "/admin/healthcheck",
-							headers: {
-								accept: "text/plain",
-							},
-						});
+				test("Should return HTTP status code 400 if any required query string parameter is missing", async () => {
+					const results = await Promise.all(
+						Object.keys(altTestParams).map((key) => {
+							const scrubbedParams = { ...altTestParams };
+							// eslint-disable-next-line security/detect-object-injection
+							delete scrubbedParams[key];
 
-						expect(response.payload).toBe("ok");
-						expect(response.headers).toEqual(expResHeaders);
-						expect(response.statusCode).toBe(200);
-					});
+							return server
+								.inject({
+									method: "GET",
+									url: "/redirect",
+									headers: { accept: "text/html" },
+									query: scrubbedParams,
+								})
+								.then((response) => response.statusCode);
+						})
+					);
 
-					test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
-						const response = await server.inject({
-							method: "GET",
-							url: "/admin/healthcheck",
-							headers: {
-								accept: "application/javascript",
-							},
-						});
-
-						expect(JSON.parse(response.payload)).toEqual({
-							error: "Not Acceptable",
-							message: "Not Acceptable",
-							statusCode: 406,
-						});
-						expect(response.headers).toEqual(expResHeadersJson);
-						expect(response.statusCode).toBe(406);
-					});
+					expect(results).toEqual(
+						expect.arrayContaining([400, 400, 400, 400])
+					);
 				});
 
-				describe("Undeclared route", () => {
-					test("Should return HTTP status code 404 if route not found", async () => {
-						const response = await server.inject({
-							method: "GET",
-							url: "/invalid",
-							headers: {
-								accept: "application/json",
-							},
-						});
+				test("Should return HTTP status code 400 if any required query string parameter does not match expected pattern", async () => {
+					const results = await Promise.all(
+						Object.keys(altTestParams).map((key) => {
+							const scrubbedParams = {
+								...altTestParams,
+								[key]: "test",
+							};
 
-						expect(JSON.parse(response.payload)).toEqual({
-							error: "Not Found",
-							message: "Route GET:/invalid not found",
-							statusCode: 404,
-						});
-						expect(response.headers).toEqual(
-							expResHeaders404Errors
-						);
-						expect(response.statusCode).toBe(404);
-					});
+							return server
+								.inject({
+									method: "GET",
+									url: "/redirect",
+									headers: { accept: "text/html" },
+									query: scrubbedParams,
+								})
+								.then((response) => response.statusCode);
+						})
+					);
+
+					expect(results).toEqual(
+						expect.arrayContaining([400, 400, 400, 400])
+					);
 				});
 
-				describe("/redirect route", () => {
-					test("Should redirect to 'redirectUrl' with required params present", async () => {
-						const response = await server.inject({
-							method: "GET",
-							url: "/redirect",
-							headers: { accept: "text/html" },
-							query: testParams,
-						});
-
-						const resQueryString = qs.parse(
-							response.headers.location.substring(
-								response.headers.location.indexOf("?") + 1,
-								response.headers.location.length
-							)
-						);
-
-						expect(resQueryString).toMatchObject({
-							location:
-								"https://fhir.nhs.uk/Id/ods-organization-code|RA4",
-							practitioner: testParams.practitioner,
-							enc: expect.any(String),
-						});
-						expect(response.headers).toEqual(expResHeadersRedirect);
-						expect(response.statusCode).toBe(302);
+				test("Should return HTTP status code 406 if content-type in `Accept` request header unsupported", async () => {
+					const response = await server.inject({
+						method: "GET",
+						url: "/redirect",
+						headers: {
+							accept: "application/javascript",
+						},
+						query: testParams,
 					});
 
-					test("Should return HTTP status code 400 if any required query string parameter is missing", async () => {
-						const results = await Promise.all(
-							Object.keys(altTestParams).map((key) => {
-								const scrubbedParams = { ...altTestParams };
-								// eslint-disable-next-line security/detect-object-injection
-								delete scrubbedParams[key];
-
-								return server
-									.inject({
-										method: "GET",
-										url: "/redirect",
-										headers: { accept: "text/html" },
-										query: scrubbedParams,
-									})
-									.then((response) => response.statusCode);
-							})
-						);
-
-						expect(results).toEqual(
-							expect.arrayContaining([400, 400, 400, 400])
-						);
+					expect(JSON.parse(response.payload)).toEqual({
+						error: "Not Acceptable",
+						message: "Not Acceptable",
+						statusCode: 406,
 					});
-
-					test("Should return HTTP status code 400 if any required query string parameter does not match expected pattern", async () => {
-						const results = await Promise.all(
-							Object.keys(altTestParams).map((key) => {
-								const scrubbedParams = {
-									...altTestParams,
-									[key]: "test",
-								};
-
-								return server
-									.inject({
-										method: "GET",
-										url: "/redirect",
-										headers: { accept: "text/html" },
-										query: scrubbedParams,
-									})
-									.then((response) => response.statusCode);
-							})
-						);
-
-						expect(results).toEqual(
-							expect.arrayContaining([400, 400, 400, 400])
-						);
-					});
-
-					test("Should return HTTP status code 406 if content-type in `Accept` request header unsupported", async () => {
-						const response = await server.inject({
-							method: "GET",
-							url: "/redirect",
-							headers: {
-								accept: "application/javascript",
-							},
-							query: testParams,
-						});
-
-						expect(JSON.parse(response.payload)).toEqual({
-							error: "Not Acceptable",
-							message: "Not Acceptable",
-							statusCode: 406,
-						});
-						expect(response.headers).toEqual(expResHeadersJson);
-						expect(response.statusCode).toBe(406);
-					});
+					expect(response.headers).toEqual(expResHeadersJson);
+					expect(response.statusCode).toBe(406);
 				});
 			});
 		});
@@ -611,9 +609,6 @@ describe("Server deployment", () => {
 	describe("API documentation", () => {
 		let config;
 		let server;
-
-		let browser;
-		let page;
 
 		beforeAll(async () => {
 			Object.assign(process.env, {
@@ -673,17 +668,16 @@ describe("Server deployment", () => {
 		});
 
 		describe("Frontend", () => {
-			afterEach(async () => {
-				await page.close();
-				await browser.close();
-			});
-
 			// Webkit not tested as it is flakey in context of Playwright
-			const browsers = [chromium, firefox];
-			browsers.forEach((browserType) => {
-				test(`Should render docs page without error components - ${browserType.name()}`, async () => {
-					browser = await browserType.launch();
-					page = await browser.newPage();
+			// TODO: use `test.concurrent.each()` once it is no longer experimental
+			test.each([
+				{ browser: chromium, name: "Chromium" },
+				{ browser: firefox, name: "Firefox" },
+			])(
+				"Should render docs page without error components - $name",
+				async ({ browser }) => {
+					const browserType = await browser.launch();
+					const page = await browserType.newPage();
 
 					await page.goto("http://localhost:3000/docs");
 					expect(await page.title()).toBe(
@@ -699,8 +693,11 @@ describe("Server deployment", () => {
 					expect(await heading.textContent()).not.toEqual(
 						expect.stringMatching(/something\s*went\s*wrong/i)
 					);
-				});
-			});
+
+					await page.close();
+					await browserType.close();
+				}
+			);
 		});
 	});
 
