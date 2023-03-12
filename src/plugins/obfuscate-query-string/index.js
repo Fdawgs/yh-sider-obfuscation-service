@@ -14,10 +14,7 @@ const { obfuscate } = require("@blackpear/obfuscated-querystring/lib");
  */
 async function plugin(server, options) {
 	server.addHook("preHandler", async (req) => {
-		const obfuscatedParams = qs.parse(
-			obfuscate(qs.stringify(req.query), options)
-		);
-		req.query = obfuscatedParams;
+		req.query = qs.parse(obfuscate(qs.stringify(req.query), options));
 	});
 }
 
