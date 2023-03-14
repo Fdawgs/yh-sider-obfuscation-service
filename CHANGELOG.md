@@ -2,6 +2,41 @@
 
 All notable changes to this project will be documented in this file.
 
+## [11.1.2](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v11.1.1...v11.1.2) (2023-03-14)
+
+
+### Documentation
+
+* **readme:** replace nhs digital mention with nhs england ([7f6f75b](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/7f6f75b55667876c25e209273d5959c69e753f62))
+
+
+### Improvements
+
+* **plugins/obfuscate-query-string:** remove unused var assignment ([#1154](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1154)) ([e8c3197](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/e8c3197da0d1ea66edcb0a929c580b6911658a47))
+
+
+### Miscellaneous
+
+* ignore bun lockfile ([#1151](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1151)) ([18eceda](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/18ecedabe3c95137934cda064500883ee5f2c693))
+* **package:** add funding url ([3f05c86](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/3f05c868725057c28bf1d389360ab8dd0d58ab43))
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint from 8.35.0 to 8.36.0 ([#1164](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1164)) ([9ab6f70](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/9ab6f70fd52a776a546c4614e37e3887dd7f5545))
+* **deps-dev:** bump eslint-config-prettier from 8.6.0 to 8.7.0 ([#1163](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1163)) ([5e347bc](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/5e347bcb7f60ed9b76a953d7332eccf241c26dc5))
+* **deps-dev:** bump eslint-plugin-jsdoc from 40.0.0 to 40.0.2 ([#1160](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1160)) ([25fe4ef](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/25fe4eff13da207ed1a67946ed1e298aa9f7f071))
+* **deps-dev:** bump glob from 9.1.0 to 9.3.0 ([#1159](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1159)) ([429c829](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/429c829d83c7daf1a03deb7f7c2f2084dc21369f))
+* **deps-dev:** bump jest from 29.4.3 to 29.5.0 ([#1155](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1155)) ([53f12d1](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/53f12d1d6c6d1bb557ba95e99c4cbce9d9177232))
+* **deps-dev:** bump nodemon from 2.0.20 to 2.0.21 ([#1161](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1161)) ([e7ecd51](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/e7ecd515330a1a5859989d53e932fee0353174b0))
+* **deps-dev:** bump pino-pretty from 9.4.0 to 10.0.0 ([#1158](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1158)) ([8295f83](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/8295f83b5ce42895afe7068aac80b6c9f4447297))
+* **deps-dev:** bump playwright from 1.31.1 to 1.31.2 ([#1156](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1156)) ([eb1c451](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/eb1c451b3f3f806daf8f8afbbb53f11af03f1425))
+* **deps:** bump @fastify/rate-limit from 7.6.0 to 8.0.0 ([#1162](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1162)) ([2309a45](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/2309a45c419878cbfc9ba3e693fed92660e8351c))
+* **deps:** bump coverallsapp/github-action from 1.2.3 to 1.2.4 ([#1148](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1148)) ([6e361df](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/6e361df065242558c9177e678a56bb3e3ccbc048))
+* **deps:** bump fastify from 4.13.0 to 4.14.1 ([#1157](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1157)) ([8aa81a4](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/8aa81a45f3f1d9f3a849e3881ac321ba8c40511a))
+* **deps:** use @blackpear/obfuscated-querystring over git repo ([#1153](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1153)) ([4fec139](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/4fec139e8e1398a6a2efb9d66dec5fec78744f60))
+* **docker:** remove git after node modules install ([#1149](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1149)) ([24f6216](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/24f6216c586c74b0a8407cbdfa161aae351bb231))
+
 ## [11.1.1](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v11.1.0...v11.1.1) (2023-03-01)
 
 
