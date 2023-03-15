@@ -62,8 +62,11 @@ async function checkLicenses(
 		start: options.start,
 	});
 
-	const copyLeftLicensesList = Object.keys(licenses).filter((license) =>
-		copyLeftLicenses.includes(licenses[license].licenses)
+	const copyLeftLicensesList = Object.keys(licenses).filter(
+		(license) =>
+			copyLeftLicenses.includes(licenses[license].licenses) &&
+			// ignore obfuscated-querystring as it is required for service functionality
+			/@blackpear\/obfuscated-querystring/.test(license) === false
 	);
 
 	if (copyLeftLicensesList.length > 0) {
