@@ -1,7 +1,5 @@
 /* eslint-disable security-node/detect-crlf */
 /* eslint-disable security/detect-object-injection */
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable no-console */
 const checker = require("license-checker");
 const copyLeftLicenses = require("spdx-copyleft");
 const { promisify } = require("util");
@@ -62,8 +60,11 @@ async function checkLicenses(
 		start: options.start,
 	});
 
-	const copyLeftLicensesList = Object.keys(licenses).filter((license) =>
-		copyLeftLicenses.includes(licenses[license].licenses)
+	const copyLeftLicensesList = Object.keys(licenses).filter(
+		(license) =>
+			copyLeftLicenses.includes(licenses[license].licenses) &&
+			// ignore obfuscated-querystring as it is required for service functionality
+			/@blackpear\/obfuscated-querystring/.test(license) === false
 	);
 
 	if (copyLeftLicensesList.length > 0) {
