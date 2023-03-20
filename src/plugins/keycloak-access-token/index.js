@@ -29,7 +29,7 @@ const request = require("axios").default;
  */
 async function plugin(server, options) {
 	// Do not add preHandler hook and attempt to retrieve access tokens if Keycloak not enabled
-	if (options?.enabled === true) {
+	if (options.enabled === true) {
 		const { requestToken, serviceAuthorisation } = options;
 
 		// See https://github.com/axios/axios#request-config
@@ -61,7 +61,7 @@ async function plugin(server, options) {
 				req.query.access_token = userAccessResponse.data.access_token;
 			} catch (err) {
 				// Log Keycloak error and redirect without access_token, user will have to manually login
-				req.log.error({ req, err }, err?.message);
+				req.log.error({ req, err }, err.message);
 			}
 		});
 	}
