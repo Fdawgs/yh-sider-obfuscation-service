@@ -436,7 +436,7 @@ describe("Configuration", () => {
 			const CORS_ALLOWED_HEADERS =
 				"Accept, Authorization, Content-Type, Origin, X-Requested-With";
 			const CORS_ALLOW_CREDENTIALS =
-				envVariables?.CORS_ALLOW_CREDENTIALS || "";
+				envVariables.CORS_ALLOW_CREDENTIALS || "";
 			const CORS_EXPOSED_HEADERS = "Location";
 			const CORS_MAX_AGE = 10;
 			const LOG_LEVEL = "trace";
@@ -472,7 +472,7 @@ describe("Configuration", () => {
 			expect(config.cors).toEqual({
 				origin: expected.origin,
 				allowedHeaders: CORS_ALLOWED_HEADERS,
-				credentials: expected?.credentials || false,
+				credentials: expected.credentials || false,
 				exposedHeaders: CORS_EXPOSED_HEADERS,
 				hideOptionsRoute: true,
 				maxAge: CORS_MAX_AGE,
@@ -501,10 +501,10 @@ describe("Configuration", () => {
 		const HOST = "0.0.0.0";
 		const PORT = 443;
 		const REDIRECT_URL = "https://nhs.uk";
-		const HTTPS_SSL_KEY_PATH = envVariables?.HTTPS_SSL_KEY_PATH || "";
-		const HTTPS_SSL_CERT_PATH = envVariables?.HTTPS_SSL_CERT_PATH || "";
-		const HTTPS_PFX_FILE_PATH = envVariables?.HTTPS_PFX_FILE_PATH || "";
-		const HTTPS_PFX_PASSPHRASE = envVariables?.HTTPS_PFX_PASSPHRASE || "";
+		const HTTPS_SSL_KEY_PATH = envVariables.HTTPS_SSL_KEY_PATH || "";
+		const HTTPS_SSL_CERT_PATH = envVariables.HTTPS_SSL_CERT_PATH || "";
+		const HTTPS_PFX_FILE_PATH = envVariables.HTTPS_PFX_FILE_PATH || "";
+		const HTTPS_PFX_PASSPHRASE = envVariables.HTTPS_PFX_PASSPHRASE || "";
 		const KC_ENABLED = false;
 		const OBFUSCATION_KEY_NAME = "k01";
 		const OBFUSCATION_KEY_VALUE = "0123456789";

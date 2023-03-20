@@ -21,7 +21,7 @@ async function plugin(server, options) {
 	};
 
 	server.addHook("onRequest", async (req) => {
-		const apiKey = req?.query[opts.queryStringKey];
+		const apiKey = req.query[opts.queryStringKey];
 
 		if (apiKey && opts.removeParam === true) {
 			delete req.query[opts.queryStringKey];
