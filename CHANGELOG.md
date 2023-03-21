@@ -2,6 +2,41 @@
 
 All notable changes to this project will be documented in this file.
 
+## [11.1.3](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v11.1.2...v11.1.3) (2023-03-21)
+
+
+### Bug fixes
+
+* **server:** premature closes crashing server ([5f16b15](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/5f16b15fb7155d7a64d0e6f9db1b68b15dc23fe1))
+
+
+### Improvements
+
+* remove optional chaining for first level properties ([#1171](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1171)) ([f371818](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/f3718181f69b4d60b5ca0d551b927a39044ad347))
+* **server:** convert sync async notfoundhandler to sync only ([#1169](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1169)) ([da63bae](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/da63bae8b48b3becda6ef4b0896a14157b7d5bc2))
+
+
+### Miscellaneous
+
+* **routes:** update schema inline comment re injection attacks ([#1172](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1172)) ([c02b69c](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/c02b69cc758aa306f9a9677e58f466dbbe8722b5))
+* **scripts/license-checker:** allow single dependency through ([1425486](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/142548696c9d4a119064a9dcb11d6747733f9055))
+* **scripts:** move esbuild to script dir ([c7d08d5](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/c7d08d5fae1d6dd3f366a39cd1a3b5d288e184e6))
+* **scripts:** remove redundant export ([868c4f3](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/868c4f39ff10a80a9c95f41633f87150eca781bc))
+* **scripts:** use js script to check licenses ([#1166](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1166)) ([c1b4256](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/c1b42567dd0cfa37ca0431b9ab0b4a270371f028))
+* **server:** inline comment re internal server error handling ([d181b54](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/d181b547a88dc6dc5db8b070ce53ffb3cac6cec2))
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint-config-prettier from 8.7.0 to 8.8.0 ([#1179](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1179)) ([782a936](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/782a936439a0b6ed65915639c6412da6c81b33dc))
+* **deps-dev:** bump eslint-plugin-jsdoc from 40.0.2 to 40.1.0 ([#1177](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1177)) ([a62c209](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/a62c209185b4d84157c888f8093fac7bcb2676ca))
+* **deps-dev:** bump glob from 9.3.0 to 9.3.1 ([#1175](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1175)) ([5691168](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/569116887e2c7eddd2c0423dc7617f5f3d0672a0))
+* **deps-dev:** bump prettier from 2.8.4 to 2.8.6 ([#1178](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1178)) ([0eea20f](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/0eea20fbcbc82044828fac7802140b2304465d25))
+* **deps:** bump @fastify/cors from 8.2.0 to 8.2.1 ([#1174](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1174)) ([4dd1cfc](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/4dd1cfc224fd03d84b3289de56a62e23bb1059de))
+* **deps:** bump coverallsapp/github-action from 1.2.4 to 2.0.0 ([#1173](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1173)) ([932bad9](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/932bad96bc687d743499c8c0f8689f3990da193f))
+* **deps:** bump fastify from 4.14.1 to 4.15.0 ([#1176](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1176)) ([8783bfe](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/8783bfeb849588d8792280e16d49a1222fed4df4))
+* **deps:** bump webpack from 5.75.0 to 5.76.1 ([#1165](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1165)) ([50e03ca](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/50e03cac258defa94b470c503572bd6380e984e5))
+
 ## [11.1.2](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v11.1.1...v11.1.2) (2023-03-14)
 
 
