@@ -105,7 +105,7 @@
 		"dotenv": "^16.0.3",
 		"env-schema": "^5.2.0",
 		"fast-querystring": "^1.1.1",
-		"fastify": "^4.14.1",
+		"fastify": "^4.15.0",
 		"fastify-disablecache": "^3.1.0",
 		"fastify-floc-off": "^2.1.0",
 		"fastify-json-to-xml": "^1.1.0",
