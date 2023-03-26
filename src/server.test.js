@@ -540,9 +540,10 @@ describe("Server deployment", () => {
 				test("Should return HTTP status code 400 if any required query string parameter is missing", async () => {
 					const results = await Promise.all(
 						Object.keys(altTestParams).map((key) => {
-							const scrubbedParams = { ...altTestParams };
-							// eslint-disable-next-line security/detect-object-injection
-							delete scrubbedParams[key];
+							const scrubbedParams = {
+								...altTestParams,
+								[key]: undefined,
+							};
 
 							return server
 								.inject({
