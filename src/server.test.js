@@ -691,8 +691,8 @@ describe("Server deployment", () => {
 					const heading = page.locator("h1 >> nth=0");
 					await heading.waitFor();
 
-					expect(await heading.textContent()).not.toEqual(
-						expect.stringMatching(/something\s*went\s*wrong/i)
+					expect(await heading.textContent()).not.toMatch(
+						/something\s*went\s*wrong/i
 					);
 
 					await page.close();
