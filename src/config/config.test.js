@@ -99,9 +99,7 @@ describe("Configuration", () => {
 		expect(config.fastifyInit.logger.formatters.level()).toEqual({
 			level: undefined,
 		});
-		expect(config.fastifyInit.logger.timestamp().substring(0, 7)).toBe(
-			',"time"'
-		);
+		expect(config.fastifyInit.logger.timestamp()).toMatch(/^,"time"/);
 
 		expect(config.fastifyInit.https).toBeUndefined();
 		expect(config.fastifyInit.http2).toBeUndefined();
@@ -191,9 +189,7 @@ describe("Configuration", () => {
 				frequency: "daily",
 			})
 		);
-		expect(config.fastifyInit.logger.timestamp().substring(0, 7)).toBe(
-			',"time"'
-		);
+		expect(config.fastifyInit.logger.timestamp()).toMatch(/^,"time"/);
 	});
 
 	test("Should return values according to environment variables - HTTPS (SSL cert) enabled and HTTP2 enabled", async () => {
@@ -283,9 +279,7 @@ describe("Configuration", () => {
 				size: LOG_ROTATION_MAX_SIZE,
 			})
 		);
-		expect(config.fastifyInit.logger.timestamp().substring(0, 7)).toBe(
-			',"time"'
-		);
+		expect(config.fastifyInit.logger.timestamp()).toMatch(/^,"time"/);
 
 		expect(config.fastifyInit.https).toEqual({
 			allowHTTP1: true,
