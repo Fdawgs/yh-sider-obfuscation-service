@@ -32,7 +32,7 @@ const redirectGetSchema = {
 			S.string()
 				.description("The Identifier for the patient")
 				.examples(["https://fhir.nhs.uk/Id/nhs-number|9999999999"])
-				.pattern(/^https:\/\/fhir\.nhs\.uk\/Id\/nhs-number\|\d{10}$/m)
+				.pattern(/^https:\/\/fhir\.nhs\.uk\/Id\/nhs-number\|\d{10}$/)
 		)
 		.prop(
 			"location",
@@ -42,7 +42,7 @@ const redirectGetSchema = {
 				)
 				.examples(["https://fhir.nhs.uk/Id/ods-organization-code|RA4"])
 				.pattern(
-					/^https:\/\/fhir\.nhs\.uk\/Id\/ods-organization-code\|[a-zA-Z0-9]{1,9}$/m
+					/^https:\/\/fhir\.nhs\.uk\/Id\/ods-organization-code\|[a-zA-Z0-9]{1,9}$/
 				)
 		)
 		.prop(
@@ -55,7 +55,7 @@ const redirectGetSchema = {
 				.pattern(
 					// See https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address
 					// eslint-disable-next-line security/detect-unsafe-regex
-					/^https:\/\/sider\.nhs\.uk\/auth\|[\w.!#$%&'*+/=?^`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/m
+					/^https:\/\/sider\.nhs\.uk\/auth\|[\w.!#$%&'*+/=?^`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
 				)
 		)
 		.required(["birthdate", "patient", "location", "practitioner"]),
