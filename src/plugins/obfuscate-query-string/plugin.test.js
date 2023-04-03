@@ -23,7 +23,7 @@ describe("Query string obfuscation plugin", () => {
 		await server.close();
 	});
 
-	test("Should obfuscate patient and birthdate parameters", async () => {
+	it("Obfuscates patient and birthdate parameters", async () => {
 		server.register(plugin, {
 			encryptionKey: {
 				name: "k01",

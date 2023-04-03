@@ -99,7 +99,7 @@ describe("Keycloak access token retrieval plugin", () => {
 		await server.close();
 	});
 
-	test("Should continue if Keycloak options are not defined", async () => {
+	it("Continues if Keycloak options are not defined", async () => {
 		await server.register(plugin).ready();
 
 		const response = await server.inject({
@@ -112,7 +112,7 @@ describe("Keycloak access token retrieval plugin", () => {
 		expect(response.statusCode).toBe(200);
 	});
 
-	test("Should return Keycloak access_token from mock server", async () => {
+	it("Returns Keycloak access_token from mock server", async () => {
 		await server.register(plugin, testKeycloakConfig).ready();
 
 		const response = await server.inject({
@@ -128,7 +128,7 @@ describe("Keycloak access token retrieval plugin", () => {
 		expect(response.statusCode).toBe(200);
 	});
 
-	test("Should continue if Keycloak endpoint config enabled but other options undefined", async () => {
+	it("Continues if Keycloak endpoint config enabled but other options undefined", async () => {
 		await server.register(plugin, { enabled: true }).ready();
 
 		const response = await server.inject({

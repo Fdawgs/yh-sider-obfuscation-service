@@ -306,7 +306,7 @@ describe("Server deployment", () => {
 				});
 
 				describe("/admin/healthcheck route", () => {
-					test("Should return `ok`", async () => {
+					it("Returns `ok`", async () => {
 						const response = await server.inject({
 							method: "GET",
 							url: "/admin/healthcheck",
@@ -325,7 +325,7 @@ describe("Server deployment", () => {
 
 					// Only applicable if CORS enabled
 					if (envVariables.CORS_ORIGIN) {
-						test("Should return response to CORS preflight request", async () => {
+						it("Returns response to CORS preflight request", async () => {
 							const response = await server.inject({
 								method: "OPTIONS",
 								url: "/admin/healthcheck",
@@ -355,7 +355,7 @@ describe("Server deployment", () => {
 						});
 					}
 
-					test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
+					it("Returns HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
 						const response = await server.inject({
 							method: "GET",
 							url: "/admin/healthcheck",
@@ -378,7 +378,7 @@ describe("Server deployment", () => {
 				});
 
 				describe("Undeclared route", () => {
-					test("Should return HTTP status code 404 if route not found", async () => {
+					it("Returns HTTP status code 404 if route not found", async () => {
 						const response = await server.inject({
 							method: "GET",
 							url: "/invalid",
@@ -460,7 +460,7 @@ describe("Server deployment", () => {
 			});
 
 			describe("/admin/healthcheck route", () => {
-				test("Should return `ok`", async () => {
+				it("Returns `ok`", async () => {
 					const response = await server.inject({
 						method: "GET",
 						url: "/admin/healthcheck",
@@ -474,7 +474,7 @@ describe("Server deployment", () => {
 					expect(response.statusCode).toBe(200);
 				});
 
-				test("Should return HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
+				it("Returns HTTP status code 406 if media type in `Accept` request header is unsupported", async () => {
 					const response = await server.inject({
 						method: "GET",
 						url: "/admin/healthcheck",
@@ -494,7 +494,7 @@ describe("Server deployment", () => {
 			});
 
 			describe("Undeclared route", () => {
-				test("Should return HTTP status code 404 if route not found", async () => {
+				it("Returns HTTP status code 404 if route not found", async () => {
 					const response = await server.inject({
 						method: "GET",
 						url: "/invalid",
@@ -514,7 +514,7 @@ describe("Server deployment", () => {
 			});
 
 			describe("/redirect route", () => {
-				test("Should redirect to 'redirectUrl' with required params present", async () => {
+				it("Redirects to 'redirectUrl' with required params present", async () => {
 					const response = await server.inject({
 						method: "GET",
 						url: "/redirect",
@@ -539,7 +539,7 @@ describe("Server deployment", () => {
 					expect(response.statusCode).toBe(302);
 				});
 
-				test("Should return HTTP status code 400 if any required query string parameter is missing", async () => {
+				it("Returns HTTP status code 400 if any required query string parameter is missing", async () => {
 					const results = await Promise.all(
 						Object.keys(altTestParams).map((key) => {
 							const scrubbedParams = {
@@ -563,7 +563,7 @@ describe("Server deployment", () => {
 					);
 				});
 
-				test("Should return HTTP status code 400 if any required query string parameter does not match expected pattern", async () => {
+				it("Returns HTTP status code 400 if any required query string parameter does not match expected pattern", async () => {
 					const results = await Promise.all(
 						Object.keys(altTestParams).map((key) => {
 							const scrubbedParams = {
@@ -587,7 +587,7 @@ describe("Server deployment", () => {
 					);
 				});
 
-				test("Should return HTTP status code 406 if content-type in `Accept` request header unsupported", async () => {
+				it("Returns HTTP status code 406 if content-type in `Accept` request header unsupported", async () => {
 					const response = await server.inject({
 						method: "GET",
 						url: "/redirect",
@@ -639,7 +639,7 @@ describe("Server deployment", () => {
 
 		describe("Content", () => {
 			describe("/docs route", () => {
-				test("Should return HTML", async () => {
+				it("Returns HTML", async () => {
 					const response = await server.inject({
 						method: "GET",
 						url: "/docs",
@@ -655,7 +655,7 @@ describe("Server deployment", () => {
 			});
 
 			describe("/public route", () => {
-				test("Should return image", async () => {
+				it("Returns image", async () => {
 					const response = await server.inject({
 						method: "GET",
 						url: "/public/images/icons/favicon.ico",
@@ -673,11 +673,11 @@ describe("Server deployment", () => {
 		describe("Frontend", () => {
 			// Webkit not tested as it is flakey in context of Playwright
 			// TODO: use `test.concurrent.each()` once it is no longer experimental
-			test.each([
+			it.each([
 				{ browser: chromium, name: "Chromium" },
 				{ browser: firefox, name: "Firefox" },
 			])(
-				"Should render docs page without error components - $name",
+				"Renders docs page without error components - $name",
 				async ({ browser }) => {
 					const browserType = await browser.launch();
 					const page = await browserType.newPage();
@@ -731,7 +731,7 @@ describe("Server deployment", () => {
 
 		describe("/redirect route", () => {
 			// eslint-disable-next-line jest/no-disabled-tests
-			test("Should return HTTP status code 401 if api_key query string param missing", async () => {
+			it("Returns HTTP status code 401 if api_key query string param missing", async () => {
 				const response = await server.inject({
 					method: "GET",
 					url: "/redirect",
@@ -751,7 +751,7 @@ describe("Server deployment", () => {
 				expect(response.statusCode).toBe(401);
 			});
 
-			test("Should redirect to 'redirectUrl' with api_key query string param", async () => {
+			it("Redirects to 'redirectUrl' with api_key query string param", async () => {
 				const response = await server.inject({
 					method: "GET",
 					url: "/redirect",
@@ -803,7 +803,7 @@ describe("Server deployment", () => {
 		});
 
 		describe("/error route", () => {
-			test("Should return HTTP status code 500", async () => {
+			it("Returns HTTP status code 500", async () => {
 				const response = await server.inject({
 					method: "GET",
 					url: "/error",
