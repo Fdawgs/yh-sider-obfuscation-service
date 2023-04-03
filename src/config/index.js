@@ -121,7 +121,10 @@ async function getConfig() {
 			.prop("PROC_LOAD_MAX_RSS_BYTES", S.anyOf([S.number(), S.null()]))
 
 			// Rate limiting
-			.prop("RATE_LIMIT_EXCLUDED_ARRAY", S.anyOf([S.string(), S.null()]))
+			.prop(
+				"RATE_LIMIT_EXCLUDED_ARRAY",
+				S.anyOf([S.string().pattern(/^\[.*\]$/), S.null()])
+			)
 			.prop(
 				"RATE_LIMIT_MAX_CONNECTIONS_PER_MIN",
 				S.anyOf([S.number(), S.null()])
@@ -160,10 +163,16 @@ async function getConfig() {
 			// Obfuscation
 			.prop("OBFUSCATION_KEY_NAME", S.string())
 			.prop("OBFUSCATION_KEY_VALUE", S.string())
-			.prop("OBFUSCATION_QUERYSTRING_KEY_ARRAY", S.string())
+			.prop(
+				"OBFUSCATION_QUERYSTRING_KEY_ARRAY",
+				S.string().pattern(/^\[.*\]$/)
+			)
 
 			// Query string API key auth
-			.prop("QUERY_STRING_API_KEY_ARRAY", S.anyOf([S.string(), S.null()]))
+			.prop(
+				"QUERY_STRING_API_KEY_ARRAY",
+				S.anyOf([S.string().pattern(/^\[\{.*\}\]$/), S.null()])
+			)
 
 			.required([
 				"REDIRECT_URL",
