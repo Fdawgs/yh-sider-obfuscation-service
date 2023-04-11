@@ -3,9 +3,9 @@ const plugin = require(".");
 
 const testParams = {
 	birthdate: "2018-08-01",
-	location: "https://fhir.nhs.uk/Id/ods-organization-code|RA4",
+	location: "https://fhir.nhs.uk/Id/ods-organization-code|RH5",
 	patient: `https://fhir.nhs.uk/Id/nhs-number|9999999999`,
-	practitioner: `https://sider.nhs.uk/auth|testFirstName.testLastName@ydh.nhs.uk`,
+	practitioner: `https://sider.nhs.uk/auth|testFirstName.testLastName@somersetft.nhs.uk`,
 };
 
 describe("Query string obfuscation plugin", () => {

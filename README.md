@@ -106,7 +106,7 @@ To adhere to Black Pear/NHS Somerset ICB's [contextual launch specification](htt
 
 Link URL: `<obfuscation service path>/redirect`
 
-Link expression: `"&"_##class(Custom.ENYH.Integration.ContextualLink.GenericPatientLink).BuildURLVars("patient=https://fhir.nhs.uk/Id/nhs-number|{NHSNumber}&birthdate={DateOfBirthISO8601}&location=https://fhir.nhs.uk/Id/ods-organization-code|RA4&practitioner=https://sider.nhs.uk/auth|{UserName}@ydh.nhs.uk")`
+Link expression: `"&"_##class(Custom.ENYH.Integration.ContextualLink.GenericPatientLink).BuildURLVars("patient=https://fhir.nhs.uk/Id/nhs-number|{NHSNumber}&birthdate={DateOfBirthISO8601}&location=https://fhir.nhs.uk/Id/ods-organization-code|RH5&practitioner=https://sider.nhs.uk/auth|{UserName}@somersetft.nhs.uk")`
 
 If query string auth is enabled using the `QUERY_STRING_API_KEY_ARRAY` environment variable, the link expression will need to include the `api_key` query string param with a valid API key.
 
