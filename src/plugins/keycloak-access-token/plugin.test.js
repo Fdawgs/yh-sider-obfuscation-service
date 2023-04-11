@@ -25,7 +25,7 @@ const testKeycloakConfig = {
 			client_secret: "mock-secret",
 			grant_type: "password",
 			password: "mock-password",
-			username: "mock-user@ydh.nhs.uk",
+			username: "mock-user@somersetft.nhs.uk",
 		},
 		url: "https://sso.ydh.nhs.uk/service-auth",
 	},
@@ -33,9 +33,9 @@ const testKeycloakConfig = {
 
 const testParams = {
 	birthdate: "2018-08-01",
-	location: "https://fhir.nhs.uk/Id/ods-organization-code|RA4",
+	location: "https://fhir.nhs.uk/Id/ods-organization-code|RH5",
 	patient: `https://fhir.nhs.uk/Id/nhs-number|9999999999`,
-	practitioner: `https://sider.nhs.uk/auth|testFirstName.testLastName@ydh.nhs.uk`,
+	practitioner: `https://sider.nhs.uk/auth|testFirstName.testLastName@somersetft.nhs.uk`,
 };
 
 describe("Keycloak access token retrieval plugin", () => {

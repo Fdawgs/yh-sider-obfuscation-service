@@ -98,13 +98,13 @@
 				{
 					"id": "pair_a399834e42304c88a75c449bf1aa63f9",
 					"name": "location",
-					"value": "https://fhir.nhs.uk/Id/ods-organization-code|RA4",
+					"value": "https://fhir.nhs.uk/Id/ods-organization-code|RH5",
 					"description": ""
 				},
 				{
 					"id": "pair_906172ce64764c98aca0f5b11082452a",
 					"name": "practitioner",
-					"value": "https://sider.nhs.uk/auth|frazer.smith@ydh.nhs.uk",
+					"value": "https://sider.nhs.uk/auth|frazer.smith@somersetft.nhs.uk",
 					"description": ""
 				}
 			],

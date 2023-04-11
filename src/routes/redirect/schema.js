@@ -40,7 +40,7 @@ const redirectGetSchema = {
 				.description(
 					"The Identifier of the organisation or site of the practitioner launching the app"
 				)
-				.examples(["https://fhir.nhs.uk/Id/ods-organization-code|RA4"])
+				.examples(["https://fhir.nhs.uk/Id/ods-organization-code|RH5"])
 				.pattern(
 					/^https:\/\/fhir\.nhs\.uk\/Id\/ods-organization-code\|[a-zA-Z0-9]{1,9}$/
 				)
@@ -51,7 +51,9 @@ const redirectGetSchema = {
 				.description(
 					"The Identifier of the practitioner launching the app"
 				)
-				.examples(["https://sider.nhs.uk/auth|frazer.smith@ydh.nhs.uk"])
+				.examples([
+					"https://sider.nhs.uk/auth|frazer.smith@somersetft.nhs.uk",
+				])
 				.pattern(
 					// See https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address
 					// eslint-disable-next-line security/detect-unsafe-regex

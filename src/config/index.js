@@ -277,7 +277,7 @@ async function getConfig() {
 						'<a href="https://yeovilhospital.co.uk/">Yeovil District Hospital NHSFT</a>\'s SIDeR contextual link obfuscation service, a Node.js application using the <a href="https://fastify.io/">Fastify web framework</a> and Black Pear\'s <a href="https://github.com/BlackPearSw/obfuscated-querystring/">obfuscated-querystring</a>.',
 					contact: {
 						name: "Author",
-						email: "frazer.smith@ydh.nhs.uk",
+						email: "frazer.smith@somersetft.nhs.uk",
 					},
 					license: {
 						name: license,

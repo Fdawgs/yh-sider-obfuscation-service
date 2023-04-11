@@ -101,9 +101,9 @@ const expResHeaders5xxErrors = {
 
 const testParams = {
 	birthdate: "2018-08-01",
-	location: "https://fhir.nhs.uk/Id/ods-organization-code|RA4",
+	location: "https://fhir.nhs.uk/Id/ods-organization-code|RH5",
 	patient: `https://fhir.nhs.uk/Id/nhs-number|9999999999`,
-	practitioner: `https://sider.nhs.uk/auth|testFirstName.testLastName@ydh.nhs.uk`,
+	practitioner: `https://sider.nhs.uk/auth|testFirstName.testLastName@somersetft.nhs.uk`,
 	TPAGID: randomUUID(),
 	FromIconProfile: 1,
 	NOUNLOCK: 1,
@@ -531,7 +531,7 @@ describe("Server deployment", () => {
 
 					expect(resQueryString).toMatchObject({
 						location:
-							"https://fhir.nhs.uk/Id/ods-organization-code|RA4",
+							"https://fhir.nhs.uk/Id/ods-organization-code|RH5",
 						practitioner: testParams.practitioner,
 						enc: expect.any(String),
 					});
@@ -768,7 +768,7 @@ describe("Server deployment", () => {
 
 				expect(resQueryString).toMatchObject({
 					location:
-						"https://fhir.nhs.uk/Id/ods-organization-code|RA4",
+						"https://fhir.nhs.uk/Id/ods-organization-code|RH5",
 					practitioner: testParams.practitioner,
 					enc: expect.any(String),
 				});
