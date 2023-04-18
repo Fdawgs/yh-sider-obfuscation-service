@@ -1,21 +1,21 @@
-<a href="https://yeovilhospital.co.uk/">
-	<img alttext="Yeovil District Hospital logo" src="https://github.com/Fdawgs/ydh-logos/raw/HEAD/images/ydh-full-logo-transparent-background.svg" width="480" />
+<a href="https://somersetft.nhs.uk/yeovilhospital/">
+	<img alttext="Somerset NHSFT logo" src="https://github.com/TauntonandSomersetNHSTrust/sft-logos/raw/HEAD/images/sft-nhsft-logo-left-aligned-transparent-background.png" width="480" />
 </a>
 
-# Yeovil District Hospital NHS Foundation Trust - SIDeR Contextual Link Obfuscation Service
+# Yeovil Hospital - SIDeR Contextual Link Obfuscation Service
 
 [![GitHub Release](https://img.shields.io/github/release/Fdawgs/ydh-sider-obfuscation-service.svg)](https://github.com/Fdawgs/ydh-sider-obfuscation-service/releases/latest/)
 ![Build Status](https://github.com/Fdawgs/ydh-sider-obfuscation-service/workflows/CI/badge.svg?branch=main)
 [![Coverage Status](https://coveralls.io/repos/github/Fdawgs/ydh-sider-obfuscation-service/badge.svg?branch=main)](https://coveralls.io/github/Fdawgs/ydh-sider-obfuscation-service?branch=main)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat)](https://github.com/prettier/prettier)
 
-> Yeovil District Hospital NHSFT's SIDeR contextual link obfuscation service
+> Yeovil Hospital's SIDeR contextual link obfuscation service
 
 ## Overview
 
-This is [Yeovil District Hospital NHSFT](https://yeovilhospital.co.uk/)'s SIDeR contextual link obfuscation service, a Node.js application using the [Fastify](https://fastify.io/) web framework and Black Pear's [obfuscated-querystring](https://github.com/BlackPearSw/obfuscated-querystring).
+This is [Yeovil Hospital](https://somersetft.nhs.uk/yeovilhospital/)'s SIDeR contextual link obfuscation service, a Node.js application using the [Fastify](https://fastify.io/) web framework and Black Pear's [obfuscated-querystring](https://github.com/BlackPearSw/obfuscated-querystring).
 
-This service was created out of a need for query string parameters containing personally identifiable data [to be obfuscated](https://github.com/Somerset-SIDeR-Programme/SIDeR-interop-patterns/wiki/query-string-obfuscation) when users click on the [SIDeR](https://nhssomerset.nhs.uk/about-us/digital-projects/sider/) contextual link within Yeovil District Hospital NHSFT's Patient Administration System (PAS), InterSystems TrakCare.
+This service was created out of a need for query string parameters containing personally identifiable data [to be obfuscated](https://github.com/Somerset-SIDeR-Programme/SIDeR-interop-patterns/wiki/query-string-obfuscation) when users click on the [SIDeR](https://nhssomerset.nhs.uk/about-us/digital-projects/sider/) contextual link within Yeovil Hospital's Patient Administration System (PAS), InterSystems TrakCare.
 
 A video demonstrating the contextual link in action can be found [here](./docs/videos/).
 
@@ -100,7 +100,7 @@ The underlying OpenAPI definitions are found at `/docs/openapi`.
 
 <img src="https://raw.githubusercontent.com/Fdawgs/ydh-sider-obfuscation-service/main/docs/images/ydh_trakcare_sider_contextual_link.png" width="474">
 
-This section is for members of the Solutions Development and Application Support teams at Yeovil District Hospital NHSFT, or other NHS Trusts that use InterSystems TrakCare as their PAS.
+This section is for members of the Solutions Development and Application Support teams at Yeovil Hospital, or other NHS Trusts that use InterSystems TrakCare as their PAS.
 
 To adhere to Black Pear/NHS Somerset ICB's [contextual launch specification](https://github.com/Somerset-SIDeR-Programme/SIDeR-interop-patterns/wiki/contextual-launch), the SIDeR contextual link's icon profile values in TrakCare must be set to the following:
 

@@ -274,7 +274,7 @@ async function getConfig() {
 				info: {
 					title: "SIDeR Contextual Link Obfuscation Service",
 					description:
-						'<a href="https://yeovilhospital.co.uk/">Yeovil District Hospital NHSFT</a>\'s SIDeR contextual link obfuscation service, a Node.js application using the <a href="https://fastify.io/">Fastify web framework</a> and Black Pear\'s <a href="https://github.com/BlackPearSw/obfuscated-querystring/">obfuscated-querystring</a>.',
+						'<a href="https://somersetft.nhs.uk/yeovilhospital/">Yeovil Hospital</a>\'s SIDeR contextual link obfuscation service, a Node.js application using the <a href="https://fastify.io/">Fastify web framework</a> and Black Pear\'s <a href="https://github.com/BlackPearSw/obfuscated-querystring/">obfuscated-querystring</a>.',
 					contact: {
 						name: "Author",
 						email: "frazer.smith@somersetft.nhs.uk",
@@ -286,10 +286,9 @@ async function getConfig() {
 					version,
 					// Redoc specific extension to support loading image in docs
 					"x-logo": {
-						url: "/public/images/ydh-y-logo-transparent-background-wide-canvas.png",
-						backgroundColor: "#6D3176",
-						altText:
-							"Yeovil District Hospital NHS Foundation Trust logo",
+						url: "/public/images/sft-s-logo-transparent-background-wide-canvas.png",
+						backgroundColor: "#005EB8",
+						altText: "Somerset NHS Foundation Trust Logo",
 					},
 				},
 				// Components object populated by shared schemas at launch
