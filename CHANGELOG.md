@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [11.1.5](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v11.1.4...v11.1.5) (2023-04-18)
+
+
+### Improvements
+
+* **server:** replace json parse stringify with `structuredClone()` ([#1213](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1213)) ([ff34086](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/ff34086dccd229a41c9c8b47853b3fddb7db33e2))
+
+
+### Miscellaneous
+
+* **license:** add somerset nhsft ([ed28286](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/ed28286023ceca7cb08bdb1b6ee5c45c19760609))
+* replace ydh nhsft branding and links with somerset nhsft ([#1214](https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues/1214)) ([436aed8](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/436aed88f3d622f7cd05fc507e1747f88cf3d433))
+* update ydh org code and email domain ([4bb1225](https://github.com/Fdawgs/ydh-sider-obfuscation-service/commit/4bb122576b11c28a39a09f6c3ac3d72ddcca5056))
+
 ## [11.1.4](https://github.com/Fdawgs/ydh-sider-obfuscation-service/compare/v11.1.3...v11.1.4) (2023-04-04)
 
 
