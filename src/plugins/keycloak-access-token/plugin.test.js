@@ -17,7 +17,7 @@ const testKeycloakConfig = {
 			requested_token_type:
 				"urn:ietf:params:oauth:token-type:access_token",
 		},
-		url: "https://sso.ydh.nhs.uk/token",
+		url: "https://sso.somersetft.nhs.uk/token",
 	},
 	serviceAuthorisation: {
 		form: {
@@ -27,7 +27,7 @@ const testKeycloakConfig = {
 			password: "mock-password",
 			username: "mock-user@somersetft.nhs.uk",
 		},
-		url: "https://sso.ydh.nhs.uk/service-auth",
+		url: "https://sso.somersetft.nhs.uk/service-auth",
 	},
 };
 
@@ -44,7 +44,7 @@ describe("Keycloak access token retrieval plugin", () => {
 	beforeAll(() => {
 		nock.disableNetConnect();
 
-		nock("https://sso.ydh.nhs.uk")
+		nock("https://sso.somersetft.nhs.uk")
 			.defaultReplyHeaders({
 				"cache-control": "no-store",
 				"content-type": "application/json",
