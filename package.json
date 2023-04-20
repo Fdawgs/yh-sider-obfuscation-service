@@ -1,12 +1,12 @@
 {
-	"name": "ydh-sider-obfuscation-service",
+	"name": "yh-sider-obfuscation-service",
 	"version": "11.1.4",
 	"description": "Yeovil Hospital's SIDeR contextual link obfuscation service",
 	"main": "dist/app.js",
-	"repository": "git+https://github.com/Fdawgs/ydh-sider-obfuscation-service.git",
-	"homepage": "https://github.com/Fdawgs/ydh-sider-obfuscation-service",
+	"repository": "git+https://github.com/Fdawgs/yh-sider-obfuscation-service.git",
+	"homepage": "https://github.com/Fdawgs/yh-sider-obfuscation-service",
 	"bugs": {
-		"url": "https://github.com/Fdawgs/ydh-sider-obfuscation-service/issues"
+		"url": "https://github.com/Fdawgs/yh-sider-obfuscation-service/issues"
 	},
 	"license": "MIT",
 	"author": "Frazer Smith <frazer.smith@somersetft.nhs.uk>",

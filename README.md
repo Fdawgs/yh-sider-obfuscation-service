@@ -4,9 +4,9 @@
 
 # Yeovil Hospital - SIDeR Contextual Link Obfuscation Service
 
-[![GitHub Release](https://img.shields.io/github/release/Fdawgs/ydh-sider-obfuscation-service.svg)](https://github.com/Fdawgs/ydh-sider-obfuscation-service/releases/latest/)
-![Build Status](https://github.com/Fdawgs/ydh-sider-obfuscation-service/workflows/CI/badge.svg?branch=main)
-[![Coverage Status](https://coveralls.io/repos/github/Fdawgs/ydh-sider-obfuscation-service/badge.svg?branch=main)](https://coveralls.io/github/Fdawgs/ydh-sider-obfuscation-service?branch=main)
+[![GitHub Release](https://img.shields.io/github/release/Fdawgs/yh-sider-obfuscation-service.svg)](https://github.com/Fdawgs/yh-sider-obfuscation-service/releases/latest/)
+![Build Status](https://github.com/Fdawgs/yh-sider-obfuscation-service/workflows/CI/badge.svg?branch=main)
+[![Coverage Status](https://coveralls.io/repos/github/Fdawgs/yh-sider-obfuscation-service/badge.svg?branch=main)](https://coveralls.io/github/Fdawgs/yh-sider-obfuscation-service?branch=main)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat)](https://github.com/prettier/prettier)
 
 > Yeovil Hospital's SIDeR contextual link obfuscation service
@@ -31,7 +31,7 @@ These are only required if running the API outside of Docker:
 
 Perform the following steps before deployment:
 
-1. Download and extract the [latest release asset](https://github.com/Fdawgs/ydh-sider-obfuscation-service/releases/latest)
+1. Download and extract the [latest release asset](https://github.com/Fdawgs/yh-sider-obfuscation-service/releases/latest)
 2. Navigate to the extracted directory
 3. Make a copy of `.env.template` in the root directory and rename it to `.env`
 4. Configure the application using the environment variables in `.env`
@@ -92,13 +92,13 @@ If using a Microsoft Windows OS utilise [pm2-installer](https://github.com/jesse
 
 API documentation can be found at `/docs`:
 
-<img alttext="Screenshot of SIDeR Contextual Link Obfuscation Service documentation page" src="https://raw.githubusercontent.com/Fdawgs/ydh-sider-obfuscation-service/main/docs/images/api_documentation_screenshot.png" width="720">
+<img alttext="Screenshot of SIDeR Contextual Link Obfuscation Service documentation page" src="https://raw.githubusercontent.com/Fdawgs/yh-sider-obfuscation-service/main/docs/images/api_documentation_screenshot.png" width="720">
 
 The underlying OpenAPI definitions are found at `/docs/openapi`.
 
 ### Contextual link in PAS (TrakCare)
 
-<img src="https://raw.githubusercontent.com/Fdawgs/ydh-sider-obfuscation-service/main/docs/images/ydh_trakcare_sider_contextual_link.png" width="474">
+<img src="https://raw.githubusercontent.com/Fdawgs/yh-sider-obfuscation-service/main/docs/images/yh_trakcare_sider_contextual_link.png" width="474">
 
 This section is for members of the Solutions Development and Application Support teams at Yeovil Hospital, or other NHS Trusts that use InterSystems TrakCare as their PAS.
 
@@ -112,7 +112,7 @@ If query string auth is enabled using the `QUERY_STRING_API_KEY_ARRAY` environme
 
 #### Contextual link icon
 
-<img src="https://raw.githubusercontent.com/Fdawgs/ydh-sider-obfuscation-service/main/docs/images/SIDeR_32.png">
+<img src="https://raw.githubusercontent.com/Fdawgs/yh-sider-obfuscation-service/main/docs/images/SIDeR_32.png">
 
 The icon itself can be found in the root of [the images folder](./docs/images/).
 
@@ -132,4 +132,4 @@ Please adhere to this project's [Code of Conduct](./CODE_OF_CONDUCT.md) when con
 
 ## License
 
-`ydh-sider-obfuscation-service` is licensed under the [MIT](./LICENSE) license.
+`yh-sider-obfuscation-service` is licensed under the [MIT](./LICENSE) license.
