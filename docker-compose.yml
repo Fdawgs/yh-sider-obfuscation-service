@@ -1,6 +1,6 @@
 services:
     app:
-        container_name: ydh-sider-obfuscation-service
+        container_name: yh-sider-obfuscation-service
         build:
             context: .
         deploy:
@@ -25,7 +25,7 @@ services:
             # See https://github.com/opencontainers/image-spec/blob/main/annotations.md
             org.opencontainers.image.authors: Frazer Smith <frazer.smith@somersetft.nhs.uk>
             org.opencontainers.image.licenses: MIT
-            org.opencontainers.image.url: https://github.com/Fdawgs/ydh-sider-obfuscation-service
+            org.opencontainers.image.url: https://github.com/Fdawgs/yh-sider-obfuscation-service
         logging:
             options:
                 max-file: "${LOG_ROTATION_MAX_LOGS:-10}"

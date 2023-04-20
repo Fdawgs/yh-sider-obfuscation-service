@@ -126,7 +126,7 @@ jobs:
                   npm run jest:coverage
 
             - name: Coveralls parallel
-              if: github.repository == 'Fdawgs/ydh-sider-obfuscation-service'
+              if: github.repository == 'Fdawgs/yh-sider-obfuscation-service'
               uses: coverallsapp/github-action@v2.0.0
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -192,7 +192,7 @@ jobs:
         needs: unit-tests
         if: >
             github.event.pull_request.draft == false &&
-            github.repository == 'Fdawgs/ydh-sider-obfuscation-service'
+            github.repository == 'Fdawgs/yh-sider-obfuscation-service'
         runs-on: ubuntu-latest
         steps:
             - name: Coveralls finished
