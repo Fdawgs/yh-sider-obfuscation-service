@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [11.1.6](https://github.com/Fdawgs/yh-sider-obfuscation-service/compare/v11.1.5...v11.1.6) (2023-04-24)
+
+
+### Documentation
+
+* **readme:** add unmaintained note ([6271a07](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/6271a0711bab3c454859f5d78c199a88365c15eb))
+
 ## [11.1.5](https://github.com/Fdawgs/yh-sider-obfuscation-service/compare/v11.1.4...v11.1.5) (2023-04-24)
 
 
