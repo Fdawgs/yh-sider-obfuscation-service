@@ -108,7 +108,7 @@ describe("Keycloak access token retrieval plugin", () => {
 			query: testParams,
 		});
 
-		expect(JSON.parse(response.payload)).toEqual(testParams);
+		expect(JSON.parse(response.body)).toEqual(testParams);
 		expect(response.statusCode).toBe(200);
 	});
 
@@ -121,7 +121,7 @@ describe("Keycloak access token retrieval plugin", () => {
 			query: testParams,
 		});
 
-		expect(JSON.parse(response.payload)).toEqual({
+		expect(JSON.parse(response.body)).toEqual({
 			...testParams,
 			access_token: "mock-access-token",
 		});
@@ -137,7 +137,7 @@ describe("Keycloak access token retrieval plugin", () => {
 			query: testParams,
 		});
 
-		expect(JSON.parse(response.payload)).toEqual(testParams);
+		expect(JSON.parse(response.body)).toEqual(testParams);
 		expect(response.statusCode).toBe(200);
 	});
 });
