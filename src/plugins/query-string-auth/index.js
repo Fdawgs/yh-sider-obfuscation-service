@@ -5,7 +5,7 @@ const fp = require("fastify-plugin");
  * @description On-Request plugin that checks request query string API key param is in allowed list.
  * @param {object} server - Fastify instance.
  * @param {object} options - Plugin config values.
- * @param {object[]} options.apiKeys- Array or Set containing allowed API keys.
+ * @param {object[]|Set<object>} options.apiKeys - Array or Set of objects containing allowing API keys.
  * @param {string} options.apiKeys[].clientName - Name of client or service associated with API key.
  * @param {string} options.apiKeys[].value- API key value.
  * @param {boolean} [options.removeParam=true] - Remove API key param from query string after it has been checked.
