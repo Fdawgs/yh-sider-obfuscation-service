@@ -10,9 +10,14 @@ const accepts = ["text/html"];
 /**
  * @author Frazer Smith
  * @description Sets routing options for server.
- * @param {object} server - Fastify instance.
+ * @param {import("fastify").FastifyInstance} server - Fastify instance.
  * @param {object} options - Route config values.
  * @param {object} options.cors - CORS settings.
+ * @param {object} options.obfuscation - Obfuscation settings.
+ * @param {object} options.obfuscation.encryptionKey - Object containing encryption key values.
+ * @param {string} options.obfuscation.encryptionKey.name - Encryption key name.
+ * @param {string} options.obfuscation.encryptionKey.value - Encryption key value.
+ * @param {Array<string>} options.obfuscation.obfuscate - Query string params that should be obfuscated.
  * @param {string} options.redirectUrl - SIDeR service URL.
  * @param {*=} options.queryStringApiKeys - Apply `apiKey` security scheme to route if defined.
  */

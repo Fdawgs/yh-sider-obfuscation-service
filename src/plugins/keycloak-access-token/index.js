@@ -6,25 +6,25 @@ const request = require("axios").default;
 /**
  * @author Frazer Smith
  * @description Pre-handler plugin that retrieves Keycloak access token for passed user.
- * @param {object} server - Fastify instance.
+ * @param {import("fastify").FastifyInstance} server - Fastify instance.
  * @param {object} options - Plugin config values.
  * @param {boolean=} options.enabled - Toggle to enable or disable use of Keycloak.
- * @param {object} options.serviceAuthorisation
- * @param {object} options.serviceAuthorisation.form
- * @param {string} options.serviceAuthorisation.form.client_id
- * @param {string} options.serviceAuthorisation.form.client_secret
- * @param {string} options.serviceAuthorisation.form.grant_type
- * @param {string} options.serviceAuthorisation.form.password
- * @param {string} options.serviceAuthorisation.form.username
- * @param {string} options.serviceAuthorisation.url
- * @param {object} options.requestToken
- * @param {object} options.requestToken.form
- * @param {string} options.requestToken.form.audience
- * @param {string} options.requestToken.form.client_id
- * @param {string} options.requestToken.form.client_secret
- * @param {string} options.requestToken.form.grant_type
- * @param {string} options.requestToken.form.requested_token_type
- * @param {string} options.requestToken.url
+ * @param {object=} options.serviceAuthorisation
+ * @param {object=} options.serviceAuthorisation.form
+ * @param {string=} options.serviceAuthorisation.form.client_id
+ * @param {string=} options.serviceAuthorisation.form.client_secret
+ * @param {string=} options.serviceAuthorisation.form.grant_type
+ * @param {string=} options.serviceAuthorisation.form.password
+ * @param {string=} options.serviceAuthorisation.form.username
+ * @param {string=} options.serviceAuthorisation.url
+ * @param {object=} options.requestToken
+ * @param {object=} options.requestToken.form
+ * @param {string=} options.requestToken.form.audience
+ * @param {string=} options.requestToken.form.client_id
+ * @param {string=} options.requestToken.form.client_secret
+ * @param {string=} options.requestToken.form.grant_type
+ * @param {string=} options.requestToken.form.requested_token_type
+ * @param {string=} options.requestToken.url
  * @see https://github.com/keycloak/keycloak-documentation/blob/main/securing_apps/topics/token-exchange/token-exchange.adoc
  */
 async function plugin(server, options) {

@@ -5,7 +5,7 @@ const { obfuscate } = require("@blackpear/obfuscated-querystring/lib");
 /**
  * @author Frazer Smith
  * @description Pre-handler plugin that obfuscates request query string params.
- * @param {object} server - Fastify instance.
+ * @param {import("fastify").FastifyInstance} server - Fastify instance.
  * @param {object} options - Plugin config values.
  * @param {object} options.encryptionKey - Object containing encryption key values.
  * @param {string} options.encryptionKey.name - Encryption key name.

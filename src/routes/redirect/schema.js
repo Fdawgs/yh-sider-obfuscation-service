@@ -61,7 +61,6 @@ const redirectGetSchema = {
 				)
 		)
 		.required(["birthdate", "patient", "location", "practitioner"]),
-
 	response: {
 		302: {
 			description: "Found",
