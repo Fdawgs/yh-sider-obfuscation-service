@@ -37,7 +37,7 @@ describe("Query string auth plugin", () => {
 			query: testParams,
 		});
 
-		expect(JSON.parse(response.body)).toEqual({});
+		expect(JSON.parse(response.body)).toStrictEqual({});
 		expect(response.statusCode).toBe(200);
 	});
 
@@ -56,7 +56,7 @@ describe("Query string auth plugin", () => {
 			query: testParams,
 		});
 
-		expect(JSON.parse(response.body)).toEqual({ auth: "testKey" });
+		expect(JSON.parse(response.body)).toStrictEqual({ auth: "testKey" });
 		expect(response.statusCode).toBe(200);
 	});
 
@@ -74,7 +74,7 @@ describe("Query string auth plugin", () => {
 			query: testParams,
 		});
 
-		expect(JSON.parse(response.body)).toEqual({});
+		expect(JSON.parse(response.body)).toStrictEqual({});
 		expect(response.statusCode).toBe(200);
 	});
 
@@ -92,7 +92,7 @@ describe("Query string auth plugin", () => {
 			query: testParams,
 		});
 
-		expect(JSON.parse(response.body)).toEqual({
+		expect(JSON.parse(response.body)).toStrictEqual({
 			error: "Unauthorized",
 			message: "Unauthorized",
 			statusCode: 401,
