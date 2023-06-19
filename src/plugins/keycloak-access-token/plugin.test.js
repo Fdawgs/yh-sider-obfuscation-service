@@ -90,13 +90,13 @@ describe("Keycloak access token retrieval plugin", () => {
 		});
 	});
 
+	afterEach(async () => {
+		await server.close();
+	});
+
 	afterAll(() => {
 		nock.cleanAll();
 		nock.enableNetConnect();
-	});
-
-	afterEach(async () => {
-		await server.close();
 	});
 
 	it("Continues if Keycloak options are not defined", async () => {
