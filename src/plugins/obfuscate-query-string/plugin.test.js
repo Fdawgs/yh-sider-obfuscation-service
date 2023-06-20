@@ -40,7 +40,7 @@ describe("Query string obfuscation plugin", () => {
 			query: testParams,
 		});
 
-		expect(JSON.parse(response.body)).toEqual({
+		expect(JSON.parse(response.body)).toStrictEqual({
 			location: testParams.location,
 			practitioner: testParams.practitioner,
 			enc: expect.any(String),

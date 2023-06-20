@@ -1,7 +1,7 @@
 /* eslint-disable jsdoc/require-param-description */
 const fp = require("fastify-plugin");
 const qs = require("fast-querystring");
-const request = require("axios").default;
+const { post } = require("axios").default;
 
 /**
  * @author Frazer Smith
@@ -41,14 +41,14 @@ async function plugin(server, options) {
 		server.addHook("preHandler", async (req) => {
 			try {
 				// Service authorisation to retrieve subject access token
-				const serviceAuthResponse = await request.post(
+				const serviceAuthResponse = await post(
 					serviceAuthorisation.url,
 					qs.stringify(serviceAuthorisation.form),
 					axiosOptions
 				);
 
 				// Request access token for user
-				const userAccessResponse = await request.post(
+				const userAccessResponse = await post(
 					requestToken.url,
 					qs.stringify({
 						// Expects the query string practitioner value to be in [system]|[code] format

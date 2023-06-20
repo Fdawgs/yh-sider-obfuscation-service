@@ -90,13 +90,13 @@ describe("Keycloak access token retrieval plugin", () => {
 		});
 	});
 
+	afterEach(async () => {
+		await server.close();
+	});
+
 	afterAll(() => {
 		nock.cleanAll();
 		nock.enableNetConnect();
-	});
-
-	afterEach(async () => {
-		await server.close();
 	});
 
 	it("Continues if Keycloak options are not defined", async () => {
@@ -108,7 +108,7 @@ describe("Keycloak access token retrieval plugin", () => {
 			query: testParams,
 		});
 
-		expect(JSON.parse(response.body)).toEqual(testParams);
+		expect(JSON.parse(response.body)).toStrictEqual(testParams);
 		expect(response.statusCode).toBe(200);
 	});
 
@@ -121,7 +121,7 @@ describe("Keycloak access token retrieval plugin", () => {
 			query: testParams,
 		});
 
-		expect(JSON.parse(response.body)).toEqual({
+		expect(JSON.parse(response.body)).toStrictEqual({
 			...testParams,
 			access_token: "mock-access-token",
 		});
@@ -137,7 +137,7 @@ describe("Keycloak access token retrieval plugin", () => {
 			query: testParams,
 		});
 
-		expect(JSON.parse(response.body)).toEqual(testParams);
+		expect(JSON.parse(response.body)).toStrictEqual(testParams);
 		expect(response.statusCode).toBe(200);
 	});
 });
