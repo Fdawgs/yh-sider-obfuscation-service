@@ -2,7 +2,7 @@ require("dotenv").config();
 
 const addFormats = require("ajv-formats");
 const envSchema = require("env-schema");
-const S = require("fluent-json-schema");
+const S = require("fluent-json-schema").default;
 const fs = require("fs/promises");
 const path = require("upath");
 const pino = require("pino");
