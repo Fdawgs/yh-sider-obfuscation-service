@@ -70,7 +70,7 @@ describe("Keycloak access token retrieval plugin", () => {
 				session_state: "mock-session-state",
 				scope: "profile email",
 			})
-			.post("/token", /subject_token=mock-access-token-authorised/)
+			.post("/token", /subject_token=mock-access-token-authorised/u)
 			.reply(200, {
 				access_token: "mock-access-token",
 				expires_in: 900,
