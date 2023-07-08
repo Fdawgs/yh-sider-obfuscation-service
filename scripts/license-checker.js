@@ -59,7 +59,7 @@ async function checkLicenses() {
 		(license) =>
 			copyLeftLicenses.includes(licenses[license].licenses) &&
 			// ignore obfuscated-querystring as it is required for service functionality
-			/@blackpear\/obfuscated-querystring/.test(license) === false
+			/@blackpear\/obfuscated-querystring/u.test(license) === false
 	);
 
 	if (copyLeftLicensesList.length > 0) {
