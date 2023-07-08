@@ -1,3 +1,5 @@
+"use strict";
+
 require("dotenv").config();
 
 const addFormats = require("ajv-formats").default;

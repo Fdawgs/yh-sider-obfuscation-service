@@ -1,3 +1,5 @@
+"use strict";
+
 const fp = require("fastify-plugin");
 const qs = require("fast-querystring");
 const { obfuscate } = require("@blackpear/obfuscated-querystring/lib");
