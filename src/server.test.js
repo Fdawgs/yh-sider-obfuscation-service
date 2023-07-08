@@ -1,3 +1,5 @@
+"use strict";
+
 const { chromium, firefox } = require("playwright");
 const { randomUUID } = require("crypto");
 const Fastify = require("fastify");

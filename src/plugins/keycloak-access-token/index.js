@@ -1,4 +1,7 @@
 /* eslint-disable jsdoc/require-param-description */
+
+"use strict";
+
 const fp = require("fastify-plugin");
 const qs = require("fast-querystring");
 const { post } = require("axios").default;
