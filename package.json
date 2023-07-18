@@ -106,7 +106,7 @@
 		"@fastify/sensible": "^5.2.0",
 		"@fastify/static": "^6.10.2",
 		"@fastify/swagger": "^8.8.0",
-		"@fastify/under-pressure": "^8.2.0",
+		"@fastify/under-pressure": "^8.3.0",
 		"ajv-formats": "^2.1.1",
 		"axios": "^1.4.0",
 		"dotenv": "^16.3.1",
