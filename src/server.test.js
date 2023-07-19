@@ -65,7 +65,7 @@ delete expResHeadersHtmlStatic.expires;
 delete expResHeadersHtmlStatic.pragma;
 delete expResHeadersHtmlStatic["surrogate-control"];
 
-const expeResHeadersPublicImage = {
+const expResHeadersPublicImage = {
 	...expResHeaders,
 	"accept-ranges": "bytes",
 	"cache-control": "public, max-age=31536000, immutable",
@@ -75,9 +75,9 @@ const expeResHeadersPublicImage = {
 	"last-modified": expect.any(String),
 	vary: "accept-encoding",
 };
-delete expeResHeadersPublicImage.expires;
-delete expeResHeadersPublicImage.pragma;
-delete expeResHeadersPublicImage["surrogate-control"];
+delete expResHeadersPublicImage.expires;
+delete expResHeadersPublicImage.pragma;
+delete expResHeadersPublicImage["surrogate-control"];
 
 const expResHeadersJson = {
 	...expResHeaders,
@@ -694,7 +694,7 @@ describe("Server deployment", () => {
 						},
 					});
 
-					expect(response.headers).toEqual(expeResHeadersPublicImage);
+					expect(response.headers).toEqual(expResHeadersPublicImage);
 					expect(response.statusCode).toBe(200);
 				});
 			});
