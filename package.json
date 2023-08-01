@@ -118,7 +118,7 @@
 		"fastify-json-to-xml": "^1.1.5",
 		"fastify-plugin": "^4.5.1",
 		"file-stream-rotator": "^1.0.0",
-		"fluent-json-schema": "^4.1.0",
+		"fluent-json-schema": "^4.1.1",
 		"pino": "^8.14.2",
 		"redoc": "^2.0.0",
 		"secure-json-parse": "^2.7.0",
