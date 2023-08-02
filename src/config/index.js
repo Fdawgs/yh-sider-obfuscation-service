@@ -2,14 +2,14 @@
 
 require("dotenv").config();
 
+const { readFile } = require("fs/promises");
 const addFormats = require("ajv-formats").default;
 const envSchema = require("env-schema");
-const S = require("fluent-json-schema").default;
-const { readFile } = require("fs/promises");
-const path = require("upath");
-const { stdSerializers, stdTimeFunctions } = require("pino");
 const { getStream } = require("file-stream-rotator");
+const S = require("fluent-json-schema").default;
+const { stdSerializers, stdTimeFunctions } = require("pino");
 const { parse: secureParse } = require("secure-json-parse");
+const path = require("upath");
 
 const { license, version } = require("../../package.json");
 
