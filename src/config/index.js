@@ -2,14 +2,14 @@
 
 require("dotenv").config();
 
+const { readFile } = require("fs/promises");
 const addFormats = require("ajv-formats").default;
 const envSchema = require("env-schema");
+const { getStream } = require("file-stream-rotator");
 const S = require("fluent-json-schema").default;
-const fs = require("fs/promises");
+const { stdSerializers, stdTimeFunctions } = require("pino");
+const { parse: secureParse } = require("secure-json-parse");
 const path = require("upath");
-const pino = require("pino");
-const rotatingLogStream = require("file-stream-rotator");
-const secJSON = require("secure-json-parse");
 
 const { license, version } = require("../../package.json");
 
@@ -205,7 +205,7 @@ async function getConfig() {
 				serializers: {
 					/* istanbul ignore next: pino functions not explicitly tested */
 					req(req) {
-						return pino.stdSerializers.req(req);
+						return stdSerializers.req(req);
 					},
 					/* istanbul ignore next: pino functions not explicitly tested */
 					res(res) {
@@ -214,10 +214,10 @@ async function getConfig() {
 						 * https://github.com/pinojs/pino-std-serializers/blob/901dae44c2b71497cdb0f76f6b5af62588107e3e/lib/res.js#L37
 						 */
 						res.headersSent = true;
-						return pino.stdSerializers.res(res);
+						return stdSerializers.res(res);
 					},
 				},
-				timestamp: () => pino.stdTimeFunctions.isoTime(),
+				timestamp: () => stdTimeFunctions.isoTime(),
 			},
 			ignoreTrailingSlash: true,
 		},
@@ -238,7 +238,7 @@ async function getConfig() {
 		},
 		rateLimit: {
 			allowList: env.RATE_LIMIT_EXCLUDED_ARRAY
-				? secJSON.parse(env.RATE_LIMIT_EXCLUDED_ARRAY)
+				? secureParse(env.RATE_LIMIT_EXCLUDED_ARRAY)
 				: null,
 			continueExceeding: true,
 			hook: "onSend",
@@ -350,7 +350,7 @@ async function getConfig() {
 				name: env.OBFUSCATION_KEY_NAME,
 				value: env.OBFUSCATION_KEY_VALUE,
 			},
-			obfuscate: secJSON.parse(env.OBFUSCATION_QUERYSTRING_KEY_ARRAY),
+			obfuscate: secureParse(env.OBFUSCATION_QUERYSTRING_KEY_ARRAY),
 		},
 		redirectUrl: new URL(env.REDIRECT_URL).href,
 	};
@@ -365,13 +365,11 @@ async function getConfig() {
 		try {
 			config.fastifyInit.https = {
 				// eslint-disable-next-line security/detect-non-literal-fs-filename
-				cert: await fs.readFile(
+				cert: await readFile(
 					path.normalizeTrim(env.HTTPS_SSL_CERT_PATH)
 				),
 				// eslint-disable-next-line security/detect-non-literal-fs-filename
-				key: await fs.readFile(
-					path.normalizeTrim(env.HTTPS_SSL_KEY_PATH)
-				),
+				key: await readFile(path.normalizeTrim(env.HTTPS_SSL_KEY_PATH)),
 			};
 		} catch (err) {
 			throw new Error(
@@ -385,7 +383,7 @@ async function getConfig() {
 			config.fastifyInit.https = {
 				passphrase: env.HTTPS_PFX_PASSPHRASE,
 				// eslint-disable-next-line security/detect-non-literal-fs-filename
-				pfx: await fs.readFile(
+				pfx: await readFile(
 					path.normalizeTrim(env.HTTPS_PFX_FILE_PATH)
 				),
 			};
@@ -406,7 +404,7 @@ async function getConfig() {
 		const logFile = path.normalizeTrim(env.LOG_ROTATION_FILENAME);
 
 		// Rotation options: https://github.com/rogerc/file-stream-rotator/#options
-		config.fastifyInit.logger.stream = rotatingLogStream.getStream({
+		config.fastifyInit.logger.stream = getStream({
 			audit_file: path.joinSafe(path.dirname(logFile), ".audit.json"),
 			date_format: env.LOG_ROTATION_DATE_FORMAT || "YYYY-MM-DD",
 			filename: logFile,
@@ -420,7 +418,7 @@ async function getConfig() {
 	// Query string API key auth
 	if (env.QUERY_STRING_API_KEY_ARRAY) {
 		const keys = new Set();
-		secJSON.parse(env.QUERY_STRING_API_KEY_ARRAY).forEach((element) => {
+		secureParse(env.QUERY_STRING_API_KEY_ARRAY).forEach((element) => {
 			keys.add(element);
 		});
 		config.queryStringApiKeys = {

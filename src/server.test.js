@@ -1,11 +1,11 @@
 "use strict";
 
-const { chromium, firefox } = require("playwright");
 const { randomUUID } = require("crypto");
 const Fastify = require("fastify");
-const isHtml = require("is-html");
 const qs = require("fast-querystring");
+const isHtml = require("is-html");
 const nock = require("nock");
+const { chromium, firefox } = require("playwright");
 const startServer = require("./server");
 const getConfig = require("./config");
 
