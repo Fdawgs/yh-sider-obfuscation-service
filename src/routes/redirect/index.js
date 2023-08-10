@@ -21,7 +21,7 @@ const accepts = ["text/html"];
  * @param {string} options.obfuscation.encryptionKey.value - Encryption key value.
  * @param {Array<string>} options.obfuscation.obfuscate - Query string params that should be obfuscated.
  * @param {string} options.redirectUrl - SIDeR service URL.
- * @param {*=} options.queryStringApiKeys - Apply `apiKey` security scheme to route if defined.
+ * @param {*} [options.queryStringApiKeys] - Apply `apiKey` security scheme to route if defined.
  */
 async function route(server, options) {
 	if (options.queryStringApiKeys) {
