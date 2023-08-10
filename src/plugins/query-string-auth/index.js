@@ -9,7 +9,7 @@ const fp = require("fastify-plugin");
  * @param {object} options - Plugin config values.
  * @param {object[]|Set<object>} options.apiKeys - Array or Set of objects containing allowing API keys.
  * @param {string} options.apiKeys[].clientName - Name of client or service associated with API key.
- * @param {string} options.apiKeys[].value- API key value.
+ * @param {string} options.apiKeys[].value - API key value.
  * @param {boolean} [options.removeParam] - Remove API key param from query string after it has been checked.
  * This stops the API key being exposed to the redirect URL.
  * Defaults to `true`.
