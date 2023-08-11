@@ -12,7 +12,7 @@ const { obfuscate } = require("@blackpear/obfuscated-querystring/lib");
  * @param {object} options.encryptionKey - Object containing encryption key values.
  * @param {string} options.encryptionKey.name - Encryption key name.
  * @param {string} options.encryptionKey.value - Encryption key value.
- * @param {Array<string>} options.obfuscate - Query string params that should be obfuscated.
+ * @param {string[]} options.obfuscate - Query string params that should be obfuscated.
  */
 async function plugin(server, options) {
 	server.addHook("preHandler", async (req) => {
