@@ -3,7 +3,6 @@
 const { randomUUID } = require("crypto");
 const Fastify = require("fastify");
 const qs = require("fast-querystring");
-const isHtml = require("is-html");
 const nock = require("nock");
 const { chromium, firefox } = require("playwright");
 const startServer = require("./server");
@@ -686,7 +685,7 @@ describe("Server deployment", () => {
 						},
 					});
 
-					expect(isHtml(response.body)).toBe(true);
+					expect(response.body).toMatchSnapshot();
 					expect(response.headers).toStrictEqual(
 						expResHeadersHtmlStatic
 					);
