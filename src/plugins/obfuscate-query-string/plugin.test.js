@@ -11,6 +11,9 @@ const testParams = {
 };
 
 describe("Query string obfuscation plugin", () => {
+	/**
+	 * @type {Fastify.FastifyInstance}
+	 */
 	let server;
 
 	beforeEach(() => {

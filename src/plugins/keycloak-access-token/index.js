@@ -13,11 +13,11 @@ const { post } = require("axios").default;
  * @param {object} options - Plugin config values.
  * @param {boolean} [options.enabled] - Toggle to enable or disable use of Keycloak.
  * @param {object} [options.serviceAuthorisation]
- * @param {object} [options.serviceAuthorisation.form]
- * @param {string} [options.serviceAuthorisation.url]
+ * @param {object} options.serviceAuthorisation.form
+ * @param {string} options.serviceAuthorisation.url
  * @param {object} [options.requestToken]
- * @param {object} [options.requestToken.form]
- * @param {string} [options.requestToken.url]
+ * @param {object} options.requestToken.form
+ * @param {string} options.requestToken.url
  * @see https://github.com/keycloak/keycloak-documentation/blob/main/securing_apps/topics/token-exchange/token-exchange.adoc
  */
 async function plugin(server, options) {
