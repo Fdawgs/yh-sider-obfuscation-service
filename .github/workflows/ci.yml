@@ -123,7 +123,7 @@ jobs:
             - name: Run tests
               run: |
                   cp .env.template .env
-                  npm run jest:coverage
+                  npm run jest:coverage -- --ci
 
             - name: Coveralls parallel
               if: github.repository == 'Fdawgs/yh-sider-obfuscation-service'
