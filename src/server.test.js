@@ -116,16 +116,16 @@ const testParams = {
 	patient: `https://fhir.nhs.uk/Id/nhs-number|9999999999`,
 	practitioner: `https://sider.nhs.uk/auth|testFirstName.testLastName@somersetft.nhs.uk`,
 	TPAGID: randomUUID(),
-	FromIconProfile: 1,
-	NOUNLOCK: 1,
+	FromIconProfile: "1",
+	NOUNLOCK: "1",
 };
 
 const altTestParams = {
 	...testParams,
-	FromIconProfile: undefined,
-	NOUNLOCK: undefined,
-	TPAGID: undefined,
 };
+delete altTestParams.FromIconProfile;
+delete altTestParams.NOUNLOCK;
+delete altTestParams.TPAGID;
 
 describe("Server deployment", () => {
 	beforeAll(() => {
@@ -152,8 +152,14 @@ describe("Server deployment", () => {
 
 	describe("CORS", () => {
 		let config;
-		let server;
+		/**
+		 * @type {{ [x: string]: any }}
+		 */
 		let currentEnv;
+		/**
+		 * @type {Fastify.FastifyInstance}
+		 */
+		let server;
 
 		beforeAll(() => {
 			Object.assign(process.env, {
@@ -175,7 +181,7 @@ describe("Server deployment", () => {
 				},
 				request: {
 					headers: {
-						origin: null,
+						origin: "",
 					},
 				},
 				expected: {
@@ -438,8 +444,14 @@ describe("Server deployment", () => {
 
 	describe("Keycloak token retrieval config", () => {
 		let config;
-		let server;
+		/**
+		 * @type {{ [x: string]: any }}
+		 */
 		let currentEnv;
+		/**
+		 * @type {Fastify.FastifyInstance}
+		 */
+		let server;
 
 		beforeAll(() => {
 			Object.assign(process.env, {
@@ -557,10 +569,11 @@ describe("Server deployment", () => {
 						query: testParams,
 					});
 
+					const location = response.headers.location.toString();
 					const resQueryString = qs.parse(
-						response.headers.location.substring(
-							response.headers.location.indexOf("?") + 1,
-							response.headers.location.length
+						location.substring(
+							location.indexOf("?") + 1,
+							location.length
 						)
 					);
 
@@ -648,6 +661,9 @@ describe("Server deployment", () => {
 
 	describe("API documentation", () => {
 		let config;
+		/**
+		 * @type {Fastify.FastifyInstance}
+		 */
 		let server;
 
 		beforeAll(async () => {
@@ -666,6 +682,7 @@ describe("Server deployment", () => {
 
 			// Turn off logging for test runs
 			config.fastifyInit.logger = undefined;
+			// @ts-ignore
 			server = Fastify({ ...config.fastifyInit, pluginTimeout: 0 });
 			await server.register(startServer, config).listen(config.fastify);
 		});
@@ -747,8 +764,11 @@ describe("Server deployment", () => {
 
 	// TODO: fix this impacting the API documentation `describe` block, and move it back to running before it
 	describe("Query string API key auth enabled", () => {
-		let server;
 		let config;
+		/**
+		 * @type {Fastify.FastifyInstance}
+		 */
+		let server;
 
 		beforeAll(async () => {
 			Object.assign(process.env, {
@@ -800,10 +820,11 @@ describe("Server deployment", () => {
 					query: { ...testParams, api_key: "testKey" },
 				});
 
+				const location = response.headers.location.toString();
 				const resQueryString = qs.parse(
-					response.headers.location.substring(
-						response.headers.location.indexOf("?") + 1,
-						response.headers.location.length
+					location.substring(
+						location.indexOf("?") + 1,
+						location.length
 					)
 				);
 
@@ -821,6 +842,9 @@ describe("Server deployment", () => {
 
 	describe("Error handling", () => {
 		let config;
+		/**
+		 * @type {Fastify.FastifyInstance}
+		 */
 		let server;
 
 		beforeAll(async () => {

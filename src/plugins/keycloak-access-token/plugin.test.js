@@ -41,6 +41,9 @@ const testParams = {
 };
 
 describe("Keycloak access token retrieval plugin", () => {
+	/**
+	 * @type {Fastify.FastifyInstance}
+	 */
 	let server;
 
 	beforeAll(() => {
