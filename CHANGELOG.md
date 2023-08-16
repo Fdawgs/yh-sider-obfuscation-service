@@ -2,6 +2,68 @@
 
 All notable changes to this project will be documented in this file.
 
+## [11.1.9](https://github.com/Fdawgs/yh-sider-obfuscation-service/compare/v11.1.8...v11.1.9) (2023-08-16)
+
+
+### Bug fixes
+
+* **config:** stop crash when logs written async ([#1357](https://github.com/Fdawgs/yh-sider-obfuscation-service/issues/1357)) ([bcd4e8e](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/bcd4e8e104108331c63809f5dcb4cec909bbff30))
+
+
+### Dependencies
+
+* **deps-dev:** bump @commitlint/cli from 17.6.7 to 17.7.1 ([#1349](https://github.com/Fdawgs/yh-sider-obfuscation-service/issues/1349)) ([44de09f](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/44de09f9df739a1bda2030ac92adfe6cc19d9e37))
+* **deps-dev:** bump @commitlint/config-conventional ([#1351](https://github.com/Fdawgs/yh-sider-obfuscation-service/issues/1351)) ([3425091](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/3425091c16cd93b9563d3c8ee45636d689d8d9f9))
+* **deps-dev:** bump autocannon from 7.11.0 to 7.12.0 ([#1345](https://github.com/Fdawgs/yh-sider-obfuscation-service/issues/1345)) ([8d089a9](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/8d089a9fb0eb0acab0c6210f75b7171dabbbf820))
+* **deps-dev:** bump esbuild from 0.18.14 to 0.19.2 ([6145951](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/61459518ce30adb76d59f3e5927f1d845338ca76))
+* **deps-dev:** bump eslint from 8.45.0 to 8.46.0 ([#1339](https://github.com/Fdawgs/yh-sider-obfuscation-service/issues/1339)) ([e8445fd](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/e8445fddd9dbbfa19b2631e130de9332fcff49ed))
+* **deps-dev:** bump eslint from 8.46.0 to 8.47.0 ([#1350](https://github.com/Fdawgs/yh-sider-obfuscation-service/issues/1350)) ([ef10d63](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/ef10d631135158caf2d28d257ca399c640c16e55))
+* **deps-dev:** bump eslint-config-prettier from 8.10.0 to 9.0.0 ([#1354](https://github.com/Fdawgs/yh-sider-obfuscation-service/issues/1354)) ([756e2f5](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/756e2f5f0288b519009db1960717113df2ac2f1f))
+* **deps-dev:** bump eslint-config-prettier from 8.8.0 to 8.9.0 ([#1331](https://github.com/Fdawgs/yh-sider-obfuscation-service/issues/1331)) ([73d378f](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/73d378ff88fe470191d02d8f990fcccd6d2d0fd8))
+* **deps-dev:** bump eslint-config-prettier from 8.9.0 to 8.10.0 ([#1346](https://github.com/Fdawgs/yh-sider-obfuscation-service/issues/1346)) ([7ce321e](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/7ce321e72b1c791bc42467894606bb5e401c28b8))
+* **deps-dev:** bump eslint-plugin-import from 2.27.5 to 2.28.0 ([#1336](https://github.com/Fdawgs/yh-sider-obfuscation-service/issues/1336)) ([36ca455](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/36ca455478aa0a29fbe79e42cfcb70ae9ca81b17))
+* **deps-dev:** bump eslint-plugin-jsdoc from 46.4.4 to 46.4.5 ([#1330](https://github.com/Fdawgs/yh-sider-obfuscation-service/issues/1330)) ([fc5e3f2](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/fc5e3f2cac2d6991d488fe6de3f735f08e515aad))
+* **deps-dev:** bump eslint-plugin-jsdoc from 46.4.5 to 46.4.6 ([#1353](https://github.com/Fdawgs/yh-sider-obfuscation-service/issues/1353)) ([383688e](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/383688e2445c6e9a0cc30b553935ea47d22e07c7))
+* **deps-dev:** bump jest from 29.6.1 to 29.6.2 ([#1334](https://github.com/Fdawgs/yh-sider-obfuscation-service/issues/1334)) ([4d20d80](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/4d20d8028918d304543cb5169f7af2728c473524))
+* **deps-dev:** bump pino-pretty from 10.0.1 to 10.2.0 ([#1333](https://github.com/Fdawgs/yh-sider-obfuscation-service/issues/1333)) ([a60efde](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/a60efdebdbdeff7b858702f483b1215e67ad9fc8))
+* **deps-dev:** bump playwright from 1.36.1 to 1.36.2 ([#1338](https://github.com/Fdawgs/yh-sider-obfuscation-service/issues/1338)) ([49ed71d](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/49ed71dcc8578901277ee86fa2b99d6c7c4dd979))
+* **deps-dev:** bump playwright from 1.36.2 to 1.37.0 ([#1352](https://github.com/Fdawgs/yh-sider-obfuscation-service/issues/1352)) ([e8fef68](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/e8fef68a70ad3f533e07fe29c8d6b5399c983ca1))
+* **deps-dev:** bump prettier from 3.0.0 to 3.0.1 ([#1344](https://github.com/Fdawgs/yh-sider-obfuscation-service/issues/1344)) ([c6800de](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/c6800de7195bbb9c396488b7f5cc61f23087c058))
+* **deps-dev:** bump prettier from 3.0.1 to 3.0.2 ([#1360](https://github.com/Fdawgs/yh-sider-obfuscation-service/issues/1360)) ([705f495](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/705f495b909bde8c705d201be84f478140383f68))
+* **deps-dev:** install lockfile-lint locally ([#1342](https://github.com/Fdawgs/yh-sider-obfuscation-service/issues/1342)) ([c255653](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/c255653bf6ceead769aa1224ce24b3311b18e36f))
+* **deps:** bump fastify from 4.20.0 to 4.21.0 ([#1335](https://github.com/Fdawgs/yh-sider-obfuscation-service/issues/1335)) ([504a1b2](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/504a1b24aac8f32b20c91cc93f70dbc9a46a2be2))
+* **deps:** bump fastify-disablecache from 3.1.4 to 3.1.5 ([#1361](https://github.com/Fdawgs/yh-sider-obfuscation-service/issues/1361)) ([7a94cd6](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/7a94cd6ac10d5f50c888379c1dac5bea10ab2eaa))
+* **deps:** bump fastify-floc-off from 2.1.4 to 2.1.5 ([#1359](https://github.com/Fdawgs/yh-sider-obfuscation-service/issues/1359)) ([2955103](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/2955103ac46c740940da1da54a7dd2a80f8160dd))
+* **deps:** bump fastify-json-to-xml from 1.1.5 to 1.1.6 ([#1358](https://github.com/Fdawgs/yh-sider-obfuscation-service/issues/1358)) ([597c345](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/597c345d9ef18ac12629eedfff50b37ccc5072a1))
+* **deps:** bump fluent-json-schema from 4.1.0 to 4.1.1 ([#1337](https://github.com/Fdawgs/yh-sider-obfuscation-service/issues/1337)) ([9f43ab0](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/9f43ab077f8bf107f728d0d24ba48efd5028757b))
+* **deps:** bump pino from 8.14.1 to 8.14.2 ([#1332](https://github.com/Fdawgs/yh-sider-obfuscation-service/issues/1332)) ([85f855f](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/85f855f2bf24af05446755ab5a834ceedd77b509))
+* **deps:** bump pino from 8.14.2 to 8.15.0 ([#1343](https://github.com/Fdawgs/yh-sider-obfuscation-service/issues/1343)) ([49bc5c1](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/49bc5c13e19b0a684dad38f5aea27b6314564515))
+* **deps:** bump transistive dependencies ([be8c778](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/be8c77883696cf949be447279066cd742d800d1e))
+
+
+### Miscellaneous
+
+* **.eslintrc:** error on google closure jsdoc syntax ([8b604bb](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/8b604bbd68bb0eb80f3496f63c4a5af40aef1305))
+* add jsconfig; type check js ([#1355](https://github.com/Fdawgs/yh-sider-obfuscation-service/issues/1355)) ([afe001c](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/afe001cbc8977f92e665b196260b9f07c5203b5a))
+* **config:** sort param types alphabetically ([47a0ee4](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/47a0ee4d6d897616e1a9c76be432faec14ca1ded))
+* fix import order for linting ([c564a18](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/c564a1898ecf178a27221daced215c5777b27ec0))
+* **jsconfig:** add target ([7399048](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/7399048d217bf61895ff28cdb9534bd2710420f7))
+* **plugins/query-string-auth:** fix whitespace in jsdoc param description ([d999670](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/d999670cb1285452031a6c394d3ee8f77b7142bd))
+* **scripts/license-checker:** use `console.error()` to log failures ([ab5a2cc](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/ab5a2cc606079fd819551fda5a6d4911cb9b6667))
+* **server:** update inline comment re plugin function ([4852b2b](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/4852b2bf0692385316bfb44a5d66802183a9ab34))
+* use jsdoc syntax for arrays over interfaces ([56722d3](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/56722d3ff5755cf6135c7fa4ccd43ec216147469))
+* use jsdoc syntax for opt params over google closure syntax ([f3a0259](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/f3a02592a8a1e715e30f8e961733774375af3a28))
+
+
+### Continuous integration
+
+* **ci:** error on new jest snapshot ([#1356](https://github.com/Fdawgs/yh-sider-obfuscation-service/issues/1356)) ([66156a5](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/66156a5cb7786e62d0dbe6f9c3a92d056e8a7180))
+
+
+### Improvements
+
+* deconstruct imports ([a5dc34a](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/a5dc34aec100bad23655919fc0fb6e237731bb4a))
+
 ## [11.1.8](https://github.com/Fdawgs/yh-sider-obfuscation-service/compare/v11.1.7...v11.1.8) (2023-07-19)
 
 
