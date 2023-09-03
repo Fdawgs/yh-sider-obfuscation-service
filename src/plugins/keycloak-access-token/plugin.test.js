@@ -5,8 +5,7 @@ const nock = require("nock");
 const plugin = require(".");
 
 /**
- * Refer to option documentation here:
- * https://github.com/keycloak/keycloak-documentation/blob/main/securing_apps/topics/token-exchange/token-exchange.adoc
+ * @see {@link https://github.com/keycloak/keycloak-documentation/blob/main/securing_apps/topics/token-exchange/token-exchange.adoc | Keycloak Token Exchange}
  */
 const testKeycloakConfig = {
 	enabled: true,

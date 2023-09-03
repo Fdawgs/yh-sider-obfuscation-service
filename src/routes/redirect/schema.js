@@ -5,11 +5,10 @@ const S = require("fluent-json-schema").default;
 const tags = ["Redirects"];
 
 /**
- * Fastify uses AJV for JSON Schema Validation,
- * see https://fastify.io/docs/latest/Reference/Validation-and-Serialization/
- *
+ * Fastify uses AJV for JSON Schema Validation.
  * Input validation protects against XSS, HPP, prototype pollution,
  * and most other injection attacks.
+ * @see {@link https://fastify.io/docs/latest/Reference/Validation-and-Serialization | Fastify Validation and Serialization}
  */
 const redirectGetSchema = {
 	tags,
@@ -56,8 +55,10 @@ const redirectGetSchema = {
 				.examples([
 					"https://sider.nhs.uk/auth|frazer.smith@somersetft.nhs.uk",
 				])
+				/**
+				 * @see {@link https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address | Valid email address pattern}
+				 */
 				.pattern(
-					// See https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address
 					// eslint-disable-next-line security/detect-unsafe-regex
 					/^https:\/\/sider\.nhs\.uk\/auth\|[\w!#$%&'*+\-./=?^`{|}~]+@[\dA-Za-z](?:[\d\-A-Za-z]{0,61}[\dA-Za-z])?(?:\.[\dA-Za-z](?:[\d\-A-Za-z]{0,61}[\dA-Za-z])?)*$/u
 				)
