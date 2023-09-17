@@ -25,9 +25,7 @@ async function plugin(server, options) {
 	if (options.enabled === true) {
 		const { requestToken, serviceAuthorisation } = options;
 
-		/**
-		 * @see {@link https://github.com/axios/axios#request-config | Axios Request Config}
-		 */
+		/** @see {@link https://github.com/axios/axios#request-config | Axios Request Config} */
 		const axiosOptions = {
 			headers: { accept: "application/json" },
 			responseType: "json",

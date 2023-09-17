@@ -55,9 +55,7 @@ const redirectGetSchema = {
 				.examples([
 					"https://sider.nhs.uk/auth|frazer.smith@somersetft.nhs.uk",
 				])
-				/**
-				 * @see {@link https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address | Valid email address pattern}
-				 */
+				/** @see {@link https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address | Valid email address pattern} */
 				.pattern(
 					// eslint-disable-next-line security/detect-unsafe-regex
 					/^https:\/\/sider\.nhs\.uk\/auth\|[\w!#$%&'*+\-./=?^`{|}~]+@[\dA-Za-z](?:[\d\-A-Za-z]{0,61}[\dA-Za-z])?(?:\.[\dA-Za-z](?:[\d\-A-Za-z]{0,61}[\dA-Za-z])?)*$/u

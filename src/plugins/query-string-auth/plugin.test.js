@@ -9,9 +9,7 @@ const testParams = {
 };
 
 describe("Query string auth plugin", () => {
-	/**
-	 * @type {Fastify.FastifyInstance}
-	 */
+	/** @type {Fastify.FastifyInstance} */
 	let server;
 
 	beforeEach(async () => {

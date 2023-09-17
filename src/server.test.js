@@ -152,13 +152,9 @@ describe("Server deployment", () => {
 
 	describe("CORS", () => {
 		let config;
-		/**
-		 * @type {{ [x: string]: any }}
-		 */
+		/** @type {{ [key: string]: any }} */
 		let currentEnv;
-		/**
-		 * @type {Fastify.FastifyInstance}
-		 */
+		/** @type {Fastify.FastifyInstance} */
 		let server;
 
 		beforeAll(() => {
@@ -444,13 +440,9 @@ describe("Server deployment", () => {
 
 	describe("Keycloak token retrieval config", () => {
 		let config;
-		/**
-		 * @type {{ [x: string]: any }}
-		 */
+		/** @type {{ [key: string]: any }} */
 		let currentEnv;
-		/**
-		 * @type {Fastify.FastifyInstance}
-		 */
+		/** @type {Fastify.FastifyInstance} */
 		let server;
 
 		beforeAll(() => {
@@ -661,9 +653,7 @@ describe("Server deployment", () => {
 
 	describe("API documentation", () => {
 		let config;
-		/**
-		 * @type {Fastify.FastifyInstance}
-		 */
+		/** @type {Fastify.FastifyInstance} */
 		let server;
 
 		beforeAll(async () => {
@@ -757,9 +747,7 @@ describe("Server deployment", () => {
 	// TODO: fix this impacting the API documentation `describe` block, and move it back to running before it
 	describe("Query string API key auth enabled", () => {
 		let config;
-		/**
-		 * @type {Fastify.FastifyInstance}
-		 */
+		/** @type {Fastify.FastifyInstance} */
 		let server;
 
 		beforeAll(async () => {
@@ -834,9 +822,7 @@ describe("Server deployment", () => {
 
 	describe("Error handling", () => {
 		let config;
-		/**
-		 * @type {Fastify.FastifyInstance}
-		 */
+		/** @type {Fastify.FastifyInstance} */
 		let server;
 
 		beforeAll(async () => {
