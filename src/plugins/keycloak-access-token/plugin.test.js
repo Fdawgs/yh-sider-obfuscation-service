@@ -4,9 +4,7 @@ const Fastify = require("fastify");
 const nock = require("nock");
 const plugin = require(".");
 
-/**
- * @see {@link https://github.com/keycloak/keycloak-documentation/blob/main/securing_apps/topics/token-exchange/token-exchange.adoc | Keycloak Token Exchange}
- */
+/** @see {@link https://github.com/keycloak/keycloak-documentation/blob/main/securing_apps/topics/token-exchange/token-exchange.adoc | Keycloak Token Exchange} */
 const testKeycloakConfig = {
 	enabled: true,
 	requestToken: {
@@ -40,9 +38,7 @@ const testParams = {
 };
 
 describe("Keycloak access token retrieval plugin", () => {
-	/**
-	 * @type {Fastify.FastifyInstance}
-	 */
+	/** @type {Fastify.FastifyInstance} */
 	let server;
 
 	beforeAll(() => {

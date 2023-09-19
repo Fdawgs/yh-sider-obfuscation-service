@@ -62,6 +62,7 @@ async function checkLicenses() {
 
 	const copyLeftLicensesList = Object.keys(licenses).filter(
 		(license) =>
+			// @ts-ignore: includes() returns false if undefined is passed
 			copyLeftLicenses.includes(licenses[license].licenses) &&
 			// ignore obfuscated-querystring as it is required for service functionality
 			/@blackpear\/obfuscated-querystring/u.test(license) === false
