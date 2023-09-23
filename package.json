@@ -121,7 +121,7 @@
 		"file-stream-rotator": "^1.0.0",
 		"fluent-json-schema": "^4.1.1",
 		"pino": "^8.15.1",
-		"redoc": "^2.1.1",
+		"redoc": "^2.1.2",
 		"secure-json-parse": "^2.7.0",
 		"upath": "^2.0.1"
 	}
