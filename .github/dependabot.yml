@@ -14,7 +14,28 @@ updates:
           include: scope
           prefix: build
       directory: /
+      groups:
+          commitlint:
+              patterns:
+                  - "@commitlint*"
+          eslint:
+              patterns:
+                  - "eslint*"
+          fastify-core:
+              patterns:
+                  - "@fastify*"
+                  - "fastify"
+                  - "fastify-plugin"
+                  - "fluent-json-schema"
+                  - "env-schema"
+                  - "secure-json-parse"
+          pino-core:
+              patterns:
+                  - "pino"
+                  - "pino-pretty"
       ignore:
+          # Tests do not cover these dependencies,
+          # so we don't want to update them automatically
           - dependency-name: esbuild
           - dependency-name: esbuild-plugin-glob
       open-pull-requests-limit: 20
