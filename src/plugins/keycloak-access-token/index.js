@@ -45,7 +45,10 @@ async function plugin(server, options) {
 					requestToken.url,
 					qs.stringify({
 						// Expects the query string practitioner value to be in [system]|[code] format
-						requested_subject: req.query.practitioner.split("|")[1],
+						requested_subject: req.query.practitioner.split(
+							"|",
+							2
+						)[1],
 						subject_token: serviceAuthResponse.data.access_token,
 						...requestToken.form,
 					}),
