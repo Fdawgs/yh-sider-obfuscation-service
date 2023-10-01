@@ -563,10 +563,7 @@ describe("Server deployment", () => {
 
 					const location = response.headers.location.toString();
 					const resQueryString = qs.parse(
-						location.substring(
-							location.indexOf("?") + 1,
-							location.length
-						)
+						location.slice(location.indexOf("?") + 1)
 					);
 
 					expect(resQueryString).toMatchObject({
@@ -802,10 +799,7 @@ describe("Server deployment", () => {
 
 				const location = response.headers.location.toString();
 				const resQueryString = qs.parse(
-					location.substring(
-						location.indexOf("?") + 1,
-						location.length
-					)
+					location.slice(location.indexOf("?") + 1)
 				);
 
 				expect(resQueryString).toMatchObject({
