@@ -768,7 +768,6 @@ describe("Server deployment", () => {
 		});
 
 		describe("/redirect route", () => {
-			// eslint-disable-next-line jest/no-disabled-tests
 			it("Returns HTTP status code 401 if api_key query string param missing", async () => {
 				const response = await server.inject({
 					method: "GET",
