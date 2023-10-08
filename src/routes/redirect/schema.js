@@ -57,7 +57,7 @@ const redirectGetSchema = {
 				])
 				/** @see {@link https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address | Valid email address pattern} */
 				.pattern(
-					// eslint-disable-next-line security/detect-unsafe-regex
+					// eslint-disable-next-line security/detect-unsafe-regex -- False positive
 					/^https:\/\/sider\.nhs\.uk\/auth\|[\w!#$%&'*+\-./=?^`{|}~]+@[\dA-Za-z](?:[\d\-A-Za-z]{0,61}[\dA-Za-z])?(?:\.[\dA-Za-z](?:[\d\-A-Za-z]{0,61}[\dA-Za-z])?)*$/u
 				)
 		)
