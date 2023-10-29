@@ -1,7 +1,10 @@
 "use strict";
 
 const fp = require("fastify-plugin");
-const qs = require("fast-querystring");
+const {
+	parse: fastParse,
+	stringify: fastStringify,
+} = require("fast-querystring");
 const { obfuscate } = require("@blackpear/obfuscated-querystring/lib");
 
 /**
@@ -16,7 +19,7 @@ const { obfuscate } = require("@blackpear/obfuscated-querystring/lib");
  */
 async function plugin(server, options) {
 	server.addHook("preHandler", async (req) => {
-		req.query = qs.parse(obfuscate(qs.stringify(req.query), options));
+		req.query = fastParse(obfuscate(fastStringify(req.query), options));
 	});
 }
 

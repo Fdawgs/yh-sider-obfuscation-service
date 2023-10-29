@@ -2,7 +2,7 @@
 
 const { randomUUID } = require("node:crypto");
 const Fastify = require("fastify");
-const qs = require("fast-querystring");
+const { parse: fastParse } = require("fast-querystring");
 const nock = require("nock");
 const { firefox } = require("playwright");
 const startServer = require("./server");
@@ -562,7 +562,7 @@ describe("Server deployment", () => {
 					});
 
 					const location = response.headers.location.toString();
-					const resQueryString = qs.parse(
+					const resQueryString = fastParse(
 						location.slice(location.indexOf("?") + 1)
 					);
 
@@ -797,7 +797,7 @@ describe("Server deployment", () => {
 				});
 
 				const location = response.headers.location.toString();
-				const resQueryString = qs.parse(
+				const resQueryString = fastParse(
 					location.slice(location.indexOf("?") + 1)
 				);
 
