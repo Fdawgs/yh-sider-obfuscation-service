@@ -3,7 +3,7 @@
 "use strict";
 
 const fp = require("fastify-plugin");
-const qs = require("fast-querystring");
+const { stringify: fastStringify } = require("fast-querystring");
 const { post } = require("axios").default;
 
 /**
@@ -36,14 +36,14 @@ async function plugin(server, options) {
 				// Service authorisation to retrieve subject access token
 				const serviceAuthResponse = await post(
 					serviceAuthorisation.url,
-					qs.stringify(serviceAuthorisation.form),
+					fastStringify(serviceAuthorisation.form),
 					axiosOptions
 				);
 
 				// Request access token for user
 				const userAccessResponse = await post(
 					requestToken.url,
-					qs.stringify({
+					fastStringify({
 						// Expects the query string practitioner value to be in [system]|[code] format
 						requested_subject: req.query.practitioner.split(
 							"|",

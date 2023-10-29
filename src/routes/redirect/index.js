@@ -2,7 +2,7 @@
 
 // Import plugins
 const cors = require("@fastify/cors");
-const qs = require("fast-querystring");
+const { stringify: fastStringify } = require("fast-querystring");
 const obfuscateQueryString = require("../../plugins/obfuscate-query-string");
 
 const { redirectGetSchema } = require("./schema");
@@ -59,7 +59,7 @@ async function route(server, options) {
 			 * as the API treats hashes in shebangs as the start
 			 * of a fragment
 			 */
-			const espUrl = options.redirectUrl + qs.stringify(req.query);
+			const espUrl = options.redirectUrl + fastStringify(req.query);
 			server.log.debug(espUrl);
 			// eslint-disable-next-line security-node/detect-dangerous-redirects -- Redirecting to trusted URL
 			res.redirect(espUrl);
