@@ -1,6 +1,6 @@
 {
 	"name": "yh-sider-obfuscation-service",
-	"version": "11.1.10",
+	"version": "11.1.11",
 	"description": "Yeovil Hospital's SIDeR contextual link obfuscation service",
 	"main": "dist/app.js",
 	"type": "commonjs",
