@@ -32,29 +32,28 @@ async function plugin(server, options) {
 		};
 
 		server.addHook("preHandler", async (req) => {
+			const { practitioner } = req.query;
+
 			try {
 				// Service authorisation to retrieve subject access token
-				const serviceAuthResponse = await post(
+				const { data: serviceAuthData } = await post(
 					serviceAuthorisation.url,
 					fastStringify(serviceAuthorisation.form),
 					axiosOptions
 				);
 
 				// Request access token for user
-				const userAccessResponse = await post(
+				const { data: userAccessData } = await post(
 					requestToken.url,
 					fastStringify({
 						// Expects the query string practitioner value to be in [system]|[code] format
-						requested_subject: req.query.practitioner.split(
-							"|",
-							2
-						)[1],
-						subject_token: serviceAuthResponse.data.access_token,
+						requested_subject: practitioner.split("|", 2)[1],
+						subject_token: serviceAuthData.access_token,
 						...requestToken.form,
 					}),
 					axiosOptions
 				);
-				req.query.access_token = userAccessResponse.data.access_token;
+				req.query.access_token = userAccessData.access_token;
 			} catch (err) {
 				// Log Keycloak error and redirect without access_token, user will have to manually login
 				req.log.error({ req, err }, err.message);
