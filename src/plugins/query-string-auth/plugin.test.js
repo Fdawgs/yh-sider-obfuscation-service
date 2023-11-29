@@ -22,9 +22,7 @@ describe("Query string auth plugin", () => {
 		});
 	});
 
-	afterEach(async () => {
-		await server.close();
-	});
+	afterEach(async () => server.close());
 
 	it("Returns response, and remove API key param, if query string API key param in `apiKeys` array", async () => {
 		server.register(plugin, {
