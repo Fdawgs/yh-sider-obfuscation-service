@@ -4,7 +4,7 @@
 
 const fp = require("fastify-plugin");
 const { stringify: fastStringify } = require("fast-querystring");
-const { post } = require("axios").default;
+const { post } = require("axios");
 
 /**
  * @author Frazer Smith
