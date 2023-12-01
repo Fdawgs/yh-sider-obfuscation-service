@@ -674,9 +674,7 @@ describe("Server deployment", () => {
 			await server.register(startServer, config).listen(config.fastify);
 		});
 
-		afterAll(async () => {
-			await server.close();
-		});
+		afterAll(async () => server.close());
 
 		describe("Content", () => {
 			describe("/docs route", () => {
@@ -840,9 +838,7 @@ describe("Server deployment", () => {
 			await server.ready();
 		});
 
-		afterAll(async () => {
-			await server.close();
-		});
+		afterAll(async () => server.close());
 
 		describe("/error route", () => {
 			it("Returns HTTP status code 500", async () => {

@@ -22,9 +22,7 @@ describe("Query string obfuscation plugin", () => {
 		});
 	});
 
-	afterEach(async () => {
-		await server.close();
-	});
+	afterEach(async () => server.close());
 
 	it("Obfuscates patient and birthdate parameters", async () => {
 		server.register(plugin, {

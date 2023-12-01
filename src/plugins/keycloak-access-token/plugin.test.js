@@ -90,9 +90,7 @@ describe("Keycloak access token retrieval plugin", () => {
 		});
 	});
 
-	afterEach(async () => {
-		await server.close();
-	});
+	afterEach(async () => server.close());
 
 	afterAll(() => {
 		nock.cleanAll();
