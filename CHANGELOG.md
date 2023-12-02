@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file.
 
+## [11.1.13](https://github.com/Fdawgs/yh-sider-obfuscation-service/compare/v11.1.12...v11.1.13) (2023-12-02)
+
+
+### Dependencies
+
+* **deps-dev:** bump nodemon from 3.0.1 to 3.0.2 ([#1446](https://github.com/Fdawgs/yh-sider-obfuscation-service/issues/1446)) ([b0ceef3](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/b0ceef334413803ffbf4502500b9a97ee0006900))
+* **deps-dev:** bump the eslint group with 1 update ([#1445](https://github.com/Fdawgs/yh-sider-obfuscation-service/issues/1445)) ([73add80](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/73add80d9dd8729b39b37520fb9b76be61319a77))
+* **deps-dev:** bump the eslint group with 1 update ([#1448](https://github.com/Fdawgs/yh-sider-obfuscation-service/issues/1448)) ([5046fca](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/5046fcaf4a2e064f8b00b7a475255a514b0a8b6f))
+
+
+### Miscellaneous
+
+* **.eslintrc:** update no-param-reassign rule to ignore obj refs ([98ea62b](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/98ea62baedd366a7cc4136769fcadad908ea4a9c))
+
+
+### Continuous integration
+
+* **dependabot:** ignore release-please-action major updates ([4cd11d5](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/4cd11d57c901835a2bd0916f619633173136c141))
+
 ## [11.1.12](https://github.com/Fdawgs/yh-sider-obfuscation-service/compare/v11.1.11...v11.1.12) (2023-12-01)
 
 
