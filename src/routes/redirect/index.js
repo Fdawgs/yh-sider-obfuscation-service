@@ -57,7 +57,7 @@ async function route(server, options) {
 			/**
 			 * Unable to use WHATWG URL API here to serialise URL,
 			 * as the API treats hashes in shebangs as the start
-			 * of a fragment
+			 * of a fragment.
 			 */
 			const espUrl = options.redirectUrl + fastStringify(req.query);
 			server.log.debug(espUrl);
