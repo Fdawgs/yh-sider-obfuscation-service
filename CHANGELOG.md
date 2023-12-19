@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file.
 
+## [11.1.14](https://github.com/Fdawgs/yh-sider-obfuscation-service/compare/v11.1.13...v11.1.14) (2023-12-19)
+
+
+### Dependencies
+
+* **deps-dev:** bump @types/jest from 29.5.10 to 29.5.11 ([#1454](https://github.com/Fdawgs/yh-sider-obfuscation-service/issues/1454)) ([10c658c](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/10c658c77f89270346259134e950b8f40dcae4a8))
+* **deps-dev:** bump esbuild from 0.19.8 to 0.19.10 ([dfa91ef](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/dfa91ef7fa6ac596975254da247d5378017738e2))
+* **deps-dev:** bump prettier from 3.1.0 to 3.1.1 ([#1453](https://github.com/Fdawgs/yh-sider-obfuscation-service/issues/1453)) ([90fa9e3](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/90fa9e3eba539d0a39cdb31bcd4985800774476f))
+* **deps-dev:** bump the eslint group with 5 updates ([#1459](https://github.com/Fdawgs/yh-sider-obfuscation-service/issues/1459)) ([f58e96a](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/f58e96a93a28e9abc9cd2183cd0aaf6eaac9df8e))
+* **deps:** bump the fastify-core group with 4 updates ([#1458](https://github.com/Fdawgs/yh-sider-obfuscation-service/issues/1458)) ([a7e633c](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/a7e633c7fccc3cd6b8a6e0bfc431f3cf56152048))
+* **deps:** bump the pino-core group with 1 update ([#1452](https://github.com/Fdawgs/yh-sider-obfuscation-service/issues/1452)) ([e887ccb](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/e887ccb284a0fe6ac3f50cc51682901b067ddbd5))
+* **deps:** bump the pino-core group with 2 updates ([#1457](https://github.com/Fdawgs/yh-sider-obfuscation-service/issues/1457)) ([12e41c0](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/12e41c0f8b509f88332d901caf37030d8403881c))
+* **deps:** bump transistive dependencies ([c800f22](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/c800f2241612ae9c10aebbc209bc6803ef1002ef))
+
+
+### Miscellaneous
+
+* **.eslintrc:** remove `no-param-reassign` exception ([d00fa88](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/d00fa8884bd9b09a580ff1ef28eb7918bc745388))
+* jsdoc comments must be complete sentences ([ea517f8](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/ea517f839e9d7a17a16b0a31913d70474eb7a0fc))
+
+
+### Continuous integration
+
+* **deps:** bump actions/upload-artifact from 3 to 4 ([#1456](https://github.com/Fdawgs/yh-sider-obfuscation-service/issues/1456)) ([88b76c0](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/88b76c0ebe53dfd034168dba9df3398381141633))
+* **deps:** bump github/codeql-action from 2 to 3 ([#1449](https://github.com/Fdawgs/yh-sider-obfuscation-service/issues/1449)) ([2e408ab](https://github.com/Fdawgs/yh-sider-obfuscation-service/commit/2e408abe5ce94c8e61b96616b60094245ae4c4dd))
+
 ## [11.1.13](https://github.com/Fdawgs/yh-sider-obfuscation-service/compare/v11.1.12...v11.1.13) (2023-12-02)
 
 
