@@ -69,7 +69,12 @@ async function checkLicenses() {
 
 		lic = Array.isArray(lic) ? lic : [lic];
 
-		return lic.some((l) => copyLeftLicenses.includes(l));
+		return lic.some(
+			(l) =>
+				copyLeftLicenses.includes(l) &&
+				// ignore obfuscated-querystring as it is required for service functionality
+				/@blackpear\/obfuscated-querystring/u.test(license) === false
+		);
 	});
 
 	if (copyLeftLicensesList.length > 0) {
