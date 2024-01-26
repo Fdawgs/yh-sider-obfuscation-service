@@ -1,7 +1,5 @@
 "use strict";
 
-require("dotenv").config();
-
 const { readFile } = require("node:fs/promises");
 const addFormats = require("ajv-formats").default;
 const envSchema = require("env-schema");
